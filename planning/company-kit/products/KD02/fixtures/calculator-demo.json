@@ -1,0 +1,247 @@
+{
+  "organization": "DEMO_ONLY",
+  "product_id": "KD02",
+  "kind": "calculation_inputs_not_relational_seed",
+  "rows": [
+    {
+      "demo_id": "KD02-DEMO-001",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 01",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-002",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 02",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-003",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 03",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-004",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 04",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-005",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 05",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-006",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 06",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-007",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 07",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-008",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 08",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-009",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 09",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-010",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 10",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-011",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 11",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-012",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 12",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-013",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 13",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-014",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 14",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-015",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 15",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-016",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 16",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-017",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 17",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-018",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 18",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-019",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 19",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-020",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 20",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-021",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 21",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-022",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 22",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-023",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 23",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-024",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 24",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-025",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 25",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-026",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 26",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-027",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 27",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-028",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 28",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-029",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 29",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    },
+    {
+      "demo_id": "KD02-DEMO-030",
+      "label": "Dữ liệu mẫu Pipeline cơ hội 30",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      }
+    }
+  ]
+}

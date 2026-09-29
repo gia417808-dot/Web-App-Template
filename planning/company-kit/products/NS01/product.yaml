@@ -1,0 +1,30 @@
+{
+  "department": "Nhân sự",
+  "id": "NS01",
+  "name": "Hồ sơ nhân sự",
+  "tables": [
+    "NhanSu",
+    "TaiLieu"
+  ],
+  "action": "capNhatHoSo",
+  "original_rule": "thâm niên theo ngày vào làm; ngày tương lai bị từ chối",
+  "status": "draft_for_review",
+  "target_version": "3.0.0-vi",
+  "legacySku": null,
+  "priority": "P1",
+  "dependencies": [
+    "CORE"
+  ],
+  "platforms_target": [
+    "Excel365",
+    "Web"
+  ],
+  "implemented": false,
+  "gate_status": {
+    "G0": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G_EXCEL": "NOT_RUN",
+    "G_WEB": "NOT_RUN",
+    "G_OPS": "NOT_RUN"
+  }
+}

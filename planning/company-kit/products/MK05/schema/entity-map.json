@@ -1,0 +1,87 @@
+{
+  "product_id": "MK05",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "ThuNghiem": {
+      "owner": "MK05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "start_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "end_date",
+          "type": "date",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "conclusion",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "BienThe": {
+      "owner": "MK05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "experiment_id",
+          "type": "ref.ThuNghiem",
+          "nullable": false,
+          "reference": "ThuNghiem"
+        },
+        {
+          "name": "content_id",
+          "type": "ref.NoiDung",
+          "nullable": false,
+          "reference": "NoiDung"
+        },
+        {
+          "name": "label",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unique_reach",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unique_responses",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

@@ -1,0 +1,15 @@
+{
+  "product_id": "KD02",
+  "metric_id": "KD02_primary",
+  "inputs": [
+    "value",
+    "probability_pct"
+  ],
+  "excel_example": "=[@value]*[@probability_pct]/100",
+  "backend_requirement": "Xác suất 0..100; lost có forecast 0, won 100%; lưu lịch sử chuyển giai đoạn.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

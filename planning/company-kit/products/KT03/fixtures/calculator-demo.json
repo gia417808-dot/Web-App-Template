@@ -1,0 +1,247 @@
+{
+  "organization": "DEMO_ONLY",
+  "product_id": "KT03",
+  "kind": "calculation_inputs_not_relational_seed",
+  "rows": [
+    {
+      "demo_id": "KT03-DEMO-001",
+      "label": "Dữ liệu mẫu Công nợ phải trả 01",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-002",
+      "label": "Dữ liệu mẫu Công nợ phải trả 02",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-003",
+      "label": "Dữ liệu mẫu Công nợ phải trả 03",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-004",
+      "label": "Dữ liệu mẫu Công nợ phải trả 04",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-005",
+      "label": "Dữ liệu mẫu Công nợ phải trả 05",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-006",
+      "label": "Dữ liệu mẫu Công nợ phải trả 06",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-007",
+      "label": "Dữ liệu mẫu Công nợ phải trả 07",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-008",
+      "label": "Dữ liệu mẫu Công nợ phải trả 08",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-009",
+      "label": "Dữ liệu mẫu Công nợ phải trả 09",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-010",
+      "label": "Dữ liệu mẫu Công nợ phải trả 10",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-011",
+      "label": "Dữ liệu mẫu Công nợ phải trả 11",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-012",
+      "label": "Dữ liệu mẫu Công nợ phải trả 12",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-013",
+      "label": "Dữ liệu mẫu Công nợ phải trả 13",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-014",
+      "label": "Dữ liệu mẫu Công nợ phải trả 14",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-015",
+      "label": "Dữ liệu mẫu Công nợ phải trả 15",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-016",
+      "label": "Dữ liệu mẫu Công nợ phải trả 16",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-017",
+      "label": "Dữ liệu mẫu Công nợ phải trả 17",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-018",
+      "label": "Dữ liệu mẫu Công nợ phải trả 18",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-019",
+      "label": "Dữ liệu mẫu Công nợ phải trả 19",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-020",
+      "label": "Dữ liệu mẫu Công nợ phải trả 20",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-021",
+      "label": "Dữ liệu mẫu Công nợ phải trả 21",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-022",
+      "label": "Dữ liệu mẫu Công nợ phải trả 22",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-023",
+      "label": "Dữ liệu mẫu Công nợ phải trả 23",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-024",
+      "label": "Dữ liệu mẫu Công nợ phải trả 24",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-025",
+      "label": "Dữ liệu mẫu Công nợ phải trả 25",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-026",
+      "label": "Dữ liệu mẫu Công nợ phải trả 26",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-027",
+      "label": "Dữ liệu mẫu Công nợ phải trả 27",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-028",
+      "label": "Dữ liệu mẫu Công nợ phải trả 28",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-029",
+      "label": "Dữ liệu mẫu Công nợ phải trả 29",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    },
+    {
+      "demo_id": "KT03-DEMO-030",
+      "label": "Dữ liệu mẫu Công nợ phải trả 30",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      }
+    }
+  ]
+}

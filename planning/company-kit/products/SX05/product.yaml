@@ -1,0 +1,35 @@
+{
+  "department": "Sản xuất",
+  "id": "SX05",
+  "name": "Giá thành lệnh",
+  "tables": [
+    "LenhSanXuat",
+    "XuatVatTu",
+    "ChiPhiSX"
+  ],
+  "action": "tinhGiaThanh",
+  "original_rule": "giá thành/đơn vị đạt = tổng chi phí hợp lệ / lượng đạt",
+  "status": "draft_for_review",
+  "target_version": "3.0.0-vi",
+  "legacySku": null,
+  "priority": "P1",
+  "dependencies": [
+    "SX01",
+    "SX02",
+    "SX03",
+    "SX04",
+    "KV02"
+  ],
+  "platforms_target": [
+    "Excel365",
+    "Web"
+  ],
+  "implemented": false,
+  "gate_status": {
+    "G0": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G_EXCEL": "NOT_RUN",
+    "G_WEB": "NOT_RUN",
+    "G_OPS": "NOT_RUN"
+  }
+}

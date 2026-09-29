@@ -1,0 +1,15 @@
+{
+  "product_id": "SX01",
+  "metric_id": "SX01_primary",
+  "inputs": [
+    "good_qty",
+    "planned_qty"
+  ],
+  "excel_example": "=IF([@planned_qty]=0,\"\",[@good_qty]/[@planned_qty])",
+  "backend_requirement": "planned_qty >0 khi phát hành; lượng lỗi không tính good; hoàn thành có đối soát nhập thành phẩm.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

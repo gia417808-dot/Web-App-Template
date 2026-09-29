@@ -1,0 +1,247 @@
+{
+  "organization": "DEMO_ONLY",
+  "product_id": "KD05",
+  "kind": "calculation_inputs_not_relational_seed",
+  "rows": [
+    {
+      "demo_id": "KD05-DEMO-001",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 01",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-002",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 02",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-003",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 03",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-004",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 04",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-005",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 05",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-006",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 06",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-007",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 07",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-008",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 08",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-009",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 09",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-010",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 10",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-011",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 11",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-012",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 12",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-013",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 13",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-014",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 14",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-015",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 15",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-016",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 16",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-017",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 17",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-018",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 18",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-019",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 19",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-020",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 20",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-021",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 21",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-022",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 22",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-023",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 23",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-024",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 24",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-025",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 25",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-026",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 26",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-027",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 27",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-028",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 28",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-029",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 29",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD05-DEMO-030",
+      "label": "Dữ liệu mẫu Chăm sóc khách hàng 30",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      }
+    }
+  ]
+}

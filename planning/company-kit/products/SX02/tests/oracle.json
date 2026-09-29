@@ -1,0 +1,42 @@
+{
+  "product_id": "SX02",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "per_unit": "2",
+        "planned_qty": "100",
+        "waste_pct": "5"
+      },
+      "expected": {
+        "value": "210",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "per_unit": "2",
+        "planned_qty": "100",
+        "waste_pct": "0"
+      },
+      "expected": {
+        "value": "200",
+        "error": null
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "per_unit": null,
+        "planned_qty": "100",
+        "waste_pct": "5"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

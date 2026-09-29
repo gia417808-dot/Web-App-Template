@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KT03 calculation input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "principal",
+    "confirmed_paid"
+  ],
+  "properties": {
+    "principal": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Giá trị nhập của calculator contract; null được trả lỗi/reason theo oracle.",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+    },
+    "confirmed_paid": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Giá trị nhập của calculator contract; null được trả lỗi/reason theo oracle.",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+    }
+  }
+}

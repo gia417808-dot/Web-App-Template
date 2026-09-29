@@ -1,0 +1,39 @@
+{
+  "product_id": "KT04",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "budget": "2000000",
+        "actual": "2300000"
+      },
+      "expected": {
+        "value": "-300000",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "budget": "100",
+        "actual": "100"
+      },
+      "expected": {
+        "value": "0",
+        "error": null
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "budget": null,
+        "actual": "2300000"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

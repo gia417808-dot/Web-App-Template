@@ -1,0 +1,15 @@
+{
+  "product_id": "MK02",
+  "metric_id": "MK02_primary",
+  "inputs": [
+    "budget",
+    "confirmed_cost"
+  ],
+  "excel_example": "=[@budget]-[@confirmed_cost]",
+  "backend_requirement": "Chi phí nháp không trừ; âm là vượt ngân sách, giữ số âm và cảnh báo. Không tự chặn mọi chi nếu policy chưa bật.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

@@ -1,0 +1,15 @@
+{
+  "product_id": "MK05",
+  "metric_id": "MK05_primary",
+  "inputs": [
+    "responses",
+    "reach"
+  ],
+  "excel_example": "=IF([@reach]=0,\"\",[@responses]/[@reach])",
+  "backend_requirement": "MVP dùng unique respondent <= unique reach; reach=0 trả null. Chỉ mô tả tỷ lệ, không kết luận ý nghĩa thống kê hay tự chọn thắng.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

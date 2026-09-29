@@ -1,0 +1,39 @@
+{
+  "product_id": "MK03",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "converted": "15",
+        "valid_leads": "100"
+      },
+      "expected": {
+        "value": "0.15",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "converted": "0",
+        "valid_leads": "0"
+      },
+      "expected": {
+        "value": null,
+        "error": "ZERO_DENOMINATOR"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "converted": null,
+        "valid_leads": "100"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

@@ -1,0 +1,247 @@
+{
+  "organization": "DEMO_ONLY",
+  "product_id": "SX01",
+  "kind": "calculation_inputs_not_relational_seed",
+  "rows": [
+    {
+      "demo_id": "SX01-DEMO-001",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 01",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-002",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 02",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-003",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 03",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-004",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 04",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-005",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 05",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-006",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 06",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-007",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 07",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-008",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 08",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-009",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 09",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-010",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 10",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-011",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 11",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-012",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 12",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-013",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 13",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-014",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 14",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-015",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 15",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-016",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 16",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-017",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 17",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-018",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 18",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-019",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 19",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-020",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 20",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-021",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 21",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-022",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 22",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-023",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 23",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-024",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 24",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-025",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 25",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-026",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 26",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-027",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 27",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-028",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 28",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-029",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 29",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    },
+    {
+      "demo_id": "SX01-DEMO-030",
+      "label": "Dữ liệu mẫu Lệnh sản xuất 30",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      }
+    }
+  ]
+}

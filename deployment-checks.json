@@ -1,0 +1,25 @@
+{
+  "groups": {
+    "bootstrap": {
+      "scope": "project kit and task helper only; not application release",
+      "checks": [
+        {
+          "name": "kit structure",
+          "argv": ["{python}", "planning/company-kit/scripts/rpa.py", "check"],
+          "cwd": ".",
+          "timeout_seconds": 60
+        },
+        {
+          "name": "checkpoint guard tests",
+          "argv": ["{python}", "-m", "unittest", "discover", "-s", "planning/company-kit/tests", "-v"],
+          "cwd": ".",
+          "timeout_seconds": 60
+        }
+      ]
+    },
+    "application": {
+      "scope": "Must be populated after CORE with actual build/typecheck/business/integration/E2E commands; empty fails",
+      "checks": []
+    }
+  }
+}

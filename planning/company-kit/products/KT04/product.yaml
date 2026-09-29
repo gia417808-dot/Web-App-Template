@@ -1,0 +1,30 @@
+{
+  "department": "Kế toán quản trị",
+  "id": "KT04",
+  "name": "Ngân sách và thực chi",
+  "tables": [
+    "NganSach",
+    "GiaoDich"
+  ],
+  "action": "kiemSoatVuotChi",
+  "original_rule": "chênh lệch = dự toán − thực chi theo hạng mục/kỳ",
+  "status": "draft_for_review",
+  "target_version": "3.0.0-vi",
+  "legacySku": null,
+  "priority": "P1",
+  "dependencies": [
+    "KT01"
+  ],
+  "platforms_target": [
+    "Excel365",
+    "Web"
+  ],
+  "implemented": false,
+  "gate_status": {
+    "G0": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G_EXCEL": "NOT_RUN",
+    "G_WEB": "NOT_RUN",
+    "G_OPS": "NOT_RUN"
+  }
+}

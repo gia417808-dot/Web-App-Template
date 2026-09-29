@@ -1,0 +1,39 @@
+{
+  "product_id": "KD03",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "confirmed_revenue": "750000",
+        "target": "1000000"
+      },
+      "expected": {
+        "value": "0.75",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "confirmed_revenue": "0",
+        "target": "0"
+      },
+      "expected": {
+        "value": null,
+        "error": "ZERO_DENOMINATOR"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "confirmed_revenue": null,
+        "target": "1000000"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

@@ -1,0 +1,15 @@
+{
+  "product_id": "KV03",
+  "metric_id": "KV03_primary",
+  "inputs": [
+    "ordered",
+    "received"
+  ],
+  "excel_example": "=[@ordered]-[@received]",
+  "backend_requirement": "Nhận một phần; chênh lệch âm là nhận dư cần policy, không âm thầm ép 0; received lấy phiếu posted.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

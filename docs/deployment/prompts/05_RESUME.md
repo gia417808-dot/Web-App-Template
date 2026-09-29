@@ -1,0 +1,3 @@
+Tiếp tục repo gia417808-dot/Web-App-Template. Luôn áp dụng @skill. Đọc AGENTS, RUNBOOK, planning/company-kit/work/HANDOFF.md, state/tasks và evidence của task đang dở. Kiểm tra Git root/origin/branch/status/SHA, không reset hoặc tạo lại code. Git không đồng bộ phần chưa commit; nếu máy mới thiếu thay đổi, báo chính xác trước suy diễn.
+
+Chạy repo_doctor và rpa.py next. Review phần đã thực sự chạy và lỗi còn lại; Plan lát cắt tiếp theo; Act dùng công cụ code/fix; Verify; Checkpoint; Sync feature branch theo MASTER. Tự tiếp tục việc đã được phép khi còn phiên, không dừng ở plan. Nếu hết quota hoặc thiếu credential, lưu checkpoint để chuyển agent.

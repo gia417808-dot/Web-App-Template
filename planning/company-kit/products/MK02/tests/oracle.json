@@ -1,0 +1,39 @@
+{
+  "product_id": "MK02",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "budget": "1000000",
+        "confirmed_cost": "350000"
+      },
+      "expected": {
+        "value": "650000",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "budget": "100",
+        "confirmed_cost": "120"
+      },
+      "expected": {
+        "value": "-20",
+        "error": null
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "budget": null,
+        "confirmed_cost": "350000"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

@@ -1,0 +1,15 @@
+{
+  "product_id": "MK03",
+  "metric_id": "MK03_primary",
+  "inputs": [
+    "converted",
+    "valid_leads"
+  ],
+  "excel_example": "=IF([@valid_leads]=0,\"\",[@converted]/[@valid_leads])",
+  "backend_requirement": "Cohort theo ngày tạo lead; loại spam/trùng theo id chuẩn; converted <= valid_leads.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

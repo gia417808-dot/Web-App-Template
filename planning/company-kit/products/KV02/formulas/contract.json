@@ -1,0 +1,16 @@
+{
+  "product_id": "KV02",
+  "metric_id": "KV02_primary",
+  "inputs": [
+    "opening",
+    "posted_in",
+    "posted_out"
+  ],
+  "excel_example": "=[@opening]+[@posted_in]-[@posted_out]",
+  "backend_requirement": "Ghi ledger nguyên tử; khi forbid_negative=true phải khóa SKU/kho trước khi ghi; retry cùng key không ghi đôi.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

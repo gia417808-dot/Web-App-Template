@@ -1,0 +1,247 @@
+{
+  "organization": "DEMO_ONLY",
+  "product_id": "KV01",
+  "kind": "calculation_inputs_not_relational_seed",
+  "rows": [
+    {
+      "demo_id": "KV01-DEMO-001",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 01",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-002",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 02",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-003",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 03",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-004",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 04",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-005",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 05",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-006",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 06",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-007",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 07",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-008",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 08",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-009",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 09",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-010",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 10",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-011",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 11",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-012",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 12",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-013",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 13",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-014",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 14",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-015",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 15",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-016",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 16",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-017",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 17",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-018",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 18",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-019",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 19",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-020",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 20",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-021",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 21",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-022",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 22",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-023",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 23",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-024",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 24",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-025",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 25",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-026",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 26",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-027",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 27",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-028",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 28",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-029",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 29",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    },
+    {
+      "demo_id": "KV01-DEMO-030",
+      "label": "Dữ liệu mẫu Danh mục hàng và kho 30",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "product_id": "KV05",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "MucTon": {
+      "owner": "KV05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "warehouse_id",
+          "type": "ref.Kho",
+          "nullable": false,
+          "reference": "Kho"
+        },
+        {
+          "name": "min_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "target_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "max_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "TonKho": {
+      "owner": "KV02",
+      "kind": "projection",
+      "source": "StockLedger + Reservation",
+      "group_by": [
+        "organization_id",
+        "product_id",
+        "warehouse_id"
+      ],
+      "on_hand": "SUM(quantity_delta)",
+      "reserved": "SUM(active Reservation.quantity)",
+      "available": "on_hand - reserved"
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

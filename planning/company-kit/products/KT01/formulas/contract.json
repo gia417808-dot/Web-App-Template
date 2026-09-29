@@ -1,0 +1,16 @@
+{
+  "product_id": "KT01",
+  "metric_id": "KT01_primary",
+  "inputs": [
+    "opening",
+    "approved_in",
+    "approved_out"
+  ],
+  "excel_example": "=[@opening]+[@approved_in]-[@approved_out]",
+  "backend_requirement": "Số tiền VND nguyên; direction quyết định dấu; khóa kỳ; chuyển khoản nội bộ có cặp bút toán cùng transfer_id.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

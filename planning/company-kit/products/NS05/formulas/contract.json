@@ -1,0 +1,15 @@
+{
+  "product_id": "NS05",
+  "metric_id": "NS05_primary",
+  "inputs": [
+    "opened_date",
+    "hired_date"
+  ],
+  "excel_example": "=IF([@hired_date]=\"\",\"\",[@hired_date]-[@opened_date])",
+  "backend_requirement": "Chưa tuyển trả null/NOT_HIRED; hired_date trước opened_date bị từ chối; ứng viên có thể rejected hoặc withdrawn.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

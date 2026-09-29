@@ -1,0 +1,30 @@
+{
+  "department": "Kinh doanh",
+  "id": "KD03",
+  "name": "Chỉ tiêu bán hàng",
+  "tables": [
+    "MucTieu",
+    "DonHang"
+  ],
+  "action": "tinhTienDoBan",
+  "original_rule": "hoàn thành = doanh thu xác nhận / chỉ tiêu, mẫu số 0 xử lý rõ",
+  "status": "draft_for_review",
+  "target_version": "3.0.0-vi",
+  "legacySku": null,
+  "priority": "P1",
+  "dependencies": [
+    "KD01"
+  ],
+  "platforms_target": [
+    "Excel365",
+    "Web"
+  ],
+  "implemented": false,
+  "gate_status": {
+    "G0": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G_EXCEL": "NOT_RUN",
+    "G_WEB": "NOT_RUN",
+    "G_OPS": "NOT_RUN"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "product_id": "KT03",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "principal": "1500000",
+        "confirmed_paid": "500000"
+      },
+      "expected": {
+        "value": "1000000",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "principal": "100",
+        "confirmed_paid": "120"
+      },
+      "expected": {
+        "value": "-20",
+        "error": "OVERPAYMENT"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "principal": null,
+        "confirmed_paid": "500000"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

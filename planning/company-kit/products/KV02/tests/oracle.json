@@ -1,0 +1,42 @@
+{
+  "product_id": "KV02",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "opening": "100",
+        "posted_in": "40",
+        "posted_out": "25"
+      },
+      "expected": {
+        "value": "115",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "opening": "1",
+        "posted_in": "0",
+        "posted_out": "2"
+      },
+      "expected": {
+        "value": "-1",
+        "error": "INSUFFICIENT_STOCK_IF_POSTING"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "opening": null,
+        "posted_in": "40",
+        "posted_out": "25"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

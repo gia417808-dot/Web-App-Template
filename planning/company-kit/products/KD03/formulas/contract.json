@@ -1,0 +1,15 @@
+{
+  "product_id": "KD03",
+  "metric_id": "KD03_primary",
+  "inputs": [
+    "confirmed_revenue",
+    "target"
+  ],
+  "excel_example": "=IF([@target]=0,\"\",[@confirmed_revenue]/[@target])",
+  "backend_requirement": "Cùng kỳ và người phụ trách; không lấy tổng đơn nháp. target=0 trả null/ZERO_DENOMINATOR.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

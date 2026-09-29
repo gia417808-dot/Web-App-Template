@@ -1,0 +1,15 @@
+{
+  "product_id": "SX05",
+  "metric_id": "SX05_primary",
+  "inputs": [
+    "valid_cost",
+    "good_qty"
+  ],
+  "excel_example": "=IF([@good_qty]=0,\"\",[@valid_cost]/[@good_qty])",
+  "backend_requirement": "Tổng hợp vật tư thực xuất, nhân công, chi phí được duyệt; số lượng đạt 0 trả null; giữ precision trước làm tròn báo cáo.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

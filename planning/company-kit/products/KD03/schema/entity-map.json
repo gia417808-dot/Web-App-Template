@@ -1,0 +1,99 @@
+{
+  "product_id": "KD03",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "MucTieu": {
+      "owner": "KD03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "owner_id",
+          "type": "ref.NguoiDung",
+          "nullable": false,
+          "reference": "NguoiDung"
+        },
+        {
+          "name": "period_start",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "period_end",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "target_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "revision",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "DonHang": {
+      "owner": "KD01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": false,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "quote_id",
+          "type": "ref.BaoGia",
+          "nullable": true,
+          "reference": "BaoGia"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "confirmed_at",
+          "type": "timestamp",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

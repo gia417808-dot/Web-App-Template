@@ -1,0 +1,247 @@
+{
+  "organization": "DEMO_ONLY",
+  "product_id": "MK01",
+  "kind": "calculation_inputs_not_relational_seed",
+  "rows": [
+    {
+      "demo_id": "MK01-DEMO-001",
+      "label": "Dữ liệu mẫu Lịch nội dung 01",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-002",
+      "label": "Dữ liệu mẫu Lịch nội dung 02",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-003",
+      "label": "Dữ liệu mẫu Lịch nội dung 03",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-004",
+      "label": "Dữ liệu mẫu Lịch nội dung 04",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-005",
+      "label": "Dữ liệu mẫu Lịch nội dung 05",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-006",
+      "label": "Dữ liệu mẫu Lịch nội dung 06",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-007",
+      "label": "Dữ liệu mẫu Lịch nội dung 07",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-008",
+      "label": "Dữ liệu mẫu Lịch nội dung 08",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-009",
+      "label": "Dữ liệu mẫu Lịch nội dung 09",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-010",
+      "label": "Dữ liệu mẫu Lịch nội dung 10",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-011",
+      "label": "Dữ liệu mẫu Lịch nội dung 11",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-012",
+      "label": "Dữ liệu mẫu Lịch nội dung 12",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-013",
+      "label": "Dữ liệu mẫu Lịch nội dung 13",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-014",
+      "label": "Dữ liệu mẫu Lịch nội dung 14",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-015",
+      "label": "Dữ liệu mẫu Lịch nội dung 15",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-016",
+      "label": "Dữ liệu mẫu Lịch nội dung 16",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-017",
+      "label": "Dữ liệu mẫu Lịch nội dung 17",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-018",
+      "label": "Dữ liệu mẫu Lịch nội dung 18",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-019",
+      "label": "Dữ liệu mẫu Lịch nội dung 19",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-020",
+      "label": "Dữ liệu mẫu Lịch nội dung 20",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-021",
+      "label": "Dữ liệu mẫu Lịch nội dung 21",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-022",
+      "label": "Dữ liệu mẫu Lịch nội dung 22",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-023",
+      "label": "Dữ liệu mẫu Lịch nội dung 23",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-024",
+      "label": "Dữ liệu mẫu Lịch nội dung 24",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-025",
+      "label": "Dữ liệu mẫu Lịch nội dung 25",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-026",
+      "label": "Dữ liệu mẫu Lịch nội dung 26",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-027",
+      "label": "Dữ liệu mẫu Lịch nội dung 27",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-028",
+      "label": "Dữ liệu mẫu Lịch nội dung 28",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-029",
+      "label": "Dữ liệu mẫu Lịch nội dung 29",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    },
+    {
+      "demo_id": "MK01-DEMO-030",
+      "label": "Dữ liệu mẫu Lịch nội dung 30",
+      "input": {
+        "published_on_time": "8",
+        "due_count": "10"
+      }
+    }
+  ]
+}

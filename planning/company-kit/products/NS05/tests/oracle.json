@@ -1,0 +1,39 @@
+{
+  "product_id": "NS05",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "opened_date": "2026-09-01",
+        "hired_date": "2026-09-21"
+      },
+      "expected": {
+        "value": 20,
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "opened_date": "2026-09-01",
+        "hired_date": null
+      },
+      "expected": {
+        "value": null,
+        "error": "NOT_HIRED"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "opened_date": null,
+        "hired_date": "2026-09-21"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

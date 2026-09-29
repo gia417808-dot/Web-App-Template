@@ -1,0 +1,15 @@
+{
+  "product_id": "KT05",
+  "metric_id": "KT05_primary",
+  "inputs": [
+    "net_revenue",
+    "cost"
+  ],
+  "excel_example": "=[@net_revenue]-[@cost]",
+  "backend_requirement": "Thiếu cost trả null/MISSING_COST; chỉ dòng đã ghi nhận, giá vốn snapshot tại xuất; không dùng giá danh mục hiện tại.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

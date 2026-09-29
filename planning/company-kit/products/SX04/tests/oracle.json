@@ -1,0 +1,39 @@
+{
+  "product_id": "SX04",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "defective_units": "3",
+        "inspected_units": "100"
+      },
+      "expected": {
+        "value": "0.03",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "defective_units": "0",
+        "inspected_units": "0"
+      },
+      "expected": {
+        "value": null,
+        "error": "ZERO_DENOMINATOR"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "defective_units": null,
+        "inspected_units": "100"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

@@ -1,0 +1,87 @@
+{
+  "product_id": "KD05",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "KhachHang": {
+      "owner": "CORE",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "email",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "phone",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "owner_id",
+          "type": "ref.NguoiDung",
+          "nullable": true,
+          "reference": "NguoiDung"
+        }
+      ],
+      "common_fields": true
+    },
+    "TuongTac": {
+      "owner": "KD05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": false,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "occurred_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "channel_id",
+          "type": "ref.Kenh",
+          "nullable": true,
+          "reference": "Kenh"
+        },
+        {
+          "name": "summary",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "next_due_at",
+          "type": "timestamp",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

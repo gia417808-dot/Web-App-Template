@@ -1,0 +1,32 @@
+{
+  "department": "Kế toán quản trị",
+  "id": "KT05",
+  "name": "Lãi gộp theo đơn",
+  "tables": [
+    "DonHang",
+    "ChiTietDon",
+    "GiaVon"
+  ],
+  "action": "tinhLaiGop",
+  "original_rule": "lãi gộp = doanh thu thuần − giá vốn theo dòng; thiếu giá vốn báo thiếu dữ liệu",
+  "status": "draft_for_review",
+  "target_version": "3.0.0-vi",
+  "legacySku": null,
+  "priority": "P1",
+  "dependencies": [
+    "KD01",
+    "KV02"
+  ],
+  "platforms_target": [
+    "Excel365",
+    "Web"
+  ],
+  "implemented": false,
+  "gate_status": {
+    "G0": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G_EXCEL": "NOT_RUN",
+    "G_WEB": "NOT_RUN",
+    "G_OPS": "NOT_RUN"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "product_id": "NS05",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "UngVien": {
+      "owner": "NS05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "position_id",
+          "type": "ref.ViTriTuyen",
+          "nullable": false,
+          "reference": "ViTriTuyen"
+        },
+        {
+          "name": "full_name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "email",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "stage_id",
+          "type": "ref.VongTuyen",
+          "nullable": false,
+          "reference": "VongTuyen"
+        },
+        {
+          "name": "hired_date",
+          "type": "date",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "employee_id",
+          "type": "ref.NhanSu",
+          "nullable": true,
+          "reference": "NhanSu"
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "VongTuyen": {
+      "owner": "NS05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "sort_order",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "ViTriTuyen": {
+      "owner": "NS05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "opened_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

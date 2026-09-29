@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SX02 calculation input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "per_unit",
+    "planned_qty",
+    "waste_pct"
+  ],
+  "properties": {
+    "per_unit": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Giá trị nhập của calculator contract; null được trả lỗi/reason theo oracle.",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+    },
+    "planned_qty": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Giá trị nhập của calculator contract; null được trả lỗi/reason theo oracle.",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+    },
+    "waste_pct": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Giá trị nhập của calculator contract; null được trả lỗi/reason theo oracle.",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "product_id": "KT05",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "net_revenue": "1000000",
+        "cost": "650000"
+      },
+      "expected": {
+        "value": "350000",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "net_revenue": "100",
+        "cost": null
+      },
+      "expected": {
+        "value": null,
+        "error": "MISSING_COST"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "net_revenue": null,
+        "cost": "650000"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

@@ -1,0 +1,15 @@
+{
+  "product_id": "KD05",
+  "metric_id": "KD05_primary",
+  "inputs": [
+    "last_contact_date",
+    "as_of_date"
+  ],
+  "excel_example": "=IF([@last_contact_date]=\"\",\"\",[@as_of_date]-[@last_contact_date])",
+  "backend_requirement": "Chưa tương tác trả null/NO_CONTACT; không tự coi là 0 ngày. Nhật ký liên kết customer_id.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

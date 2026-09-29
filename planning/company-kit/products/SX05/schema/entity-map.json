@@ -1,0 +1,136 @@
+{
+  "product_id": "SX05",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "LenhSanXuat": {
+      "owner": "SX01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "bom_id",
+          "type": "ref.DinhMuc",
+          "nullable": false,
+          "reference": "DinhMuc"
+        },
+        {
+          "name": "planned_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "good_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "defective_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "planned_start",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "planned_end",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "XuatVatTu": {
+      "owner": "KV02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "production_order_id",
+          "type": "ref.LenhSanXuat",
+          "nullable": false,
+          "reference": "LenhSanXuat"
+        },
+        {
+          "name": "warehouse_line_id",
+          "type": "ref.DongPhieuKho",
+          "nullable": false,
+          "reference": "DongPhieuKho"
+        }
+      ],
+      "common_fields": true
+    },
+    "ChiPhiSX": {
+      "owner": "SX05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "production_order_id",
+          "type": "ref.LenhSanXuat",
+          "nullable": false,
+          "reference": "LenhSanXuat"
+        },
+        {
+          "name": "cost_type",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "amount_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_type",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_id",
+          "type": "uuid",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

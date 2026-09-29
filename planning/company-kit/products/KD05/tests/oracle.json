@@ -1,0 +1,28 @@
+{
+  "product_id": "KD05",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "last_contact_date": "2026-09-28",
+        "as_of_date": "2026-10-03"
+      },
+      "expected": {
+        "value": 5,
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "last_contact_date": null,
+        "as_of_date": "2026-10-03"
+      },
+      "expected": {
+        "value": null,
+        "error": "NO_CONTACT"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

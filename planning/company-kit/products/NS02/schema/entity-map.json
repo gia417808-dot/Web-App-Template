@@ -1,0 +1,105 @@
+{
+  "product_id": "NS02",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "CaLam": {
+      "owner": "NS02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "start_local",
+          "type": "time",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "end_local",
+          "type": "time",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "break_minutes",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "ChamCong": {
+      "owner": "NS02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "ref.NhanSu",
+          "nullable": false,
+          "reference": "NhanSu"
+        },
+        {
+          "name": "shift_id",
+          "type": "ref.CaLam",
+          "nullable": false,
+          "reference": "CaLam"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "clock_in_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "clock_out_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "break_minutes",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "approved_hours",
+          "type": "quantity",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "approver_id",
+          "type": "ref.NguoiDung",
+          "nullable": true,
+          "reference": "NguoiDung"
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

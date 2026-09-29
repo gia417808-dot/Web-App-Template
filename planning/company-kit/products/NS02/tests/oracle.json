@@ -1,0 +1,39 @@
+{
+  "product_id": "NS02",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "clock_in": "22:00",
+        "clock_out": "06:00"
+      },
+      "expected": {
+        "value": "8",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "clock_in": "08:00",
+        "clock_out": "08:00"
+      },
+      "expected": {
+        "value": null,
+        "error": "AMBIGUOUS_SHIFT"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "clock_in": null,
+        "clock_out": "06:00"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

@@ -1,0 +1,179 @@
+{
+  "product_id": "KV02",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "PhieuKho": {
+      "owner": "KV02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "warehouse_id",
+          "type": "ref.Kho",
+          "nullable": false,
+          "reference": "Kho"
+        },
+        {
+          "name": "movement_type",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_type",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "source_id",
+          "type": "uuid",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "reversal_of_id",
+          "type": "ref.PhieuKho",
+          "nullable": true,
+          "reference": "PhieuKho"
+        }
+      ],
+      "common_fields": true
+    },
+    "DongPhieuKho": {
+      "owner": "KV02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "voucher_id",
+          "type": "ref.PhieuKho",
+          "nullable": false,
+          "reference": "PhieuKho"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "quantity",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit_cost_vnd",
+          "type": "money",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "source_line_id",
+          "type": "uuid",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "StockLedger": {
+      "owner": "KV02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "warehouse_line_id",
+          "type": "ref.DongPhieuKho",
+          "nullable": false,
+          "reference": "DongPhieuKho"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "warehouse_id",
+          "type": "ref.Kho",
+          "nullable": false,
+          "reference": "Kho"
+        },
+        {
+          "name": "quantity_delta",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "posted_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "cost_total_vnd",
+          "type": "money",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "Reservation": {
+      "owner": "KV02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "order_line_id",
+          "type": "ref.ChiTietDon",
+          "nullable": false,
+          "reference": "ChiTietDon"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "warehouse_id",
+          "type": "ref.Kho",
+          "nullable": false,
+          "reference": "Kho"
+        },
+        {
+          "name": "quantity",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

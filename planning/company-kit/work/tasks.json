@@ -1,0 +1,669 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "id": "AUDIT",
+      "title": "Audit repo, môi trường, legacy, năng lực 5 ngày",
+      "depends_on": [],
+      "required_gates": [
+        "REVIEW"
+      ],
+      "paths": [
+        "governance",
+        "docs"
+      ],
+      "day_target": 1
+    },
+    {
+      "id": "CORE",
+      "title": "Nền tảng DB/auth/API/UI/Excel engine có kiểm chứng",
+      "depends_on": [
+        "AUDIT"
+      ],
+      "required_gates": [
+        "DESIGN",
+        "BUILD",
+        "AUTH",
+        "DB",
+        "WORKBOOK_ENGINE"
+      ],
+      "paths": [
+        "apps",
+        "packages",
+        "db"
+      ],
+      "day_target": 1
+    },
+    {
+      "id": "KV01",
+      "title": "Danh mục hàng và kho",
+      "depends_on": [
+        "CORE"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KV01"
+      ],
+      "day_target": 2
+    },
+    {
+      "id": "KD01",
+      "title": "Báo giá và đơn hàng",
+      "depends_on": [
+        "CORE",
+        "KV01"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KD01"
+      ],
+      "day_target": 2
+    },
+    {
+      "id": "KT01",
+      "title": "Thu chi và dòng tiền",
+      "depends_on": [
+        "CORE"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KT01"
+      ],
+      "day_target": 2
+    },
+    {
+      "id": "KV02",
+      "title": "Nhập xuất tồn",
+      "depends_on": [
+        "KV01"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KV02"
+      ],
+      "day_target": 2
+    },
+    {
+      "id": "MK01",
+      "title": "Lịch nội dung",
+      "depends_on": [
+        "CORE"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/MK01"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "KD02",
+      "title": "Pipeline cơ hội",
+      "depends_on": [
+        "CORE"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KD02"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "KD03",
+      "title": "Chỉ tiêu bán hàng",
+      "depends_on": [
+        "KD01"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KD03"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "KD04",
+      "title": "Hợp đồng và gia hạn",
+      "depends_on": [
+        "CORE"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KD04"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "KD05",
+      "title": "Chăm sóc khách hàng",
+      "depends_on": [
+        "CORE"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KD05"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "MK02",
+      "title": "Chiến dịch và ngân sách",
+      "depends_on": [
+        "CORE"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/MK02"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "MK03",
+      "title": "Lead theo nguồn",
+      "depends_on": [
+        "KD02"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/MK03"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "MK04",
+      "title": "Hiệu quả kênh",
+      "depends_on": [
+        "MK02",
+        "MK03"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/MK04"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "MK05",
+      "title": "Thử nghiệm nội dung",
+      "depends_on": [
+        "MK01"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/MK05"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "KV03",
+      "title": "Mua hàng",
+      "depends_on": [
+        "KV01"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KV03"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "KV04",
+      "title": "Kiểm kê",
+      "depends_on": [
+        "KV02"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KV04"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "KV05",
+      "title": "Cảnh báo bổ sung",
+      "depends_on": [
+        "KV02"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KV05"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "KT02",
+      "title": "Công nợ phải thu",
+      "depends_on": [
+        "KD01",
+        "KT01"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KT02"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "KT03",
+      "title": "Công nợ phải trả",
+      "depends_on": [
+        "KV03",
+        "KT01"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KT03"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "KT04",
+      "title": "Ngân sách và thực chi",
+      "depends_on": [
+        "KT01"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KT04"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "KT05",
+      "title": "Lãi gộp theo đơn",
+      "depends_on": [
+        "KD01",
+        "KV02"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/KT05"
+      ],
+      "day_target": 3
+    },
+    {
+      "id": "NS01",
+      "title": "Hồ sơ nhân sự",
+      "depends_on": [
+        "CORE"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/NS01"
+      ],
+      "day_target": 4
+    },
+    {
+      "id": "NS02",
+      "title": "Chấm công và ca",
+      "depends_on": [
+        "NS01"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/NS02"
+      ],
+      "day_target": 4
+    },
+    {
+      "id": "NS03",
+      "title": "Nghỉ phép",
+      "depends_on": [
+        "NS01"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/NS03"
+      ],
+      "day_target": 4
+    },
+    {
+      "id": "NS04",
+      "title": "Lương quản trị",
+      "depends_on": [
+        "NS01",
+        "NS02",
+        "NS03"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/NS04"
+      ],
+      "day_target": 4
+    },
+    {
+      "id": "NS05",
+      "title": "Tuyển dụng và cộng tác viên",
+      "depends_on": [
+        "CORE"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/NS05"
+      ],
+      "day_target": 4
+    },
+    {
+      "id": "SX02",
+      "title": "Định mức vật tư",
+      "depends_on": [
+        "KV01"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/SX02"
+      ],
+      "day_target": 4
+    },
+    {
+      "id": "SX01",
+      "title": "Lệnh sản xuất",
+      "depends_on": [
+        "KV01",
+        "SX02"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/SX01"
+      ],
+      "day_target": 4
+    },
+    {
+      "id": "SX03",
+      "title": "Tiến độ công đoạn",
+      "depends_on": [
+        "SX01"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/SX03"
+      ],
+      "day_target": 4
+    },
+    {
+      "id": "SX04",
+      "title": "Chất lượng và lỗi",
+      "depends_on": [
+        "SX01"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/SX04"
+      ],
+      "day_target": 4
+    },
+    {
+      "id": "SX05",
+      "title": "Giá thành lệnh",
+      "depends_on": [
+        "SX01",
+        "SX02",
+        "SX03",
+        "SX04",
+        "KV02"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G_EXCEL",
+        "G_WEB",
+        "G_OPS"
+      ],
+      "paths": [
+        "products/SX05"
+      ],
+      "day_target": 4
+    },
+    {
+      "id": "INTEGRATION",
+      "title": "Đối soát CRM/ERP và danh mục 30 sản phẩm",
+      "depends_on": [
+        "KV01",
+        "KD01",
+        "KT01",
+        "KV02",
+        "MK01",
+        "KD02",
+        "KD03",
+        "KD04",
+        "KD05",
+        "MK02",
+        "MK03",
+        "MK04",
+        "MK05",
+        "KV03",
+        "KV04",
+        "KV05",
+        "KT02",
+        "KT03",
+        "KT04",
+        "KT05",
+        "NS01",
+        "NS02",
+        "NS03",
+        "NS04",
+        "NS05",
+        "SX02",
+        "SX01",
+        "SX03",
+        "SX04",
+        "SX05"
+      ],
+      "required_gates": [
+        "CRM_ERP",
+        "CATALOG",
+        "REGRESSION"
+      ],
+      "paths": [
+        "docs/INTEGRATION_SCENARIOS.md",
+        "apps"
+      ],
+      "day_target": 5
+    },
+    {
+      "id": "OPERATIONS",
+      "title": "Vận hành private, khôi phục, restart, rollback",
+      "depends_on": [
+        "INTEGRATION"
+      ],
+      "required_gates": [
+        "CLEAN_INSTALL",
+        "BACKUP_RESTORE",
+        "RESTART",
+        "DEPLOY_OR_LOCAL_ACCEPTANCE"
+      ],
+      "paths": [
+        "infra",
+        "docs/OPERATIONS_24_7.md"
+      ],
+      "day_target": 5
+    },
+    {
+      "id": "RELEASE",
+      "title": "Nghiệm thu toàn bộ 30 ID và bàn giao",
+      "depends_on": [
+        "OPERATIONS"
+      ],
+      "required_gates": [
+        "UAT",
+        "HANDOFF"
+      ],
+      "paths": [
+        "governance/ACCEPTANCE_MATRIX.md"
+      ],
+      "day_target": 5
+    }
+  ]
+}

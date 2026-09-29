@@ -1,0 +1,93 @@
+{
+  "product_id": "SX03",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "CongDoan": {
+      "owner": "SX01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "production_order_id",
+          "type": "ref.LenhSanXuat",
+          "nullable": false,
+          "reference": "LenhSanXuat"
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "sequence",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "weight",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "planned_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "NhatKySX": {
+      "owner": "SX03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "stage_id",
+          "type": "ref.CongDoan",
+          "nullable": false,
+          "reference": "CongDoan"
+        },
+        {
+          "name": "occurred_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "good_qty_delta",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "defective_qty_delta",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "reason",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_key",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

@@ -1,0 +1,42 @@
+{
+  "product_id": "NS04",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "base": "10000000",
+        "allowance": "500000",
+        "deduction": "200000"
+      },
+      "expected": {
+        "value": "10300000",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "base": "100",
+        "allowance": "0",
+        "deduction": "120"
+      },
+      "expected": {
+        "value": "-20",
+        "error": null
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "base": null,
+        "allowance": "500000",
+        "deduction": "200000"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

@@ -1,0 +1,15 @@
+{
+  "product_id": "NS01",
+  "metric_id": "NS01_primary",
+  "inputs": [
+    "start_date",
+    "as_of_date"
+  ],
+  "excel_example": "=[@as_of_date]-[@start_date]",
+  "backend_requirement": "Thâm niên đo bằng ngày trong phiên bản đầu; ngày vào làm tương lai bị từ chối. Hồ sơ nhân sự chỉ owner đọc.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

@@ -1,0 +1,16 @@
+{
+  "product_id": "NS04",
+  "metric_id": "NS04_primary",
+  "inputs": [
+    "base",
+    "allowance",
+    "deduction"
+  ],
+  "excel_example": "=[@base]+[@allowance]-[@deduction]",
+  "backend_requirement": "Lương quản trị; không suy diễn thuế/BHXH. Khóa kỳ và lưu phiên bản chính sách; điều chỉnh sau chốt bằng chứng từ bổ sung.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

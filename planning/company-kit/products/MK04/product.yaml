@@ -1,0 +1,31 @@
+{
+  "department": "Marketing",
+  "id": "MK04",
+  "name": "Hiệu quả kênh",
+  "tables": [
+    "ChiSoKenh",
+    "ChiPhi"
+  ],
+  "action": "tongHopKenh",
+  "original_rule": "CPL = chi phí / lead hợp lệ; không cộng trung bình CPL từng ngày",
+  "status": "draft_for_review",
+  "target_version": "3.0.0-vi",
+  "legacySku": null,
+  "priority": "P1",
+  "dependencies": [
+    "MK02",
+    "MK03"
+  ],
+  "platforms_target": [
+    "Excel365",
+    "Web"
+  ],
+  "implemented": false,
+  "gate_status": {
+    "G0": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G_EXCEL": "NOT_RUN",
+    "G_WEB": "NOT_RUN",
+    "G_OPS": "NOT_RUN"
+  }
+}
