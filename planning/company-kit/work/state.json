@@ -2,9 +2,10 @@
   "schema_version": 1,
   "tasks": {
     "AUDIT": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "verify",
+      "note": "Đang kiểm tra report audit",
+      "evidence": null,
+      "updated_at": "2026-09-29T13:02:42.925941+07:00"
     },
     "CORE": {
       "phase": "pending",
