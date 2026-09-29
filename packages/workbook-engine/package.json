@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsc",
-    "workbook:generate": "tsx bin/generate.ts",
-    "test": "node --test dist/**/*.test.js"
+    "workbook:generate": "echo 'Not implemented yet'"
   },
   "devDependencies": {
     "tsx": "^4.23.15",

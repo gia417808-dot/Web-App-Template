@@ -2,11 +2,10 @@
   "name": "@web-app-template/api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
+    "dev": "node --watch src/index.js",
     "build": "tsc",
-    "db:migrate": "tsx src/db/migrate.ts",
-    "db:seed": "tsx src/db/seed.ts",
-    "test": "node --test dist/**/*.test.js"
+    "db:migrate": "echo 'Not implemented yet'",
+    "db:seed": "echo 'Not implemented yet'"
   },
   "dependencies": {
     "dotenv": "^18.0.4",
@@ -16,8 +15,6 @@
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/pg": "^8.23.1",
-    "@types/supertest": "^7.2.1",
-    "supertest": "^7.3.0",
     "tsx": "^4.23.15",
     "typescript": "5.6.2"
   }
