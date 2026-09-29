@@ -2,15 +2,16 @@
   "schema_version": 1,
   "tasks": {
     "AUDIT": {
-      "phase": "verify",
-      "note": "Đang kiểm tra report audit",
-      "evidence": null,
-      "updated_at": "2026-09-29T13:02:42.925941+07:00"
+      "phase": "done",
+      "note": "Audit hoàn tất, đã ghi nhận môi trường và repo",
+      "evidence": "reports/evidence/AUDIT/run-01/manifest.json",
+      "updated_at": "2026-09-29T13:44:24.940574+07:00"
     },
     "CORE": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "act",
+      "note": "Đang tạo các packages và files cấu hình, test cho core foundation.",
+      "evidence": null,
+      "updated_at": "2026-09-29T13:46:06.648815+07:00"
     },
     "KV01": {
       "phase": "pending",
