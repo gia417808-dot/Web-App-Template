@@ -25,6 +25,24 @@
           "argv": ["C:/Users/MSI PC/.gemini/antigravity/scratch/ui_testing_dashboard/node-portable/node.exe", "--test", "packages/domain/dist/decimal.test.js"],
           "cwd": ".",
           "timeout_seconds": 60
+        },
+        {
+          "name": "api unit tests",
+          "argv": ["C:/Users/MSI PC/.gemini/antigravity/scratch/ui_testing_dashboard/node-portable/node.exe", "--test", "apps/api/dist/index.test.js"],
+          "cwd": ".",
+          "timeout_seconds": 60
+        },
+        {
+          "name": "workbook-engine unit tests",
+          "argv": ["C:/Users/MSI PC/.gemini/antigravity/scratch/ui_testing_dashboard/node-portable/node.exe", "--test", "packages/workbook-engine/dist/index.test.js"],
+          "cwd": ".",
+          "timeout_seconds": 60
+        },
+        {
+          "name": "auth-audit unit tests",
+          "argv": ["C:/Users/MSI PC/.gemini/antigravity/scratch/ui_testing_dashboard/node-portable/node.exe", "--test", "packages/auth-audit/dist/index.test.js"],
+          "cwd": ".",
+          "timeout_seconds": 60
         }
       ]
     }

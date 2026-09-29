@@ -8,10 +8,10 @@
       "updated_at": "2026-09-29T13:44:24.940574+07:00"
     },
     "CORE": {
-      "phase": "act",
-      "note": "Đang tạo các packages và files cấu hình, test cho core foundation.",
-      "evidence": null,
-      "updated_at": "2026-09-29T13:46:06.648815+07:00"
+      "phase": "done",
+      "note": "Passed all CORE application checks",
+      "evidence": "reports/evidence/CORE/run-01/manifest.json",
+      "updated_at": "2026-09-29T14:23:11.134146+07:00"
     },
     "KV01": {
       "phase": "pending",
