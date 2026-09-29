@@ -1,0 +1,30 @@
+{
+  "department": "Kế toán quản trị",
+  "id": "KT01",
+  "name": "Thu chi và dòng tiền",
+  "tables": [
+    "GiaoDich",
+    "TaiKhoanTien"
+  ],
+  "action": "ghiNhanGiaoDich",
+  "original_rule": "số dư = đầu kỳ + thu duyệt − chi duyệt; chặn giao dịch kỳ khóa",
+  "status": "draft_for_review",
+  "target_version": "3.0.0-vi",
+  "legacySku": null,
+  "priority": "P0",
+  "dependencies": [
+    "CORE"
+  ],
+  "platforms_target": [
+    "Excel365",
+    "Web"
+  ],
+  "implemented": false,
+  "gate_status": {
+    "G0": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G_EXCEL": "NOT_RUN",
+    "G_WEB": "NOT_RUN",
+    "G_OPS": "NOT_RUN"
+  }
+}

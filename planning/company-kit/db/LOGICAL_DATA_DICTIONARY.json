@@ -1,0 +1,2950 @@
+{
+  "status": "proposed_requires_repo_review_before_migration",
+  "common_columns": {
+    "id": "uuid immutable primary key",
+    "organization_id": "uuid not null; FK ToChuc except ToChuc itself",
+    "created_at": "timestamptz UTC",
+    "updated_at": "timestamptz UTC",
+    "row_version": "bigint >=1; increment on edit",
+    "deleted_at": "timestamptz nullable; posted ledger/events append-only, no ordinary delete"
+  },
+  "types": {
+    "money": "bigint VND; JSON decimal string",
+    "quantity": "numeric(20,6)",
+    "percent": "numeric(7,4), 0..100",
+    "timestamp": "timestamptz",
+    "ref.Entity": "organization-scoped composite FK",
+    "json": "jsonb"
+  },
+  "entities": {
+    "ToChuc": {
+      "owner": "CORE",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "timezone",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "currency",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": false
+    },
+    "NguoiDung": {
+      "owner": "CORE",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "organization_id",
+          "type": "ref.ToChuc",
+          "nullable": false,
+          "reference": "ToChuc"
+        },
+        {
+          "name": "email",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "auth_subject",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "role",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "KhachHang": {
+      "owner": "CORE",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "email",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "phone",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "owner_id",
+          "type": "ref.NguoiDung",
+          "nullable": true,
+          "reference": "NguoiDung"
+        }
+      ],
+      "common_fields": true
+    },
+    "NhaCungCap": {
+      "owner": "CORE",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "email",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "phone",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "Kenh": {
+      "owner": "CORE",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "TaiKhoanTien": {
+      "owner": "CORE",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "opening_balance",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "opening_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "BaoGia": {
+      "owner": "KD01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": false,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "valid_until",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "converted_order_id",
+          "type": "ref.DonHang",
+          "nullable": true,
+          "reference": "DonHang"
+        }
+      ],
+      "common_fields": true
+    },
+    "ChiTietBaoGia": {
+      "owner": "KD01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "quote_id",
+          "type": "ref.BaoGia",
+          "nullable": false,
+          "reference": "BaoGia"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "quantity",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit_price_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "discount_pct",
+          "type": "percent",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "line_total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "DonHang": {
+      "owner": "KD01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": false,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "quote_id",
+          "type": "ref.BaoGia",
+          "nullable": true,
+          "reference": "BaoGia"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "confirmed_at",
+          "type": "timestamp",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "ChiTietDon": {
+      "owner": "KD01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "ref.DonHang",
+          "nullable": false,
+          "reference": "DonHang"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "sequence",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "product_name_snapshot",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit_snapshot",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "quantity",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit_price_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "discount_pct",
+          "type": "percent",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "line_total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "CoHoi": {
+      "owner": "KD02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": true,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "lead_id",
+          "type": "ref.Lead",
+          "nullable": true,
+          "reference": "Lead"
+        },
+        {
+          "name": "stage_id",
+          "type": "ref.GiaiDoan",
+          "nullable": false,
+          "reference": "GiaiDoan"
+        },
+        {
+          "name": "value_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "probability_pct",
+          "type": "percent",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "expected_close_date",
+          "type": "date",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "GiaiDoan": {
+      "owner": "KD02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "sort_order",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "default_probability_pct",
+          "type": "percent",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "MucTieu": {
+      "owner": "KD03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "owner_id",
+          "type": "ref.NguoiDung",
+          "nullable": false,
+          "reference": "NguoiDung"
+        },
+        {
+          "name": "period_start",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "period_end",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "target_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "revision",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "HopDong": {
+      "owner": "KD04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": false,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "start_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "expiry_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "renewed_from_id",
+          "type": "ref.HopDong",
+          "nullable": true,
+          "reference": "HopDong"
+        }
+      ],
+      "common_fields": true
+    },
+    "MocGiaHan": {
+      "owner": "KD04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "contract_id",
+          "type": "ref.HopDong",
+          "nullable": false,
+          "reference": "HopDong"
+        },
+        {
+          "name": "remind_on",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "acknowledged_at",
+          "type": "timestamp",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "TuongTac": {
+      "owner": "KD05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": false,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "occurred_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "channel_id",
+          "type": "ref.Kenh",
+          "nullable": true,
+          "reference": "Kenh"
+        },
+        {
+          "name": "summary",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "next_due_at",
+          "type": "timestamp",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "NhanSu": {
+      "owner": "NS01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "full_name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "start_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "end_date",
+          "type": "date",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "role_title",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "TaiLieu": {
+      "owner": "NS01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "ref.NhanSu",
+          "nullable": false,
+          "reference": "NhanSu"
+        },
+        {
+          "name": "document_type",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "object_key",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "original_name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "expires_on",
+          "type": "date",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "CaLam": {
+      "owner": "NS02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "start_local",
+          "type": "time",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "end_local",
+          "type": "time",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "break_minutes",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "ChamCong": {
+      "owner": "NS02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "ref.NhanSu",
+          "nullable": false,
+          "reference": "NhanSu"
+        },
+        {
+          "name": "shift_id",
+          "type": "ref.CaLam",
+          "nullable": false,
+          "reference": "CaLam"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "clock_in_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "clock_out_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "break_minutes",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "approved_hours",
+          "type": "quantity",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "approver_id",
+          "type": "ref.NguoiDung",
+          "nullable": true,
+          "reference": "NguoiDung"
+        }
+      ],
+      "common_fields": true
+    },
+    "SoDuPhep": {
+      "owner": "NS03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "ref.NhanSu",
+          "nullable": false,
+          "reference": "NhanSu"
+        },
+        {
+          "name": "period_start",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "period_end",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "opening_days",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "accrued_days",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "approved_used_days",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "policy_version",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "DonNghi": {
+      "owner": "NS03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "ref.NhanSu",
+          "nullable": false,
+          "reference": "NhanSu"
+        },
+        {
+          "name": "start_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "end_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "requested_days",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "approved_by",
+          "type": "ref.NguoiDung",
+          "nullable": true,
+          "reference": "NguoiDung"
+        },
+        {
+          "name": "balance_id",
+          "type": "ref.SoDuPhep",
+          "nullable": false,
+          "reference": "SoDuPhep"
+        }
+      ],
+      "common_fields": true
+    },
+    "BangLuong": {
+      "owner": "NS04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "ref.NhanSu",
+          "nullable": false,
+          "reference": "NhanSu"
+        },
+        {
+          "name": "period_start",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "period_end",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "base_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "allowance_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "deduction_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "net_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "policy_version",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "KhoanDieuChinh": {
+      "owner": "NS04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "payroll_id",
+          "type": "ref.BangLuong",
+          "nullable": false,
+          "reference": "BangLuong"
+        },
+        {
+          "name": "kind",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "amount_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "reason",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "approved_by",
+          "type": "ref.NguoiDung",
+          "nullable": true,
+          "reference": "NguoiDung"
+        }
+      ],
+      "common_fields": true
+    },
+    "ViTriTuyen": {
+      "owner": "NS05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "opened_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "UngVien": {
+      "owner": "NS05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "position_id",
+          "type": "ref.ViTriTuyen",
+          "nullable": false,
+          "reference": "ViTriTuyen"
+        },
+        {
+          "name": "full_name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "email",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "stage_id",
+          "type": "ref.VongTuyen",
+          "nullable": false,
+          "reference": "VongTuyen"
+        },
+        {
+          "name": "hired_date",
+          "type": "date",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "employee_id",
+          "type": "ref.NhanSu",
+          "nullable": true,
+          "reference": "NhanSu"
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "VongTuyen": {
+      "owner": "NS05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "sort_order",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "NoiDung": {
+      "owner": "MK01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "channel_id",
+          "type": "ref.Kenh",
+          "nullable": false,
+          "reference": "Kenh"
+        },
+        {
+          "name": "scheduled_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "published_at",
+          "type": "timestamp",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "owner_id",
+          "type": "ref.NguoiDung",
+          "nullable": false,
+          "reference": "NguoiDung"
+        }
+      ],
+      "common_fields": true
+    },
+    "ChienDich": {
+      "owner": "MK02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "start_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "end_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "budget_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "revision",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "ChiPhi": {
+      "owner": "MK02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "campaign_id",
+          "type": "ref.ChienDich",
+          "nullable": false,
+          "reference": "ChienDich"
+        },
+        {
+          "name": "channel_id",
+          "type": "ref.Kenh",
+          "nullable": false,
+          "reference": "Kenh"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "amount_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "cash_transaction_id",
+          "type": "ref.GiaoDich",
+          "nullable": true,
+          "reference": "GiaoDich"
+        }
+      ],
+      "common_fields": true
+    },
+    "NguonLead": {
+      "owner": "MK03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "channel_id",
+          "type": "ref.Kenh",
+          "nullable": true,
+          "reference": "Kenh"
+        }
+      ],
+      "common_fields": true
+    },
+    "Lead": {
+      "owner": "MK03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_id",
+          "type": "ref.NguonLead",
+          "nullable": false,
+          "reference": "NguonLead"
+        },
+        {
+          "name": "captured_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": true,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "converted_at",
+          "type": "timestamp",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "merged_into_id",
+          "type": "ref.Lead",
+          "nullable": true,
+          "reference": "Lead"
+        }
+      ],
+      "common_fields": true
+    },
+    "ChiSoKenh": {
+      "owner": "MK04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "channel_id",
+          "type": "ref.Kenh",
+          "nullable": false,
+          "reference": "Kenh"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "valid_leads",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "total_cost_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "reach",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_batch_id",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "ThuNghiem": {
+      "owner": "MK05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "start_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "end_date",
+          "type": "date",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "conclusion",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "BienThe": {
+      "owner": "MK05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "experiment_id",
+          "type": "ref.ThuNghiem",
+          "nullable": false,
+          "reference": "ThuNghiem"
+        },
+        {
+          "name": "content_id",
+          "type": "ref.NoiDung",
+          "nullable": false,
+          "reference": "NoiDung"
+        },
+        {
+          "name": "label",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unique_reach",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unique_responses",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "KyKhoa": {
+      "owner": "KT01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "start_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "end_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "locked_by",
+          "type": "ref.NguoiDung",
+          "nullable": false,
+          "reference": "NguoiDung"
+        },
+        {
+          "name": "locked_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "GiaoDich": {
+      "owner": "KT01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "account_id",
+          "type": "ref.TaiKhoanTien",
+          "nullable": false,
+          "reference": "TaiKhoanTien"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "direction",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "amount_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "category_id",
+          "type": "ref.HangMucNganSach",
+          "nullable": true,
+          "reference": "HangMucNganSach"
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "transfer_id",
+          "type": "uuid",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "reversal_of_id",
+          "type": "ref.GiaoDich",
+          "nullable": true,
+          "reference": "GiaoDich"
+        },
+        {
+          "name": "source_type",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "source_id",
+          "type": "uuid",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "PhaiThu": {
+      "owner": "KT02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": false,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "order_id",
+          "type": "ref.DonHang",
+          "nullable": true,
+          "reference": "DonHang"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "due_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "principal_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "PhaiTra": {
+      "owner": "KT03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "supplier_id",
+          "type": "ref.NhaCungCap",
+          "nullable": false,
+          "reference": "NhaCungCap"
+        },
+        {
+          "name": "purchase_order_id",
+          "type": "ref.DonMua",
+          "nullable": true,
+          "reference": "DonMua"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "due_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "principal_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "ThanhToan": {
+      "owner": "KT01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "transaction_id",
+          "type": "ref.GiaoDich",
+          "nullable": false,
+          "reference": "GiaoDich"
+        },
+        {
+          "name": "receivable_id",
+          "type": "ref.PhaiThu",
+          "nullable": true,
+          "reference": "PhaiThu"
+        },
+        {
+          "name": "payable_id",
+          "type": "ref.PhaiTra",
+          "nullable": true,
+          "reference": "PhaiTra"
+        },
+        {
+          "name": "amount_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "reversal_of_id",
+          "type": "ref.ThanhToan",
+          "nullable": true,
+          "reference": "ThanhToan"
+        }
+      ],
+      "common_fields": true
+    },
+    "HangMucNganSach": {
+      "owner": "KT04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "parent_id",
+          "type": "ref.HangMucNganSach",
+          "nullable": true,
+          "reference": "HangMucNganSach"
+        }
+      ],
+      "common_fields": true
+    },
+    "NganSach": {
+      "owner": "KT04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "category_id",
+          "type": "ref.HangMucNganSach",
+          "nullable": false,
+          "reference": "HangMucNganSach"
+        },
+        {
+          "name": "period_start",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "period_end",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "budget_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "revision",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "GiaVon": {
+      "owner": "KV02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "order_line_id",
+          "type": "ref.ChiTietDon",
+          "nullable": true,
+          "reference": "ChiTietDon"
+        },
+        {
+          "name": "ledger_id",
+          "type": "ref.StockLedger",
+          "nullable": false,
+          "reference": "StockLedger"
+        },
+        {
+          "name": "cost_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "costing_policy_version",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "LenhSanXuat": {
+      "owner": "SX01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "bom_id",
+          "type": "ref.DinhMuc",
+          "nullable": false,
+          "reference": "DinhMuc"
+        },
+        {
+          "name": "planned_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "good_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "defective_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "planned_start",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "planned_end",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "CongDoan": {
+      "owner": "SX01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "production_order_id",
+          "type": "ref.LenhSanXuat",
+          "nullable": false,
+          "reference": "LenhSanXuat"
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "sequence",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "weight",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "planned_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "DinhMuc": {
+      "owner": "SX02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "version",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "effective_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "DongDinhMuc": {
+      "owner": "SX02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "bom_id",
+          "type": "ref.DinhMuc",
+          "nullable": false,
+          "reference": "DinhMuc"
+        },
+        {
+          "name": "material_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "per_unit_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "waste_pct",
+          "type": "percent",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "NhatKySX": {
+      "owner": "SX03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "stage_id",
+          "type": "ref.CongDoan",
+          "nullable": false,
+          "reference": "CongDoan"
+        },
+        {
+          "name": "occurred_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "good_qty_delta",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "defective_qty_delta",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "reason",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_key",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "PhieuKiem": {
+      "owner": "SX04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "production_order_id",
+          "type": "ref.LenhSanXuat",
+          "nullable": false,
+          "reference": "LenhSanXuat"
+        },
+        {
+          "name": "inspected_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "inspected_units",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "defective_units",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "LoaiLoi": {
+      "owner": "SX04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "severity",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "MauKiem": {
+      "owner": "SX04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "inspection_id",
+          "type": "ref.PhieuKiem",
+          "nullable": false,
+          "reference": "PhieuKiem"
+        },
+        {
+          "name": "sample_code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "defective",
+          "type": "boolean",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "LoiTrenMau": {
+      "owner": "SX04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "sample_id",
+          "type": "ref.MauKiem",
+          "nullable": false,
+          "reference": "MauKiem"
+        },
+        {
+          "name": "defect_type_id",
+          "type": "ref.LoaiLoi",
+          "nullable": false,
+          "reference": "LoaiLoi"
+        },
+        {
+          "name": "note",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "XuatVatTu": {
+      "owner": "KV02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "production_order_id",
+          "type": "ref.LenhSanXuat",
+          "nullable": false,
+          "reference": "LenhSanXuat"
+        },
+        {
+          "name": "warehouse_line_id",
+          "type": "ref.DongPhieuKho",
+          "nullable": false,
+          "reference": "DongPhieuKho"
+        }
+      ],
+      "common_fields": true
+    },
+    "ChiPhiSX": {
+      "owner": "SX05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "production_order_id",
+          "type": "ref.LenhSanXuat",
+          "nullable": false,
+          "reference": "LenhSanXuat"
+        },
+        {
+          "name": "cost_type",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "amount_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_type",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_id",
+          "type": "uuid",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "SanPham": {
+      "owner": "KV01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "sku",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "kind",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "Kho": {
+      "owner": "KV01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "PhieuKho": {
+      "owner": "KV02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "warehouse_id",
+          "type": "ref.Kho",
+          "nullable": false,
+          "reference": "Kho"
+        },
+        {
+          "name": "movement_type",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_type",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "source_id",
+          "type": "uuid",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "reversal_of_id",
+          "type": "ref.PhieuKho",
+          "nullable": true,
+          "reference": "PhieuKho"
+        }
+      ],
+      "common_fields": true
+    },
+    "DongPhieuKho": {
+      "owner": "KV02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "voucher_id",
+          "type": "ref.PhieuKho",
+          "nullable": false,
+          "reference": "PhieuKho"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "quantity",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit_cost_vnd",
+          "type": "money",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "source_line_id",
+          "type": "uuid",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "StockLedger": {
+      "owner": "KV02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "warehouse_line_id",
+          "type": "ref.DongPhieuKho",
+          "nullable": false,
+          "reference": "DongPhieuKho"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "warehouse_id",
+          "type": "ref.Kho",
+          "nullable": false,
+          "reference": "Kho"
+        },
+        {
+          "name": "quantity_delta",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "posted_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "cost_total_vnd",
+          "type": "money",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "Reservation": {
+      "owner": "KV02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "order_line_id",
+          "type": "ref.ChiTietDon",
+          "nullable": false,
+          "reference": "ChiTietDon"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "warehouse_id",
+          "type": "ref.Kho",
+          "nullable": false,
+          "reference": "Kho"
+        },
+        {
+          "name": "quantity",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "YeuCauMua": {
+      "owner": "KV03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "requested_on",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "reason",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "DongYeuCauMua": {
+      "owner": "KV03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "request_id",
+          "type": "ref.YeuCauMua",
+          "nullable": false,
+          "reference": "YeuCauMua"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "quantity",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "required_on",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "DonMua": {
+      "owner": "KV03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "supplier_id",
+          "type": "ref.NhaCungCap",
+          "nullable": false,
+          "reference": "NhaCungCap"
+        },
+        {
+          "name": "request_id",
+          "type": "ref.YeuCauMua",
+          "nullable": true,
+          "reference": "YeuCauMua"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "DongDonMua": {
+      "owner": "KV03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "purchase_order_id",
+          "type": "ref.DonMua",
+          "nullable": false,
+          "reference": "DonMua"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "ordered_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit_price_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "line_total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "NhanHangMua": {
+      "owner": "KV03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "purchase_line_id",
+          "type": "ref.DongDonMua",
+          "nullable": false,
+          "reference": "DongDonMua"
+        },
+        {
+          "name": "warehouse_line_id",
+          "type": "ref.DongPhieuKho",
+          "nullable": false,
+          "reference": "DongPhieuKho"
+        },
+        {
+          "name": "received_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "DotKiemKe": {
+      "owner": "KV04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "warehouse_id",
+          "type": "ref.Kho",
+          "nullable": false,
+          "reference": "Kho"
+        },
+        {
+          "name": "snapshot_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "adjustment_voucher_id",
+          "type": "ref.PhieuKho",
+          "nullable": true,
+          "reference": "PhieuKho"
+        }
+      ],
+      "common_fields": true
+    },
+    "DongKiemKe": {
+      "owner": "KV04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "count_id",
+          "type": "ref.DotKiemKe",
+          "nullable": false,
+          "reference": "DotKiemKe"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "book_qty_snapshot",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "counted_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "snapshot_ledger_version",
+          "type": "bigint",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "MucTon": {
+      "owner": "KV05",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "warehouse_id",
+          "type": "ref.Kho",
+          "nullable": false,
+          "reference": "Kho"
+        },
+        {
+          "name": "min_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "target_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "max_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "AuditEvent": {
+      "owner": "CORE",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "actor_id",
+          "type": "ref.NguoiDung",
+          "nullable": false,
+          "reference": "NguoiDung"
+        },
+        {
+          "name": "action",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "entity_type",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "entity_id",
+          "type": "uuid",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "before_json",
+          "type": "json",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "after_json",
+          "type": "json",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "reason",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "correlation_id",
+          "type": "uuid",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "Idempotency": {
+      "owner": "CORE",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "actor_id",
+          "type": "ref.NguoiDung",
+          "nullable": false,
+          "reference": "NguoiDung"
+        },
+        {
+          "name": "key",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "request_hash",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "result_json",
+          "type": "json",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status_code",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "expires_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "OutboxEvent": {
+      "owner": "CORE",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "event_type",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_type",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_id",
+          "type": "uuid",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "payload",
+          "type": "json",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "occurred_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "delivered_at",
+          "type": "timestamp",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "attempts",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "Job": {
+      "owner": "CORE",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "job_type",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "entity_id",
+          "type": "uuid",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "scheduled_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "lease_until",
+          "type": "timestamp",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "attempts",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "last_error_code",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "VatTu": {
+      "owner": "KV01",
+      "kind": "alias",
+      "source": "SanPham",
+      "filter": "kind includes material; not a duplicate master table"
+    },
+    "TonKho": {
+      "owner": "KV02",
+      "kind": "projection",
+      "source": "StockLedger + Reservation",
+      "group_by": [
+        "organization_id",
+        "product_id",
+        "warehouse_id"
+      ],
+      "on_hand": "SUM(quantity_delta)",
+      "reserved": "SUM(active Reservation.quantity)",
+      "available": "on_hand - reserved"
+    }
+  }
+}

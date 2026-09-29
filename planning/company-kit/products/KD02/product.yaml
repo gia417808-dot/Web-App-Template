@@ -1,0 +1,30 @@
+{
+  "department": "Kinh doanh",
+  "id": "KD02",
+  "name": "Pipeline cơ hội",
+  "tables": [
+    "CoHoi",
+    "GiaiDoan"
+  ],
+  "action": "chuyenGiaiDoan",
+  "original_rule": "giá trị kỳ vọng = giá trị × xác suất; cơ hội mất không cộng forecast",
+  "status": "draft_for_review",
+  "target_version": "3.0.0-vi",
+  "legacySku": null,
+  "priority": "P1",
+  "dependencies": [
+    "CORE"
+  ],
+  "platforms_target": [
+    "Excel365",
+    "Web"
+  ],
+  "implemented": false,
+  "gate_status": {
+    "G0": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G_EXCEL": "NOT_RUN",
+    "G_WEB": "NOT_RUN",
+    "G_OPS": "NOT_RUN"
+  }
+}

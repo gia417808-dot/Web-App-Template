@@ -1,0 +1,99 @@
+{
+  "product_id": "MK04",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "ChiSoKenh": {
+      "owner": "MK04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "channel_id",
+          "type": "ref.Kenh",
+          "nullable": false,
+          "reference": "Kenh"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "valid_leads",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "total_cost_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "reach",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_batch_id",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "ChiPhi": {
+      "owner": "MK02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "campaign_id",
+          "type": "ref.ChienDich",
+          "nullable": false,
+          "reference": "ChienDich"
+        },
+        {
+          "name": "channel_id",
+          "type": "ref.Kenh",
+          "nullable": false,
+          "reference": "Kenh"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "amount_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "cash_transaction_id",
+          "type": "ref.GiaoDich",
+          "nullable": true,
+          "reference": "GiaoDich"
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

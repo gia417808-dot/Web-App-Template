@@ -1,0 +1,81 @@
+{
+  "product_id": "KD04",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "HopDong": {
+      "owner": "KD04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": false,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "start_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "expiry_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "renewed_from_id",
+          "type": "ref.HopDong",
+          "nullable": true,
+          "reference": "HopDong"
+        }
+      ],
+      "common_fields": true
+    },
+    "MocGiaHan": {
+      "owner": "KD04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "contract_id",
+          "type": "ref.HopDong",
+          "nullable": false,
+          "reference": "HopDong"
+        },
+        {
+          "name": "remind_on",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "acknowledged_at",
+          "type": "timestamp",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

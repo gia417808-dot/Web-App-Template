@@ -1,0 +1,15 @@
+{
+  "product_id": "SX04",
+  "metric_id": "SX04_primary",
+  "inputs": [
+    "defective_units",
+    "inspected_units"
+  ],
+  "excel_example": "=IF([@inspected_units]=0,\"\",[@defective_units]/[@inspected_units])",
+  "backend_requirement": "Đếm đơn vị lỗi duy nhất, không đếm số loại lỗi trên cùng một mẫu; inspected_units=0 trả null.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

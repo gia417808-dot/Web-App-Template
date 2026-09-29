@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NS01 calculation input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "start_date",
+    "as_of_date"
+  ],
+  "properties": {
+    "start_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Giá trị nhập của calculator contract; null được trả lỗi/reason theo oracle.",
+      "format": "date"
+    },
+    "as_of_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Giá trị nhập của calculator contract; null được trả lỗi/reason theo oracle.",
+      "format": "date"
+    }
+  }
+}

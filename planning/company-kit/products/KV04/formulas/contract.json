@@ -1,0 +1,15 @@
+{
+  "product_id": "KV04",
+  "metric_id": "KV04_primary",
+  "inputs": [
+    "counted",
+    "book_at_snapshot"
+  ],
+  "excel_example": "=[@counted]-[@book_at_snapshot]",
+  "backend_requirement": "Chốt theo snapshot; nếu có phát sinh sau snapshot phải đối soát trước post adjustment; chốt lại cùng key không ghi đôi.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

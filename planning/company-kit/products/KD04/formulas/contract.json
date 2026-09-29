@@ -1,0 +1,15 @@
+{
+  "product_id": "KD04",
+  "metric_id": "KD04_primary",
+  "inputs": [
+    "expiry_date",
+    "as_of_date"
+  ],
+  "excel_example": "=[@expiry_date]-[@as_of_date]",
+  "backend_requirement": "Dùng ngày địa phương; hợp đồng terminated không nhắc; ngưỡng nhắc cấu hình, không gửi tin khi chưa bật.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KD01 calculation input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "qty",
+    "unit_price",
+    "discount_pct"
+  ],
+  "properties": {
+    "qty": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Giá trị nhập của calculator contract; null được trả lỗi/reason theo oracle.",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+    },
+    "unit_price": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Giá trị nhập của calculator contract; null được trả lỗi/reason theo oracle.",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+    },
+    "discount_pct": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Giá trị nhập của calculator contract; null được trả lỗi/reason theo oracle.",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+    }
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "product_id": "KT01",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "GiaoDich": {
+      "owner": "KT01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "account_id",
+          "type": "ref.TaiKhoanTien",
+          "nullable": false,
+          "reference": "TaiKhoanTien"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "direction",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "amount_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "category_id",
+          "type": "ref.HangMucNganSach",
+          "nullable": true,
+          "reference": "HangMucNganSach"
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "transfer_id",
+          "type": "uuid",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "reversal_of_id",
+          "type": "ref.GiaoDich",
+          "nullable": true,
+          "reference": "GiaoDich"
+        },
+        {
+          "name": "source_type",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "source_id",
+          "type": "uuid",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "TaiKhoanTien": {
+      "owner": "CORE",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "opening_balance",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "opening_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "KyKhoa": {
+      "owner": "KT01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "start_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "end_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "locked_by",
+          "type": "ref.NguoiDung",
+          "nullable": false,
+          "reference": "NguoiDung"
+        },
+        {
+          "name": "locked_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "ThanhToan": {
+      "owner": "KT01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "transaction_id",
+          "type": "ref.GiaoDich",
+          "nullable": false,
+          "reference": "GiaoDich"
+        },
+        {
+          "name": "receivable_id",
+          "type": "ref.PhaiThu",
+          "nullable": true,
+          "reference": "PhaiThu"
+        },
+        {
+          "name": "payable_id",
+          "type": "ref.PhaiTra",
+          "nullable": true,
+          "reference": "PhaiTra"
+        },
+        {
+          "name": "amount_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "reversal_of_id",
+          "type": "ref.ThanhToan",
+          "nullable": true,
+          "reference": "ThanhToan"
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

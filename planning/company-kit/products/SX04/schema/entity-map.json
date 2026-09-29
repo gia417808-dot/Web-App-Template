@@ -1,0 +1,119 @@
+{
+  "product_id": "SX04",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "PhieuKiem": {
+      "owner": "SX04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "production_order_id",
+          "type": "ref.LenhSanXuat",
+          "nullable": false,
+          "reference": "LenhSanXuat"
+        },
+        {
+          "name": "inspected_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "inspected_units",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "defective_units",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "LoaiLoi": {
+      "owner": "SX04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "severity",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "MauKiem": {
+      "owner": "SX04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "inspection_id",
+          "type": "ref.PhieuKiem",
+          "nullable": false,
+          "reference": "PhieuKiem"
+        },
+        {
+          "name": "sample_code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "defective",
+          "type": "boolean",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "LoiTrenMau": {
+      "owner": "SX04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "sample_id",
+          "type": "ref.MauKiem",
+          "nullable": false,
+          "reference": "MauKiem"
+        },
+        {
+          "name": "defect_type_id",
+          "type": "ref.LoaiLoi",
+          "nullable": false,
+          "reference": "LoaiLoi"
+        },
+        {
+          "name": "note",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

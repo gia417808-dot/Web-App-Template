@@ -1,0 +1,32 @@
+{
+  "department": "Nhân sự",
+  "id": "NS04",
+  "name": "Lương quản trị",
+  "tables": [
+    "BangLuong",
+    "KhoanDieuChinh"
+  ],
+  "action": "chotBangLuong",
+  "original_rule": "thực nhận quản trị = lương thỏa thuận + phụ cấp − khấu trừ; quy tắc thuế/BHXH cần cấu hình riêng",
+  "status": "draft_for_review",
+  "target_version": "3.0.0-vi",
+  "legacySku": null,
+  "priority": "P1",
+  "dependencies": [
+    "NS01",
+    "NS02",
+    "NS03"
+  ],
+  "platforms_target": [
+    "Excel365",
+    "Web"
+  ],
+  "implemented": false,
+  "gate_status": {
+    "G0": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G_EXCEL": "NOT_RUN",
+    "G_WEB": "NOT_RUN",
+    "G_OPS": "NOT_RUN"
+  }
+}

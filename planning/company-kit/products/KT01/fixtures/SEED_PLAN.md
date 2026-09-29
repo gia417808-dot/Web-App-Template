@@ -1,0 +1,2 @@
+# Seed thật cần tạo ở G0/G1
+30 calculator demo là đầu vào UI mẫu lặp lại, không thay database fixtures. Tạo 30–100 dòng Việt Nam giả lập cho GiaoDich, TaiKhoanTien, master UUID ổn định cùng DEMO org, tham chiếu đúng và tỷ lệ trạng thái nháp/đã xử lý/hủy phù hợp. Ít nhất các oracle và workflow exception phải có dữ liệu riêng; không gắn PII thật. Seed idempotent theo stable ID, không truncate database. Xem docs/INTEGRATION_SCENARIOS.md cho số tiền/kho đối chiếu.

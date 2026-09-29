@@ -1,0 +1,81 @@
+{
+  "product_id": "KV04",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "DotKiemKe": {
+      "owner": "KV04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "warehouse_id",
+          "type": "ref.Kho",
+          "nullable": false,
+          "reference": "Kho"
+        },
+        {
+          "name": "snapshot_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "adjustment_voucher_id",
+          "type": "ref.PhieuKho",
+          "nullable": true,
+          "reference": "PhieuKho"
+        }
+      ],
+      "common_fields": true
+    },
+    "DongKiemKe": {
+      "owner": "KV04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "count_id",
+          "type": "ref.DotKiemKe",
+          "nullable": false,
+          "reference": "DotKiemKe"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "book_qty_snapshot",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "counted_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "snapshot_ledger_version",
+          "type": "bigint",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

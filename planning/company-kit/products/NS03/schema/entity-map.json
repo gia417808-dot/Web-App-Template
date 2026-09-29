@@ -1,0 +1,105 @@
+{
+  "product_id": "NS03",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "SoDuPhep": {
+      "owner": "NS03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "ref.NhanSu",
+          "nullable": false,
+          "reference": "NhanSu"
+        },
+        {
+          "name": "period_start",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "period_end",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "opening_days",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "accrued_days",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "approved_used_days",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "policy_version",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "DonNghi": {
+      "owner": "NS03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "ref.NhanSu",
+          "nullable": false,
+          "reference": "NhanSu"
+        },
+        {
+          "name": "start_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "end_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "requested_days",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "approved_by",
+          "type": "ref.NguoiDung",
+          "nullable": true,
+          "reference": "NguoiDung"
+        },
+        {
+          "name": "balance_id",
+          "type": "ref.SoDuPhep",
+          "nullable": false,
+          "reference": "SoDuPhep"
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

@@ -1,0 +1,32 @@
+{
+  "department": "Kinh doanh",
+  "id": "KD01",
+  "name": "Báo giá và đơn hàng",
+  "tables": [
+    "BaoGia",
+    "DonHang",
+    "ChiTietDon"
+  ],
+  "action": "taoBaoGia, chotDon",
+  "original_rule": "tiền dòng = lượng × đơn giá × (1 − giảm giá); tổng đơn từ chi tiết, hủy không tính doanh thu",
+  "status": "draft_for_review",
+  "target_version": "3.0.0-vi",
+  "legacySku": null,
+  "priority": "P0",
+  "dependencies": [
+    "CORE",
+    "KV01"
+  ],
+  "platforms_target": [
+    "Excel365",
+    "Web"
+  ],
+  "implemented": false,
+  "gate_status": {
+    "G0": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G_EXCEL": "NOT_RUN",
+    "G_WEB": "NOT_RUN",
+    "G_OPS": "NOT_RUN"
+  }
+}

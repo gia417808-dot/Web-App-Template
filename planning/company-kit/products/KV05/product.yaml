@@ -1,0 +1,30 @@
+{
+  "department": "Kho vận",
+  "id": "KV05",
+  "name": "Cảnh báo bổ sung",
+  "tables": [
+    "MucTon",
+    "TonKho"
+  ],
+  "action": "deXuatBoSung",
+  "original_rule": "lượng gợi ý = MAX(0, tồn mục tiêu − tồn khả dụng)",
+  "status": "draft_for_review",
+  "target_version": "3.0.0-vi",
+  "legacySku": null,
+  "priority": "P1",
+  "dependencies": [
+    "KV02"
+  ],
+  "platforms_target": [
+    "Excel365",
+    "Web"
+  ],
+  "implemented": false,
+  "gate_status": {
+    "G0": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G_EXCEL": "NOT_RUN",
+    "G_WEB": "NOT_RUN",
+    "G_OPS": "NOT_RUN"
+  }
+}

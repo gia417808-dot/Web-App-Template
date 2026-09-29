@@ -1,0 +1,30 @@
+{
+  "department": "Kho vận",
+  "id": "KV01",
+  "name": "Danh mục hàng và kho",
+  "tables": [
+    "SanPham",
+    "Kho"
+  ],
+  "action": "capNhatDanhMuc",
+  "original_rule": "mã hàng duy nhất; đơn vị tính và giới hạn min/max nhất quán",
+  "status": "draft_for_review",
+  "target_version": "3.0.0-vi",
+  "legacySku": null,
+  "priority": "P0",
+  "dependencies": [
+    "CORE"
+  ],
+  "platforms_target": [
+    "Excel365",
+    "Web"
+  ],
+  "implemented": false,
+  "gate_status": {
+    "G0": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G_EXCEL": "NOT_RUN",
+    "G_WEB": "NOT_RUN",
+    "G_OPS": "NOT_RUN"
+  }
+}

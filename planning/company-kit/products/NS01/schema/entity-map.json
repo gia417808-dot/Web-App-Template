@@ -1,0 +1,87 @@
+{
+  "product_id": "NS01",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "NhanSu": {
+      "owner": "NS01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "full_name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "start_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "end_date",
+          "type": "date",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "role_title",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "TaiLieu": {
+      "owner": "NS01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "ref.NhanSu",
+          "nullable": false,
+          "reference": "NhanSu"
+        },
+        {
+          "name": "document_type",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "object_key",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "original_name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "expires_on",
+          "type": "date",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

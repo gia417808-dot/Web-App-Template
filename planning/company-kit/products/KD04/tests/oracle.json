@@ -1,0 +1,39 @@
+{
+  "product_id": "KD04",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      },
+      "expected": {
+        "value": 7,
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "expiry_date": "2026-10-01",
+        "as_of_date": "2026-10-03"
+      },
+      "expected": {
+        "value": -2,
+        "error": null
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "expiry_date": null,
+        "as_of_date": "2026-10-03"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

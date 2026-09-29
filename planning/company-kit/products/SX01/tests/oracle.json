@@ -1,0 +1,39 @@
+{
+  "product_id": "SX01",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "good_qty": "80",
+        "planned_qty": "100"
+      },
+      "expected": {
+        "value": "0.8",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "good_qty": "0",
+        "planned_qty": "0"
+      },
+      "expected": {
+        "value": null,
+        "error": "ZERO_DENOMINATOR"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "good_qty": null,
+        "planned_qty": "100"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

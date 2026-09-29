@@ -1,0 +1,16 @@
+{
+  "product_id": "SX02",
+  "metric_id": "SX02_primary",
+  "inputs": [
+    "per_unit",
+    "planned_qty",
+    "waste_pct"
+  ],
+  "excel_example": "=[@per_unit]*[@planned_qty]*(1+[@waste_pct]/100)",
+  "backend_requirement": "Định mức có version và đơn vị; waste_pct trong [0,100] là policy MVP có thể sửa qua ADR; không trộn kg với cái.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

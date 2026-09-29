@@ -1,0 +1,17 @@
+{
+  "product_id": "SX03",
+  "metric_id": "SX03_primary",
+  "inputs": [
+    "progress_a",
+    "weight_a",
+    "progress_b",
+    "weight_b"
+  ],
+  "excel_example": "=IF(SUM([@weight_a],[@weight_b])=0,\"\",SUMPRODUCT([@[progress_a]],[@[weight_a]])/SUM([@weight_a],[@weight_b])+SUMPRODUCT([@[progress_b]],[@[weight_b]])/SUM([@weight_a],[@weight_b]))",
+  "backend_requirement": "Ví dụ 2 công đoạn; triển khai tổng quát N công đoạn SUM(p*w)/SUM(w), progress 0..1, weights >=0; tổng weight=0 trả null.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

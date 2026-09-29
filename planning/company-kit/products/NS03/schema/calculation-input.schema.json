@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NS03 calculation input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "opening",
+    "accrued",
+    "approved_used"
+  ],
+  "properties": {
+    "opening": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Giá trị nhập của calculator contract; null được trả lỗi/reason theo oracle.",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+    },
+    "accrued": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Giá trị nhập của calculator contract; null được trả lỗi/reason theo oracle.",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+    },
+    "approved_used": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Giá trị nhập của calculator contract; null được trả lỗi/reason theo oracle.",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+    }
+  }
+}

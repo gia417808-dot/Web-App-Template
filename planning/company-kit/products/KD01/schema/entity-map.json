@@ -1,0 +1,209 @@
+{
+  "product_id": "KD01",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "BaoGia": {
+      "owner": "KD01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": false,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "valid_until",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "converted_order_id",
+          "type": "ref.DonHang",
+          "nullable": true,
+          "reference": "DonHang"
+        }
+      ],
+      "common_fields": true
+    },
+    "DonHang": {
+      "owner": "KD01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": false,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "quote_id",
+          "type": "ref.BaoGia",
+          "nullable": true,
+          "reference": "BaoGia"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "confirmed_at",
+          "type": "timestamp",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "ChiTietDon": {
+      "owner": "KD01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "ref.DonHang",
+          "nullable": false,
+          "reference": "DonHang"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "sequence",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "product_name_snapshot",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit_snapshot",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "quantity",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit_price_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "discount_pct",
+          "type": "percent",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "line_total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "ChiTietBaoGia": {
+      "owner": "KD01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "quote_id",
+          "type": "ref.BaoGia",
+          "nullable": false,
+          "reference": "BaoGia"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "quantity",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit_price_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "discount_pct",
+          "type": "percent",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "line_total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

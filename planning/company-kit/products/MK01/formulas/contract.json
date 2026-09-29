@@ -1,0 +1,15 @@
+{
+  "product_id": "MK01",
+  "metric_id": "MK01_primary",
+  "inputs": [
+    "published_on_time",
+    "due_count"
+  ],
+  "excel_example": "=IF([@due_count]=0,\"\",[@published_on_time]/[@due_count])",
+  "backend_requirement": "Mẫu số gồm bài phải đăng trong kỳ, kể cả trễ/chưa đăng; bài hủy trước hạn loại theo policy có lịch sử. Không tự đăng mạng xã hội.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

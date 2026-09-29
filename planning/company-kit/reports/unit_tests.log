@@ -1,0 +1,18 @@
+test_cannot_skip_review_plan_act (test_rpa.TaskGuards.test_cannot_skip_review_plan_act) ... ok
+test_changed_evidence_rejected (test_rpa.TaskGuards.test_changed_evidence_rejected) ... ok
+test_dependency_blocks_start (test_rpa.TaskGuards.test_dependency_blocks_start) ... ok
+test_done_requires_evidence (test_rpa.TaskGuards.test_done_requires_evidence) ... ok
+test_done_with_valid_manifest (test_rpa.TaskGuards.test_done_with_valid_manifest) ... ok
+test_evidence_path_escape_rejected (test_rpa.TaskGuards.test_evidence_path_escape_rejected) ... ok
+test_failed_done_does_not_mutate_state (test_rpa.TaskGuards.test_failed_done_does_not_mutate_state) ... ok
+test_graph_cycle_rejected (test_rpa.TaskGuards.test_graph_cycle_rejected) ... ok
+test_lock_does_not_overwrite_state (test_rpa.TaskGuards.test_lock_does_not_overwrite_state) ... ok
+test_next_is_dependency_ready (test_rpa.TaskGuards.test_next_is_dependency_ready) ... ok
+test_not_run_cannot_pass (test_rpa.TaskGuards.test_not_run_cannot_pass) ... ok
+test_only_one_active_task (test_rpa.TaskGuards.test_only_one_active_task) ... ok
+test_reopen_invalidates_dependents (test_rpa.TaskGuards.test_reopen_invalidates_dependents) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.017s
+
+OK

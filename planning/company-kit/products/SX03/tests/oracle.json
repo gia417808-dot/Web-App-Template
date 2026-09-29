@@ -1,0 +1,45 @@
+{
+  "product_id": "SX03",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "progress_a": "1",
+        "weight_a": "1",
+        "progress_b": "0.5",
+        "weight_b": "3"
+      },
+      "expected": {
+        "value": "0.625",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "progress_a": "1",
+        "weight_a": "0",
+        "progress_b": "1",
+        "weight_b": "0"
+      },
+      "expected": {
+        "value": null,
+        "error": "ZERO_DENOMINATOR"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "progress_a": null,
+        "weight_a": "1",
+        "progress_b": "0.5",
+        "weight_b": "3"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

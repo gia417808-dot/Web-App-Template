@@ -1,0 +1,50 @@
+{
+  "product_id": "KD02",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "value": "1000000",
+        "probability_pct": "25"
+      },
+      "expected": {
+        "value": "250000",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "value": "1000",
+        "probability_pct": "0"
+      },
+      "expected": {
+        "value": "0",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_2",
+      "input": {
+        "value": "1000",
+        "probability_pct": "101"
+      },
+      "expected": {
+        "value": null,
+        "error": "INVALID_PROBABILITY"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "value": null,
+        "probability_pct": "25"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

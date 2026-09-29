@@ -1,0 +1,66 @@
+{
+  "product_id": "KD01",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "qty": "2",
+        "unit_price": "100001",
+        "discount_pct": "10"
+      },
+      "expected": {
+        "value": "180002",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "qty": "1",
+        "unit_price": "1",
+        "discount_pct": "50"
+      },
+      "expected": {
+        "value": "1",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_2",
+      "input": {
+        "qty": "0",
+        "unit_price": "100",
+        "discount_pct": "0"
+      },
+      "expected": {
+        "value": null,
+        "error": "INVALID_QUANTITY"
+      }
+    },
+    {
+      "case": "boundary_3",
+      "input": {
+        "qty": "1",
+        "unit_price": "100",
+        "discount_pct": "101"
+      },
+      "expected": {
+        "value": null,
+        "error": "INVALID_DISCOUNT"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "qty": null,
+        "unit_price": "100001",
+        "discount_pct": "10"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

@@ -1,0 +1,917 @@
+[
+  {
+    "department": "Kinh doanh",
+    "id": "KD01",
+    "name": "Báo giá và đơn hàng",
+    "tables": [
+      "BaoGia",
+      "DonHang",
+      "ChiTietDon"
+    ],
+    "action": "taoBaoGia, chotDon",
+    "original_rule": "tiền dòng = lượng × đơn giá × (1 − giảm giá); tổng đơn từ chi tiết, hủy không tính doanh thu",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P0",
+    "dependencies": [
+      "CORE",
+      "KV01"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kinh doanh",
+    "id": "KD02",
+    "name": "Pipeline cơ hội",
+    "tables": [
+      "CoHoi",
+      "GiaiDoan"
+    ],
+    "action": "chuyenGiaiDoan",
+    "original_rule": "giá trị kỳ vọng = giá trị × xác suất; cơ hội mất không cộng forecast",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "CORE"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kinh doanh",
+    "id": "KD03",
+    "name": "Chỉ tiêu bán hàng",
+    "tables": [
+      "MucTieu",
+      "DonHang"
+    ],
+    "action": "tinhTienDoBan",
+    "original_rule": "hoàn thành = doanh thu xác nhận / chỉ tiêu, mẫu số 0 xử lý rõ",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "KD01"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kinh doanh",
+    "id": "KD04",
+    "name": "Hợp đồng và gia hạn",
+    "tables": [
+      "HopDong",
+      "MocGiaHan"
+    ],
+    "action": "nhacGiaHan",
+    "original_rule": "ngày còn lại, cảnh báo trước hạn; đã chấm dứt không nhắc",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "CORE"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kinh doanh",
+    "id": "KD05",
+    "name": "Chăm sóc khách hàng",
+    "tables": [
+      "KhachHang",
+      "TuongTac"
+    ],
+    "action": "lapLichChamSoc",
+    "original_rule": "số ngày từ tương tác cuối, khách chưa từng tương tác là ngoại lệ",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "CORE"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Nhân sự",
+    "id": "NS01",
+    "name": "Hồ sơ nhân sự",
+    "tables": [
+      "NhanSu",
+      "TaiLieu"
+    ],
+    "action": "capNhatHoSo",
+    "original_rule": "thâm niên theo ngày vào làm; ngày tương lai bị từ chối",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "CORE"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Nhân sự",
+    "id": "NS02",
+    "name": "Chấm công và ca",
+    "tables": [
+      "CaLam",
+      "ChamCong"
+    ],
+    "action": "duyetChamCong",
+    "original_rule": "giờ làm qua nửa đêm = 24 × MOD(giờ ra − giờ vào,1)",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "NS01"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Nhân sự",
+    "id": "NS03",
+    "name": "Nghỉ phép",
+    "tables": [
+      "SoDuPhep",
+      "DonNghi"
+    ],
+    "action": "duyetNghiPhep",
+    "original_rule": "phép còn = đầu kỳ + phát sinh − phép đã duyệt; không trừ đơn hủy",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "NS01"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Nhân sự",
+    "id": "NS04",
+    "name": "Lương quản trị",
+    "tables": [
+      "BangLuong",
+      "KhoanDieuChinh"
+    ],
+    "action": "chotBangLuong",
+    "original_rule": "thực nhận quản trị = lương thỏa thuận + phụ cấp − khấu trừ; quy tắc thuế/BHXH cần cấu hình riêng",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "NS01",
+      "NS02",
+      "NS03"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Nhân sự",
+    "id": "NS05",
+    "name": "Tuyển dụng và cộng tác viên",
+    "tables": [
+      "UngVien",
+      "VongTuyen"
+    ],
+    "action": "chuyenVongTuyen",
+    "original_rule": "thời gian tuyển = ngày nhận việc − ngày mở vị trí; chưa tuyển trả trống",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "CORE"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Marketing",
+    "id": "MK01",
+    "name": "Lịch nội dung",
+    "tables": [
+      "NoiDung",
+      "Kenh"
+    ],
+    "action": "lapLichDang",
+    "original_rule": "tỷ lệ đúng hạn = bài đã đăng đúng hạn / bài phải đăng",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P0",
+    "dependencies": [
+      "CORE"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Marketing",
+    "id": "MK02",
+    "name": "Chiến dịch và ngân sách",
+    "tables": [
+      "ChienDich",
+      "ChiPhi"
+    ],
+    "action": "khoaNganSach",
+    "original_rule": "ngân sách còn = dự toán − chi phí xác nhận",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "CORE"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Marketing",
+    "id": "MK03",
+    "name": "Lead theo nguồn",
+    "tables": [
+      "Lead",
+      "NguonLead"
+    ],
+    "action": "ganNguonLead",
+    "original_rule": "tỷ lệ chuyển đổi = lead thành khách / lead hợp lệ theo cùng kỳ",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "KD02"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Marketing",
+    "id": "MK04",
+    "name": "Hiệu quả kênh",
+    "tables": [
+      "ChiSoKenh",
+      "ChiPhi"
+    ],
+    "action": "tongHopKenh",
+    "original_rule": "CPL = chi phí / lead hợp lệ; không cộng trung bình CPL từng ngày",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "MK02",
+      "MK03"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Marketing",
+    "id": "MK05",
+    "name": "Thử nghiệm nội dung",
+    "tables": [
+      "ThuNghiem",
+      "BienThe"
+    ],
+    "action": "chotThuNghiem",
+    "original_rule": "tỷ lệ phản hồi = phản hồi / lượt tiếp cận; thiếu mẫu số hiển thị chưa đủ dữ liệu",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "MK01"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kế toán quản trị",
+    "id": "KT01",
+    "name": "Thu chi và dòng tiền",
+    "tables": [
+      "GiaoDich",
+      "TaiKhoanTien"
+    ],
+    "action": "ghiNhanGiaoDich",
+    "original_rule": "số dư = đầu kỳ + thu duyệt − chi duyệt; chặn giao dịch kỳ khóa",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P0",
+    "dependencies": [
+      "CORE"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kế toán quản trị",
+    "id": "KT02",
+    "name": "Công nợ phải thu",
+    "tables": [
+      "PhaiThu",
+      "ThanhToan"
+    ],
+    "action": "doiSoatThu",
+    "original_rule": "còn phải thu = gốc − thanh toán xác nhận; trả dư tạo ngoại lệ",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "KD01",
+      "KT01"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kế toán quản trị",
+    "id": "KT03",
+    "name": "Công nợ phải trả",
+    "tables": [
+      "PhaiTra",
+      "ThanhToan"
+    ],
+    "action": "doiSoatChi",
+    "original_rule": "còn phải trả = gốc − thanh toán xác nhận; không âm thầm ép về 0",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "KV03",
+      "KT01"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kế toán quản trị",
+    "id": "KT04",
+    "name": "Ngân sách và thực chi",
+    "tables": [
+      "NganSach",
+      "GiaoDich"
+    ],
+    "action": "kiemSoatVuotChi",
+    "original_rule": "chênh lệch = dự toán − thực chi theo hạng mục/kỳ",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "KT01"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kế toán quản trị",
+    "id": "KT05",
+    "name": "Lãi gộp theo đơn",
+    "tables": [
+      "DonHang",
+      "ChiTietDon",
+      "GiaVon"
+    ],
+    "action": "tinhLaiGop",
+    "original_rule": "lãi gộp = doanh thu thuần − giá vốn theo dòng; thiếu giá vốn báo thiếu dữ liệu",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "KD01",
+      "KV02"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Sản xuất",
+    "id": "SX01",
+    "name": "Lệnh sản xuất",
+    "tables": [
+      "LenhSanXuat",
+      "CongDoan"
+    ],
+    "action": "phatHanhLenh",
+    "original_rule": "hoàn thành = lượng đạt / lượng kế hoạch; không tính lượng lỗi là đạt",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "KV01",
+      "SX02"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Sản xuất",
+    "id": "SX02",
+    "name": "Định mức vật tư",
+    "tables": [
+      "DinhMuc",
+      "VatTu"
+    ],
+    "action": "duTruVatTu",
+    "original_rule": "lượng cần = định mức × lượng kế hoạch × (1 + hao hụt cấu hình)",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "KV01"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Sản xuất",
+    "id": "SX03",
+    "name": "Tiến độ công đoạn",
+    "tables": [
+      "CongDoan",
+      "NhatKySX"
+    ],
+    "action": "capNhatTienDo",
+    "original_rule": "tiến độ trọng số = Σ(% đạt × trọng số) / Σ(trọng số)",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "SX01"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Sản xuất",
+    "id": "SX04",
+    "name": "Chất lượng và lỗi",
+    "tables": [
+      "PhieuKiem",
+      "LoaiLoi"
+    ],
+    "action": "ghiNhanLoi",
+    "original_rule": "tỷ lệ lỗi = số lượng lỗi / số lượng kiểm, chống đếm lặp mẫu",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "SX01"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Sản xuất",
+    "id": "SX05",
+    "name": "Giá thành lệnh",
+    "tables": [
+      "LenhSanXuat",
+      "XuatVatTu",
+      "ChiPhiSX"
+    ],
+    "action": "tinhGiaThanh",
+    "original_rule": "giá thành/đơn vị đạt = tổng chi phí hợp lệ / lượng đạt",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "SX01",
+      "SX02",
+      "SX03",
+      "SX04",
+      "KV02"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kho vận",
+    "id": "KV01",
+    "name": "Danh mục hàng và kho",
+    "tables": [
+      "SanPham",
+      "Kho"
+    ],
+    "action": "capNhatDanhMuc",
+    "original_rule": "mã hàng duy nhất; đơn vị tính và giới hạn min/max nhất quán",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P0",
+    "dependencies": [
+      "CORE"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kho vận",
+    "id": "KV02",
+    "name": "Nhập xuất tồn",
+    "tables": [
+      "PhieuKho",
+      "DongPhieuKho"
+    ],
+    "action": "ghiSoKho",
+    "original_rule": "tồn = đầu kỳ + nhập hợp lệ − xuất hợp lệ; cấm xuất âm nếu cấu hình",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P0",
+    "dependencies": [
+      "KV01"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kho vận",
+    "id": "KV03",
+    "name": "Mua hàng",
+    "tables": [
+      "YeuCauMua",
+      "DonMua"
+    ],
+    "action": "datMuaHang",
+    "original_rule": "chênh lệch nhận = lượng đặt − lượng nhận hợp lệ",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "KV01"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kho vận",
+    "id": "KV04",
+    "name": "Kiểm kê",
+    "tables": [
+      "DotKiemKe",
+      "DongKiemKe"
+    ],
+    "action": "chotKiemKe",
+    "original_rule": "lệch = đếm thực tế − tồn sổ tại thời điểm chốt",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "KV02"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  },
+  {
+    "department": "Kho vận",
+    "id": "KV05",
+    "name": "Cảnh báo bổ sung",
+    "tables": [
+      "MucTon",
+      "TonKho"
+    ],
+    "action": "deXuatBoSung",
+    "original_rule": "lượng gợi ý = MAX(0, tồn mục tiêu − tồn khả dụng)",
+    "status": "draft_for_review",
+    "target_version": "3.0.0-vi",
+    "legacySku": null,
+    "priority": "P1",
+    "dependencies": [
+      "KV02"
+    ],
+    "platforms_target": [
+      "Excel365",
+      "Web"
+    ],
+    "implemented": false,
+    "gate_status": {
+      "G0": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G_EXCEL": "NOT_RUN",
+      "G_WEB": "NOT_RUN",
+      "G_OPS": "NOT_RUN"
+    }
+  }
+]

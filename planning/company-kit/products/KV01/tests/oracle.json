@@ -1,0 +1,39 @@
+{
+  "product_id": "KV01",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "min_qty": "10",
+        "max_qty": "100"
+      },
+      "expected": {
+        "value": true,
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "min_qty": "20",
+        "max_qty": "10"
+      },
+      "expected": {
+        "value": false,
+        "error": "INVALID_STOCK_LIMITS"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "min_qty": null,
+        "max_qty": "100"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

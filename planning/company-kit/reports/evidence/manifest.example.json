@@ -1,0 +1,18 @@
+{
+  "task_id": "AUDIT",
+  "source_revision": "REPLACE_WITH_ACTUAL_REVISION",
+  "timestamp": "2026-09-29T10:00:00+07:00",
+  "environment": "REPLACE_WITH_ACTUAL_ENVIRONMENT",
+  "reviewer": "REPLACE_WITH_ACTUAL_REVIEWER",
+  "gates": [
+    {
+      "id": "REVIEW",
+      "status": "NOT_RUN",
+      "expected": "Repo và môi trường được audit",
+      "actual": "Chưa chạy",
+      "command": "NOT_RUN",
+      "exit_code": null,
+      "files": []
+    }
+  ]
+}

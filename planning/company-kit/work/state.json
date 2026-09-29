@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "tasks": {
+    "AUDIT": {
+      "phase": "verify",
+      "note": "Đang kiểm tra report audit",
+      "evidence": null,
+      "updated_at": "2026-09-29T13:02:42.925941+07:00"
+    },
+    "CORE": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KV01": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KD01": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KT01": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KV02": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "MK01": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KD02": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KD03": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KD04": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KD05": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "MK02": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "MK03": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "MK04": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "MK05": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KV03": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KV04": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KV05": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KT02": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KT03": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KT04": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "KT05": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "NS01": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "NS02": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "NS03": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "NS04": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "NS05": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "SX02": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "SX01": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "SX03": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "SX04": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "SX05": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "INTEGRATION": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "OPERATIONS": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    },
+    "RELEASE": {
+      "phase": "pending",
+      "note": "Chưa thực thi trên repo thật",
+      "evidence": null
+    }
+  }
+}

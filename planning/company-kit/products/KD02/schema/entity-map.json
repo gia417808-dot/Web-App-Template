@@ -1,0 +1,93 @@
+{
+  "product_id": "KD02",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "CoHoi": {
+      "owner": "KD02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": true,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "lead_id",
+          "type": "ref.Lead",
+          "nullable": true,
+          "reference": "Lead"
+        },
+        {
+          "name": "stage_id",
+          "type": "ref.GiaiDoan",
+          "nullable": false,
+          "reference": "GiaiDoan"
+        },
+        {
+          "name": "value_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "probability_pct",
+          "type": "percent",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "expected_close_date",
+          "type": "date",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "GiaiDoan": {
+      "owner": "KD02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "sort_order",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "default_probability_pct",
+          "type": "percent",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

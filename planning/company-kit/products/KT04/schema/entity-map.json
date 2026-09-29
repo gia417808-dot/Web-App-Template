@@ -1,0 +1,148 @@
+{
+  "product_id": "KT04",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "NganSach": {
+      "owner": "KT04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "category_id",
+          "type": "ref.HangMucNganSach",
+          "nullable": false,
+          "reference": "HangMucNganSach"
+        },
+        {
+          "name": "period_start",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "period_end",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "budget_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "revision",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "GiaoDich": {
+      "owner": "KT01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "account_id",
+          "type": "ref.TaiKhoanTien",
+          "nullable": false,
+          "reference": "TaiKhoanTien"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "direction",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "amount_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "category_id",
+          "type": "ref.HangMucNganSach",
+          "nullable": true,
+          "reference": "HangMucNganSach"
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "transfer_id",
+          "type": "uuid",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "reversal_of_id",
+          "type": "ref.GiaoDich",
+          "nullable": true,
+          "reference": "GiaoDich"
+        },
+        {
+          "name": "source_type",
+          "type": "text",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "source_id",
+          "type": "uuid",
+          "nullable": true,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "HangMucNganSach": {
+      "owner": "KT04",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "parent_id",
+          "type": "ref.HangMucNganSach",
+          "nullable": true,
+          "reference": "HangMucNganSach"
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

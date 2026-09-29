@@ -1,0 +1,15 @@
+{
+  "product_id": "KV05",
+  "metric_id": "KV05_primary",
+  "inputs": [
+    "target",
+    "available"
+  ],
+  "excel_example": "=MAX(0,[@target]-[@available])",
+  "backend_requirement": "available=on_hand-reserved; target cấu hình theo SKU/kho; không tự đặt mua; tồn khả dụng vượt target gợi ý 0.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

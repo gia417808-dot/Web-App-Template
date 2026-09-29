@@ -1,0 +1,148 @@
+{
+  "product_id": "KT05",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "DonHang": {
+      "owner": "KD01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": false,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "quote_id",
+          "type": "ref.BaoGia",
+          "nullable": true,
+          "reference": "BaoGia"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "confirmed_at",
+          "type": "timestamp",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "ChiTietDon": {
+      "owner": "KD01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "ref.DonHang",
+          "nullable": false,
+          "reference": "DonHang"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "sequence",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "product_name_snapshot",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit_snapshot",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "quantity",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit_price_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "discount_pct",
+          "type": "percent",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "line_total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "GiaVon": {
+      "owner": "KV02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "order_line_id",
+          "type": "ref.ChiTietDon",
+          "nullable": true,
+          "reference": "ChiTietDon"
+        },
+        {
+          "name": "ledger_id",
+          "type": "ref.StockLedger",
+          "nullable": false,
+          "reference": "StockLedger"
+        },
+        {
+          "name": "cost_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "costing_policy_version",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

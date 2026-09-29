@@ -1,0 +1,81 @@
+{
+  "product_id": "SX02",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "DinhMuc": {
+      "owner": "SX02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "version",
+          "type": "integer",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "effective_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "VatTu": {
+      "owner": "KV01",
+      "kind": "alias",
+      "source": "SanPham",
+      "filter": "kind includes material; not a duplicate master table"
+    },
+    "DongDinhMuc": {
+      "owner": "SX02",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "bom_id",
+          "type": "ref.DinhMuc",
+          "nullable": false,
+          "reference": "DinhMuc"
+        },
+        {
+          "name": "material_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "per_unit_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "waste_pct",
+          "type": "percent",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

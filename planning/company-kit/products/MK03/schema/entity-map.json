@@ -1,0 +1,87 @@
+{
+  "product_id": "MK03",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "Lead": {
+      "owner": "MK03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "source_id",
+          "type": "ref.NguonLead",
+          "nullable": false,
+          "reference": "NguonLead"
+        },
+        {
+          "name": "captured_at",
+          "type": "timestamp",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "customer_id",
+          "type": "ref.KhachHang",
+          "nullable": true,
+          "reference": "KhachHang"
+        },
+        {
+          "name": "converted_at",
+          "type": "timestamp",
+          "nullable": true,
+          "reference": null
+        },
+        {
+          "name": "merged_into_id",
+          "type": "ref.Lead",
+          "nullable": true,
+          "reference": "Lead"
+        }
+      ],
+      "common_fields": true
+    },
+    "NguonLead": {
+      "owner": "MK03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "channel_id",
+          "type": "ref.Kenh",
+          "nullable": true,
+          "reference": "Kenh"
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

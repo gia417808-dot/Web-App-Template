@@ -1,0 +1,69 @@
+{
+  "product_id": "KV01",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "SanPham": {
+      "owner": "KV01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "sku",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "kind",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "Kho": {
+      "owner": "KV01",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

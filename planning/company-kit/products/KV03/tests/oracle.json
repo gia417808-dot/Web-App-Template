@@ -1,0 +1,39 @@
+{
+  "product_id": "KV03",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "ordered": "100",
+        "received": "60"
+      },
+      "expected": {
+        "value": "40",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "ordered": "10",
+        "received": "12"
+      },
+      "expected": {
+        "value": "-2",
+        "error": "OVER_RECEIPT"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "ordered": null,
+        "received": "60"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

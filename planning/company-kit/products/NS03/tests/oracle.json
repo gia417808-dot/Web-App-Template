@@ -1,0 +1,42 @@
+{
+  "product_id": "NS03",
+  "cases": [
+    {
+      "case": "normal",
+      "input": {
+        "opening": "12",
+        "accrued": "1",
+        "approved_used": "3"
+      },
+      "expected": {
+        "value": "10",
+        "error": null
+      }
+    },
+    {
+      "case": "boundary_1",
+      "input": {
+        "opening": "1",
+        "accrued": "0",
+        "approved_used": "2"
+      },
+      "expected": {
+        "value": null,
+        "error": "INSUFFICIENT_LEAVE"
+      }
+    },
+    {
+      "case": "blank_required",
+      "input": {
+        "opening": null,
+        "accrued": "1",
+        "approved_used": "3"
+      },
+      "expected": {
+        "value": null,
+        "error": "REQUIRED_FIELD"
+      }
+    }
+  ],
+  "note": "Expected nhập cố định theo ví dụ nghiệp vụ; chưa chạy against implementation. Bổ sung workflow/status/aggregate cases trong TEST_PLAN."
+}

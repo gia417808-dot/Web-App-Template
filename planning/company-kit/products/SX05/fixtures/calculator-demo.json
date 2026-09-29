@@ -1,0 +1,247 @@
+{
+  "organization": "DEMO_ONLY",
+  "product_id": "SX05",
+  "kind": "calculation_inputs_not_relational_seed",
+  "rows": [
+    {
+      "demo_id": "SX05-DEMO-001",
+      "label": "Dữ liệu mẫu Giá thành lệnh 01",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-002",
+      "label": "Dữ liệu mẫu Giá thành lệnh 02",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-003",
+      "label": "Dữ liệu mẫu Giá thành lệnh 03",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-004",
+      "label": "Dữ liệu mẫu Giá thành lệnh 04",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-005",
+      "label": "Dữ liệu mẫu Giá thành lệnh 05",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-006",
+      "label": "Dữ liệu mẫu Giá thành lệnh 06",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-007",
+      "label": "Dữ liệu mẫu Giá thành lệnh 07",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-008",
+      "label": "Dữ liệu mẫu Giá thành lệnh 08",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-009",
+      "label": "Dữ liệu mẫu Giá thành lệnh 09",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-010",
+      "label": "Dữ liệu mẫu Giá thành lệnh 10",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-011",
+      "label": "Dữ liệu mẫu Giá thành lệnh 11",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-012",
+      "label": "Dữ liệu mẫu Giá thành lệnh 12",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-013",
+      "label": "Dữ liệu mẫu Giá thành lệnh 13",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-014",
+      "label": "Dữ liệu mẫu Giá thành lệnh 14",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-015",
+      "label": "Dữ liệu mẫu Giá thành lệnh 15",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-016",
+      "label": "Dữ liệu mẫu Giá thành lệnh 16",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-017",
+      "label": "Dữ liệu mẫu Giá thành lệnh 17",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-018",
+      "label": "Dữ liệu mẫu Giá thành lệnh 18",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-019",
+      "label": "Dữ liệu mẫu Giá thành lệnh 19",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-020",
+      "label": "Dữ liệu mẫu Giá thành lệnh 20",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-021",
+      "label": "Dữ liệu mẫu Giá thành lệnh 21",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-022",
+      "label": "Dữ liệu mẫu Giá thành lệnh 22",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-023",
+      "label": "Dữ liệu mẫu Giá thành lệnh 23",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-024",
+      "label": "Dữ liệu mẫu Giá thành lệnh 24",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-025",
+      "label": "Dữ liệu mẫu Giá thành lệnh 25",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-026",
+      "label": "Dữ liệu mẫu Giá thành lệnh 26",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-027",
+      "label": "Dữ liệu mẫu Giá thành lệnh 27",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-028",
+      "label": "Dữ liệu mẫu Giá thành lệnh 28",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-029",
+      "label": "Dữ liệu mẫu Giá thành lệnh 29",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    },
+    {
+      "demo_id": "SX05-DEMO-030",
+      "label": "Dữ liệu mẫu Giá thành lệnh 30",
+      "input": {
+        "valid_cost": "1000000",
+        "good_qty": "80"
+      }
+    }
+  ]
+}

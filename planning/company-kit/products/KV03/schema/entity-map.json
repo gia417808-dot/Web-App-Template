@@ -1,0 +1,174 @@
+{
+  "product_id": "KV03",
+  "dictionary": "../../../db/LOGICAL_DATA_DICTIONARY.json",
+  "entities": {
+    "YeuCauMua": {
+      "owner": "KV03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "requested_on",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "reason",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "DonMua": {
+      "owner": "KV03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "supplier_id",
+          "type": "ref.NhaCungCap",
+          "nullable": false,
+          "reference": "NhaCungCap"
+        },
+        {
+          "name": "request_id",
+          "type": "ref.YeuCauMua",
+          "nullable": true,
+          "reference": "YeuCauMua"
+        },
+        {
+          "name": "business_date",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "DongYeuCauMua": {
+      "owner": "KV03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "request_id",
+          "type": "ref.YeuCauMua",
+          "nullable": false,
+          "reference": "YeuCauMua"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "quantity",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "required_on",
+          "type": "date",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "DongDonMua": {
+      "owner": "KV03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "purchase_order_id",
+          "type": "ref.DonMua",
+          "nullable": false,
+          "reference": "DonMua"
+        },
+        {
+          "name": "product_id",
+          "type": "ref.SanPham",
+          "nullable": false,
+          "reference": "SanPham"
+        },
+        {
+          "name": "ordered_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "unit_price_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        },
+        {
+          "name": "line_total_vnd",
+          "type": "money",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    },
+    "NhanHangMua": {
+      "owner": "KV03",
+      "kind": "table",
+      "columns": [
+        {
+          "name": "purchase_line_id",
+          "type": "ref.DongDonMua",
+          "nullable": false,
+          "reference": "DongDonMua"
+        },
+        {
+          "name": "warehouse_line_id",
+          "type": "ref.DongPhieuKho",
+          "nullable": false,
+          "reference": "DongPhieuKho"
+        },
+        {
+          "name": "received_qty",
+          "type": "quantity",
+          "nullable": false,
+          "reference": null
+        }
+      ],
+      "common_fields": true
+    }
+  },
+  "note": "Đọc common columns và constraints trung tâm; chưa có physical migration."
+}

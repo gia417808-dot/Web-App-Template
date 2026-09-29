@@ -1,0 +1,247 @@
+{
+  "organization": "DEMO_ONLY",
+  "product_id": "KD04",
+  "kind": "calculation_inputs_not_relational_seed",
+  "rows": [
+    {
+      "demo_id": "KD04-DEMO-001",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 01",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-002",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 02",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-003",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 03",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-004",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 04",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-005",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 05",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-006",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 06",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-007",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 07",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-008",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 08",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-009",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 09",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-010",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 10",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-011",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 11",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-012",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 12",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-013",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 13",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-014",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 14",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-015",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 15",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-016",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 16",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-017",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 17",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-018",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 18",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-019",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 19",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-020",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 20",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-021",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 21",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-022",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 22",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-023",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 23",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-024",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 24",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-025",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 25",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-026",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 26",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-027",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 27",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-028",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 28",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-029",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 29",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    },
+    {
+      "demo_id": "KD04-DEMO-030",
+      "label": "Dữ liệu mẫu Hợp đồng và gia hạn 30",
+      "input": {
+        "expiry_date": "2026-10-10",
+        "as_of_date": "2026-10-03"
+      }
+    }
+  ]
+}

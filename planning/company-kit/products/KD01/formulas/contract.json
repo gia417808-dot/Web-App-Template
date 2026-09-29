@@ -1,0 +1,16 @@
+{
+  "product_id": "KD01",
+  "metric_id": "KD01_primary",
+  "inputs": [
+    "qty",
+    "unit_price",
+    "discount_pct"
+  ],
+  "excel_example": "=ROUND([@qty]*[@unit_price]*(1-[@discount_pct]/100),0)",
+  "backend_requirement": "qty > 0; unit_price nguyên >= 0; discount_pct trong [0,100]. Làm tròn HALF_UP theo dòng rồi cộng; hủy đơn không cộng doanh thu.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}

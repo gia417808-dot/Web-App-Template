@@ -1,0 +1,30 @@
+{
+  "department": "Sản xuất",
+  "id": "SX04",
+  "name": "Chất lượng và lỗi",
+  "tables": [
+    "PhieuKiem",
+    "LoaiLoi"
+  ],
+  "action": "ghiNhanLoi",
+  "original_rule": "tỷ lệ lỗi = số lượng lỗi / số lượng kiểm, chống đếm lặp mẫu",
+  "status": "draft_for_review",
+  "target_version": "3.0.0-vi",
+  "legacySku": null,
+  "priority": "P1",
+  "dependencies": [
+    "SX01"
+  ],
+  "platforms_target": [
+    "Excel365",
+    "Web"
+  ],
+  "implemented": false,
+  "gate_status": {
+    "G0": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G_EXCEL": "NOT_RUN",
+    "G_WEB": "NOT_RUN",
+    "G_OPS": "NOT_RUN"
+  }
+}

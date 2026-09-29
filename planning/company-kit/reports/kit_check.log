@@ -1,0 +1,7 @@
+{
+  "kit_check": "PASS",
+  "products": 30,
+  "tasks": 35,
+  "json_files_checked": 155,
+  "warning": "Chỉ kiểm tra kit; application gates vẫn cần thực thi."
+}

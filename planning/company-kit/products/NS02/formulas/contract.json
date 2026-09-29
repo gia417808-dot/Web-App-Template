@@ -1,0 +1,15 @@
+{
+  "product_id": "NS02",
+  "metric_id": "NS02_primary",
+  "inputs": [
+    "clock_in",
+    "clock_out"
+  ],
+  "excel_example": "=24*MOD([@clock_out]-[@clock_in],1)",
+  "backend_requirement": "Ca <24 giờ, giờ bằng nhau trả lỗi AMBIGUOUS_SHIFT; trên 24 giờ phải dùng datetime; trừ nghỉ bằng trường cấu hình riêng trước khi tính lương.",
+  "rounding": "VND: HALF_UP per line; ratios/quantities: exact decimal until display",
+  "null_policy": "null plus reason; do not coerce to zero",
+  "status": "draft_example_not_full_workbook",
+  "oracle_file": "../tests/oracle.json",
+  "google_sheets": "NOT_SUPPORTED_THIS_SPRINT"
+}
