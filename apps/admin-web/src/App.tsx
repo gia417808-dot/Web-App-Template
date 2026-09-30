@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'KV01' | 'KD01' | 'KT01' | 'KV02' | 'MK01' | 'KD02' | 'KD03'>('KV01');
+  const [activeTab, setActiveTab] = useState<'KV01' | 'KD01' | 'KT01' | 'KV02' | 'MK01' | 'KD02' | 'KD03' | 'KD04'>('KV01');
   const [items, setItems] = useState([]);
   const [error, setError] = useState('');
   const [kpi, setKpi] = useState<number | null>(null);
@@ -14,6 +14,7 @@ export default function App() {
     if (activeTab === 'KV02') url = '/api/kv02/phieukho';
     if (activeTab === 'KD02') url = '/api/kd02/cohoi';
     if (activeTab === 'KD03') url = '/api/kd03/muctieu';
+    if (activeTab === 'KD04') url = '/api/kd04/hopdong';
     if (activeTab === 'MK01') {
       url = '/api/mk01/noidung';
       fetch('/api/mk01/noidung/kpi', { headers: { 'x-tenant-id': 'org-123' } })
@@ -38,6 +39,7 @@ export default function App() {
       <button onClick={() => setActiveTab('MK01')}>Nội Dung (MK01)</button>
       <button onClick={() => setActiveTab('KD02')}>Cơ Hội (KD02)</button>
       <button onClick={() => setActiveTab('KD03')}>Chỉ Tiêu (KD03)</button>
+      <button onClick={() => setActiveTab('KD04')}>Hợp Đồng (KD04)</button>
     </div>
     {error && <div className="error">{error}</div>}
     
@@ -103,6 +105,15 @@ export default function App() {
         <thead><tr><th>Kỳ Bắt Đầu</th><th>Kỳ Kết Thúc</th><th>Chỉ Tiêu (VND)</th><th>Doanh Thu (VND)</th><th>Tiến Độ (%)</th></tr></thead>
         <tbody>
           {items.map((i: any) => <tr key={i.id}><td>{i.period_start}</td><td>{i.period_end}</td><td>{i.target_vnd}</td><td>{i.confirmed_revenue_vnd}</td><td>{i.progress_pct?.toFixed(2)}</td></tr>)}
+        </tbody>
+      </table>
+    )}
+
+    {activeTab === 'KD04' && (
+      <table>
+        <thead><tr><th>Mã HĐ</th><th>Hết Hạn</th><th>Trạng Thái</th><th>Còn Lại (Ngày)</th><th>Cần Nhắc</th></tr></thead>
+        <tbody>
+          {items.map((i: any) => <tr key={i.id}><td>{i.code}</td><td>{i.expiry_date}</td><td>{i.status}</td><td>{i.days_remaining}</td><td>{i.should_remind ? 'CÓ' : 'KHÔNG'}</td></tr>)}
         </tbody>
       </table>
     )}
