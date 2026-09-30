@@ -1,21 +1,42 @@
 import React, { useEffect, useState } from 'react';
+
 export default function App() {
+  const [activeTab, setActiveTab] = useState<'KV01' | 'KD01'>('KV01');
   const [items, setItems] = useState([]);
   const [error, setError] = useState('');
+
   useEffect(() => {
-    fetch('/api/kv01/sanpham', { headers: { 'x-tenant-id': 'org-123' } })
+    const url = activeTab === 'KV01' ? '/api/kv01/sanpham' : '/api/kd01/donhang';
+    fetch(url, { headers: { 'x-tenant-id': 'org-123' } })
       .then(res => res.json())
       .then(data => setItems(data))
       .catch(e => setError(e.message));
-  }, []);
+  }, [activeTab]);
+
   return <div>
-    <h1>Danh Mục Hàng Hoá</h1>
+    <h1>Ứng dụng Quản trị</h1>
+    <div>
+      <button onClick={() => setActiveTab('KV01')}>Hàng Hóa (KV01)</button>
+      <button onClick={() => setActiveTab('KD01')}>Đơn Hàng (KD01)</button>
+    </div>
     {error && <div className="error">{error}</div>}
-    <table>
-      <thead><tr><th>SKU</th><th>Tên</th><th>Đơn vị</th><th>Min</th><th>Max</th></tr></thead>
-      <tbody>
-        {items.map((i: any) => <tr key={i.id}><td>{i.sku}</td><td>{i.name}</td><td>{i.unit}</td><td>{i.min_qty}</td><td>{i.max_qty}</td></tr>)}
-      </tbody>
-    </table>
+    
+    {activeTab === 'KV01' && (
+      <table>
+        <thead><tr><th>SKU</th><th>Tên</th><th>Đơn vị</th><th>Min</th><th>Max</th></tr></thead>
+        <tbody>
+          {items.map((i: any) => <tr key={i.id}><td>{i.sku}</td><td>{i.name}</td><td>{i.unit}</td><td>{i.min_qty}</td><td>{i.max_qty}</td></tr>)}
+        </tbody>
+      </table>
+    )}
+
+    {activeTab === 'KD01' && (
+      <table>
+        <thead><tr><th>Mã Đơn</th><th>Khách Hàng</th><th>Ngày</th><th>Trạng Thái</th><th>Tổng Tiền</th></tr></thead>
+        <tbody>
+          {items.map((i: any) => <tr key={i.id}><td>{i.code}</td><td>{i.customer_id}</td><td>{i.business_date}</td><td>{i.status}</td><td>{i.total_vnd}</td></tr>)}
+        </tbody>
+      </table>
+    )}
   </div>;
 }

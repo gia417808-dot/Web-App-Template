@@ -1,6 +1,8 @@
 {
   "name": "@web-app-template/workbook-engine",
   "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "workbook:generate": "echo 'Not implemented yet'"

@@ -1,6 +1,7 @@
 import express from 'express';
 import { tenantMiddleware } from '@web-app-template/auth-audit';
 import kv01Router from './routes/kv01';
+import kd01Router from './routes/kd01';
 import { Client } from 'pg';
 import dotenv from 'dotenv';
 import path from 'node:path';
@@ -24,5 +25,6 @@ app.get('/health', (req, res) => res.send('OK'));
 app.get('/ready', (req, res) => res.send('Ready'));
 
 app.use('/api/kv01', kv01Router);
+app.use('/api/kd01', kd01Router);
 
 export { app };

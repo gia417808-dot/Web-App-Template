@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { getTenantId } from '@web-app-template/auth-audit';
 import { validateStockLimits } from '@web-app-template/domain';
-import { generateKv01Workbook } from '@web-app-template/workbook-engine/dist/kv01';
+import { generateKv01Workbook } from '@web-app-template/workbook-engine';
 
 const router = Router();
 
