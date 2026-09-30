@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'KV01' | 'KD01' | 'KT01' | 'KV02' | 'MK01'>('KV01');
+  const [activeTab, setActiveTab] = useState<'KV01' | 'KD01' | 'KT01' | 'KV02' | 'MK01' | 'KD02'>('KV01');
   const [items, setItems] = useState([]);
   const [error, setError] = useState('');
   const [kpi, setKpi] = useState<number | null>(null);
@@ -12,6 +12,7 @@ export default function App() {
     if (activeTab === 'KD01') url = '/api/kd01/donhang';
     if (activeTab === 'KT01') url = '/api/kt01/giaodich';
     if (activeTab === 'KV02') url = '/api/kv02/phieukho';
+    if (activeTab === 'KD02') url = '/api/kd02/cohoi';
     if (activeTab === 'MK01') {
       url = '/api/mk01/noidung';
       fetch('/api/mk01/noidung/kpi', { headers: { 'x-tenant-id': 'org-123' } })
@@ -34,6 +35,7 @@ export default function App() {
       <button onClick={() => setActiveTab('KT01')}>Giao Dịch (KT01)</button>
       <button onClick={() => setActiveTab('KV02')}>Phiếu Kho (KV02)</button>
       <button onClick={() => setActiveTab('MK01')}>Nội Dung (MK01)</button>
+      <button onClick={() => setActiveTab('KD02')}>Cơ Hội (KD02)</button>
     </div>
     {error && <div className="error">{error}</div>}
     
@@ -83,6 +85,15 @@ export default function App() {
           </tbody>
         </table>
       </div>
+    )}
+
+    {activeTab === 'KD02' && (
+      <table>
+        <thead><tr><th>Mã CH</th><th>Giá Trị</th><th>Xác Suất (%)</th><th>Trạng Thái</th><th>Giá Trị Kỳ Vọng</th></tr></thead>
+        <tbody>
+          {items.map((i: any) => <tr key={i.id}><td>{i.code}</td><td>{i.value_vnd}</td><td>{i.probability_pct}</td><td>{i.status}</td><td>{i.expected_value}</td></tr>)}
+        </tbody>
+      </table>
     )}
   </div>;
 }

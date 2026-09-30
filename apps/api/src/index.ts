@@ -5,6 +5,7 @@ import kd01Router from './routes/kd01';
 import { kt01Router } from './routes/kt01';
 import { kv02Router } from './routes/kv02';
 import { mk01Router } from './routes/mk01';
+import { kd02Router } from './routes/kd02';
 import { Client } from 'pg';
 import dotenv from 'dotenv';
 import path from 'node:path';
@@ -32,5 +33,6 @@ app.use('/api/kd01', kd01Router);
 app.use('/api/kt01', kt01Router);
 app.use('/api/kv02', kv02Router);
 app.use('/api/mk01', mk01Router);
+app.use('/api/kd02', kd02Router);
 
 export { app };
