@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'KV01' | 'KD01' | 'KT01' | 'KV02'>('KV01');
+  const [activeTab, setActiveTab] = useState<'KV01' | 'KD01' | 'KT01' | 'KV02' | 'MK01'>('KV01');
   const [items, setItems] = useState([]);
   const [error, setError] = useState('');
+  const [kpi, setKpi] = useState<number | null>(null);
 
   useEffect(() => {
     let url = '/api/kv01/sanpham';
+    setKpi(null);
     if (activeTab === 'KD01') url = '/api/kd01/donhang';
     if (activeTab === 'KT01') url = '/api/kt01/giaodich';
     if (activeTab === 'KV02') url = '/api/kv02/phieukho';
+    if (activeTab === 'MK01') {
+      url = '/api/mk01/noidung';
+      fetch('/api/mk01/noidung/kpi', { headers: { 'x-tenant-id': 'org-123' } })
+        .then(res => res.json())
+        .then(data => setKpi(data.onTimePublishRate))
+        .catch(console.error);
+    }
 
     fetch(url, { headers: { 'x-tenant-id': 'org-123' } })
       .then(res => res.json())
@@ -24,6 +33,7 @@ export default function App() {
       <button onClick={() => setActiveTab('KD01')}>Đơn Hàng (KD01)</button>
       <button onClick={() => setActiveTab('KT01')}>Giao Dịch (KT01)</button>
       <button onClick={() => setActiveTab('KV02')}>Phiếu Kho (KV02)</button>
+      <button onClick={() => setActiveTab('MK01')}>Nội Dung (MK01)</button>
     </div>
     {error && <div className="error">{error}</div>}
     
@@ -61,6 +71,18 @@ export default function App() {
           {items.map((i: any) => <tr key={i.id}><td>{i.code}</td><td>{i.warehouse_id}</td><td>{i.business_date}</td><td>{i.movement_type}</td><td>{i.status}</td></tr>)}
         </tbody>
       </table>
+    )}
+
+    {activeTab === 'MK01' && (
+      <div>
+        {kpi !== null && <h3>Tỷ lệ đăng đúng hạn: {kpi.toFixed(2)}%</h3>}
+        <table>
+          <thead><tr><th>Mã</th><th>Tiêu đề</th><th>Ngày Đăng</th><th>Trạng Thái</th></tr></thead>
+          <tbody>
+            {items.map((i: any) => <tr key={i.id}><td>{i.code}</td><td>{i.title}</td><td>{i.scheduled_at}</td><td>{i.status}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
     )}
   </div>;
 }
