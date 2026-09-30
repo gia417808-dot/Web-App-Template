@@ -14,10 +14,10 @@
       "updated_at": "2026-09-29T14:23:11.134146+07:00"
     },
     "KV01": {
-      "phase": "verify",
-      "note": "Verified KV01",
-      "evidence": null,
-      "updated_at": "2026-09-30T09:13:58.972876+07:00"
+      "phase": "done",
+      "note": "Hoan thanh",
+      "evidence": "reports/evidence/KV01/run-01/manifest.json",
+      "updated_at": "2026-09-30T09:20:09.819257+07:00"
     },
     "KD01": {
       "phase": "pending",
