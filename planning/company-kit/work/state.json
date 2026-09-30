@@ -32,9 +32,10 @@
       "updated_at": "2026-09-30T10:13:16.651792+07:00"
     },
     "KV02": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "done KV02",
+      "evidence": "reports/evidence/KV02/run-01/manifest.json",
+      "updated_at": "2026-09-30T10:38:38.071805+07:00"
     },
     "MK01": {
       "phase": "pending",
