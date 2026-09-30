@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'KV01' | 'KD01' | 'KT01' | 'KV02' | 'MK01' | 'KD02'>('KV01');
+  const [activeTab, setActiveTab] = useState<'KV01' | 'KD01' | 'KT01' | 'KV02' | 'MK01' | 'KD02' | 'KD03'>('KV01');
   const [items, setItems] = useState([]);
   const [error, setError] = useState('');
   const [kpi, setKpi] = useState<number | null>(null);
@@ -13,6 +13,7 @@ export default function App() {
     if (activeTab === 'KT01') url = '/api/kt01/giaodich';
     if (activeTab === 'KV02') url = '/api/kv02/phieukho';
     if (activeTab === 'KD02') url = '/api/kd02/cohoi';
+    if (activeTab === 'KD03') url = '/api/kd03/muctieu';
     if (activeTab === 'MK01') {
       url = '/api/mk01/noidung';
       fetch('/api/mk01/noidung/kpi', { headers: { 'x-tenant-id': 'org-123' } })
@@ -36,6 +37,7 @@ export default function App() {
       <button onClick={() => setActiveTab('KV02')}>Phiếu Kho (KV02)</button>
       <button onClick={() => setActiveTab('MK01')}>Nội Dung (MK01)</button>
       <button onClick={() => setActiveTab('KD02')}>Cơ Hội (KD02)</button>
+      <button onClick={() => setActiveTab('KD03')}>Chỉ Tiêu (KD03)</button>
     </div>
     {error && <div className="error">{error}</div>}
     
@@ -92,6 +94,15 @@ export default function App() {
         <thead><tr><th>Mã CH</th><th>Giá Trị</th><th>Xác Suất (%)</th><th>Trạng Thái</th><th>Giá Trị Kỳ Vọng</th></tr></thead>
         <tbody>
           {items.map((i: any) => <tr key={i.id}><td>{i.code}</td><td>{i.value_vnd}</td><td>{i.probability_pct}</td><td>{i.status}</td><td>{i.expected_value}</td></tr>)}
+        </tbody>
+      </table>
+    )}
+
+    {activeTab === 'KD03' && (
+      <table>
+        <thead><tr><th>Kỳ Bắt Đầu</th><th>Kỳ Kết Thúc</th><th>Chỉ Tiêu (VND)</th><th>Doanh Thu (VND)</th><th>Tiến Độ (%)</th></tr></thead>
+        <tbody>
+          {items.map((i: any) => <tr key={i.id}><td>{i.period_start}</td><td>{i.period_end}</td><td>{i.target_vnd}</td><td>{i.confirmed_revenue_vnd}</td><td>{i.progress_pct?.toFixed(2)}</td></tr>)}
         </tbody>
       </table>
     )}
