@@ -19,7 +19,11 @@
     "workbook:generate": "npm run workbook:generate --workspace=packages/workbook-engine"
   },
   "devDependencies": {
-    "typescript": "5.6.2",
-    "@types/node": "22.5.5"
+    "@types/node": "22.5.5",
+    "typescript": "5.6.2"
+  },
+  "dependencies": {
+    "object-inspect": "^1.13.4",
+    "supertest": "^7.3.0"
   }
 }

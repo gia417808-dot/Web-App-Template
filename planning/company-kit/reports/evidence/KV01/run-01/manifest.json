@@ -1,0 +1,32 @@
+{
+  "task_id": "KV01",
+  "branch": "feat/kv01-master-data",
+  "revision": "0ab1d2fafa9f26c2fa9e82ac6dfc4a13eab2db16",
+  "gates": [
+    {
+      "gate_id": "G0",
+      "status": "PASS",
+      "files": ["reports/evidence/KV01/run-01/verify.log"]
+    },
+    {
+      "gate_id": "G1",
+      "status": "PASS",
+      "files": ["reports/evidence/KV01/run-01/verify.log"]
+    },
+    {
+      "gate_id": "G_EXCEL",
+      "status": "PASS",
+      "files": ["reports/evidence/KV01/run-01/verify.log"]
+    },
+    {
+      "gate_id": "G_WEB",
+      "status": "PASS",
+      "files": ["reports/evidence/KV01/run-01/verify.log"]
+    },
+    {
+      "gate_id": "G_OPS",
+      "status": "PASS",
+      "files": ["reports/evidence/KV01/run-01/verify.log"]
+    }
+  ]
+}

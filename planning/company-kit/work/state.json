@@ -14,9 +14,10 @@
       "updated_at": "2026-09-29T14:23:11.134146+07:00"
     },
     "KV01": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "verify",
+      "note": "Verified KV01",
+      "evidence": null,
+      "updated_at": "2026-09-30T09:13:58.972876+07:00"
     },
     "KD01": {
       "phase": "pending",

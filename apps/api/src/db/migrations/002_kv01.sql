@@ -1,24 +1,25 @@
-CREATE TABLE "ToChuc" (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  name TEXT NOT NULL,
-  timezone TEXT NOT NULL,
-  currency TEXT NOT NULL,
-  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  row_version BIGINT NOT NULL DEFAULT 1,
-  deleted_at TIMESTAMPTZ
-);
-
-CREATE TABLE "NguoiDung" (
+CREATE TABLE "Kho" (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   organization_id UUID NOT NULL REFERENCES "ToChuc"(id),
-  email TEXT NOT NULL,
-  auth_subject TEXT NOT NULL,
-  role TEXT NOT NULL,
+  code TEXT NOT NULL,
+  name TEXT NOT NULL,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   row_version BIGINT NOT NULL DEFAULT 1,
-  deleted_at TIMESTAMPTZ,
-  UNIQUE(organization_id, email),
-  UNIQUE(auth_subject)
+  UNIQUE(organization_id, code)
+);
+
+CREATE TABLE "SanPham" (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id UUID NOT NULL REFERENCES "ToChuc"(id),
+  sku TEXT NOT NULL,
+  name TEXT NOT NULL,
+  unit TEXT NOT NULL,
+  kind TEXT NOT NULL,
+  min_qty DECIMAL NOT NULL DEFAULT 0,
+  max_qty DECIMAL NOT NULL DEFAULT 0,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  row_version BIGINT NOT NULL DEFAULT 1,
+  UNIQUE(organization_id, sku)
 );
