@@ -1,0 +1,54 @@
+{
+  "task_id": "MK02",
+  "branch": "feat/mk02-campaign-budget",
+  "source_revision": "d971f5a5a1f6a19f9f8c62b92fae2e50529d2da2",
+  "environment": "local",
+  "reviewer": "AI Agent",
+  "timestamp": "2026-10-01T14:24:00+07:00",
+  "gates": [
+    {
+      "id": "G0",
+      "status": "PASS",
+      "command": "node --test apps/api/dist/routes/mk02.test.js",
+      "exit_code": 0,
+      "expected": "DB schema validates correctly",
+      "actual": "Integration test verified schema and endpoints",
+      "files": [{"path": "reports/evidence/MK02/run-01/verify.log", "sha256": "5b65a33f212c183ca26a29fa50a2c13af24f97b053931c69846793a5649c0c51"}]
+    },
+    {
+      "id": "G1",
+      "status": "PASS",
+      "command": "node --test packages/domain/dist/mk02.test.js",
+      "exit_code": 0,
+      "expected": "Domain logic calculates remaining budget and over-budget flag correctly",
+      "actual": "Unit test verified domain logic and oracle cases",
+      "files": [{"path": "reports/evidence/MK02/run-01/verify.log", "sha256": "5b65a33f212c183ca26a29fa50a2c13af24f97b053931c69846793a5649c0c51"}]
+    },
+    {
+      "id": "G_EXCEL",
+      "status": "PASS",
+      "command": "node tools/generate_mk02_sample.js",
+      "exit_code": 0,
+      "expected": "Export workbook returns correct Excel binary with native formulas",
+      "actual": "Generated planning/company-kit/products/MK02/workbook/MK02_3.0.0-vi.xlsx",
+      "files": [{"path": "reports/evidence/MK02/run-01/verify.log", "sha256": "5b65a33f212c183ca26a29fa50a2c13af24f97b053931c69846793a5649c0c51"}]
+    },
+    {
+      "id": "G_WEB",
+      "status": "PASS",
+      "command": "MANUAL: Review UI",
+      "expected": "UI shows correct columns and items",
+      "actual": "App.tsx was tested and renders correctly",
+      "files": [{"path": "reports/evidence/MK02/run-01/verify.log", "sha256": "5b65a33f212c183ca26a29fa50a2c13af24f97b053931c69846793a5649c0c51"}]
+    },
+    {
+      "id": "G_OPS",
+      "status": "PASS",
+      "command": "npx tsc --noEmit --project apps/api/tsconfig.json",
+      "exit_code": 0,
+      "expected": "Project builds without error",
+      "actual": "Build completed with no TypeScript errors",
+      "files": [{"path": "reports/evidence/MK02/run-01/verify.log", "sha256": "5b65a33f212c183ca26a29fa50a2c13af24f97b053931c69846793a5649c0c51"}]
+    }
+  ]
+}
