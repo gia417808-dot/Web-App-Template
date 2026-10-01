@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'KV01' | 'KD01' | 'KT01' | 'KV02' | 'MK01' | 'KD02' | 'KD03' | 'KD04' | 'KD05' | 'MK02' | 'MK03'>('KV01');
+  const [activeTab, setActiveTab] = useState<'KV01' | 'KD01' | 'KT01' | 'KV02' | 'MK01' | 'KD02' | 'KD03' | 'KD04' | 'KD05'>('KV01');
   const [items, setItems] = useState([]);
   const [error, setError] = useState('');
   const [kpi, setKpi] = useState<number | null>(null);
@@ -23,14 +23,6 @@ export default function App() {
         .then(data => setKpi(data.onTimePublishRate))
         .catch(console.error);
     }
-    if (activeTab === 'MK02') url = '/api/mk02/chiendich';
-    if (activeTab === 'MK03') {
-      url = '/api/mk03/leads';
-      fetch('/api/mk03/kpi', { headers: { 'x-tenant-id': 'org-123' } })
-        .then(res => res.json())
-        .then(data => setKpi(data.rate * 100))
-        .catch(console.error);
-    }
 
     fetch(url, { headers: { 'x-tenant-id': 'org-123' } })
       .then(res => res.json())
@@ -50,8 +42,6 @@ export default function App() {
       <button onClick={() => setActiveTab('KD03')}>Chá»‰ TiÃªu (KD03)</button>
       <button onClick={() => setActiveTab('KD04')}>Há»£p Äá»“ng (KD04)</button>
       <button onClick={() => setActiveTab('KD05')}>Cham soc (KD05)</button>
-      <button onClick={() => setActiveTab('MK02')}>Chiến Dịch (MK02)</button>
-      <button onClick={() => setActiveTab('MK03')}>Lead Nguồn (MK03)</button>
     </div>
     {error && <div className="error">{error}</div>}
     
@@ -129,40 +119,6 @@ export default function App() {
         </tbody>
       </table>
     )}
-
-    {activeTab === 'MK02' && (
-      <table>
-        <thead><tr><th>Chiến Dịch</th><th>Ngân Sách</th><th>Đã Chi</th><th>Còn Lại</th><th>Quá Ngân Sách</th></tr></thead>
-        <tbody>
-          {items.map((i: any) => <tr key={i.id}><td>{i.ten_chien_dich}</td><td>{i.ngan_sach}</td><td>{i.da_chi}</td><td>{i.con_lai}</td><td>{i.qua_ngan_sach ? 'Có' : 'Không'}</td></tr>)}
-        </tbody>
-      </table>
-    )}
-
-    {activeTab === 'MK03' && (
-      <div>
-        {kpi !== null && <h3>Tỷ lệ chuyển đổi: {kpi.toFixed(2)}%</h3>}
-        <table>
-          <thead><tr><th>ID</th><th>Tên Lead</th><th>Trạng Thái</th><th>Nguồn ID</th><th>Ngày Tạo</th></tr></thead>
-          <tbody>
-            {items.map((i: any) => <tr key={i.id}><td>{i.id}</td><td>{i.ten_lead}</td><td>{i.trang_thai}</td><td>{i.nguon_id}</td><td>{i.ngay_tao}</td></tr>)}
-          </tbody>
-        </table>
-      </div>
-    )}
   </div>;
 }
 
-
-
-    {activeTab === 'MK03' && (
-      <div>
-        {kpi !== null && <h3>Tỷ lệ chuyển đổi: {kpi.toFixed(2)}%</h3>}
-        <table>
-          <thead><tr><th>ID</th><th>Tên Lead</th><th>Trạng Thái</th><th>Nguồn ID</th><th>Ngày Tạo</th></tr></thead>
-          <tbody>
-            {items.map((i: any) => <tr key={i.id}><td>{i.id}</td><td>{i.ten_lead}</td><td>{i.trang_thai}</td><td>{i.nguon_id}</td><td>{i.ngay_tao}</td></tr>)}
-          </tbody>
-        </table>
-      </div>
-    )}
