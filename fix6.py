@@ -1,4 +1,5 @@
-import express from 'express';
+﻿with open('apps/api/src/index.ts', 'w', encoding='utf-8') as f:
+    f.write('''import express from 'express';
 import { tenantMiddleware } from '@web-app-template/auth-audit';
 import kv01Router from './routes/kv01';
 import kd01Router from './routes/kd01';
@@ -41,3 +42,4 @@ app.use('/api/kd04', kd04Router);
 app.use('/api/kd05', kd05Router);
 
 export { app };
+''')
