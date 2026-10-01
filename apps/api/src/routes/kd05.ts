@@ -1,13 +1,13 @@
 import { Router } from 'express';
-import { getTenantId } from '@web-app-template/auth-audit';
-import { calculateDaysSinceLastInteraction, canScheduleInteraction } from '@web-app-template/domain';
+import { getDb } from '../db/index.js';
+import { calculateDaysSinceLastInteraction, canScheduleInteraction, TuongTac } from '@web-app-template/domain';
 
 const router = Router();
 
-router.get('/customers-care-status', async (req: any, res) => {
+router.get('/customers-care-status', async (req, res) => {
     try {
-        const organization_id = getTenantId(req);
-        const db = req.db;
+        const organization_id = req.user?.organization_id;
+        const db = getDb();
         const customers = await db.query('SELECT * FROM "KhachHang" WHERE organization_id = $1 AND deleted_at IS NULL', [organization_id]);
         
         const result = [];
@@ -31,16 +31,16 @@ router.get('/customers-care-status', async (req: any, res) => {
     }
 });
 
-router.post('/interactions', async (req: any, res) => {
+router.post('/interactions', async (req, res) => {
     try {
-        const organization_id = getTenantId(req);
+        const organization_id = req.user?.organization_id;
         const { customer_id, type, notes, interaction_date } = req.body;
         
         if (!customer_id || !type || !interaction_date) {
             return res.status(400).json({ error: 'Missing required fields' });
         }
 
-        const db = req.db;
+        const db = getDb();
         const interactionsRes = await db.query('SELECT * FROM "TuongTac" WHERE customer_id = $1 AND deleted_at IS NULL', [customer_id]);
         const mappedInteractions = interactionsRes.rows.map((i: any) => ({
             ...i,
@@ -62,10 +62,10 @@ router.post('/interactions', async (req: any, res) => {
     }
 });
 
-router.put('/interactions/:id/complete', async (req: any, res) => {
+router.put('/interactions/:id/complete', async (req, res) => {
     try {
-        const organization_id = getTenantId(req);
-        const db = req.db;
+        const organization_id = req.user?.organization_id;
+        const db = getDb();
         const result = await db.query(
             `UPDATE "TuongTac" SET status = 'COMPLETED', updated_at = NOW(), row_version = row_version + 1
              WHERE id = $1 AND organization_id = $2 AND status = 'PLANNED' RETURNING *`,
