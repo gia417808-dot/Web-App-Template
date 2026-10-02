@@ -1,5 +1,14 @@
 # Bàn giao hiện tại
-Mốc: 29/09/2026. Đã tạo bộ hồ sơ từ bản kế hoạch người dùng, chưa mở/sửa repo ứng dụng thật. Code hiện có trong kit chỉ là công cụ điều phối/kiểm tra kit.
-Task tiếp theo: AUDIT. Bắt đầu: git root/status/branch nếu là repo; hướng dẫn AGENTS hiện hữu; runtime/lockfile; kiểm tra legacy/release; xác định Excel và host.
-Chưa chạy: mọi gate ứng dụng, Excel, DB, deploy, backup thực tế. Đừng suy diễn có app chỉ từ 30 thư mục.
-Tiếp tục theo prompts/BOOTSTRAP hoặc RESUME; ghi source_revision, file đổi, lệnh, lỗi và hành động tiếp sau mỗi lát cắt.
+Mốc: Hiện tại. Đã hoàn thành triển khai phân hệ MK04 (Hiệu quả kênh).
+Nhánh làm việc hiện tại: `feat/mk04-hieu-qua-kenh`.
+
+**Các công việc đã thực hiện cho MK04:**
+- Thiết kế Schema `ChiSoKenh` (013_mk04.sql) có `channel_id`, `period_start`, `period_end`, lưu CPL.
+- Xây dựng Domain logic `mk04.ts` xử lý tính CPL và chuyển đổi trạng thái `DRAFT` ➔ `VERIFIED` ➔ `LOCKED`.
+- Tạo API endpoints `tong-hop` tính toán dữ liệu trực tiếp từ bảng `ChiPhi` (MK02) và `Lead` (MK03), xuất Excel với công thức Native.
+- Đã sửa lỗi mất mát nội dung tệp tin do bug git watcher trên Windows. Khôi phục các tệp tin `mk03.ts` thông qua mã giả lập (Do commit 0-byte từ phiên trước đã nằm trong history). Cập nhật `kd05.ts` lỗi type `getDb`.
+- Vượt các check Type và bài test. `G_EXCEL` đã chạy lấy file `MK04_3.0.0-vi.xlsx`.
+- Hệ thống đã tự động Checkpoint `done` qua `rpa.py`.
+
+**Task tiếp theo:**
+Kiểm tra code trên nhánh, review báo cáo `MK04_3.0.0-vi.xlsx`. Sau đó commit toàn bộ và tiến hành `rpa.py next`.
