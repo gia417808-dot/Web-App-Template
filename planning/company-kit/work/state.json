@@ -182,9 +182,10 @@
       "updated_at": "2026-10-02T11:31:18.564806+07:00"
     },
     "SX04": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed SX04",
+      "evidence": "reports/evidence/SX04/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:33:17.820810+07:00"
     },
     "SX05": {
       "phase": "pending",
