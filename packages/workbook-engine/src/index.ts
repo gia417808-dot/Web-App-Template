@@ -23,3 +23,4 @@ export * from './ns02.js';
 export * from './ns03.js';
 export * from './ns04.js';
 export * from './ns05.js';
+export * from './sx02.js';
