@@ -27,3 +27,4 @@ export * from './sx02.js';
 export * from './sx01.js';
 export * from './sx03.js';
 export * from './sx04.js';
+export * from './sx05.js';

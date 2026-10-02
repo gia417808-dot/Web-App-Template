@@ -188,9 +188,10 @@
       "updated_at": "2026-10-02T11:33:17.820810+07:00"
     },
     "SX05": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed SX05",
+      "evidence": "reports/evidence/SX05/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:35:26.778825+07:00"
     },
     "INTEGRATION": {
       "phase": "pending",

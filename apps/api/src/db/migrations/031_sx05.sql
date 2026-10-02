@@ -1,0 +1,16 @@
+ALTER TABLE "LenhSanXuat"
+ADD COLUMN IF NOT EXISTS tong_chi_phi DECIMAL(19,4) NOT NULL DEFAULT 0,
+ADD COLUMN IF NOT EXISTS gia_thanh_don_vi DECIMAL(19,4) DEFAULT NULL,
+ADD COLUMN IF NOT EXISTS trang_thai_gia_thanh TEXT NOT NULL DEFAULT 'DRAFT' CHECK (trang_thai_gia_thanh IN ('DRAFT', 'CALCULATED', 'LOCKED'));
+
+CREATE TABLE IF NOT EXISTS "ChiPhiSX" (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id UUID NOT NULL REFERENCES "ToChuc"(id),
+  lenh_san_xuat_id UUID NOT NULL REFERENCES "LenhSanXuat"(id),
+  loai_chi_phi TEXT NOT NULL,
+  so_tien DECIMAL(19,4) NOT NULL CHECK (so_tien >= 0),
+  trang_thai TEXT NOT NULL DEFAULT 'PENDING' CHECK (trang_thai IN ('PENDING', 'APPROVED')),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  row_version BIGINT NOT NULL DEFAULT 1
+);
