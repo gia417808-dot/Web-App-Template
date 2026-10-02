@@ -13,3 +13,4 @@ export * from './kd04.js';
 export * from './mk05.js';
 export * from './kv03.js';
 export * from './kv04.js';
+export * from './kv05.js';
