@@ -1,16 +1,13 @@
 # Bàn giao hiện tại
-Mốc: Hiện tại. Đã hoàn thành triển khai phân hệ MK05 (Thử nghiệm nội dung).
-Nhánh làm việc hiện tại: `feat/mk05-thu-nghiem-noi-dung`.
+Mốc: Hiện tại. Đang triển khai tự động các phân hệ còn lại trên nhánh `feat/complete-remaining-system`.
+Đã hoàn thành thêm phân hệ: **KV03 (Mua hàng)**.
 
-**Các công việc đã thực hiện cho MK05:**
-- Thiết kế Schema `ThuNghiem`, `BienThe` (014_mk05.sql).
-- Xây dựng Domain logic `mk05.ts` quản lý state (DRAFT ➔ RUNNING ➔ COMPLETED/CANCELED), tính tỷ lệ phản hồi (chặn chia cho 0).
-- Tạo API xử lý hành động nghiệp vụ `chotThuNghiem`.
-- Cập nhật Tab UI MK05 cho `admin-web`.
-- Cấu hình Engine tạo file Excel bằng công thức Native: `=IF([@[Lượt Tiếp Cận]]>0, [@[Phản Hồi]]/[@[Lượt Tiếp Cận]], "")`.
-- Đã sửa lỗi mất mát tệp index bằng script ghi nguyên bản (Rewrite) UTF-8. Các module hoạt động ổn định.
-- Vượt các test unit và integration (Gate G1, G_EXCEL, G_WEB). `MK05_3.0.0-vi.xlsx` xuất thành công.
-- Đã chạy tự động `rpa.py` qua tất cả các chốt (review, plan, act, verify, done).
+**Các công việc đã thực hiện cho KV03:**
+- Thiết kế Schema `YeuCauMua`, `DonMua` (015_kv03.sql).
+- Domain logic quản lý việc đặt mua, tính chênh lệch khi nhận hàng, và xử lý âm chênh lệch (nhận dư).
+- API routes.
+- Workbook engine `KV03_3.0.0-vi.xlsx`.
+- Vượt qua tất cả unit test và pass `verify_project.py --group application`.
 
-**Task tiếp theo:**
-Kiểm tra lại code. Sau đó commit và rẽ nhánh sang sản phẩm tiếp theo.
+**Các module đã tự động xử lý trong lượt này:**
+- KV03

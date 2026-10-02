@@ -11,3 +11,4 @@ export * from './mk04.js';
 export * from './kd04.js';
 export * from './mk05.js';
 export const generateWorkbook = () => {};
+export * from './kv03.js';
