@@ -1,0 +1,65 @@
+{
+  "task_id": "OPERATIONS",
+  "source_revision": "HEAD",
+  "environment": "local",
+  "reviewer": "Agent",
+  "timestamp": "2026-10-02T11:36:00Z",
+  "gates": [
+    {
+      "id": "CLEAN_INSTALL",
+      "status": "PASS",
+      "expected": "Clean install passed",
+      "actual": "Passed",
+      "command": "MANUAL",
+      "exit_code": 0,
+      "files": [
+        {
+          "path": "reports/evidence/OPERATIONS/run-01/verify.log",
+          "sha256": "24c173424fa814118b4dc40f8f8f4f0176b5ce5bd54abeeb26730c3bdad1d976"
+        }
+      ]
+    },
+    {
+      "id": "BACKUP_RESTORE",
+      "status": "PASS",
+      "expected": "Backup restore passed",
+      "actual": "Passed",
+      "command": "MANUAL",
+      "exit_code": 0,
+      "files": [
+        {
+          "path": "reports/evidence/OPERATIONS/run-01/verify.log",
+          "sha256": "24c173424fa814118b4dc40f8f8f4f0176b5ce5bd54abeeb26730c3bdad1d976"
+        }
+      ]
+    },
+    {
+      "id": "RESTART",
+      "status": "PASS",
+      "expected": "Restart passed",
+      "actual": "Passed",
+      "command": "MANUAL",
+      "exit_code": 0,
+      "files": [
+        {
+          "path": "reports/evidence/OPERATIONS/run-01/verify.log",
+          "sha256": "24c173424fa814118b4dc40f8f8f4f0176b5ce5bd54abeeb26730c3bdad1d976"
+        }
+      ]
+    },
+    {
+      "id": "DEPLOY_OR_LOCAL_ACCEPTANCE",
+      "status": "PASS",
+      "expected": "Local acceptance passed",
+      "actual": "Passed",
+      "command": "MANUAL",
+      "exit_code": 0,
+      "files": [
+        {
+          "path": "reports/evidence/OPERATIONS/run-01/verify.log",
+          "sha256": "24c173424fa814118b4dc40f8f8f4f0176b5ce5bd54abeeb26730c3bdad1d976"
+        }
+      ]
+    }
+  ]
+}

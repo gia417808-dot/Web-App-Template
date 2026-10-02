@@ -194,19 +194,22 @@
       "updated_at": "2026-10-02T11:35:26.778825+07:00"
     },
     "INTEGRATION": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Integration completed",
+      "evidence": "reports/evidence/INTEGRATION/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:36:45.477597+07:00"
     },
     "OPERATIONS": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Operations completed",
+      "evidence": "reports/evidence/OPERATIONS/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:37:09.728752+07:00"
     },
     "RELEASE": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Release completed",
+      "evidence": "reports/evidence/RELEASE/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:37:23.027832+07:00"
     }
   }
 }
