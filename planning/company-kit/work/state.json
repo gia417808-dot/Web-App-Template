@@ -170,9 +170,10 @@
       "updated_at": "2026-10-02T11:26:43.164316+07:00"
     },
     "SX01": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed SX01",
+      "evidence": "reports/evidence/SX01/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:28:48.989350+07:00"
     },
     "SX03": {
       "phase": "pending",
