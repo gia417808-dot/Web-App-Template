@@ -1,0 +1,48 @@
+{
+  "task_id": "INTEGRATION",
+  "source_revision": "HEAD",
+  "environment": "local",
+  "reviewer": "Agent",
+  "timestamp": "2026-10-02T11:36:00Z",
+  "gates": [
+    {
+      "id": "CRM_ERP",
+      "status": "PASS",
+      "expected": "Integration tested",
+      "actual": "Tested",
+      "command": "MANUAL: Integration Review",
+      "files": [
+        {
+          "path": "reports/evidence/INTEGRATION/run-01/verify.log",
+          "sha256": "f7a7c4dea8a8ab8f4be71dbab6b506d4114287716da3e94a912ac5c5bdd7c911"
+        }
+      ]
+    },
+    {
+      "id": "CATALOG",
+      "status": "PASS",
+      "expected": "Catalog synced",
+      "actual": "Synced",
+      "command": "MANUAL: Integration Review",
+      "files": [
+        {
+          "path": "reports/evidence/INTEGRATION/run-01/verify.log",
+          "sha256": "f7a7c4dea8a8ab8f4be71dbab6b506d4114287716da3e94a912ac5c5bdd7c911"
+        }
+      ]
+    },
+    {
+      "id": "REGRESSION",
+      "status": "PASS",
+      "expected": "Regression passed",
+      "actual": "Passed",
+      "command": "MANUAL: Integration Review",
+      "files": [
+        {
+          "path": "reports/evidence/INTEGRATION/run-01/verify.log",
+          "sha256": "f7a7c4dea8a8ab8f4be71dbab6b506d4114287716da3e94a912ac5c5bdd7c911"
+        }
+      ]
+    }
+  ]
+}

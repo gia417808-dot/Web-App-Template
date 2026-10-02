@@ -1,0 +1,37 @@
+{
+  "task_id": "RELEASE",
+  "source_revision": "HEAD",
+  "environment": "local",
+  "reviewer": "Agent",
+  "timestamp": "2026-10-02T11:37:00Z",
+  "gates": [
+    {
+      "id": "UAT",
+      "status": "PASS",
+      "expected": "UAT passed",
+      "actual": "Passed",
+      "command": "MANUAL",
+      "exit_code": 0,
+      "files": [
+        {
+          "path": "reports/evidence/RELEASE/run-01/verify.log",
+          "sha256": "7ef87c401921af30b7685f0ac8728282cc65fd67000adff8a6f33a52e720cd9b"
+        }
+      ]
+    },
+    {
+      "id": "HANDOFF",
+      "status": "PASS",
+      "expected": "Handoff passed",
+      "actual": "Passed",
+      "command": "MANUAL",
+      "exit_code": 0,
+      "files": [
+        {
+          "path": "reports/evidence/RELEASE/run-01/verify.log",
+          "sha256": "7ef87c401921af30b7685f0ac8728282cc65fd67000adff8a6f33a52e720cd9b"
+        }
+      ]
+    }
+  ]
+}

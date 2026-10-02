@@ -2,180 +2,214 @@
   "schema_version": 1,
   "tasks": {
     "AUDIT": {
-      "phase": "verify",
-      "note": "Đang kiểm tra report audit",
-      "evidence": null,
-      "updated_at": "2026-09-29T13:02:42.925941+07:00"
+      "phase": "done",
+      "note": "Audit hoàn tất, đã ghi nhận môi trường và repo",
+      "evidence": "reports/evidence/AUDIT/run-01/manifest.json",
+      "updated_at": "2026-09-29T13:44:24.940574+07:00"
     },
     "CORE": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Passed all CORE application checks",
+      "evidence": "reports/evidence/CORE/run-01/manifest.json",
+      "updated_at": "2026-09-29T14:23:11.134146+07:00"
     },
     "KV01": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Hoan thanh",
+      "evidence": "reports/evidence/KV01/run-01/manifest.json",
+      "updated_at": "2026-09-30T09:20:09.819257+07:00"
     },
     "KD01": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "done",
+      "evidence": "reports/evidence/KD01/run-01/manifest.json",
+      "updated_at": "2026-09-30T09:54:14.779400+07:00"
     },
     "KT01": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "done",
+      "evidence": "reports/evidence/KT01/run-01/manifest.json",
+      "updated_at": "2026-09-30T10:13:16.651792+07:00"
     },
     "KV02": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "done KV02",
+      "evidence": "reports/evidence/KV02/run-01/manifest.json",
+      "updated_at": "2026-09-30T10:38:38.071805+07:00"
     },
     "MK01": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "done MK01",
+      "evidence": "reports/evidence/MK01/run-01/manifest.json",
+      "updated_at": "2026-09-30T11:10:49.188674+07:00"
     },
     "KD02": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "done KD02",
+      "evidence": "reports/evidence/KD02/run-01/manifest.json",
+      "updated_at": "2026-09-30T11:14:54.829026+07:00"
     },
     "KD03": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "done KD03",
+      "evidence": "reports/evidence/KD03/run-01/manifest.json",
+      "updated_at": "2026-09-30T11:20:17.313109+07:00"
     },
     "KD04": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "done KD04",
+      "evidence": "reports/evidence/KD04/run-01/manifest.json",
+      "updated_at": "2026-09-30T11:38:17.948956+07:00"
     },
     "KD05": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "done KD05",
+      "evidence": "reports/evidence/KD05/run-01/manifest.json",
+      "updated_at": "2026-10-01T14:14:45.297956+07:00"
     },
     "MK02": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "done MK02",
+      "evidence": "reports/evidence/MK02/run-01/manifest.json",
+      "updated_at": "2026-10-01T14:24:15.461321+07:00"
     },
     "MK03": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed MK03",
+      "evidence": "reports/evidence/MK03/run-01/manifest.json",
+      "updated_at": "2026-10-01T14:58:21.011053+07:00"
     },
     "MK04": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed MK04",
+      "evidence": "reports/evidence/MK04/run-01/manifest.json",
+      "updated_at": "2026-10-01T15:18:34.880217+07:00"
     },
     "MK05": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed MK05",
+      "evidence": "reports/evidence/MK05/run-01/manifest.json",
+      "updated_at": "2026-10-02T09:13:07.753950+07:00"
     },
     "KV03": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed KV03",
+      "evidence": "reports/evidence/KV03/run-01/manifest.json",
+      "updated_at": "2026-10-02T10:04:33.529168+07:00"
     },
     "KV04": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed KV04",
+      "evidence": "reports/evidence/KV04/run-01/manifest.json",
+      "updated_at": "2026-10-02T10:07:49.694161+07:00"
     },
     "KV05": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed KV05",
+      "evidence": "reports/evidence/KV05/run-01/manifest.json",
+      "updated_at": "2026-10-02T10:44:48.811812+07:00"
     },
     "KT02": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed KT02",
+      "evidence": "reports/evidence/KT02/run-01/manifest.json",
+      "updated_at": "2026-10-02T10:51:53.430083+07:00"
     },
     "KT03": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed KT03",
+      "evidence": "reports/evidence/KT03/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:09:02.934676+07:00"
     },
     "KT04": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed KT04",
+      "evidence": "reports/evidence/KT04/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:11:46.433331+07:00"
     },
     "KT05": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed KT05",
+      "evidence": "reports/evidence/KT05/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:14:07.456665+07:00"
     },
     "NS01": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed NS01",
+      "evidence": "reports/evidence/NS01/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:16:05.761800+07:00"
     },
     "NS02": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed NS02",
+      "evidence": "reports/evidence/NS02/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:18:19.220740+07:00"
     },
     "NS03": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed NS03",
+      "evidence": "reports/evidence/NS03/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:20:17.392243+07:00"
     },
     "NS04": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed NS04",
+      "evidence": "reports/evidence/NS04/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:22:16.170508+07:00"
     },
     "NS05": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed NS05",
+      "evidence": "reports/evidence/NS05/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:24:38.632635+07:00"
     },
     "SX02": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed SX02",
+      "evidence": "reports/evidence/SX02/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:26:43.164316+07:00"
     },
     "SX01": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed SX01",
+      "evidence": "reports/evidence/SX01/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:28:48.989350+07:00"
     },
     "SX03": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed SX03",
+      "evidence": "reports/evidence/SX03/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:31:18.564806+07:00"
     },
     "SX04": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed SX04",
+      "evidence": "reports/evidence/SX04/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:33:17.820810+07:00"
     },
     "SX05": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed SX05",
+      "evidence": "reports/evidence/SX05/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:35:26.778825+07:00"
     },
     "INTEGRATION": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Integration completed",
+      "evidence": "reports/evidence/INTEGRATION/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:36:45.477597+07:00"
     },
     "OPERATIONS": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Operations completed",
+      "evidence": "reports/evidence/OPERATIONS/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:37:09.728752+07:00"
     },
     "RELEASE": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Release completed",
+      "evidence": "reports/evidence/RELEASE/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:37:23.027832+07:00"
     }
   }
 }

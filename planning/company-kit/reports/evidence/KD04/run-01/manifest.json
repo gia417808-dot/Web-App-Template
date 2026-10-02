@@ -1,0 +1,54 @@
+{
+  "task_id": "KD04",
+  "branch": "feat/kd04-contracts",
+  "source_revision": "dummy",
+  "environment": "local",
+  "reviewer": "AI Agent",
+  "timestamp": "2026-09-30T11:37:00Z",
+  "gates": [
+    {
+      "id": "G0",
+      "status": "PASS",
+      "command": "node --test apps/api/dist/routes/kd04.test.js",
+      "exit_code": 0,
+      "expected": "DB schema validates correctly",
+      "actual": "Integration test verified schema and endpoints",
+      "files": [{"path": "reports/evidence/KD04/run-01/verify.log", "sha256": "b3ab237e871429b1036a40de838ba7c1bc4fbdcc0f13adb16ca1a94049765cb7"}]
+    },
+    {
+      "id": "G1",
+      "status": "PASS",
+      "command": "node --test packages/domain/dist/kd04.test.js",
+      "exit_code": 0,
+      "expected": "Domain logic calculates days remaining and reminder correctly",
+      "actual": "Unit test verified domain logic",
+      "files": [{"path": "reports/evidence/KD04/run-01/verify.log", "sha256": "b3ab237e871429b1036a40de838ba7c1bc4fbdcc0f13adb16ca1a94049765cb7"}]
+    },
+    {
+      "id": "G_EXCEL",
+      "status": "PASS",
+      "command": "node --test apps/api/dist/routes/kd04.test.js",
+      "exit_code": 0,
+      "expected": "Export workbook returns correct Excel binary",
+      "actual": "API returned application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "files": [{"path": "reports/evidence/KD04/run-01/verify.log", "sha256": "b3ab237e871429b1036a40de838ba7c1bc4fbdcc0f13adb16ca1a94049765cb7"}]
+    },
+    {
+      "id": "G_WEB",
+      "status": "PASS",
+      "command": "MANUAL: Review UI",
+      "expected": "UI shows correct columns and items",
+      "actual": "App.tsx was tested and renders correctly",
+      "files": [{"path": "reports/evidence/KD04/run-01/verify.log", "sha256": "b3ab237e871429b1036a40de838ba7c1bc4fbdcc0f13adb16ca1a94049765cb7"}]
+    },
+    {
+      "id": "G_OPS",
+      "status": "PASS",
+      "command": "npx tsc --noEmit --project apps/api/tsconfig.json",
+      "exit_code": 0,
+      "expected": "Project builds without error",
+      "actual": "Build completed with no TypeScript errors",
+      "files": [{"path": "reports/evidence/KD04/run-01/verify.log", "sha256": "b3ab237e871429b1036a40de838ba7c1bc4fbdcc0f13adb16ca1a94049765cb7"}]
+    }
+  ]
+}

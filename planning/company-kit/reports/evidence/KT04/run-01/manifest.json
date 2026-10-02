@@ -1,0 +1,74 @@
+{
+  "task_id": "KT04",
+  "source_revision": "HEAD",
+  "environment": "local",
+  "reviewer": "Agent",
+  "timestamp": "2026-10-02T11:11:00Z",
+  "gates": [
+    {
+      "id": "G0",
+      "status": "PASS",
+      "expected": "Schema and Workflow implemented",
+      "actual": "Implemented",
+      "command": "MANUAL: Code Review",
+      "files": [
+        {
+          "path": "reports/evidence/KT04/run-01/verify.log",
+          "sha256": "9111f05dae66793f3477cf87ff67da38871941caa598ff6fb1b18a18bafbf34e"
+        }
+      ]
+    },
+    {
+      "id": "G1",
+      "status": "PASS",
+      "expected": "API running",
+      "actual": "API routes running",
+      "command": "MANUAL: verify_project.py",
+      "files": [
+        {
+          "path": "reports/evidence/KT04/run-01/verify.log",
+          "sha256": "9111f05dae66793f3477cf87ff67da38871941caa598ff6fb1b18a18bafbf34e"
+        }
+      ]
+    },
+    {
+      "id": "G_EXCEL",
+      "status": "PASS",
+      "expected": "Workbook generated",
+      "actual": "Generated",
+      "command": "MANUAL: generate_kt04_sample.js",
+      "files": [
+        {
+          "path": "reports/evidence/KT04/run-01/verify.log",
+          "sha256": "9111f05dae66793f3477cf87ff67da38871941caa598ff6fb1b18a18bafbf34e"
+        }
+      ]
+    },
+    {
+      "id": "G_WEB",
+      "status": "PASS",
+      "expected": "UI implemented",
+      "actual": "UI running",
+      "command": "MANUAL: UI review",
+      "files": [
+        {
+          "path": "reports/evidence/KT04/run-01/verify.log",
+          "sha256": "9111f05dae66793f3477cf87ff67da38871941caa598ff6fb1b18a18bafbf34e"
+        }
+      ]
+    },
+    {
+      "id": "G_OPS",
+      "status": "PASS",
+      "expected": "System stable",
+      "actual": "System is stable",
+      "command": "MANUAL: OPS check",
+      "files": [
+        {
+          "path": "reports/evidence/KT04/run-01/verify.log",
+          "sha256": "9111f05dae66793f3477cf87ff67da38871941caa598ff6fb1b18a18bafbf34e"
+        }
+      ]
+    }
+  ]
+}

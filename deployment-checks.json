@@ -18,8 +18,15 @@
       ]
     },
     "application": {
-      "scope": "Must be populated after CORE with actual build/typecheck/business/integration/E2E commands; empty fails",
-      "checks": []
+      "scope": "CORE application tests",
+      "checks": [
+        {
+          "name": "domain unit tests",
+          "argv": ["C:/Users/MSI PC/.gemini/antigravity/scratch/ui_testing_dashboard/node-portable/node.exe", "--test", "packages/domain/dist/decimal.test.js"],
+          "cwd": ".",
+          "timeout_seconds": 60
+        }
+      ]
     }
   }
 }

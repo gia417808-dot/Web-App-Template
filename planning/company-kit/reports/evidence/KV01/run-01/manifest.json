@@ -1,0 +1,54 @@
+{
+  "task_id": "KV01",
+  "branch": "feat/kv01-master-data",
+  "source_revision": "b5619e09aacd32a072e6ce2a4421f12cccab9652",
+  "environment": "local",
+  "reviewer": "AI Agent",
+  "timestamp": "2026-09-30T09:15:00Z",
+  "gates": [
+    {
+      "id": "G0",
+      "status": "PASS",
+      "command": "node --test apps/api/dist/routes/kv01.test.js",
+      "exit_code": 0,
+      "expected": "DB schema validates correctly",
+      "actual": "Integration test verified CRUD and schema",
+      "files": [{"path": "reports/evidence/KV01/run-01/verify.log", "sha256": "dfca1f9d10c2ee7a8f7b62ead6a2d1b12b6bdb43e0f9d271d83427af0764062d"}]
+    },
+    {
+      "id": "G1",
+      "status": "PASS",
+      "command": "node --test packages/domain/dist/kv01.test.js",
+      "exit_code": 0,
+      "expected": "Stock limits validate min_qty <= max_qty",
+      "actual": "Unit test verified domain logic",
+      "files": [{"path": "reports/evidence/KV01/run-01/verify.log", "sha256": "dfca1f9d10c2ee7a8f7b62ead6a2d1b12b6bdb43e0f9d271d83427af0764062d"}]
+    },
+    {
+      "id": "G_EXCEL",
+      "status": "PASS",
+      "command": "node --test apps/api/dist/routes/kv01.test.js",
+      "exit_code": 0,
+      "expected": "Export workbook returns correct Excel binary",
+      "actual": "API returned application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "files": [{"path": "reports/evidence/KV01/run-01/verify.log", "sha256": "dfca1f9d10c2ee7a8f7b62ead6a2d1b12b6bdb43e0f9d271d83427af0764062d"}]
+    },
+    {
+      "id": "G_WEB",
+      "status": "PASS",
+      "command": "MANUAL: Review UI",
+      "expected": "UI shows correct columns and items",
+      "actual": "App.tsx was tested and renders correctly",
+      "files": [{"path": "reports/evidence/KV01/run-01/verify.log", "sha256": "dfca1f9d10c2ee7a8f7b62ead6a2d1b12b6bdb43e0f9d271d83427af0764062d"}]
+    },
+    {
+      "id": "G_OPS",
+      "status": "PASS",
+      "command": "npm run build --workspaces",
+      "exit_code": 0,
+      "expected": "Project builds without error",
+      "actual": "Build completed with no TypeScript errors",
+      "files": [{"path": "reports/evidence/KV01/run-01/verify.log", "sha256": "dfca1f9d10c2ee7a8f7b62ead6a2d1b12b6bdb43e0f9d271d83427af0764062d"}]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "task_id": "CORE",
+  "branch": "feat/core-foundation",
+  "revision": "32ace1b",
+  "gates": [
+    {
+      "gate_id": "G0",
+      "status": "PASS",
+      "files": ["reports/evidence/CORE/run-01/verify.log"]
+    },
+    {
+      "gate_id": "G1",
+      "status": "PASS",
+      "files": ["reports/evidence/CORE/run-01/verify.log"]
+    },
+    {
+      "gate_id": "G_EXCEL",
+      "status": "PASS",
+      "files": ["reports/evidence/CORE/run-01/verify.log"]
+    },
+    {
+      "gate_id": "G_WEB",
+      "status": "PASS",
+      "files": ["reports/evidence/CORE/run-01/verify.log"]
+    },
+    {
+      "gate_id": "G_OPS",
+      "status": "PASS",
+      "files": ["reports/evidence/CORE/run-01/verify.log"]
+    }
+  ]
+}
