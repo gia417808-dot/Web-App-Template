@@ -122,9 +122,10 @@
       "updated_at": "2026-10-02T11:09:02.934676+07:00"
     },
     "KT04": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed KT04",
+      "evidence": "reports/evidence/KT04/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:11:46.433331+07:00"
     },
     "KT05": {
       "phase": "pending",
