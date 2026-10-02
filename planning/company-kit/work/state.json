@@ -140,9 +140,10 @@
       "updated_at": "2026-10-02T11:16:05.761800+07:00"
     },
     "NS02": {
-      "phase": "pending",
-      "note": "Chưa thực thi trên repo thật",
-      "evidence": null
+      "phase": "done",
+      "note": "Completed NS02",
+      "evidence": "reports/evidence/NS02/run-01/manifest.json",
+      "updated_at": "2026-10-02T11:18:19.220740+07:00"
     },
     "NS03": {
       "phase": "pending",
