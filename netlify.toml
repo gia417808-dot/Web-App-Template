@@ -1,6 +1,7 @@
 [build]
-  command = "npm install vite --legacy-peer-deps && npm install --legacy-peer-deps && npm --workspace=@web-app-template/admin-web run build"
+  base = ""
   publish = "apps/admin-web/dist"
+  command = "npm install vite --legacy-peer-deps && npm install --legacy-peer-deps && npm --workspace=@web-app-template/admin-web run build"
 
 [[redirects]]
   from = "/*"
