@@ -149,3 +149,4 @@ export const mockCustomerCareKD05: CustomerCareKD05[] = [
   { id: '3', customer_id: 'KH-003', customer_name: 'Nguyễn Văn Minh', last_contact_date: '2026-09-28', satisfaction_score: 6.5, status: 'Bình thường' },
   { id: '4', customer_id: 'KH-004', customer_name: 'Trần Thị Thu Thảo', last_contact_date: '2026-10-05', satisfaction_score: 4.0, status: 'Cần chú ý' },
 ];
+
