@@ -1,3 +1,4 @@
+// Version: 1.0.1 - Admin Dashboard Complete Revamp
 import React, { useState, useMemo } from 'react';
 import {
   mockProductsKV01,
