@@ -17,11 +17,11 @@ interface AppTab {
 }
 
 const APPS: AppTab[] = [
-  { id: 'marketplace', label: 'Sàn Template (229+ SP)', shortLabel: 'Marketplace', icon: '🏪', badge: 'Mới' },
+  { id: 'marketplace', label: 'Sàn Template (229+ SP)', shortLabel: 'Marketplace', icon: '🏪', badge: 'Hot' },
   { id: 'warehouse', label: 'Kho Đa Kho v3.0', shortLabel: 'Kho hàng', icon: '📦' },
   { id: 'finance', label: 'Thu Chi & Runway v4.1', shortLabel: 'Thu chi', icon: '💰' },
   { id: 'tasks', label: 'Quản Lý Công Việc v5.0', shortLabel: 'Kanban', icon: '📋' },
-  { id: 'pos', label: 'F&B POS Nhà Hàng v3.0', shortLabel: 'POS VietQR', icon: '☕', badge: 'Hot' },
+  { id: 'pos', label: 'F&B POS Nhà Hàng v3.0', shortLabel: 'POS VietQR', icon: '☕', badge: 'VietQR' },
   { id: 'crm', label: 'CRM Bán Hàng v7.1', shortLabel: 'CRM', icon: '🎯' },
 ];
 
