@@ -1,29 +1,4 @@
-// ============================================================================
-// DANH MỤC 229 SẢN PHẨM CHÍNH XÁC TỪ EXACTCATALOG.JSON & GSHEETS.VN
-// ============================================================================
-
-export interface TemplateItem {
-  id: string;
-  title: string;
-  rawName: string;
-  name: string;
-  type: 'webapp' | 'gsheet';
-  version: string;
-  category: string;
-  description: string;
-  features: string[];
-  price: number;
-  originalPrice: number;
-  appRoute: string;
-  sheetUrl: string | null;
-  rating: number;
-  downloads: number;
-  demoType: 'live_app' | 'sheet_preview';
-  demoAppKey?: 'warehouse' | 'finance' | 'tasks' | 'pos' | 'crm' | null;
-  sheetColumns: string[];
-}
-
-export const allTemplates: TemplateItem[] = [
+[
   {
     "id": "GS-001",
     "title": "Báo cáo tài chính cá nhân",
@@ -38,19 +13,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo tài chính cá nhân",
-    "rating": 4.8,
-    "downloads": 373,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-002",
@@ -67,20 +30,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "project",
-    "sheetUrl": null,
-    "name": "Quản lý công việc (v2.4)",
-    "rating": 4.8,
-    "downloads": 396,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-003",
@@ -97,19 +47,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "equipment",
-    "sheetUrl": null,
-    "name": "Quản lý và Cho thuê thiết bị (v1.0)",
-    "rating": 4.8,
-    "downloads": 419,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-004",
@@ -126,21 +64,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 650000,
     "originalPrice": 877500,
     "appRoute": "cashflow",
-    "sheetUrl": null,
-    "name": "Quản lý thu chi Doanh nghiệp (v4.1 startup)",
-    "rating": 4.8,
-    "downloads": 442,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-005",
@@ -157,22 +81,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "inventory",
-    "sheetUrl": null,
-    "name": "Quản Lý Nhập Xuất Tồn Kho (v3.0)",
-    "rating": 4.8,
-    "downloads": 465,
-    "demoAppKey": "warehouse",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã SKU",
-      "Tên sản phẩm",
-      "ĐVT",
-      "Tồn đầu",
-      "Nhập",
-      "Xuất",
-      "Tồn cuối",
-      "Cảnh báo Min"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-006",
@@ -189,20 +98,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "project",
-    "sheetUrl": null,
-    "name": "Quản lý công việc (v2.3)",
-    "rating": 4.8,
-    "downloads": 488,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-007",
@@ -219,19 +115,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản lý Báo giá (v1.0)",
-    "rating": 4.8,
-    "downloads": 511,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-008",
@@ -247,19 +131,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Chuyển đổi vùng chọn thành Hình ảnh, PDF",
-    "rating": 4.8,
-    "downloads": 534,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-009",
@@ -276,19 +148,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Hệ thống tạo Form và Phân quyền dữ liệu (v2.2)",
-    "rating": 4.8,
-    "downloads": 557,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-010",
@@ -305,19 +165,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Dashboard Bất Động Sản (v1.0)",
-    "rating": 4.8,
-    "downloads": 580,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-011",
@@ -333,21 +181,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "cashflow",
-    "sheetUrl": null,
-    "name": "Quản Lý Thu Chi Tiệm Sửa Xe, Hộ Kinh Doanh (v2.0)",
-    "rating": 4.8,
-    "downloads": 603,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-012",
@@ -364,19 +198,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "erp",
-    "sheetUrl": null,
-    "name": "Quản Trị Mini-ERP (v1.0)",
-    "rating": 4.8,
-    "downloads": 626,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-013",
@@ -393,21 +215,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "cashflow",
-    "sheetUrl": null,
-    "name": "Quản Lý Thu Chi Tiệm Sửa Xe, Hộ Kinh Doanh (v1.0)",
-    "rating": 4.8,
-    "downloads": 649,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-014",
@@ -424,20 +232,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "crm",
-    "sheetUrl": null,
-    "name": "Quản lý chăm sóc khách hàng (v7.1)",
-    "rating": 4.8,
-    "downloads": 672,
-    "demoAppKey": "crm",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã KH",
-      "Tên công ty",
-      "Người liên hệ",
-      "Số điện thoại",
-      "Giá trị Deal",
-      "Giai đoạn phễu"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-015",
@@ -454,20 +249,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "fnb",
-    "sheetUrl": null,
-    "name": "Quản lý quán Cafe, Nhà hàng, Quán ăn (v3.0)",
-    "rating": 4.8,
-    "downloads": 695,
-    "demoAppKey": "pos",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Bàn/Món",
-      "Tên món",
-      "Đơn giá (VND)",
-      "Số lượng",
-      "Thành tiền",
-      "Ghi chú phục vụ"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-016",
@@ -484,19 +266,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Lớp Học (v2.0)",
-    "rating": 4.8,
-    "downloads": 718,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-017",
@@ -512,19 +282,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý App Tập Trung (v2.0)",
-    "rating": 4.8,
-    "downloads": 741,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-018",
@@ -541,19 +299,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý App Tập Trung (v1.0)",
-    "rating": 4.8,
-    "downloads": 764,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-019",
@@ -570,21 +316,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 650000,
     "originalPrice": 877500,
     "appRoute": "cashflow",
-    "sheetUrl": null,
-    "name": "Quản lý thu chi Doanh nghiệp (v4.1)",
-    "rating": 4.8,
-    "downloads": 787,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-020",
@@ -600,20 +332,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "project",
-    "sheetUrl": null,
-    "name": "Quản lý công việc (v2.2)",
-    "rating": 4.8,
-    "downloads": 810,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-021",
@@ -630,19 +349,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Bán Hàng (v1.1)",
-    "rating": 4.8,
-    "downloads": 833,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-022",
@@ -659,19 +366,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Lớp Học (v1.0)",
-    "rating": 4.8,
-    "downloads": 856,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-023",
@@ -688,19 +383,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Bán Hàng (v1.0)",
-    "rating": 4.8,
-    "downloads": 879,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-024",
@@ -717,21 +400,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "cashflow",
-    "sheetUrl": null,
-    "name": "Quản lý thu chi Doanh nghiệp (v4.0)",
-    "rating": 4.8,
-    "downloads": 902,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-025",
@@ -747,21 +416,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "cashflow",
-    "sheetUrl": null,
-    "name": "Quản lý thu chi Doanh nghiệp (v3.1)",
-    "rating": 4.8,
-    "downloads": 925,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-026",
@@ -778,19 +433,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Spa, Phòng khám (v1.0)",
-    "rating": 4.8,
-    "downloads": 948,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-027",
@@ -807,19 +450,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quay số trúng thưởng (v2.0)",
-    "rating": 4.8,
-    "downloads": 971,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-028",
@@ -835,20 +466,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 650000,
     "originalPrice": 877500,
     "appRoute": "project",
-    "sheetUrl": null,
-    "name": "Quản Lý Dự án, Công việc (v5.0)",
-    "rating": 4.8,
-    "downloads": 994,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-029",
@@ -864,20 +482,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "project",
-    "sheetUrl": null,
-    "name": "Quản lý công việc (v2.1)",
-    "rating": 4.8,
-    "downloads": 1017,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-030",
@@ -893,21 +498,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "cashflow",
-    "sheetUrl": null,
-    "name": "Quản lý thu chi Doanh nghiệp (v3.0)",
-    "rating": 4.8,
-    "downloads": 1040,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-031",
@@ -924,20 +515,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "project",
-    "sheetUrl": null,
-    "name": "Quản lý công việc (v2.0)",
-    "rating": 4.8,
-    "downloads": 1063,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-032",
@@ -954,19 +532,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Hệ thống tạo Form và Phân quyền dữ liệu (v2.1)",
-    "rating": 4.8,
-    "downloads": 1086,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-033",
@@ -982,20 +548,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "crm",
-    "sheetUrl": null,
-    "name": "Quản lý chăm sóc khách hàng (v7.0)",
-    "rating": 4.8,
-    "downloads": 1109,
-    "demoAppKey": "crm",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã KH",
-      "Tên công ty",
-      "Người liên hệ",
-      "Số điện thoại",
-      "Giá trị Deal",
-      "Giai đoạn phễu"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-034",
@@ -1011,19 +564,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Khách Sạn, Homestay (v1.0)",
-    "rating": 4.8,
-    "downloads": 1132,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-035",
@@ -1040,19 +581,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Hệ thống tạo Form và Phân quyền dữ liệu (v1.2)",
-    "rating": 4.8,
-    "downloads": 1155,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-036",
@@ -1068,19 +597,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quay số trúng thưởng (v1.0)",
-    "rating": 4.8,
-    "downloads": 1178,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-037",
@@ -1097,20 +614,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "project",
-    "sheetUrl": null,
-    "name": "Quản lý công việc (v1.0)",
-    "rating": 4.8,
-    "downloads": 1201,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-038",
@@ -1126,20 +630,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "crm",
-    "sheetUrl": null,
-    "name": "Quản lý chăm sóc khách hàng (v6.0)",
-    "rating": 4.8,
-    "downloads": 1224,
-    "demoAppKey": "crm",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã KH",
-      "Tên công ty",
-      "Người liên hệ",
-      "Số điện thoại",
-      "Giá trị Deal",
-      "Giai đoạn phễu"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-039",
@@ -1156,19 +647,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Hệ thống tạo Form và Phân quyền dữ liệu (v2.0)",
-    "rating": 4.8,
-    "downloads": 1247,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-040",
@@ -1185,19 +664,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Hệ thống tạo Form và Phân quyền dữ liệu (v1.1)",
-    "rating": 4.8,
-    "downloads": 1270,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-041",
@@ -1213,20 +680,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 650000,
     "originalPrice": 877500,
     "appRoute": "project",
-    "sheetUrl": null,
-    "name": "Quản Lý Dự án, Công việc (v4.1)",
-    "rating": 4.8,
-    "downloads": 1293,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-042",
@@ -1243,19 +697,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản lý công nợ khách hàng (v1.0)",
-    "rating": 4.8,
-    "downloads": 1316,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-043",
@@ -1272,20 +714,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 650000,
     "originalPrice": 877500,
     "appRoute": "crm",
-    "sheetUrl": null,
-    "name": "Quản lý chăm sóc khách hàng (v5.0)",
-    "rating": 4.8,
-    "downloads": 1339,
-    "demoAppKey": "crm",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã KH",
-      "Tên công ty",
-      "Người liên hệ",
-      "Số điện thoại",
-      "Giá trị Deal",
-      "Giai đoạn phễu"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-044",
@@ -1302,19 +731,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Ghi Chú (v1.0)",
-    "rating": 4.8,
-    "downloads": 1362,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-045",
@@ -1330,19 +747,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Tuyển Dụng (v2.0)",
-    "rating": 4.8,
-    "downloads": 1385,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-046",
@@ -1359,19 +764,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Tài Liệu, Văn Bản (v1.0)",
-    "rating": 4.8,
-    "downloads": 1408,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-047",
@@ -1388,19 +781,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản lý chấm công (v3.0)",
-    "rating": 4.8,
-    "downloads": 1431,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-048",
@@ -1417,19 +798,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Form Đặt phòng Khách sạn, Homestay (v4.0)",
-    "rating": 4.8,
-    "downloads": 1454,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-049",
@@ -1446,19 +815,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Tài Chính Cá Nhân (v3.0)",
-    "rating": 4.8,
-    "downloads": 1477,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-050",
@@ -1475,20 +832,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "project",
-    "sheetUrl": null,
-    "name": "Quản Lý Dự án, Công việc (v4.0)",
-    "rating": 4.8,
-    "downloads": 1500,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-051",
@@ -1504,20 +848,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "fnb",
-    "sheetUrl": null,
-    "name": "Quản lý quán Cafe, Nhà hàng, Quán ăn (v2.0)",
-    "rating": 4.8,
-    "downloads": 1523,
-    "demoAppKey": "pos",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Bàn/Món",
-      "Tên món",
-      "Đơn giá (VND)",
-      "Số lượng",
-      "Thành tiền",
-      "Ghi chú phục vụ"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-052",
@@ -1534,19 +865,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Hệ thống tạo Form và Phân quyền dữ liệu (v1.0)",
-    "rating": 4.8,
-    "downloads": 1546,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-053",
@@ -1562,22 +881,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "inventory",
-    "sheetUrl": null,
-    "name": "Quản Lý Nhập Xuất Tồn Kho (v2.0)",
-    "rating": 4.8,
-    "downloads": 1569,
-    "demoAppKey": "warehouse",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã SKU",
-      "Tên sản phẩm",
-      "ĐVT",
-      "Tồn đầu",
-      "Nhập",
-      "Xuất",
-      "Tồn cuối",
-      "Cảnh báo Min"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-054",
@@ -1593,21 +897,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "cashflow",
-    "sheetUrl": null,
-    "name": "Kế hoạch Ngân sách Doanh nghiệp (v2.0)",
-    "rating": 4.8,
-    "downloads": 1592,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-055",
@@ -1624,19 +914,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Tài Chính Cá Nhân (v1.0)",
-    "rating": 4.8,
-    "downloads": 1615,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-056",
@@ -1653,21 +931,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "cashflow",
-    "sheetUrl": null,
-    "name": "Kế hoạch Ngân sách Doanh nghiệp (v1.0)",
-    "rating": 4.8,
-    "downloads": 1638,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-057",
@@ -1684,20 +948,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "crm",
-    "sheetUrl": null,
-    "name": "Quản lý chăm sóc khách hàng (v4.0)",
-    "rating": 4.8,
-    "downloads": 1661,
-    "demoAppKey": "crm",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã KH",
-      "Tên công ty",
-      "Người liên hệ",
-      "Số điện thoại",
-      "Giá trị Deal",
-      "Giai đoạn phễu"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-058",
@@ -1713,19 +964,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Tạo bản sao Drive, Folder & Google Sheets",
-    "rating": 4.8,
-    "downloads": 1684,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-059",
@@ -1742,22 +981,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "inventory",
-    "sheetUrl": null,
-    "name": "Quản Lý Nhập Xuất Tồn Kho (v1.0)",
-    "rating": 4.8,
-    "downloads": 1707,
-    "demoAppKey": "warehouse",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã SKU",
-      "Tên sản phẩm",
-      "ĐVT",
-      "Tồn đầu",
-      "Nhập",
-      "Xuất",
-      "Tồn cuối",
-      "Cảnh báo Min"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-060",
@@ -1774,19 +998,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản lý chấm công (v1.0)",
-    "rating": 4.8,
-    "downloads": 1730,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-061",
@@ -1803,19 +1015,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản lý chấm công (v2.0)",
-    "rating": 4.8,
-    "downloads": 1753,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-062",
@@ -1831,21 +1031,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "cashflow",
-    "sheetUrl": null,
-    "name": "Quản lý thu chi Doanh nghiệp (v2.0)",
-    "rating": 4.8,
-    "downloads": 1776,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-063",
@@ -1862,19 +1048,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Quản Lý Lịch Hẹn",
-    "rating": 4.8,
-    "downloads": 1799,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-064",
@@ -1891,19 +1065,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Import Data nhiều FILE tốc độ siêu nhanh (v6.0)",
-    "rating": 4.8,
-    "downloads": 1822,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-065",
@@ -1919,20 +1081,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "crm",
-    "sheetUrl": null,
-    "name": "Quản lý chăm sóc khách hàng (v3.0)",
-    "rating": 4.8,
-    "downloads": 1845,
-    "demoAppKey": "crm",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã KH",
-      "Tên công ty",
-      "Người liên hệ",
-      "Số điện thoại",
-      "Giá trị Deal",
-      "Giai đoạn phễu"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-066",
@@ -1948,20 +1097,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "crm",
-    "sheetUrl": null,
-    "name": "Quản lý chăm sóc khách hàng (v2.0)",
-    "rating": 4.8,
-    "downloads": 1868,
-    "demoAppKey": "crm",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã KH",
-      "Tên công ty",
-      "Người liên hệ",
-      "Số điện thoại",
-      "Giá trị Deal",
-      "Giai đoạn phễu"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-067",
@@ -1978,20 +1114,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "crm",
-    "sheetUrl": null,
-    "name": "Quản lý chăm sóc khách hàng (v1.0)",
-    "rating": 4.8,
-    "downloads": 1891,
-    "demoAppKey": "crm",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã KH",
-      "Tên công ty",
-      "Người liên hệ",
-      "Số điện thoại",
-      "Giá trị Deal",
-      "Giai đoạn phễu"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-068",
@@ -2007,20 +1130,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "project",
-    "sheetUrl": null,
-    "name": "Quản Lý Dự án, Công việc (v3.0)",
-    "rating": 4.8,
-    "downloads": 1914,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-069",
@@ -2036,20 +1146,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "project",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi dự án, công việc (v2.0)",
-    "rating": 4.8,
-    "downloads": 1937,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-070",
@@ -2066,19 +1163,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Tạo Phiếu Khảo Sát Tinh Gọn Thay Thế Google Form (v1.0)",
-    "rating": 4.8,
-    "downloads": 1960,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-071",
@@ -2095,20 +1180,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "project",
-    "sheetUrl": null,
-    "name": "Quản Lý Dự án, Công việc (v2.0)",
-    "rating": 4.8,
-    "downloads": 1983,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-072",
@@ -2125,19 +1197,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Tuyển Dụng (v1.0)",
-    "rating": 4.8,
-    "downloads": 2006,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-073",
@@ -2153,19 +1213,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Ứng Dụng Nén Ảnh",
-    "rating": 4.8,
-    "downloads": 2029,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-074",
@@ -2182,21 +1230,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "cashflow",
-    "sheetUrl": null,
-    "name": "Quản lý thu chi Doanh nghiệp (v1.0)",
-    "rating": 4.8,
-    "downloads": 2052,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-075",
@@ -2212,19 +1246,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Ứng dụng học Tiếng Anh thông minh (v1.0)",
-    "rating": 4.8,
-    "downloads": 2075,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-076",
@@ -2240,19 +1262,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản lý hồ sơ nhân sự (v1.0)",
-    "rating": 4.8,
-    "downloads": 2098,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-077",
@@ -2268,20 +1278,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "project",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi công việc (v8.0)",
-    "rating": 4.8,
-    "downloads": 2121,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-078",
@@ -2298,19 +1295,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Form Đặt phòng Khách sạn, Homestay (v3.0)",
-    "rating": 4.8,
-    "downloads": 2144,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-079",
@@ -2327,20 +1312,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "project",
-    "sheetUrl": null,
-    "name": "Quản Lý Dự án, Công việc (v1.0)",
-    "rating": 4.8,
-    "downloads": 367,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-080",
@@ -2357,19 +1329,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Chi Tiêu 6 Hũ (v1.0)",
-    "rating": 4.8,
-    "downloads": 390,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-081",
@@ -2386,19 +1346,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Tài Chính Cá Nhân (v2.0)",
-    "rating": 4.8,
-    "downloads": 413,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-082",
@@ -2415,20 +1363,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "fnb",
-    "sheetUrl": null,
-    "name": "Quản lý quán Cafe, Nhà hàng, Quán ăn (v1.0)",
-    "rating": 4.8,
-    "downloads": 436,
-    "demoAppKey": "pos",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Bàn/Món",
-      "Tên món",
-      "Đơn giá (VND)",
-      "Số lượng",
-      "Thành tiền",
-      "Ghi chú phục vụ"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-083",
@@ -2444,19 +1379,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Nghỉ Phép Cho Doanh Nghiệp",
-    "rating": 4.8,
-    "downloads": 459,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-084",
@@ -2472,19 +1395,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản lý Phê Duyệt Chi Tiền Cho Doanh Nghiệp",
-    "rating": 4.8,
-    "downloads": 482,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-085",
@@ -2500,19 +1411,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 579000,
     "originalPrice": 781650,
     "appRoute": "general_webapp",
-    "sheetUrl": null,
-    "name": "Quản Lý Báo Cáo Cơ bản",
-    "rating": 4.8,
-    "downloads": 505,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": null
   },
   {
     "id": "GS-086",
@@ -2528,19 +1427,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Phân quyền nhập, sửa, xoá nhiều form (v2.0)",
-    "rating": 4.8,
-    "downloads": 528,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-087",
@@ -2556,19 +1443,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Phân quyền nhập, sửa, xoá nhiều form (v1.1)",
-    "rating": 4.8,
-    "downloads": 551,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-088",
@@ -2584,19 +1459,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Phân quyền nhập, sửa, xoá nhiều form (v1.0)",
-    "rating": 4.8,
-    "downloads": 574,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-089",
@@ -2613,20 +1476,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "project",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi dự án, công việc (v1.0)",
-    "rating": 4.8,
-    "downloads": 597,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-090",
@@ -2642,19 +1492,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Sales Dashboard",
-    "rating": 4.8,
-    "downloads": 620,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-091",
@@ -2670,19 +1508,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Phân quyền nhập liệu nhiều Form từ nhiều file (v2.0)",
-    "rating": 4.8,
-    "downloads": 643,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-092",
@@ -2698,19 +1524,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Phân quyền nhập liệu nhiều Form từ nhiều file (v1.0)",
-    "rating": 4.8,
-    "downloads": 666,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-093",
@@ -2726,19 +1540,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Bảng theo dõi phép năm người lao động",
-    "rating": 4.8,
-    "downloads": 689,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-094",
@@ -2754,19 +1556,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Điểm danh và quản lý lớp học (Basic)",
-    "rating": 4.8,
-    "downloads": 712,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-095",
@@ -2782,19 +1572,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 650000,
     "originalPrice": 877500,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Import Data nhiều FILE tốc độ siêu nhanh (v5.0)",
-    "rating": 4.8,
-    "downloads": 735,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-096",
@@ -2810,20 +1588,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "project",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi công việc (song ngữ) (7.0)",
-    "rating": 4.8,
-    "downloads": 758,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-097",
@@ -2839,19 +1604,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo biến động nhân sự (v2.0)",
-    "rating": 4.8,
-    "downloads": 781,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-098",
@@ -2867,19 +1620,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo biến động nhân sự (v2.1)",
-    "rating": 4.8,
-    "downloads": 804,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-099",
@@ -2895,19 +1636,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Dashboard bán hàng không dùng công thức",
-    "rating": 4.8,
-    "downloads": 827,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-100",
@@ -2923,20 +1652,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "crm",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo CRM (v2.0)",
-    "rating": 4.8,
-    "downloads": 850,
-    "demoAppKey": "crm",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã KH",
-      "Tên công ty",
-      "Người liên hệ",
-      "Số điện thoại",
-      "Giá trị Deal",
-      "Giai đoạn phễu"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-101",
@@ -2952,19 +1668,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo kết quả kinh doanh (P&L) – Basic",
-    "rating": 4.8,
-    "downloads": 873,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-102",
@@ -2980,19 +1684,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo dòng tiền (Cash Flow) – Basic",
-    "rating": 4.8,
-    "downloads": 896,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-103",
@@ -3008,19 +1700,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "NF: Hàm tách mail, sđt, họ, tên, tên đệm, ngày",
-    "rating": 4.8,
-    "downloads": 919,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-104",
@@ -3036,19 +1716,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Quản lý hồ sơ nhân sự",
-    "rating": 4.8,
-    "downloads": 942,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-105",
@@ -3064,19 +1732,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "NF: Hàm bỏ dấu Tiếng Việt",
-    "rating": 4.8,
-    "downloads": 965,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-106",
@@ -3092,22 +1748,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "inventory",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "NF: Hàm tìm kiếm nội dung chứa từ khoá",
-    "rating": 4.8,
-    "downloads": 988,
-    "demoAppKey": "warehouse",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã SKU",
-      "Tên sản phẩm",
-      "ĐVT",
-      "Tồn đầu",
-      "Nhập",
-      "Xuất",
-      "Tồn cuối",
-      "Cảnh báo Min"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-107",
@@ -3123,19 +1764,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tạo ID không trùng lặp khi lựa chọn Dropdown",
-    "rating": 4.8,
-    "downloads": 1011,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-108",
@@ -3151,19 +1780,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "NF: Tạo ngày và thứ trong tháng",
-    "rating": 4.8,
-    "downloads": 1034,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-109",
@@ -3179,20 +1796,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "crm",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo CRM (v3.0)",
-    "rating": 4.8,
-    "downloads": 1057,
-    "demoAppKey": "crm",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã KH",
-      "Tên công ty",
-      "Người liên hệ",
-      "Số điện thoại",
-      "Giá trị Deal",
-      "Giai đoạn phễu"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-110",
@@ -3208,19 +1812,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "NF: Hàm tải 1 sheet với nhiều định dạng",
-    "rating": 4.8,
-    "downloads": 1080,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-111",
@@ -3236,19 +1828,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "NF: Hàm chuyển văn bản thành hình ảnh",
-    "rating": 4.8,
-    "downloads": 1103,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-112",
@@ -3264,19 +1844,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "NF: Hàm chuyển văn bản thành gióng nói",
-    "rating": 4.8,
-    "downloads": 1126,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-113",
@@ -3292,19 +1860,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "NF: Hàm đánh số thứ tự bỏ qua bộ lọc và blank",
-    "rating": 4.8,
-    "downloads": 1149,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-114",
@@ -3320,19 +1876,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "NF: Hàm đọc số thành chữ",
-    "rating": 4.8,
-    "downloads": 1172,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-115",
@@ -3348,19 +1892,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Ứng dụng nhỏ học từ vựng Tiếng Anh",
-    "rating": 4.8,
-    "downloads": 1195,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-116",
@@ -3377,20 +1909,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "project",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi công việc (v6.0)",
-    "rating": 4.8,
-    "downloads": 1218,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-117",
@@ -3406,19 +1925,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi thói quen (v1.0)",
-    "rating": 4.8,
-    "downloads": 1241,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-118",
@@ -3434,19 +1941,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Dịch và chuyển đổi văn bản thành giọng nói nhiều ngôn ngữ",
-    "rating": 4.8,
-    "downloads": 1264,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-119",
@@ -3462,19 +1957,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo bán hàng (v1.0)",
-    "rating": 4.8,
-    "downloads": 1287,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-120",
@@ -3490,19 +1973,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo bán hàng (v1.1)",
-    "rating": 4.8,
-    "downloads": 1310,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-121",
@@ -3519,19 +1990,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi thói quen (v3.0)",
-    "rating": 4.8,
-    "downloads": 1333,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-122",
@@ -3547,19 +2006,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi nhân sự cơ bản",
-    "rating": 4.8,
-    "downloads": 1356,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-123",
@@ -3575,19 +2022,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Phiếu khảo sát đánh giá cho các phòng ban",
-    "rating": 4.8,
-    "downloads": 1379,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-124",
@@ -3603,21 +2038,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "cashflow",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Quản lý thu chi (v2.0)",
-    "rating": 4.8,
-    "downloads": 1402,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-125",
@@ -3633,21 +2054,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "cashflow",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Quản lý thu chi (v2.1)",
-    "rating": 4.8,
-    "downloads": 1425,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-126",
@@ -3663,21 +2070,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "cashflow",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Quản lý thu chi (v1.0)",
-    "rating": 4.8,
-    "downloads": 1448,
-    "demoAppKey": "finance",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã GD",
-      "Ngày tháng",
-      "Khoản mục thu/chi",
-      "Số tiền (VND)",
-      "Tài khoản",
-      "Dự án",
-      "Ghi chú"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-127",
@@ -3693,19 +2086,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Facebook Ads Dashboard (ver02)",
-    "rating": 4.8,
-    "downloads": 1471,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-128",
@@ -3721,19 +2102,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Mẫu báo cáo chấm công cài sẵn công thức",
-    "rating": 4.8,
-    "downloads": 1494,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-129",
@@ -3749,19 +2118,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Biểu đồ bong bóng",
-    "rating": 4.8,
-    "downloads": 1517,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-130",
@@ -3777,20 +2134,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "crm",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo CRM (v1.0)",
-    "rating": 4.8,
-    "downloads": 1540,
-    "demoAppKey": "crm",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã KH",
-      "Tên công ty",
-      "Người liên hệ",
-      "Số điện thoại",
-      "Giá trị Deal",
-      "Giai đoạn phễu"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-131",
@@ -3806,19 +2150,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Quy trình bán hàng",
-    "rating": 4.8,
-    "downloads": 1563,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-132",
@@ -3834,22 +2166,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "inventory",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Thời khoá biểu (v1.0)",
-    "rating": 4.8,
-    "downloads": 1586,
-    "demoAppKey": "warehouse",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã SKU",
-      "Tên sản phẩm",
-      "ĐVT",
-      "Tồn đầu",
-      "Nhập",
-      "Xuất",
-      "Tồn cuối",
-      "Cảnh báo Min"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-133",
@@ -3865,19 +2182,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "To do list",
-    "rating": 4.8,
-    "downloads": 1609,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-134",
@@ -3893,19 +2198,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tổng hợp xe qua cửa khẩu",
-    "rating": 4.8,
-    "downloads": 1632,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-135",
@@ -3921,19 +2214,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tìm ngày đầu tuần và cuối tuần trong tháng",
-    "rating": 4.8,
-    "downloads": 1655,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-136",
@@ -3949,19 +2230,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tạo ID ngẫu nhiên không trùng lặp",
-    "rating": 4.8,
-    "downloads": 1678,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-137",
@@ -3977,19 +2246,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tạo lịch 12 tháng chỉ với 1 công thức",
-    "rating": 4.8,
-    "downloads": 1701,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-138",
@@ -4005,19 +2262,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tạo lịch 12 tháng theo chiều ngang",
-    "rating": 4.8,
-    "downloads": 1724,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-139",
@@ -4033,19 +2278,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Check sim số đẹp 4 số cuối",
-    "rating": 4.8,
-    "downloads": 1747,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-140",
@@ -4061,19 +2294,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Trộn thư bằng công thức Google Sheets",
-    "rating": 4.8,
-    "downloads": 1770,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-141",
@@ -4089,19 +2310,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tách phường, quận, tỉnh/thành phố",
-    "rating": 4.8,
-    "downloads": 1793,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-142",
@@ -4117,19 +2326,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Dùng ký tự đặc biệt để vẽ biểu đồ",
-    "rating": 4.8,
-    "downloads": 1816,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-143",
@@ -4145,22 +2342,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "inventory",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Lọc từ khoá",
-    "rating": 4.8,
-    "downloads": 1839,
-    "demoAppKey": "warehouse",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã SKU",
-      "Tên sản phẩm",
-      "ĐVT",
-      "Tồn đầu",
-      "Nhập",
-      "Xuất",
-      "Tồn cuối",
-      "Cảnh báo Min"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-144",
@@ -4176,19 +2358,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Đọc số thành chữ nhiều ngôn ngữ",
-    "rating": 4.8,
-    "downloads": 1862,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-145",
@@ -4204,19 +2374,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tính tổng chỉ tiêu theo chiều ngang",
-    "rating": 4.8,
-    "downloads": 1885,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-146",
@@ -4232,19 +2390,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Phân bổ khấu hao tài sản đường thẳng",
-    "rating": 4.8,
-    "downloads": 1908,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-147",
@@ -4260,19 +2406,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Đảo ký tự với char(8238)",
-    "rating": 4.8,
-    "downloads": 1931,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-148",
@@ -4288,19 +2422,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tổng hợp dữ liệu từ nhiều file, nhiều sheet khác nhau",
-    "rating": 4.8,
-    "downloads": 1954,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-149",
@@ -4316,19 +2438,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Hiển thị hình ảnh lưu trong drive",
-    "rating": 4.8,
-    "downloads": 1977,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-150",
@@ -4344,19 +2454,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Gửi Mail Cá Nhân Hoá Bằng Công Thức (v2.0)",
-    "rating": 4.8,
-    "downloads": 2000,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-151",
@@ -4372,19 +2470,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Phân nhóm ngẫu nhiên và không ngẫu nhiên",
-    "rating": 4.8,
-    "downloads": 2023,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-152",
@@ -4400,19 +2486,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tách họ và tên với Regex",
-    "rating": 4.8,
-    "downloads": 2046,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-153",
@@ -4428,19 +2502,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Pivot nhiều giá trị chuỗi",
-    "rating": 4.8,
-    "downloads": 2069,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-154",
@@ -4456,19 +2518,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Unpivot",
-    "rating": 4.8,
-    "downloads": 2092,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-155",
@@ -4484,19 +2534,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Cộng dồn nhiều điều kiện",
-    "rating": 4.8,
-    "downloads": 2115,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-156",
@@ -4512,19 +2550,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tìm dòng cuối chứa dữ liệu",
-    "rating": 4.8,
-    "downloads": 2138,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-157",
@@ -4540,19 +2566,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Rút gọn họ và tên",
-    "rating": 4.8,
-    "downloads": 361,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-158",
@@ -4568,19 +2582,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Làm sạch số điện thoại",
-    "rating": 4.8,
-    "downloads": 384,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-159",
@@ -4596,19 +2598,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tổng hợp các sắc thái đánh số thứ tự",
-    "rating": 4.8,
-    "downloads": 407,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-160",
@@ -4624,19 +2614,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Loại bỏ dấu câu",
-    "rating": 4.8,
-    "downloads": 430,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-161",
@@ -4652,19 +2630,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Lấp đầy dữ liệu",
-    "rating": 4.8,
-    "downloads": 453,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-162",
@@ -4680,19 +2646,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Dịch song song tất cả các ngôn ngữ trên thế giới",
-    "rating": 4.8,
-    "downloads": 476,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-163",
@@ -4708,19 +2662,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tạo next page bằng hàm query kết hợp Hyperlink",
-    "rating": 4.8,
-    "downloads": 499,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-164",
@@ -4736,19 +2678,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Importrange lấy theo Tên tiêu đề cột",
-    "rating": 4.8,
-    "downloads": 522,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-165",
@@ -4764,19 +2694,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tạo list phụ thuộc nhiều cấp độ không dùng code",
-    "rating": 4.8,
-    "downloads": 545,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-166",
@@ -4792,19 +2710,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Đọc số thành chữ",
-    "rating": 4.8,
-    "downloads": 568,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-167",
@@ -4820,19 +2726,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tổng hợp dữ liệu từ nhiều Sheet về một Sheet",
-    "rating": 4.8,
-    "downloads": 591,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-168",
@@ -4848,19 +2742,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Quản lý phân quyền file tập trung",
-    "rating": 4.8,
-    "downloads": 614,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-169",
@@ -4876,19 +2758,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Điểm danh học sinh (v2.0)",
-    "rating": 4.8,
-    "downloads": 637,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-170",
@@ -4904,19 +2774,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Backup data nhiều file",
-    "rating": 4.8,
-    "downloads": 660,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-171",
@@ -4932,20 +2790,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "project",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi công việc (v2.0)",
-    "rating": 4.8,
-    "downloads": 683,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-172",
@@ -4961,19 +2806,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tìm kiếm nhà bán bất động sản",
-    "rating": 4.8,
-    "downloads": 706,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-173",
@@ -4989,19 +2822,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Phân quyền nhập liệu nhiều Form từ nhiều file (v1.1)",
-    "rating": 4.8,
-    "downloads": 729,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-174",
@@ -5018,19 +2839,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Bảng chấm công (v3.0)",
-    "rating": 4.8,
-    "downloads": 752,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-175",
@@ -5046,20 +2855,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "project",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi công việc (v4.0)",
-    "rating": 4.8,
-    "downloads": 775,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-176",
@@ -5075,19 +2871,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi ăn trưa công sở",
-    "rating": 4.8,
-    "downloads": 798,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-177",
@@ -5103,19 +2887,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Đồng bộ calandar với Google Sheets",
-    "rating": 4.8,
-    "downloads": 821,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-178",
@@ -5131,19 +2903,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Import Data nhiều FILE tốc độ siêu nhanh (v2.0)",
-    "rating": 4.8,
-    "downloads": 844,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-179",
@@ -5159,19 +2919,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Điểm danh học sinh (v1.0)",
-    "rating": 4.8,
-    "downloads": 867,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-180",
@@ -5187,19 +2935,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Import Data nhiều FILE tốc độ siêu nhanh (v1.0)",
-    "rating": 4.8,
-    "downloads": 890,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-181",
@@ -5215,19 +2951,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Import Data nhiều FILE tốc độ siêu nhanh (v3.0)",
-    "rating": 4.8,
-    "downloads": 913,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-182",
@@ -5243,19 +2967,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Lọc số sim",
-    "rating": 4.8,
-    "downloads": 936,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-183",
@@ -5271,22 +2983,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "inventory",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo Nhập Xuất Tồn (v3.0)",
-    "rating": 4.8,
-    "downloads": 959,
-    "demoAppKey": "warehouse",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã SKU",
-      "Tên sản phẩm",
-      "ĐVT",
-      "Tồn đầu",
-      "Nhập",
-      "Xuất",
-      "Tồn cuối",
-      "Cảnh báo Min"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-184",
@@ -5302,22 +2999,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "inventory",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo Nhập Xuất Tồn (v1.0)",
-    "rating": 4.8,
-    "downloads": 982,
-    "demoAppKey": "warehouse",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã SKU",
-      "Tên sản phẩm",
-      "ĐVT",
-      "Tồn đầu",
-      "Nhập",
-      "Xuất",
-      "Tồn cuối",
-      "Cảnh báo Min"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-185",
@@ -5334,19 +3016,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Bảng chấm công (v2.0)",
-    "rating": 4.8,
-    "downloads": 1005,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-186",
@@ -5362,19 +3032,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo doanh thu (v2.0)",
-    "rating": 4.8,
-    "downloads": 1028,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-187",
@@ -5391,19 +3049,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Bảng chấm công (v1.0)",
-    "rating": 4.8,
-    "downloads": 1051,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-188",
@@ -5419,19 +3065,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Quy trình tuyển dụng giản đơn",
-    "rating": 4.8,
-    "downloads": 1074,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-189",
@@ -5447,19 +3081,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Quản lý chi tiêu 6 hũ (v1.0)",
-    "rating": 4.8,
-    "downloads": 1097,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-190",
@@ -5475,19 +3097,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Quản lý chi tiêu 6 hũ (v2.0)",
-    "rating": 4.8,
-    "downloads": 1120,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-191",
@@ -5503,19 +3113,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi thói quen (v2.0)",
-    "rating": 4.8,
-    "downloads": 1143,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-192",
@@ -5531,19 +3129,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Ghi chú thời gian biểu",
-    "rating": 4.8,
-    "downloads": 1166,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-193",
@@ -5559,22 +3145,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "inventory",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Thời khoá biểu (v2.0)",
-    "rating": 4.8,
-    "downloads": 1189,
-    "demoAppKey": "warehouse",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã SKU",
-      "Tên sản phẩm",
-      "ĐVT",
-      "Tồn đầu",
-      "Nhập",
-      "Xuất",
-      "Tồn cuối",
-      "Cảnh báo Min"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-194",
@@ -5590,19 +3161,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Gửi Mail Cá Nhân Hoá Bằng Công Thức (v1.0)",
-    "rating": 4.8,
-    "downloads": 1212,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-195",
@@ -5618,19 +3177,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tạo card visit",
-    "rating": 4.8,
-    "downloads": 1235,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-196",
@@ -5646,19 +3193,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Phiếu tính giá, check căn (v2.0)",
-    "rating": 4.8,
-    "downloads": 1258,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-197",
@@ -5674,20 +3209,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "project",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi công việc (v1.0)",
-    "rating": 4.8,
-    "downloads": 1281,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-198",
@@ -5703,19 +3225,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Phiếu tính giá, check căn (v1.0)",
-    "rating": 4.8,
-    "downloads": 1304,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-199",
@@ -5731,19 +3241,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tìm kiếm mã số thuế",
-    "rating": 4.8,
-    "downloads": 1327,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-200",
@@ -5759,19 +3257,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Form nhập liệu",
-    "rating": 4.8,
-    "downloads": 1350,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-201",
@@ -5787,20 +3273,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "project",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi công việc (v3.0)",
-    "rating": 4.8,
-    "downloads": 1373,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-202",
@@ -5816,19 +3289,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Sơ đồ Gantt (v1.0)",
-    "rating": 4.8,
-    "downloads": 1396,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-203",
@@ -5844,19 +3305,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo biến động nhân sự (v1.0)",
-    "rating": 4.8,
-    "downloads": 1419,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-204",
@@ -5872,19 +3321,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Quản Lý Tuyển Dụng",
-    "rating": 4.8,
-    "downloads": 1442,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-205",
@@ -5900,19 +3337,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Cách phối màu cho Google Sheets",
-    "rating": 4.8,
-    "downloads": 1465,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-206",
@@ -5928,19 +3353,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Hàm Query và Importrange – Hàm truy vấn dữ liệu top 1",
-    "rating": 4.8,
-    "downloads": 1488,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-207",
@@ -5956,19 +3369,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tài nguyên hàm Regex – Hàm xử lý dữ liệu mạnh nhất",
-    "rating": 4.8,
-    "downloads": 1511,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-208",
@@ -5984,19 +3385,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Đổi lịch âm sang dương (code)",
-    "rating": 4.8,
-    "downloads": 1534,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-209",
@@ -6012,19 +3401,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Đóng băng các hàm không cố định",
-    "rating": 4.8,
-    "downloads": 1557,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-210",
@@ -6040,19 +3417,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tìm giá trị trả về tiêu đề tương ứng",
-    "rating": 4.8,
-    "downloads": 1580,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-211",
@@ -6068,22 +3433,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "inventory",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Khoá dữ liệu loại trừ (code)",
-    "rating": 4.8,
-    "downloads": 1603,
-    "demoAppKey": "warehouse",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã SKU",
-      "Tên sản phẩm",
-      "ĐVT",
-      "Tồn đầu",
-      "Nhập",
-      "Xuất",
-      "Tồn cuối",
-      "Cảnh báo Min"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-212",
@@ -6099,19 +3449,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Cách tải 1 sheet từ Google Sheets",
-    "rating": 4.8,
-    "downloads": 1626,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-213",
@@ -6127,19 +3465,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tạo bản sao nhiều thư mục Driver",
-    "rating": 4.8,
-    "downloads": 1649,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-214",
@@ -6155,19 +3481,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo chi phí",
-    "rating": 4.8,
-    "downloads": 1672,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-215",
@@ -6183,19 +3497,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo biến động nhân sự (v1.1)",
-    "rating": 4.8,
-    "downloads": 1695,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-216",
@@ -6211,19 +3513,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo doanh thu (v1.0)",
-    "rating": 4.8,
-    "downloads": 1718,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-217",
@@ -6239,19 +3529,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo doanh thu (v4.0)",
-    "rating": 4.8,
-    "downloads": 1741,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-218",
@@ -6267,20 +3545,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 650000,
     "originalPrice": 877500,
     "appRoute": "project",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Theo dõi công việc (v5.0)",
-    "rating": 4.8,
-    "downloads": 1764,
-    "demoAppKey": "tasks",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã Task",
-      "Tên công việc",
-      "Người phụ trách",
-      "Hạn chót",
-      "Tiến độ %",
-      "Trạng thái"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-219",
@@ -6296,22 +3561,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "inventory",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo Nhập Xuất Tồn (v2.0)",
-    "rating": 4.8,
-    "downloads": 1787,
-    "demoAppKey": "warehouse",
-    "demoType": "live_app",
-    "sheetColumns": [
-      "Mã SKU",
-      "Tên sản phẩm",
-      "ĐVT",
-      "Tồn đầu",
-      "Nhập",
-      "Xuất",
-      "Tồn cuối",
-      "Cảnh báo Min"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-220",
@@ -6327,19 +3577,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Tính ngày kết thúc phí trung tâm tiếng anh",
-    "rating": 4.8,
-    "downloads": 1810,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-221",
@@ -6355,19 +3593,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Quản lý chi tiêu cơ bản",
-    "rating": 4.8,
-    "downloads": 1833,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-222",
@@ -6383,19 +3609,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo chạy quảng cáo",
-    "rating": 4.8,
-    "downloads": 1856,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-223",
@@ -6411,19 +3625,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Dropdown phụ thuộc 4 level (code)",
-    "rating": 4.8,
-    "downloads": 1879,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-224",
@@ -6439,19 +3641,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Dropdown phụ thuộc 3 level (code)",
-    "rating": 4.8,
-    "downloads": 1902,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-225",
@@ -6467,19 +3657,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Dropdown phụ thuộc 2 level (code)",
-    "rating": 4.8,
-    "downloads": 1925,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-226",
@@ -6495,19 +3673,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Import Data nhiều FILE tốc độ siêu nhanh (v4.0)",
-    "rating": 4.8,
-    "downloads": 1948,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-227",
@@ -6523,19 +3689,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo công nợ",
-    "rating": 4.8,
-    "downloads": 1971,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-228",
@@ -6551,19 +3705,7 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Sơ đồ Gantt (v2.0)",
-    "rating": 4.8,
-    "downloads": 1994,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   },
   {
     "id": "GS-229",
@@ -6579,18 +3721,6 @@ export const allTemplates: TemplateItem[] = [
     "price": 199000,
     "originalPrice": 268650,
     "appRoute": "sheet_preview",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "name": "Báo cáo doanh thu (v3.0)",
-    "rating": 4.8,
-    "downloads": 2017,
-    "demoAppKey": null,
-    "demoType": "sheet_preview",
-    "sheetColumns": [
-      "STT",
-      "Mục quản lý",
-      "Dữ liệu đầu vào",
-      "Công thức tính toán",
-      "Kết quả trả về"
-    ]
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview"
   }
-];
+]

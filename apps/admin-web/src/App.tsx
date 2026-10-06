@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import MarketplaceApp from './apps/MarketplaceApp';
+import EquipmentErpApp from './apps/EquipmentErpApp';
 import WarehouseApp from './apps/WarehouseApp';
 import FinanceApp from './apps/FinanceApp';
 import TasksApp from './apps/TasksApp';
 import PosApp from './apps/PosApp';
 import CrmApp from './apps/CrmApp';
 
-export type ActiveAppId = 'marketplace' | 'warehouse' | 'finance' | 'tasks' | 'pos' | 'crm';
+export type ActiveAppId = 'marketplace' | 'equipment_erp' | 'warehouse' | 'finance' | 'tasks' | 'pos' | 'crm';
 
 interface AppTab {
   id: ActiveAppId;
@@ -17,7 +18,8 @@ interface AppTab {
 }
 
 const APPS: AppTab[] = [
-  { id: 'marketplace', label: 'Sàn Template (229+ SP)', shortLabel: 'Marketplace', icon: '🏪', badge: 'Hot' },
+  { id: 'marketplace', label: 'Sàn Template (229 SP)', shortLabel: 'Marketplace', icon: '🏪', badge: 'Hot' },
+  { id: 'equipment_erp', label: 'Mini-ERP & Cho Thuê Thiết Bị v1.0', shortLabel: 'Thiết bị & ERP', icon: '⚙️', badge: 'New' },
   { id: 'warehouse', label: 'Kho Đa Kho v3.0', shortLabel: 'Kho hàng', icon: '📦' },
   { id: 'finance', label: 'Thu Chi & Runway v4.1', shortLabel: 'Thu chi', icon: '💰' },
   { id: 'tasks', label: 'Quản Lý Công Việc v5.0', shortLabel: 'Kanban', icon: '📋' },
@@ -28,7 +30,7 @@ const APPS: AppTab[] = [
 export default function App() {
   const [activeApp, setActiveApp] = useState<ActiveAppId>('marketplace');
 
-  const currentAppDef = APPS.find((a) => a.id === activeApp)!;
+  const currentAppDef = APPS.find((a) => a.id === activeApp) || APPS[0];
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc', color: '#1e293b', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
@@ -68,7 +70,7 @@ export default function App() {
               </div>
               <span style={{ color: '#475569', fontSize: '18px' }}>|</span>
               <span style={{ fontSize: '13.5px', color: '#cbd5e1', fontWeight: '500' }}>
-                Hệ Sinh Thái 229+ Ứng Dụng Quản Trị Vận Hành Doanh Nghiệp
+                Hệ Sinh Thái 229 Sản Phẩm Quản Trị Vận Hành Doanh Nghiệp
               </span>
             </div>
 
@@ -125,7 +127,7 @@ export default function App() {
                       style={{
                         fontSize: '10px',
                         fontWeight: '800',
-                        backgroundColor: isActive ? '#ffffff' : '#ef4444',
+                        backgroundColor: isActive ? '#ffffff' : tab.badge === 'New' ? '#10b981' : '#ef4444',
                         color: isActive ? '#0284c7' : '#ffffff',
                         padding: '1px 6px',
                         borderRadius: '10px',
@@ -147,6 +149,8 @@ export default function App() {
         {activeApp === 'marketplace' && (
           <MarketplaceApp onSelectApp={(target) => setActiveApp(target)} />
         )}
+
+        {activeApp === 'equipment_erp' && <EquipmentErpApp />}
 
         {activeApp === 'warehouse' && <WarehouseApp />}
 
@@ -173,7 +177,7 @@ export default function App() {
       >
         <div style={{ maxWidth: '1600px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
           <div>
-            © 2026 <strong>GSheets.vn Ecosystem Suite</strong>. Toàn bộ tính năng chạy mượt mà trên môi trường tĩnh Netlify / Vercel.
+            © 2026 <strong>GSheets.vn Ecosystem Suite</strong>. Toàn bộ 229 giải pháp quản trị vận hành độc bản, tối ưu Netlify / Vercel.
           </div>
           <div style={{ display: 'flex', gap: '16px' }}>
             <span>Phân hệ đang mở: <strong style={{ color: '#0284c7' }}>{currentAppDef.label}</strong></span>
