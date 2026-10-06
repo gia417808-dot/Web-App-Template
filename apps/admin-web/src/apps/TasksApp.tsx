@@ -1,7 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { initialTasks, TaskItem } from '../mock/deepMockData';
 
-export default function TasksApp() {
+interface TasksAppProps {
+  onBack?: () => void;
+}
+
+export default function TasksApp({ onBack }: TasksAppProps = {}) {
   const [tasks, setTasks] = useState<TaskItem[]>(initialTasks);
   const [viewMode, setViewMode] = useState<'kanban' | 'table'>('kanban');
   const [priorityFilter, setPriorityFilter] = useState<'ALL' | 'Khẩn cấp' | 'Cao' | 'Trung bình' | 'Thấp'>('ALL');
@@ -123,7 +127,28 @@ export default function TasksApp() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: '10px' }}>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          {onBack && (
+            <button
+              type="button"
+              onClick={onBack}
+              style={{
+                backgroundColor: '#ffffff',
+                color: '#334155',
+                border: '1px solid #cbd5e1',
+                padding: '8px 16px',
+                borderRadius: '8px',
+                fontWeight: '700',
+                fontSize: '13px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
+              ← Quay lại Sàn Marketplace
+            </button>
+          )}
           {/* NÚT CHUYỂN CHẾ ĐỘ XEM */}
           <div style={{ display: 'flex', backgroundColor: '#e2e8f0', borderRadius: '8px', padding: '3px' }}>
             <button

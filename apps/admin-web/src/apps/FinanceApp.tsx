@@ -8,7 +8,11 @@ import {
   ProjectProfitLoss,
 } from '../mock/deepMockData';
 
-export default function FinanceApp() {
+interface FinanceAppProps {
+  onBack?: () => void;
+}
+
+export default function FinanceApp({ onBack }: FinanceAppProps = {}) {
   const [accounts, setAccounts] = useState<BankAccount[]>(initialBankAccounts);
   const [transactions, setTransactions] = useState<FinanceTransaction[]>(initialFinanceTransactions);
   const [projectsPL] = useState<ProjectProfitLoss[]>(initialProjectsPL);
@@ -98,7 +102,28 @@ export default function FinanceApp() {
           </div>
         </div>
 
-        <div>
+        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+          {onBack && (
+            <button
+              type="button"
+              onClick={onBack}
+              style={{
+                backgroundColor: '#ffffff',
+                color: '#334155',
+                border: '1px solid #cbd5e1',
+                padding: '9px 16px',
+                borderRadius: '8px',
+                fontWeight: '700',
+                fontSize: '13px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
+              ← Quay lại Sàn Marketplace
+            </button>
+          )}
           <button
             onClick={() => setShowModal(true)}
             style={{

@@ -18,8 +18,226 @@ export interface ExactCatalogProduct {
 
 const catalog: ExactCatalogProduct[] = exactCatalogData as ExactCatalogProduct[];
 
+export type AppDestination = 'equipment_erp' | 'warehouse' | 'finance' | 'tasks' | 'pos' | 'crm';
+
 interface MarketplaceAppProps {
-  onSelectApp: (app: 'equipment_erp' | 'warehouse' | 'finance' | 'tasks' | 'pos' | 'crm') => void;
+  onSelectApp: (app: AppDestination) => void;
+}
+
+// Phân loại chính xác 6 App nghiệp vụ theo yêu cầu
+export function getAppForProduct(item: ExactCatalogProduct): AppDestination {
+  const text = (item.title + ' ' + item.category + ' ' + item.description + ' ' + (item.appRoute || '')).toLowerCase();
+
+  // 1. Nhóm Thiết bị, Mini-ERP
+  if (
+    text.includes('thiết bị') ||
+    text.includes('mini-erp') ||
+    text.includes('mini erp') ||
+    text.includes('cho thuê thiết bị') ||
+    item.appRoute === 'equipment' ||
+    item.appRoute === 'erp'
+  ) {
+    return 'equipment_erp';
+  }
+
+  // 2. Nhóm Kho
+  if (
+    text.includes('kho') ||
+    text.includes('nhập xuất tồn') ||
+    text.includes('tồn kho') ||
+    text.includes('thủ kho') ||
+    text.includes('vận tải') ||
+    text.includes('vận chuyển') ||
+    item.appRoute === 'inventory' ||
+    item.category === 'Quản lý Kho'
+  ) {
+    return 'warehouse';
+  }
+
+  // 3. Nhóm Thu chi, Tài chính, Ngân sách
+  if (
+    text.includes('thu chi') ||
+    text.includes('tài chính') ||
+    text.includes('ngân sách') ||
+    text.includes('dòng tiền') ||
+    text.includes('runway') ||
+    text.includes('burn rate') ||
+    text.includes('chi tiêu') ||
+    text.includes('sổ quỹ') ||
+    text.includes('phê duyệt chi') ||
+    text.includes('tiền mặt') ||
+    text.includes('công nợ') ||
+    item.appRoute === 'cashflow' ||
+    item.category === 'Tài chính - Thu chi'
+  ) {
+    return 'finance';
+  }
+
+  // 4. Nhóm Cafe, Nhà hàng, Quán ăn, F&B
+  if (
+    text.includes('nhà hàng') ||
+    text.includes('cafe') ||
+    text.includes('cà phê') ||
+    text.includes('quán ăn') ||
+    text.includes('f&b') ||
+    text.includes('pos') ||
+    text.includes('bàn ăn') ||
+    text.includes('menu') ||
+    item.appRoute === 'fnb' ||
+    item.appRoute === 'restaurant' ||
+    item.category === 'F&B & Nhà hàng'
+  ) {
+    return 'pos';
+  }
+
+  // 5. Nhóm Khách hàng, CRM, Bán hàng
+  if (
+    text.includes('khách hàng') ||
+    text.includes('crm') ||
+    text.includes('cskh') ||
+    text.includes('bán hàng') ||
+    text.includes('báo giá') ||
+    text.includes('chăm sóc khách hàng') ||
+    text.includes('sales') ||
+    text.includes('pipeline') ||
+    item.appRoute === 'crm' ||
+    item.category === 'CRM & Khách hàng'
+  ) {
+    return 'crm';
+  }
+
+  // 6. Nhóm Công việc, Dự án, Task, Gantt (và quản trị chung)
+  return 'tasks';
+}
+
+// Dữ liệu mô phỏng Google Sheets chân thực theo từng nhóm sản phẩm
+function getSheetPreviewData(item: ExactCatalogProduct) {
+  const text = (item.title + ' ' + item.category + ' ' + item.description).toLowerCase();
+
+  if (text.includes('thu chi') || text.includes('tài chính') || text.includes('ngân sách') || text.includes('dòng tiền') || text.includes('runway') || text.includes('công nợ')) {
+    return {
+      formula: '=SUM(D2:D7) - SUM(E2:E7)',
+      activeCell: 'F7',
+      columns: [
+        { letter: 'A', name: 'STT' },
+        { letter: 'B', name: 'Ngày Ghi Nhận' },
+        { letter: 'C', name: 'Khoản Mục Nghiệp Vụ' },
+        { letter: 'D', name: 'Phân Loại Dòng Tiền' },
+        { letter: 'E', name: 'Số Tiền Thu (₫)' },
+        { letter: 'F', name: 'Số Tiền Chi (₫)' },
+        { letter: 'G', name: 'Số Dư Lũy Kế (₫)' },
+        { letter: 'H', name: 'Trạng Thái Đối Soát' },
+      ],
+      rows: [
+        ['1', '01/08/2026', 'Doanh thu bán lẻ đợt 1', 'Dòng tiền kinh doanh', '45,000,000', '0', '125,000,000', '✓ Đã khớp sao kê'],
+        ['2', '02/08/2026', 'Tiền thuê mặt bằng văn phòng', 'Chi phí cố định', '0', '18,000,000', '107,000,000', '✓ Đã duyệt chi'],
+        ['3', '03/08/2026', 'Thanh toán hợp đồng dự án', 'Doanh thu dịch vụ', '68,000,000', '0', '175,000,000', '✓ Đã nhận tiền'],
+        ['4', '04/08/2026', 'Chi phí chạy Ads Marketing', 'Chi phí biến đổi', '0', '12,500,000', '162,500,000', '✓ Hóa đơn VAT'],
+        ['5', '05/08/2026', 'Chi lương nhân sự & KPI', 'Chi phí nhân sự', '0', '52,000,000', '110,500,000', '✓ Chuyển khoản MB'],
+        ['6', '06/08/2026', 'Thu hồi công nợ đối tác', 'Dòng tiền kinh doanh', '35,000,000', '0', '145,500,000', '✓ Đã đối soát'],
+      ],
+    };
+  }
+
+  if (text.includes('kho') || text.includes('nhập xuất tồn') || text.includes('tồn kho') || text.includes('vận tải')) {
+    return {
+      formula: '=E3 + F3 - G3',
+      activeCell: 'H3',
+      columns: [
+        { letter: 'A', name: 'STT' },
+        { letter: 'B', name: 'Mã SKU' },
+        { letter: 'C', name: 'Tên Sản Phẩm / Hàng Hóa' },
+        { letter: 'D', name: 'ĐVT' },
+        { letter: 'E', name: 'Tồn Đầu Kỳ' },
+        { letter: 'F', name: 'Tổng Nhập' },
+        { letter: 'G', name: 'Tổng Xuất' },
+        { letter: 'H', name: 'Tồn Cuối Kỳ' },
+        { letter: 'I', name: 'Cảnh Báo Min/Max' },
+      ],
+      rows: [
+        ['1', 'SKU-IP15-PM', 'iPhone 15 Pro Max 256GB Natural Titanium', 'Chiếc', '40', '25', '30', '35', '✓ Đạt định mức'],
+        ['2', 'SKU-MAC-M3P', 'MacBook Pro 14 M3 Pro 18GB/512GB Space Black', 'Chiếc', '15', '10', '8', '17', '✓ Đạt định mức'],
+        ['3', 'SKU-AP-PRO2', 'Tai nghe AirPods Pro 2 MagSafe USB-C', 'Chiếc', '8', '50', '46', '12', '⚠️ Cảnh báo tồn thấp'],
+        ['4', 'SKU-DELL-U27', 'Màn hình Dell UltraSharp 27 4K U2723QE', 'Chiếc', '20', '15', '12', '23', '✓ Đạt định mức'],
+        ['5', 'SKU-KEY-MXM', 'Bàn phím cơ không dây Logitech MX Mechanical', 'Chiếc', '35', '20', '22', '33', '✓ Đạt định mức'],
+        ['6', 'SKU-MOU-MX3S', 'Chuột không dây Logitech MX Master 3S', 'Chiếc', '5', '30', '28', '7', '⚠️ Cảnh báo tồn thấp'],
+      ],
+    };
+  }
+
+  if (text.includes('công việc') || text.includes('dự án') || text.includes('task') || text.includes('kanban') || text.includes('gantt') || text.includes('kpi')) {
+    return {
+      formula: '=COUNTIF(H2:H7, "Hoàn thành") / COUNTA(H2:H7)',
+      activeCell: 'G4',
+      columns: [
+        { letter: 'A', name: 'STT' },
+        { letter: 'B', name: 'Mã Task' },
+        { letter: 'C', name: 'Nội Dung Công Việc / Hạng Mục' },
+        { letter: 'D', name: 'Phụ Trách' },
+        { letter: 'E', name: 'Bắt Đầu' },
+        { letter: 'F', name: 'Hạn Chót' },
+        { letter: 'G', name: 'Tiến Độ' },
+        { letter: 'H', name: 'Trạng Thái' },
+      ],
+      rows: [
+        ['1', 'TSK-01', 'Khảo sát yêu cầu & Đặc tả chức năng hệ thống', 'Nguyễn Minh Tuấn', '01/08/2026', '05/08/2026', '100%', '✓ Hoàn thành'],
+        ['2', 'TSK-02', 'Thiết kế UI/UX Dashboard & Design System', 'Trần Thu Hà', '06/08/2026', '12/08/2026', '100%', '✓ Hoàn thành'],
+        ['3', 'TSK-03', 'Lập trình Frontend React & Module Nghiệp vụ', 'Lê Hoàng Nam', '13/08/2026', '22/08/2026', '85%', '⚡ Đang xử lý'],
+        ['4', 'TSK-04', 'Tích hợp thanh toán VietQR & Cổng nhận file', 'Phạm Văn Đức', '18/08/2026', '24/08/2026', '90%', '⚡ Đang xử lý'],
+        ['5', 'TSK-05', 'Kiểm thử bảo mật, UAT & Tối ưu Responsive', 'Hoàng Kim Yến', '25/08/2026', '28/08/2026', '40%', '⏳ Đang test'],
+        ['6', 'TSK-06', 'Triển khai Production & Bàn giao hướng dẫn', 'Nguyễn Minh Tuấn', '29/08/2026', '31/08/2026', '0%', '⏱️ Chưa bắt đầu'],
+      ],
+    };
+  }
+
+  if (text.includes('crm') || text.includes('khách hàng') || text.includes('bán hàng') || text.includes('báo giá')) {
+    return {
+      formula: '=QUERY(DEALS!A:H, "SELECT SUM(E) WHERE F=\'Chốt hợp đồng\'")',
+      activeCell: 'E3',
+      columns: [
+        { letter: 'A', name: 'STT' },
+        { letter: 'B', name: 'Mã Deal' },
+        { letter: 'C', name: 'Tên Doanh Nghiệp / Khách Hàng' },
+        { letter: 'D', name: 'Người Đại Diện' },
+        { letter: 'E', name: 'Giá Trị Dự Kiến (₫)' },
+        { letter: 'F', name: 'Giai Đoạn Phễu' },
+        { letter: 'G', name: 'Xác Suất' },
+        { letter: 'H', name: 'Hạn Ký Hợp Đồng' },
+      ],
+      rows: [
+        ['1', 'DL-101', 'Tập đoàn Xây dựng & Địa ốc Vinahome', 'Lê Tuấn Vũ (GĐ Vận hành)', '250,000,000', 'Đàm phán điều khoản', '80%', '15/08/2026'],
+        ['2', 'DL-102', 'Chuỗi Bán Lẻ Thời Trang SunFashion', 'Phạm Bích Ngọc (CEO)', '180,000,000', 'Chốt hợp đồng', '100%', '08/08/2026'],
+        ['3', 'DL-103', 'Cty Logistics & Vận Tải Toàn Cầu Apex', 'Hoàng Đình Trọng (CTO)', '320,000,000', 'Đề xuất giải pháp', '60%', '20/08/2026'],
+        ['4', 'DL-104', 'Hệ Thống Nhà Hàng Hương Biển Group', 'Đỗ Mai Chi (Kế toán trưởng)', '95,000,000', 'Đã gửi báo giá', '50%', '18/08/2026'],
+        ['5', 'DL-105', 'Startup Công Nghệ AI NovaTech', 'Trần Quốc Bảo (Founder)', '140,000,000', 'Tiếp cận ban đầu', '30%', '25/08/2026'],
+        ['6', 'DL-106', 'Cty Dược Mỹ Phẩm Tràng An', 'Vũ Minh Tâm (Phụ trách mua)', '210,000,000', 'Chốt hợp đồng', '100%', '06/08/2026'],
+      ],
+    };
+  }
+
+  // Mặc định tổng quát
+  return {
+    formula: '=VLOOKUP(B2, DULIEU_GOC!A:E, 4, FALSE)',
+    activeCell: 'F2',
+    columns: [
+      { letter: 'A', name: 'STT' },
+      { letter: 'B', name: 'Mã Chỉ Số' },
+      { letter: 'C', name: 'Khoản Mục Quản Trị' },
+      { letter: 'D', name: 'Tham Số Đầu Vào' },
+      { letter: 'E', name: 'Công Thức Tính Toán' },
+      { letter: 'F', name: 'Kết Quả Tự Động' },
+      { letter: 'G', name: 'Tiêu Chuẩn Đạt' },
+      { letter: 'H', name: 'Ghi Chú Đánh Giá' },
+    ],
+    rows: [
+      ['1', 'CS-01', 'Định mức hiệu suất vận hành', '120 Giờ máy', 'Hệ số chuẩn hóa K=1.2', '144 Điểm đạt', '✓ Đạt tiêu chuẩn', 'Tự động trích xuất'],
+      ['2', 'CS-02', 'Tỷ lệ sai số xử lý nghiệp vụ', '0.2% Tổng lệnh', 'Ngưỡng kiểm soát < 0.5%', '0.18%', '✓ Vượt kỳ vọng', 'Dữ liệu thời gian thực'],
+      ['3', 'CS-03', 'Hệ số quay vòng tài sản', '45 Lượt / Tháng', 'Chu kỳ luân chuyển 6.5 ngày', '4.8 Lần', '✓ Đạt chỉ tiêu', 'Đã khóa ô bảo mật'],
+      ['4', 'CS-04', 'Mức độ hài lòng của người dùng', '4.9 / 5.0 Sao', 'Khảo sát 250 lượt phản hồi', '98.2%', '✓ Rất hài lòng', 'Đồng bộ Drive'],
+      ['5', 'CS-05', 'Tiết kiệm thời gian thao tác', '3.5 Giờ / Ngày', 'Tự động hóa công thức mảng', '82% Tiết kiệm', '✓ Xuất sắc', 'Không lỗi vòng lặp'],
+      ['6', 'CS-06', 'Chi phí vận hành định kỳ', '0 ₫ Server', 'Chạy trên Google Sheets', '100% Miễn phí máy chủ', '✓ Tiết kiệm tối đa', 'Bảo hành trọn đời'],
+    ],
+  };
 }
 
 export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
@@ -30,16 +248,15 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
 
   // Modal Chi tiết & Mua hàng
   const [selectedTemplate, setSelectedTemplate] = useState<ExactCatalogProduct | null>(null);
-  const [modalTab, setModalTab] = useState<'info_checkout' | 'sheet_preview'>('info_checkout');
+  const [modalTab, setModalTab] = useState<'sheet_preview' | 'info_checkout'>('sheet_preview');
 
   // Trạng thái đơn hàng trong modal
   const [buyerName, setBuyerName] = useState<string>('Nguyễn Văn Tuấn');
   const [buyerPhone, setBuyerPhone] = useState<string>('0988123456');
   const [buyerEmail, setBuyerEmail] = useState<string>('tuan.nguyen@gmail.com');
   const [orderPlaced, setOrderPlaced] = useState<boolean>(false);
-  const [currentOrderCode, setCurrentOrderCode] = useState<string>('');
 
-  // 8 Bộ lọc danh mục chính xác theo yêu cầu đề bài
+  // 8 Bộ lọc danh mục chính xác
   const categories = [
     'Tất cả',
     '76 Web App Thực Chiến',
@@ -54,55 +271,17 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
   const formatVND = (val: number) =>
     new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(val);
 
-  // Điều hướng chuyển trang khi mở Web App theo appRoute
+  // Điều hướng chuyển trang khi mở Web App theo phân nhóm chính xác
   const handleOpenWebApp = (item: ExactCatalogProduct) => {
-    if (item.appRoute === 'equipment' || item.appRoute === 'erp') {
-      onSelectApp('equipment_erp');
-    } else if (item.appRoute === 'inventory') {
-      onSelectApp('warehouse');
-    } else if (item.appRoute === 'cashflow') {
-      onSelectApp('finance');
-    } else if (item.appRoute === 'project') {
-      onSelectApp('tasks');
-    } else if (item.appRoute === 'fnb' || item.appRoute === 'restaurant') {
-      onSelectApp('pos');
-    } else if (item.appRoute === 'crm') {
-      onSelectApp('crm');
-    } else {
-      // Nhận diện theo từ khóa tiêu đề hoặc danh mục
-      const lower = (item.title + ' ' + item.category).toLowerCase();
-      if (lower.includes('thiết bị') || lower.includes('erp')) {
-        onSelectApp('equipment_erp');
-      } else if (lower.includes('kho') || lower.includes('vận')) {
-        onSelectApp('warehouse');
-      } else if (lower.includes('thu chi') || lower.includes('tài chính') || lower.includes('runway')) {
-        onSelectApp('finance');
-      } else if (lower.includes('công việc') || lower.includes('tiến độ') || lower.includes('kanban')) {
-        onSelectApp('tasks');
-      } else if (lower.includes('nhà hàng') || lower.includes('quán') || lower.includes('pos')) {
-        onSelectApp('pos');
-      } else if (lower.includes('crm') || lower.includes('khách hàng') || lower.includes('bán hàng')) {
-        onSelectApp('crm');
-      } else {
-        onSelectApp('equipment_erp');
-      }
-    }
+    const targetApp = getAppForProduct(item);
+    onSelectApp(targetApp);
   };
 
-  // Mở modal xem trước Google Sheets có iframe thật
-  const handleOpenSheetPreview = (item: ExactCatalogProduct) => {
+  // Mở modal xem trước Google Sheets
+  const handleOpenSheetModal = (item: ExactCatalogProduct, tab: 'sheet_preview' | 'info_checkout' = 'sheet_preview') => {
     setSelectedTemplate(item);
-    setModalTab('sheet_preview');
+    setModalTab(tab);
     setOrderPlaced(false);
-    setCurrentOrderCode(`DH-${item.id}-${Math.floor(100 + Math.random() * 900)}`);
-  };
-
-  // Mở modal chi tiết & mua hàng
-  const handleOpenDetailModal = (item: ExactCatalogProduct) => {
-    setSelectedTemplate(item);
-    setModalTab('info_checkout');
-    setOrderPlaced(false);
-    setCurrentOrderCode(`DH-${item.id}-${Math.floor(100 + Math.random() * 900)}`);
   };
 
   // Lọc sản phẩm theo danh mục và từ khóa
@@ -176,16 +355,13 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
     setCurrentPage(1);
   };
 
-  // URL VietQR
-  const qrUrl = selectedTemplate
-    ? `https://img.vietqr.io/image/mbbank-0987654321-compact2.png?amount=${selectedTemplate.price}&addInfo=${currentOrderCode}&accountName=CONG%20TY%20GSHEETS%20VN`
+  // URL VietQR động theo yêu cầu đề bài:
+  // https://img.vietqr.io/image/970422-123456789-compact2.png?amount={price}&addInfo=MUA_{id}
+  const dynamicQrUrl = selectedTemplate
+    ? `https://img.vietqr.io/image/970422-123456789-compact2.png?amount=${selectedTemplate.price}&addInfo=MUA_${selectedTemplate.id}`
     : '';
 
-  const liveSheetUrl =
-    selectedTemplate?.sheetUrl ||
-    'https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview';
-
-  const copyDriveUrl = liveSheetUrl.replace('/preview', '/copy');
+  const sheetData = selectedTemplate ? getSheetPreviewData(selectedTemplate) : null;
 
   return (
     <div style={{ padding: '24px 32px' }}>
@@ -209,7 +385,7 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
               Sàn Bản Quyền Web App & Mẫu Google Sheets Doanh Nghiệp
             </h1>
             <p style={{ margin: '10px 0 0 0', fontSize: '14px', opacity: 0.9, maxWidth: '750px', lineHeight: 1.6 }}>
-              Khám phá 76 Web App thực chiến độc bản (Mini-ERP, Cho thuê thiết bị, Kho đa kho, Thu chi Startup, POS VietQR, CRM) và 153 mẫu Google Sheets tự động hóa chuyên sâu. Trải nghiệm trực tiếp không qua trung gian!
+              Khám phá 76 Web App thực chiến độc bản (Kho đa kho, Thu chi Startup, Quản lý công việc Kanban, POS Nhà hàng VietQR, CRM Bán hàng, Cho thuê thiết bị / Mini-ERP) và 153 mẫu Google Sheets tự động hóa chuyên sâu. Trải nghiệm trực tiếp không qua trung gian!
             </p>
           </div>
           <div style={{ display: 'flex', gap: '14px', textAlign: 'center' }}>
@@ -403,7 +579,7 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                 {/* HÀNG NÚT BẤM CHUẨN HÓA LOGIC */}
                 <div style={{ display: 'flex', gap: '8px' }}>
                   {isWebapp ? (
-                    /* NÚT CHÍNH CHO WEBAPP: TUYỆT ĐỐI KHÔNG HIỂN THỊ CHỮ TẢI MẪU SHEET */
+                    /* NÚT CHÍNH CHO WEBAPP: CHUYỂN ĐÚNG PHÂN HỆ APP THỰC TẾ */
                     <button
                       type="button"
                       onClick={() => handleOpenWebApp(item)}
@@ -427,10 +603,10 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                       ⚡ Trải nghiệm Web App
                     </button>
                   ) : (
-                    /* NÚT CHÍNH CHO GOOGLE SHEET: MỞ KHUNG XEM TRƯỚC VÀ NHẬN BẢN SAO */
+                    /* NÚT CHÍNH CHO GOOGLE SHEET THEO ĐÚNG YÊU CẦU: "Xem Mẫu Bảng Tính & Đặt Mua" */
                     <button
                       type="button"
-                      onClick={() => handleOpenSheetPreview(item)}
+                      onClick={() => handleOpenSheetModal(item, 'sheet_preview')}
                       style={{
                         flex: 1,
                         background: 'linear-gradient(135deg, #15803d 0%, #16a34a 100%)',
@@ -448,14 +624,14 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                         boxShadow: '0 2px 6px rgba(22, 163, 74, 0.25)',
                       }}
                     >
-                      📊 Xem & Nhận Bản Sao Google Sheet
+                      📊 Xem Mẫu Bảng Tính & Đặt Mua
                     </button>
                   )}
 
-                  {/* NÚT CHI TIẾT & ĐẶT MUA */}
+                  {/* NÚT CHI TIẾT */}
                   <button
                     type="button"
-                    onClick={() => handleOpenDetailModal(item)}
+                    onClick={() => handleOpenSheetModal(item, 'info_checkout')}
                     style={{
                       padding: '10px 14px',
                       borderRadius: '8px',
@@ -521,14 +697,14 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
       </div>
 
       {/* ==================================================================== */}
-      {/* MODAL CHI TIẾT SẢN PHẨM & REAL GOOGLE SHEET PREVIEW & VIETQR */}
+      {/* MODAL 2 TAB: XEM TRƯỚC CẤU TRÚC SHEET & ĐẶT MUA QUA VIETQR */}
       {/* ==================================================================== */}
       {selectedTemplate && (
         <div
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(15, 23, 42, 0.75)',
+            backgroundColor: 'rgba(15, 23, 42, 0.78)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -541,10 +717,10 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
             style={{
               backgroundColor: '#ffffff',
               borderRadius: '16px',
-              maxWidth: '820px',
+              maxWidth: '860px',
               width: '100%',
-              padding: '28px',
-              boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)',
+              padding: '26px 30px',
+              boxShadow: '0 25px 50px -12px rgba(0,0,0,0.3)',
               maxHeight: '94vh',
               overflowY: 'auto',
             }}
@@ -585,302 +761,445 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
               </button>
             </div>
 
-            {/* TAB CHUYỂN ĐỔI MODAL */}
+            {/* TAB CHUYỂN ĐỔI CHÍNH XÁC THEO YÊU CẦU ĐỀ BÀI */}
             <div style={{ display: 'flex', gap: '8px', borderBottom: '1px solid #e2e8f0', marginBottom: '18px' }}>
-              {selectedTemplate.type === 'gsheet' && (
-                <button
-                  type="button"
-                  onClick={() => setModalTab('sheet_preview')}
-                  style={{
-                    padding: '10px 16px',
-                    border: 'none',
-                    borderBottom: modalTab === 'sheet_preview' ? '2px solid #16a34a' : '2px solid transparent',
-                    backgroundColor: 'transparent',
-                    color: modalTab === 'sheet_preview' ? '#16a34a' : '#64748b',
-                    fontWeight: '700',
-                    fontSize: '13.5px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  📊 Xem Trước Trực Tiếp Google Sheets
-                </button>
-              )}
+              <button
+                type="button"
+                onClick={() => setModalTab('sheet_preview')}
+                style={{
+                  padding: '10px 18px',
+                  border: 'none',
+                  borderBottom: modalTab === 'sheet_preview' ? '3px solid #16a34a' : '3px solid transparent',
+                  backgroundColor: 'transparent',
+                  color: modalTab === 'sheet_preview' ? '#16a34a' : '#64748b',
+                  fontWeight: '700',
+                  fontSize: '13.5px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                }}
+              >
+                📊 Xem trước cấu trúc Sheet
+              </button>
 
               <button
                 type="button"
                 onClick={() => setModalTab('info_checkout')}
                 style={{
-                  padding: '10px 16px',
+                  padding: '10px 18px',
                   border: 'none',
-                  borderBottom: modalTab === 'info_checkout' ? '2px solid #0284c7' : '2px solid transparent',
+                  borderBottom: modalTab === 'info_checkout' ? '3px solid #0284c7' : '3px solid transparent',
                   backgroundColor: 'transparent',
                   color: modalTab === 'info_checkout' ? '#0284c7' : '#64748b',
                   fontWeight: '700',
                   fontSize: '13.5px',
                   cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
                 }}
               >
-                💳 Thông Tin & Đặt Mua VietQR
+                💳 Đặt Mua & Nhận File Bản Quyền
               </button>
             </div>
 
             {/* ================================================================ */}
-            {/* TAB 1: XEM TRƯỚC GOOGLE SHEET THẬT QUA IFRAME (REAL SHEET PREVIEW) */}
+            {/* TAB 1: XEM TRƯỚC CẤU TRÚC SHEET (BẢNG GIẢ LẬP GOOGLE SHEETS) */}
             {/* ================================================================ */}
-            {modalTab === 'sheet_preview' && selectedTemplate.type === 'gsheet' && (
+            {modalTab === 'sheet_preview' && sheetData && (
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
-                  <div style={{ fontSize: '13px', fontWeight: '700', color: '#334155' }}>
-                    📊 Khung xem trước bảng tính Google Sheets trực tiếp:
+                  <div style={{ fontSize: '13px', color: '#475569' }}>
+                    Mô phỏng bảng tính Google Sheets: <strong>{selectedTemplate.title}</strong>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setModalTab('info_checkout')}
+                    style={{
+                      backgroundColor: '#16a34a',
+                      color: '#ffffff',
+                      border: 'none',
+                      padding: '8px 16px',
+                      borderRadius: '8px',
+                      fontWeight: '700',
+                      fontSize: '12.5px',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Tiếp tục đặt mua mẫu này ▶
+                  </button>
+                </div>
+
+                {/* KHUNG GIẢ LẬP GIAO DIỆN GOOGLE SHEETS ĐÍCH THỰC */}
+                <div style={{ border: '1px solid #cbd5e1', borderRadius: '10px', overflow: 'hidden', marginBottom: '18px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
+                  {/* THANH TIÊU ĐỀ GOOGLE SHEETS */}
+                  <div style={{ backgroundColor: '#107c41', color: '#ffffff', padding: '9px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '12.5px', fontWeight: '700' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ fontSize: '16px' }}>📊</span>
+                      <span>Google Sheets — {selectedTemplate.title}.xlsx</span>
+                    </div>
+                    <span style={{ backgroundColor: 'rgba(255,255,255,0.2)', padding: '2px 8px', borderRadius: '4px', fontSize: '11px', fontWeight: '600' }}>
+                      Chế độ: Chỉ xem mẫu
+                    </span>
                   </div>
 
-                  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                    {/* NÚT TẠO BẢN SAO VỀ DRIVE CỦA BẠN */}
-                    <a
-                      href={copyDriveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{
-                        textDecoration: 'none',
-                        backgroundColor: '#16a34a',
-                        color: '#ffffff',
-                        padding: '8px 16px',
-                        borderRadius: '8px',
-                        fontWeight: '700',
-                        fontSize: '12.5px',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        boxShadow: '0 2px 4px rgba(22, 163, 74, 0.2)',
-                      }}
-                    >
-                      📂 Tạo Bản Sao Về Drive Của Bạn
-                    </a>
+                  {/* THANH MENU GIẢ LẬP */}
+                  <div style={{ backgroundColor: '#f1f5f9', borderBottom: '1px solid #e2e8f0', padding: '4px 12px', display: 'flex', gap: '14px', fontSize: '11.5px', color: '#475569' }}>
+                    <span>Tệp</span>
+                    <span>Chỉnh sửa</span>
+                    <span>Xem</span>
+                    <span>Chèn</span>
+                    <span>Định dạng</span>
+                    <span>Dữ liệu</span>
+                    <span>Công cụ</span>
+                    <span>Tiện ích mở rộng</span>
+                  </div>
 
-                    {/* NÚT ĐẶT MUA FILE GỐC */}
-                    <button
-                      type="button"
-                      onClick={() => setModalTab('info_checkout')}
-                      style={{
-                        backgroundColor: '#0284c7',
-                        color: '#ffffff',
-                        border: 'none',
-                        padding: '8px 16px',
-                        borderRadius: '8px',
-                        fontWeight: '700',
-                        fontSize: '12.5px',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      💳 Đặt Mua File Gốc (VietQR)
-                    </button>
+                  {/* THANH CÔNG THỨC FX */}
+                  <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #cbd5e1', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
+                    <span style={{ backgroundColor: '#f8fafc', border: '1px solid #cbd5e1', padding: '2px 8px', borderRadius: '4px', fontFamily: 'monospace', fontWeight: '700', color: '#0f172a' }}>
+                      {sheetData.activeCell}
+                    </span>
+                    <span style={{ color: '#0284c7', fontWeight: '800', fontStyle: 'italic' }}>fx</span>
+                    <span style={{ fontFamily: 'monospace', color: '#334155', fontWeight: '600' }}>
+                      {sheetData.formula}
+                    </span>
+                  </div>
+
+                  {/* BẢNG GRID DỮ LIỆU CÓ HEADER CHỮ CÁI A, B, C... VÀ SỐ DÒNG 1, 2, 3... */}
+                  <div style={{ overflowX: 'auto', maxHeight: '340px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', textAlign: 'left', backgroundColor: '#ffffff' }}>
+                      <thead>
+                        {/* HÀNG TIÊU ĐỀ CHỮ CÁI A, B, C... */}
+                        <tr style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #cbd5e1' }}>
+                          <th style={{ width: '38px', padding: '6px', textAlign: 'center', borderRight: '1px solid #cbd5e1', backgroundColor: '#f1f5f9', color: '#64748b', fontSize: '11px' }}>
+                            ◰
+                          </th>
+                          {sheetData.columns.map((col, idx) => (
+                            <th
+                              key={idx}
+                              style={{
+                                padding: '6px 10px',
+                                borderRight: '1px solid #cbd5e1',
+                                textAlign: 'center',
+                                color: '#475569',
+                                fontWeight: '700',
+                                backgroundColor: '#f8fafc',
+                                minWidth: '90px',
+                              }}
+                            >
+                              {col.letter}
+                            </th>
+                          ))}
+                        </tr>
+
+                        {/* HÀNG DÒNG 1: TÊN CÁC CỘT TRƯỜNG DỮ LIỆU */}
+                        <tr style={{ backgroundColor: '#e8f5e9', borderBottom: '2px solid #81c784', color: '#1b5e20' }}>
+                          <td style={{ padding: '7px', textAlign: 'center', borderRight: '1px solid #cbd5e1', backgroundColor: '#f1f5f9', color: '#64748b', fontWeight: '700' }}>
+                            1
+                          </td>
+                          {sheetData.columns.map((col, idx) => (
+                            <th
+                              key={idx}
+                              style={{
+                                padding: '7px 10px',
+                                borderRight: '1px solid #c8e6c9',
+                                fontWeight: '800',
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              {col.name}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {sheetData.rows.map((rowCells, rIdx) => {
+                          const rowNum = rIdx + 2;
+                          return (
+                            <tr
+                              key={rIdx}
+                              style={{
+                                borderBottom: '1px solid #e2e8f0',
+                                backgroundColor: rIdx % 2 === 0 ? '#ffffff' : '#fcfdfc',
+                              }}
+                            >
+                              {/* CỘT SỐ DÒNG 1, 2, 3... */}
+                              <td
+                                style={{
+                                  padding: '7px',
+                                  textAlign: 'center',
+                                  borderRight: '1px solid #cbd5e1',
+                                  backgroundColor: '#f1f5f9',
+                                  color: '#64748b',
+                                  fontWeight: '600',
+                                  userSelect: 'none',
+                                }}
+                              >
+                                {rowNum}
+                              </td>
+
+                              {/* CÁC Ô SỐ LIỆU KINH DOANH MẪU */}
+                              {rowCells.map((val, cIdx) => (
+                                <td
+                                  key={cIdx}
+                                  style={{
+                                    padding: '7px 10px',
+                                    borderRight: '1px solid #e2e8f0',
+                                    color: val.includes('⚠️') ? '#b45309' : val.includes('✓') ? '#15803d' : '#1e293b',
+                                    fontWeight: cIdx === 1 || val.includes('✓') ? '600' : 'normal',
+                                    whiteSpace: 'nowrap',
+                                  }}
+                                >
+                                  {val}
+                                </td>
+                              ))}
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
 
-                {/* KHUNG IFRAME NHÚNG TRỰC TIẾP GOOGLE SHEETS */}
-                <div style={{ border: '1px solid #cbd5e1', borderRadius: '12px', overflow: 'hidden', marginBottom: '16px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
-                  <div style={{ backgroundColor: '#107c41', color: '#ffffff', padding: '8px 14px', fontSize: '12px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span>📊 Google Sheets Embed:</span>
-                    <span>{selectedTemplate.title}</span>
+                {/* THÔNG TIN TÍNH NĂNG TÍCH HỢP */}
+                <div style={{ backgroundColor: '#f8fafc', padding: '14px 18px', borderRadius: '10px', border: '1px solid #e2e8f0', marginBottom: '16px' }}>
+                  <div style={{ fontSize: '13px', fontWeight: '800', color: '#0f172a', marginBottom: '6px' }}>
+                    ⚡ Điểm mạnh của bản quyền Google Sheets này:
                   </div>
-                  <iframe
-                    src={liveSheetUrl}
-                    title={selectedTemplate.title}
+                  <ul style={{ margin: 0, paddingLeft: '20px', fontSize: '12.5px', color: '#475569', lineHeight: 1.6 }}>
+                    {selectedTemplate.features.map((feat, idx) => (
+                      <li key={idx}>{feat}</li>
+                    ))}
+                    <li>Công thức tự động 100%, không cần cài đặt phần mềm bên thứ ba.</li>
+                    <li>Tương thích máy tính, máy tính bảng và điện thoại di động qua Google Drive.</li>
+                  </ul>
+                </div>
+
+                <div style={{ textAlign: 'right' }}>
+                  <button
+                    type="button"
+                    onClick={() => setModalTab('info_checkout')}
                     style={{
-                      width: '100%',
-                      height: '460px',
+                      backgroundColor: '#0284c7',
+                      color: '#ffffff',
                       border: 'none',
-                      backgroundColor: '#ffffff',
-                      display: 'block',
+                      padding: '10px 22px',
+                      borderRadius: '8px',
+                      fontWeight: '700',
+                      fontSize: '13.5px',
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      boxShadow: '0 2px 6px rgba(2, 132, 199, 0.25)',
                     }}
-                  />
+                  >
+                    Tiếp tục đặt mua mẫu này ▶
+                  </button>
                 </div>
               </div>
             )}
 
             {/* ================================================================ */}
-            {/* TAB 2: THÔNG TIN CHI TIẾT & THANH TOÁN VIETQR */}
+            {/* TAB 2: ĐẶT MUA & NHẬN FILE BẢN QUYỀN (VIETQR ĐỘNG) */}
             {/* ================================================================ */}
             {modalTab === 'info_checkout' && (
               <div>
-                <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.6, marginBottom: '16px' }}>
-                  {selectedTemplate.description}
-                </p>
-
-                {/* HỘP HIỂN THỊ TÍNH NĂNG ĐỘC BẢN CỦA PHIÊN BẢN ĐÓ */}
-                <div style={{ backgroundColor: '#f8fafc', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0', marginBottom: '20px' }}>
-                  <div style={{ fontSize: '13px', fontWeight: '800', color: '#1e293b', marginBottom: '8px' }}>
-                    Danh mục tính năng bản quyền ({selectedTemplate.version}):
-                  </div>
-                  <ul style={{ margin: 0, paddingLeft: '20px', fontSize: '13px', color: '#475569', lineHeight: 1.7 }}>
-                    {selectedTemplate.features.map((feat, idx) => (
-                      <li key={idx}><strong>{feat}</strong></li>
-                    ))}
-                    <li>Cấp quyền truy cập vĩnh viễn trên tài khoản Google Workspace / Drive của bạn.</li>
-                    <li>Bảo hành kỹ thuật và hướng dẫn sử dụng chi tiết từ đội ngũ GSheets.vn.</li>
-                  </ul>
-                </div>
-
-                {/* NÚT MỞ THẲNG WEB APP NẾU ĐÂY LÀ SẢN PHẨM WEBAPP */}
-                {selectedTemplate.type === 'webapp' && (
-                  <div style={{ marginBottom: '20px', textAlign: 'center' }}>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSelectedTemplate(null);
-                        handleOpenWebApp(selectedTemplate);
-                      }}
-                      style={{
-                        background: 'linear-gradient(135deg, #1e40af 0%, #0284c7 100%)',
-                        color: '#ffffff',
-                        border: 'none',
-                        padding: '12px 28px',
-                        borderRadius: '10px',
-                        fontSize: '14px',
-                        fontWeight: '800',
-                        cursor: 'pointer',
-                        boxShadow: '0 4px 12px rgba(2, 132, 199, 0.35)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                      }}
-                    >
-                      ⚡ Mở Trực Tiếp Trình Duyệt Web App {selectedTemplate.title}
-                    </button>
-                  </div>
-                )}
-
-                {/* KHUNG THANH TOÁN VIETQR */}
                 {!orderPlaced ? (
-                  <div style={{ border: '1px solid #bae6fd', backgroundColor: '#f0f9ff', borderRadius: '14px', padding: '20px', marginBottom: '16px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-                      <h4 style={{ margin: 0, fontSize: '15.5px', fontWeight: '800', color: '#0369a1' }}>
-                        Thanh Toán Nhanh Bản Quyền Qua VietQR Ngân Hàng
-                      </h4>
-                      <span style={{ fontSize: '18px', fontWeight: '800', color: '#059669' }}>
-                        {formatVND(selectedTemplate.price)}
-                      </span>
-                    </div>
-
-                    <div style={{ display: 'grid', gridTemplateColumns: '180px 1fr', gap: '20px', alignItems: 'center' }}>
-                      {/* ẢNH QR VIETQR */}
-                      <div style={{ textAlign: 'center', backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px', border: '1px solid #cbd5e1' }}>
-                        <img
-                          src={qrUrl}
-                          alt="VietQR Chuyển Khoản"
-                          style={{ width: '160px', height: '160px', display: 'block', margin: '0 auto' }}
-                          onError={(e: any) => {
-                            e.target.style.display = 'none';
-                            e.target.nextSibling.style.display = 'block';
-                          }}
-                        />
-                        <div style={{ display: 'none', width: '160px', height: '160px', lineHeight: '160px', fontSize: '12px', color: '#64748b' }}>
-                          [QR MB Bank]
+                  <div>
+                    <div style={{ border: '1px solid #bae6fd', backgroundColor: '#f0f9ff', borderRadius: '14px', padding: '20px', marginBottom: '20px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+                        <div>
+                          <h4 style={{ margin: 0, fontSize: '16px', fontWeight: '800', color: '#0369a1' }}>
+                            Thanh Toán VietQR Nhận Liên Kết Bản Quyền Tự Động
+                          </h4>
+                          <span style={{ fontSize: '12.5px', color: '#64748b' }}>
+                            Mã sản phẩm: <strong>{selectedTemplate.id}</strong> • Phí kích hoạt trọn đời
+                          </span>
                         </div>
-                        <div style={{ fontSize: '10.5px', color: '#64748b', marginTop: '4px' }}>Quét bằng app ngân hàng</div>
+                        <span style={{ fontSize: '20px', fontWeight: '800', color: '#059669' }}>
+                          {formatVND(selectedTemplate.price)}
+                        </span>
                       </div>
 
-                      {/* FORM THÔNG TIN NGƯỜI NHẬN FILE */}
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                        <div style={{ fontSize: '12.5px', color: '#0f172a', lineHeight: 1.5 }}>
-                          <div>Ngân hàng: <strong>MB Bank (Ngân hàng Quân Đội)</strong></div>
-                          <div>STK: <strong>0987654321</strong> | Chủ TK: <strong>CONG TY GSHEETS VN</strong></div>
-                          <div>Mã đơn hàng / Nội dung: <strong style={{ color: '#0284c7' }}>{currentOrderCode}</strong></div>
-                        </div>
-
-                        <div>
-                          <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#334155', marginBottom: '3px' }}>
-                            Email nhận link bản quyền Google Drive:
-                          </label>
-                          <input
-                            type="email"
-                            required
-                            value={buyerEmail}
-                            onChange={(e) => setBuyerEmail(e.target.value)}
-                            style={{ width: '100%', padding: '7px 10px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '13px', boxSizing: 'border-box' }}
+                      <div style={{ display: 'grid', gridTemplateColumns: '200px 1fr', gap: '22px', alignItems: 'center' }}>
+                        {/* MÃ VIETQR ĐỘNG CHUẨN ĐỀ BÀI: https://img.vietqr.io/image/970422-123456789-compact2.png?amount={price}&addInfo=MUA_{id} */}
+                        <div style={{ textAlign: 'center', backgroundColor: '#ffffff', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1' }}>
+                          <img
+                            src={dynamicQrUrl}
+                            alt="VietQR Chuyển Khoản"
+                            style={{ width: '176px', height: '176px', display: 'block', margin: '0 auto' }}
+                            onError={(e: any) => {
+                              e.target.style.display = 'none';
+                              e.target.nextSibling.style.display = 'block';
+                            }}
                           />
+                          <div style={{ display: 'none', width: '176px', height: '176px', lineHeight: '176px', fontSize: '12px', color: '#64748b' }}>
+                            [QR MB Bank]
+                          </div>
+                          <div style={{ fontSize: '11px', color: '#64748b', marginTop: '6px', fontWeight: '600' }}>
+                            Quét bằng app mọi ngân hàng
+                          </div>
                         </div>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                        {/* FORM THÔNG TIN NGƯỜI MUA */}
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                          <div style={{ fontSize: '12.5px', color: '#0f172a', lineHeight: 1.6, backgroundColor: '#ffffff', padding: '10px 14px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                            <div>Ngân hàng: <strong>MB Bank (Ngân Hàng Quân Đội)</strong></div>
+                            <div>Số tài khoản: <strong>123456789</strong></div>
+                            <div>Nội dung chuyển khoản: <strong style={{ color: '#0284c7' }}>MUA_{selectedTemplate.id}</strong></div>
+                          </div>
+
                           <div>
                             <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#334155', marginBottom: '3px' }}>
-                              Họ tên người mua:
+                              Họ và tên:
                             </label>
                             <input
                               type="text"
+                              required
                               value={buyerName}
                               onChange={(e) => setBuyerName(e.target.value)}
-                              style={{ width: '100%', padding: '7px 10px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '13px', boxSizing: 'border-box' }}
+                              style={{ width: '100%', padding: '8px 12px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '13px', boxSizing: 'border-box' }}
                             />
                           </div>
+
                           <div>
                             <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#334155', marginBottom: '3px' }}>
                               Số điện thoại / Zalo:
                             </label>
                             <input
                               type="text"
+                              required
                               value={buyerPhone}
                               onChange={(e) => setBuyerPhone(e.target.value)}
-                              style={{ width: '100%', padding: '7px 10px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '13px', boxSizing: 'border-box' }}
+                              style={{ width: '100%', padding: '8px 12px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '13px', boxSizing: 'border-box' }}
                             />
                           </div>
-                        </div>
 
+                          <div>
+                            <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#334155', marginBottom: '3px' }}>
+                              Email nhận liên kết Google Drive:
+                            </label>
+                            <input
+                              type="email"
+                              required
+                              value={buyerEmail}
+                              onChange={(e) => setBuyerEmail(e.target.value)}
+                              style={{ width: '100%', padding: '8px 12px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '13px', boxSizing: 'border-box' }}
+                            />
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => setOrderPlaced(true)}
+                            style={{
+                              marginTop: '8px',
+                              backgroundColor: '#16a34a',
+                              color: '#ffffff',
+                              border: 'none',
+                              padding: '11px',
+                              borderRadius: '8px',
+                              fontWeight: '700',
+                              fontSize: '14px',
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              gap: '6px',
+                              boxShadow: '0 2px 6px rgba(22, 163, 74, 0.25)',
+                            }}
+                          >
+                            ✓ Xác nhận đã chuyển khoản
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* NÚT MỞ THẲNG WEB APP NẾU ĐÂY LÀ SẢN PHẨM WEBAPP */}
+                    {selectedTemplate.type === 'webapp' && (
+                      <div style={{ textAlign: 'center', marginTop: '14px' }}>
                         <button
                           type="button"
-                          onClick={() => setOrderPlaced(true)}
+                          onClick={() => {
+                            setSelectedTemplate(null);
+                            handleOpenWebApp(selectedTemplate);
+                          }}
                           style={{
-                            marginTop: '6px',
-                            backgroundColor: '#16a34a',
+                            background: 'linear-gradient(135deg, #1e40af 0%, #0284c7 100%)',
                             color: '#ffffff',
                             border: 'none',
-                            padding: '10px',
+                            padding: '10px 24px',
                             borderRadius: '8px',
-                            fontWeight: '700',
                             fontSize: '13.5px',
+                            fontWeight: '700',
                             cursor: 'pointer',
-                            display: 'flex',
+                            display: 'inline-flex',
                             alignItems: 'center',
-                            justifyContent: 'center',
                             gap: '6px',
                           }}
                         >
-                          ✓ Tôi Đã Chuyển Khoản - Kích Hoạt Nhận File Ngay
+                          ⚡ Trải nghiệm Web App ngay
                         </button>
                       </div>
-                    </div>
+                    )}
                   </div>
                 ) : (
-                  /* MÀN HÌNH XÁC NHẬN ĐƠN HÀNG THÀNH CÔNG */
-                  <div style={{ backgroundColor: '#ecfdf5', border: '2px solid #86efac', borderRadius: '14px', padding: '24px', textAlign: 'center', marginBottom: '20px' }}>
-                    <div style={{ fontSize: '36px', marginBottom: '8px' }}>🎉</div>
-                    <h3 style={{ margin: '0 0 6px 0', fontSize: '18px', fontWeight: '800', color: '#166534' }}>
+                  /* MÀN HÌNH XÁC NHẬN ĐƠN HÀNG THÀNH CÔNG VÀ NÚT MỞ ZALO NHẬN FILE NGAY */
+                  <div style={{ backgroundColor: '#ecfdf5', border: '2px solid #86efac', borderRadius: '16px', padding: '30px', textAlign: 'center' }}>
+                    <div style={{ fontSize: '42px', marginBottom: '8px' }}>🎉</div>
+                    <h3 style={{ margin: '0 0 8px 0', fontSize: '20px', fontWeight: '800', color: '#166534' }}>
                       Xác Nhận Đơn Hàng Thành Công!
                     </h3>
-                    <p style={{ margin: '0 0 16px 0', fontSize: '13px', color: '#15803d' }}>
-                      Hệ thống đã ghi nhận thanh toán cho đơn hàng <strong>{currentOrderCode}</strong>.<br />
+                    <p style={{ margin: '0 0 10px 0', fontSize: '14px', color: '#15803d', lineHeight: 1.6 }}>
+                      Hệ thống đã ghi nhận thanh toán cho đơn hàng <strong>MUA_{selectedTemplate.id}</strong>.<br />
                       Đường link bản quyền Google Drive đã được gửi đến hộp thư <strong>{buyerEmail}</strong>.
                     </p>
 
-                    <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '20px' }}>
+                      {/* NÚT MỞ ZALO NHẬN FILE NGAY THEO YÊU CẦU ĐỀ BÀI */}
                       <a
-                        href={copyDriveUrl}
+                        href={`https://zalo.me/${buyerPhone.replace(/\D/g, '') || '0987654321'}`}
                         target="_blank"
                         rel="noreferrer"
                         style={{
                           textDecoration: 'none',
                           backgroundColor: '#0284c7',
                           color: '#ffffff',
-                          padding: '10px 20px',
+                          padding: '12px 24px',
                           borderRadius: '8px',
-                          fontWeight: '700',
-                          fontSize: '13.5px',
+                          fontWeight: '800',
+                          fontSize: '14px',
                           display: 'inline-flex',
                           alignItems: 'center',
-                          gap: '6px',
+                          gap: '8px',
+                          boxShadow: '0 4px 10px rgba(2, 132, 199, 0.3)',
                         }}
                       >
-                        📂 Mở & Sao Chép Vào Google Drive Của Bạn
+                        💬 Mở Zalo nhận file ngay
+                      </a>
+
+                      {/* LIÊN KẾT GOOGLE DRIVE */}
+                      <a
+                        href="https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/copy"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          textDecoration: 'none',
+                          backgroundColor: '#16a34a',
+                          color: '#ffffff',
+                          padding: '12px 24px',
+                          borderRadius: '8px',
+                          fontWeight: '800',
+                          fontSize: '14px',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          boxShadow: '0 4px 10px rgba(22, 163, 74, 0.25)',
+                        }}
+                      >
+                        📂 Mở & Tạo Bản Sao Google Drive
                       </a>
 
                       <button
@@ -892,10 +1211,10 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                           backgroundColor: '#ffffff',
                           border: '1px solid #cbd5e1',
                           color: '#334155',
-                          padding: '10px 18px',
+                          padding: '12px 20px',
                           borderRadius: '8px',
-                          fontWeight: '600',
-                          fontSize: '13.5px',
+                          fontWeight: '700',
+                          fontSize: '14px',
                           cursor: 'pointer',
                         }}
                       >

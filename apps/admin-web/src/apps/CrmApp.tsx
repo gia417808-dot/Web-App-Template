@@ -1,7 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { initialCrmDeals, CustomerDeal } from '../mock/deepMockData';
 
-export default function CrmApp() {
+interface CrmAppProps {
+  onBack?: () => void;
+}
+
+export default function CrmApp({ onBack }: CrmAppProps = {}) {
   const [deals, setDeals] = useState<CustomerDeal[]>(initialCrmDeals);
   const [stageFilter, setStageFilter] = useState<string>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
@@ -117,7 +121,28 @@ export default function CrmApp() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: '10px' }}>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          {onBack && (
+            <button
+              type="button"
+              onClick={onBack}
+              style={{
+                backgroundColor: '#ffffff',
+                color: '#334155',
+                border: '1px solid #cbd5e1',
+                padding: '8px 16px',
+                borderRadius: '8px',
+                fontWeight: '700',
+                fontSize: '13px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
+              ← Quay lại Sàn Marketplace
+            </button>
+          )}
           <div style={{ display: 'flex', backgroundColor: '#e2e8f0', borderRadius: '8px', padding: '3px' }}>
             <button
               onClick={() => setViewMode('pipeline')}

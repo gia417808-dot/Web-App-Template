@@ -1,7 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { initialMenuItems, initialTables, MenuItem, TableItem } from '../mock/deepMockData';
 
-export default function PosApp() {
+interface PosAppProps {
+  onBack?: () => void;
+}
+
+export default function PosApp({ onBack }: PosAppProps = {}) {
   const [tables, setTables] = useState<TableItem[]>(initialTables);
   const [menuItems] = useState<MenuItem[]>(initialMenuItems);
   const [selectedTableId, setSelectedTableId] = useState<number>(1);
@@ -119,6 +123,27 @@ export default function PosApp() {
         </div>
 
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          {onBack && (
+            <button
+              type="button"
+              onClick={onBack}
+              style={{
+                backgroundColor: '#ffffff',
+                color: '#334155',
+                border: '1px solid #cbd5e1',
+                padding: '8px 16px',
+                borderRadius: '8px',
+                fontWeight: '700',
+                fontSize: '13px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
+              ← Quay lại Sàn Marketplace
+            </button>
+          )}
           <span style={{ fontSize: '13px', backgroundColor: '#dcfce7', color: '#166534', padding: '6px 12px', borderRadius: '20px', fontWeight: '600' }}>
             🟢 Thu ngân: Ca sáng (Nguyễn Thu Ngân)
           </span>

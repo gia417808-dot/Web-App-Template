@@ -6,7 +6,11 @@ import {
   StockMovementLog,
 } from '../mock/deepMockData';
 
-export default function WarehouseApp() {
+interface WarehouseAppProps {
+  onBack?: () => void;
+}
+
+export default function WarehouseApp({ onBack }: WarehouseAppProps = {}) {
   const [items, setItems] = useState<WarehouseStockItem[]>(initialWarehouseItems);
   const [logs, setLogs] = useState<StockMovementLog[]>(initialMovementLogs);
   const [selectedWarehouse, setSelectedWarehouse] = useState<'Tất cả' | 'Kho Hà Nội' | 'Kho Sài Gòn' | 'Kho Tổng'>('Tất cả');
@@ -144,7 +148,28 @@ export default function WarehouseApp() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: '12px' }}>
+        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+          {onBack && (
+            <button
+              type="button"
+              onClick={onBack}
+              style={{
+                backgroundColor: '#ffffff',
+                color: '#334155',
+                border: '1px solid #cbd5e1',
+                padding: '9px 16px',
+                borderRadius: '8px',
+                fontWeight: '700',
+                fontSize: '13px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
+              ← Quay lại Sàn Marketplace
+            </button>
+          )}
           <button
             onClick={() => {
               setMovementType('Nhập kho');

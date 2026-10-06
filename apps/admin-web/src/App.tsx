@@ -144,23 +144,77 @@ export default function App() {
         </div>
       </header>
 
+      {/* THANH ĐIỀU HƯỚNG CỐ ĐỊNH QUAY LẠI MARKETPLACE KHI ĐANG MỞ APP CON */}
+      {activeApp !== 'marketplace' && (
+        <div
+          style={{
+            backgroundColor: '#ffffff',
+            borderBottom: '1px solid #e2e8f0',
+            padding: '10px 32px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            position: 'sticky',
+            top: '62px',
+            zIndex: 90,
+            boxShadow: '0 2px 4px rgba(0,0,0,0.04)',
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => setActiveApp('marketplace')}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              backgroundColor: '#0284c7',
+              color: '#ffffff',
+              border: 'none',
+              padding: '8px 18px',
+              borderRadius: '8px',
+              fontSize: '13px',
+              fontWeight: '700',
+              cursor: 'pointer',
+              boxShadow: '0 2px 4px rgba(2, 132, 199, 0.25)',
+            }}
+          >
+            ← Quay lại Sàn Marketplace
+          </button>
+          <div style={{ fontSize: '13px', color: '#475569' }}>
+            Đang trải nghiệm trực tiếp: <strong style={{ color: '#0284c7' }}>{currentAppDef.label}</strong>
+          </div>
+        </div>
+      )}
+
       {/* VÙNG HIỂN THỊ NỘI DUNG ỨNG DỤNG ĐANG CHỌN */}
       <main style={{ maxWidth: '1600px', margin: '0 auto', minHeight: 'calc(100vh - 120px)' }}>
         {activeApp === 'marketplace' && (
           <MarketplaceApp onSelectApp={(target) => setActiveApp(target)} />
         )}
 
-        {activeApp === 'equipment_erp' && <EquipmentErpApp />}
+        {activeApp === 'equipment_erp' && (
+          <EquipmentErpApp onBack={() => setActiveApp('marketplace')} />
+        )}
 
-        {activeApp === 'warehouse' && <WarehouseApp />}
+        {activeApp === 'warehouse' && (
+          <WarehouseApp onBack={() => setActiveApp('marketplace')} />
+        )}
 
-        {activeApp === 'finance' && <FinanceApp />}
+        {activeApp === 'finance' && (
+          <FinanceApp onBack={() => setActiveApp('marketplace')} />
+        )}
 
-        {activeApp === 'tasks' && <TasksApp />}
+        {activeApp === 'tasks' && (
+          <TasksApp onBack={() => setActiveApp('marketplace')} />
+        )}
 
-        {activeApp === 'pos' && <PosApp />}
+        {activeApp === 'pos' && (
+          <PosApp onBack={() => setActiveApp('marketplace')} />
+        )}
 
-        {activeApp === 'crm' && <CrmApp />}
+        {activeApp === 'crm' && (
+          <CrmApp onBack={() => setActiveApp('marketplace')} />
+        )}
       </main>
 
       {/* FOOTER HỆ THỐNG */}

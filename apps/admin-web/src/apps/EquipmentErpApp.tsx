@@ -170,7 +170,11 @@ const INITIAL_LOGS_AUGUST_3: ActivityLog[] = [
   },
 ];
 
-export default function EquipmentErpApp() {
+interface EquipmentErpAppProps {
+  onBack?: () => void;
+}
+
+export default function EquipmentErpApp({ onBack }: EquipmentErpAppProps = {}) {
   const [equipmentList, setEquipmentList] = useState<EquipmentContract[]>(INITIAL_EQUIPMENT);
   const [logs, setLogs] = useState<ActivityLog[]>(INITIAL_LOGS_AUGUST_3);
   const [filterStatus, setFilterStatus] = useState<string>('all');
@@ -296,6 +300,31 @@ export default function EquipmentErpApp() {
           }}
         >
           {notification}
+        </div>
+      )}
+
+      {onBack && (
+        <div style={{ marginBottom: '16px' }}>
+          <button
+            type="button"
+            onClick={onBack}
+            style={{
+              backgroundColor: '#ffffff',
+              color: '#334155',
+              border: '1px solid #cbd5e1',
+              padding: '9px 18px',
+              borderRadius: '8px',
+              fontWeight: '700',
+              fontSize: '13px',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+            }}
+          >
+            ← Quay lại Sàn Marketplace
+          </button>
         </div>
       )}
 
