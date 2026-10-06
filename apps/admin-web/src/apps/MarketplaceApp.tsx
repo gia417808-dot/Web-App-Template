@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import exactCatalogData from '../data/exactCatalog.json';
+import { getProductDataset, ProductDataset, ProductColumn } from '../utils/productDataEngine';
 
 export interface ExactCatalogProduct {
   id: string;
@@ -24,220 +25,30 @@ interface MarketplaceAppProps {
   onSelectApp: (app: AppDestination) => void;
 }
 
-// Phân loại chính xác 6 App nghiệp vụ theo yêu cầu
-export function getAppForProduct(item: ExactCatalogProduct): AppDestination {
-  const text = (item.title + ' ' + item.category + ' ' + item.description + ' ' + (item.appRoute || '')).toLowerCase();
+// Kiểm tra xem sản phẩm có trùng khớp trực tiếp 100% với 6 phân hệ lớn trong hệ thống hay không
+export function getCoreAppIfExactMatch(item: ExactCatalogProduct): AppDestination | null {
+  const t = item.title.toLowerCase();
 
-  // 1. Nhóm Thiết bị, Mini-ERP
-  if (
-    text.includes('thiết bị') ||
-    text.includes('mini-erp') ||
-    text.includes('mini erp') ||
-    text.includes('cho thuê thiết bị') ||
-    item.appRoute === 'equipment' ||
-    item.appRoute === 'erp'
-  ) {
+  if (t.includes('cho thuê thiết bị') || t.includes('mini-erp') || t.includes('thiết bị')) {
     return 'equipment_erp';
   }
-
-  // 2. Nhóm Kho
-  if (
-    text.includes('kho') ||
-    text.includes('nhập xuất tồn') ||
-    text.includes('tồn kho') ||
-    text.includes('thủ kho') ||
-    text.includes('vận tải') ||
-    text.includes('vận chuyển') ||
-    item.appRoute === 'inventory' ||
-    item.category === 'Quản lý Kho'
-  ) {
+  if (t.includes('kho đa kho') || (t.includes('quản lý kho') && t.includes('v3.0'))) {
     return 'warehouse';
   }
-
-  // 3. Nhóm Thu chi, Tài chính, Ngân sách
-  if (
-    text.includes('thu chi') ||
-    text.includes('tài chính') ||
-    text.includes('ngân sách') ||
-    text.includes('dòng tiền') ||
-    text.includes('runway') ||
-    text.includes('burn rate') ||
-    text.includes('chi tiêu') ||
-    text.includes('sổ quỹ') ||
-    text.includes('phê duyệt chi') ||
-    text.includes('tiền mặt') ||
-    text.includes('công nợ') ||
-    item.appRoute === 'cashflow' ||
-    item.category === 'Tài chính - Thu chi'
-  ) {
+  if (t.includes('thu chi doanh nghiệp') || t.includes('runway') || t.includes('burn rate')) {
     return 'finance';
   }
-
-  // 4. Nhóm Cafe, Nhà hàng, Quán ăn, F&B
-  if (
-    text.includes('nhà hàng') ||
-    text.includes('cafe') ||
-    text.includes('cà phê') ||
-    text.includes('quán ăn') ||
-    text.includes('f&b') ||
-    text.includes('pos') ||
-    text.includes('bàn ăn') ||
-    text.includes('menu') ||
-    item.appRoute === 'fnb' ||
-    item.appRoute === 'restaurant' ||
-    item.category === 'F&B & Nhà hàng'
-  ) {
+  if (t.includes('pos nhà hàng') || t.includes('pos cafe') || t.includes('f&b')) {
     return 'pos';
   }
-
-  // 5. Nhóm Khách hàng, CRM, Bán hàng
-  if (
-    text.includes('khách hàng') ||
-    text.includes('crm') ||
-    text.includes('cskh') ||
-    text.includes('bán hàng') ||
-    text.includes('báo giá') ||
-    text.includes('chăm sóc khách hàng') ||
-    text.includes('sales') ||
-    text.includes('pipeline') ||
-    item.appRoute === 'crm' ||
-    item.category === 'CRM & Khách hàng'
-  ) {
+  if (t.includes('crm bán hàng & cskh') || (t.includes('crm') && t.includes('v7.1'))) {
     return 'crm';
   }
-
-  // 6. Nhóm Công việc, Dự án, Task, Gantt (và quản trị chung)
-  return 'tasks';
-}
-
-// Dữ liệu mô phỏng Google Sheets chân thực theo từng nhóm sản phẩm
-function getSheetPreviewData(item: ExactCatalogProduct) {
-  const text = (item.title + ' ' + item.category + ' ' + item.description).toLowerCase();
-
-  if (text.includes('thu chi') || text.includes('tài chính') || text.includes('ngân sách') || text.includes('dòng tiền') || text.includes('runway') || text.includes('công nợ')) {
-    return {
-      formula: '=SUM(D2:D7) - SUM(E2:E7)',
-      activeCell: 'F7',
-      columns: [
-        { letter: 'A', name: 'STT' },
-        { letter: 'B', name: 'Ngày Ghi Nhận' },
-        { letter: 'C', name: 'Khoản Mục Nghiệp Vụ' },
-        { letter: 'D', name: 'Phân Loại Dòng Tiền' },
-        { letter: 'E', name: 'Số Tiền Thu (₫)' },
-        { letter: 'F', name: 'Số Tiền Chi (₫)' },
-        { letter: 'G', name: 'Số Dư Lũy Kế (₫)' },
-        { letter: 'H', name: 'Trạng Thái Đối Soát' },
-      ],
-      rows: [
-        ['1', '01/08/2026', 'Doanh thu bán lẻ đợt 1', 'Dòng tiền kinh doanh', '45,000,000', '0', '125,000,000', '✓ Đã khớp sao kê'],
-        ['2', '02/08/2026', 'Tiền thuê mặt bằng văn phòng', 'Chi phí cố định', '0', '18,000,000', '107,000,000', '✓ Đã duyệt chi'],
-        ['3', '03/08/2026', 'Thanh toán hợp đồng dự án', 'Doanh thu dịch vụ', '68,000,000', '0', '175,000,000', '✓ Đã nhận tiền'],
-        ['4', '04/08/2026', 'Chi phí chạy Ads Marketing', 'Chi phí biến đổi', '0', '12,500,000', '162,500,000', '✓ Hóa đơn VAT'],
-        ['5', '05/08/2026', 'Chi lương nhân sự & KPI', 'Chi phí nhân sự', '0', '52,000,000', '110,500,000', '✓ Chuyển khoản MB'],
-        ['6', '06/08/2026', 'Thu hồi công nợ đối tác', 'Dòng tiền kinh doanh', '35,000,000', '0', '145,500,000', '✓ Đã đối soát'],
-      ],
-    };
+  if (t.includes('quản lý dự án & công việc') || (t.includes('công việc') && t.includes('v5.0'))) {
+    return 'tasks';
   }
 
-  if (text.includes('kho') || text.includes('nhập xuất tồn') || text.includes('tồn kho') || text.includes('vận tải')) {
-    return {
-      formula: '=E3 + F3 - G3',
-      activeCell: 'H3',
-      columns: [
-        { letter: 'A', name: 'STT' },
-        { letter: 'B', name: 'Mã SKU' },
-        { letter: 'C', name: 'Tên Sản Phẩm / Hàng Hóa' },
-        { letter: 'D', name: 'ĐVT' },
-        { letter: 'E', name: 'Tồn Đầu Kỳ' },
-        { letter: 'F', name: 'Tổng Nhập' },
-        { letter: 'G', name: 'Tổng Xuất' },
-        { letter: 'H', name: 'Tồn Cuối Kỳ' },
-        { letter: 'I', name: 'Cảnh Báo Min/Max' },
-      ],
-      rows: [
-        ['1', 'SKU-IP15-PM', 'iPhone 15 Pro Max 256GB Natural Titanium', 'Chiếc', '40', '25', '30', '35', '✓ Đạt định mức'],
-        ['2', 'SKU-MAC-M3P', 'MacBook Pro 14 M3 Pro 18GB/512GB Space Black', 'Chiếc', '15', '10', '8', '17', '✓ Đạt định mức'],
-        ['3', 'SKU-AP-PRO2', 'Tai nghe AirPods Pro 2 MagSafe USB-C', 'Chiếc', '8', '50', '46', '12', '⚠️ Cảnh báo tồn thấp'],
-        ['4', 'SKU-DELL-U27', 'Màn hình Dell UltraSharp 27 4K U2723QE', 'Chiếc', '20', '15', '12', '23', '✓ Đạt định mức'],
-        ['5', 'SKU-KEY-MXM', 'Bàn phím cơ không dây Logitech MX Mechanical', 'Chiếc', '35', '20', '22', '33', '✓ Đạt định mức'],
-        ['6', 'SKU-MOU-MX3S', 'Chuột không dây Logitech MX Master 3S', 'Chiếc', '5', '30', '28', '7', '⚠️ Cảnh báo tồn thấp'],
-      ],
-    };
-  }
-
-  if (text.includes('công việc') || text.includes('dự án') || text.includes('task') || text.includes('kanban') || text.includes('gantt') || text.includes('kpi')) {
-    return {
-      formula: '=COUNTIF(H2:H7, "Hoàn thành") / COUNTA(H2:H7)',
-      activeCell: 'G4',
-      columns: [
-        { letter: 'A', name: 'STT' },
-        { letter: 'B', name: 'Mã Task' },
-        { letter: 'C', name: 'Nội Dung Công Việc / Hạng Mục' },
-        { letter: 'D', name: 'Phụ Trách' },
-        { letter: 'E', name: 'Bắt Đầu' },
-        { letter: 'F', name: 'Hạn Chót' },
-        { letter: 'G', name: 'Tiến Độ' },
-        { letter: 'H', name: 'Trạng Thái' },
-      ],
-      rows: [
-        ['1', 'TSK-01', 'Khảo sát yêu cầu & Đặc tả chức năng hệ thống', 'Nguyễn Minh Tuấn', '01/08/2026', '05/08/2026', '100%', '✓ Hoàn thành'],
-        ['2', 'TSK-02', 'Thiết kế UI/UX Dashboard & Design System', 'Trần Thu Hà', '06/08/2026', '12/08/2026', '100%', '✓ Hoàn thành'],
-        ['3', 'TSK-03', 'Lập trình Frontend React & Module Nghiệp vụ', 'Lê Hoàng Nam', '13/08/2026', '22/08/2026', '85%', '⚡ Đang xử lý'],
-        ['4', 'TSK-04', 'Tích hợp thanh toán VietQR & Cổng nhận file', 'Phạm Văn Đức', '18/08/2026', '24/08/2026', '90%', '⚡ Đang xử lý'],
-        ['5', 'TSK-05', 'Kiểm thử bảo mật, UAT & Tối ưu Responsive', 'Hoàng Kim Yến', '25/08/2026', '28/08/2026', '40%', '⏳ Đang test'],
-        ['6', 'TSK-06', 'Triển khai Production & Bàn giao hướng dẫn', 'Nguyễn Minh Tuấn', '29/08/2026', '31/08/2026', '0%', '⏱️ Chưa bắt đầu'],
-      ],
-    };
-  }
-
-  if (text.includes('crm') || text.includes('khách hàng') || text.includes('bán hàng') || text.includes('báo giá')) {
-    return {
-      formula: '=QUERY(DEALS!A:H, "SELECT SUM(E) WHERE F=\'Chốt hợp đồng\'")',
-      activeCell: 'E3',
-      columns: [
-        { letter: 'A', name: 'STT' },
-        { letter: 'B', name: 'Mã Deal' },
-        { letter: 'C', name: 'Tên Doanh Nghiệp / Khách Hàng' },
-        { letter: 'D', name: 'Người Đại Diện' },
-        { letter: 'E', name: 'Giá Trị Dự Kiến (₫)' },
-        { letter: 'F', name: 'Giai Đoạn Phễu' },
-        { letter: 'G', name: 'Xác Suất' },
-        { letter: 'H', name: 'Hạn Ký Hợp Đồng' },
-      ],
-      rows: [
-        ['1', 'DL-101', 'Tập đoàn Xây dựng & Địa ốc Vinahome', 'Lê Tuấn Vũ (GĐ Vận hành)', '250,000,000', 'Đàm phán điều khoản', '80%', '15/08/2026'],
-        ['2', 'DL-102', 'Chuỗi Bán Lẻ Thời Trang SunFashion', 'Phạm Bích Ngọc (CEO)', '180,000,000', 'Chốt hợp đồng', '100%', '08/08/2026'],
-        ['3', 'DL-103', 'Cty Logistics & Vận Tải Toàn Cầu Apex', 'Hoàng Đình Trọng (CTO)', '320,000,000', 'Đề xuất giải pháp', '60%', '20/08/2026'],
-        ['4', 'DL-104', 'Hệ Thống Nhà Hàng Hương Biển Group', 'Đỗ Mai Chi (Kế toán trưởng)', '95,000,000', 'Đã gửi báo giá', '50%', '18/08/2026'],
-        ['5', 'DL-105', 'Startup Công Nghệ AI NovaTech', 'Trần Quốc Bảo (Founder)', '140,000,000', 'Tiếp cận ban đầu', '30%', '25/08/2026'],
-        ['6', 'DL-106', 'Cty Dược Mỹ Phẩm Tràng An', 'Vũ Minh Tâm (Phụ trách mua)', '210,000,000', 'Chốt hợp đồng', '100%', '06/08/2026'],
-      ],
-    };
-  }
-
-  // Mặc định tổng quát
-  return {
-    formula: '=VLOOKUP(B2, DULIEU_GOC!A:E, 4, FALSE)',
-    activeCell: 'F2',
-    columns: [
-      { letter: 'A', name: 'STT' },
-      { letter: 'B', name: 'Mã Chỉ Số' },
-      { letter: 'C', name: 'Khoản Mục Quản Trị' },
-      { letter: 'D', name: 'Tham Số Đầu Vào' },
-      { letter: 'E', name: 'Công Thức Tính Toán' },
-      { letter: 'F', name: 'Kết Quả Tự Động' },
-      { letter: 'G', name: 'Tiêu Chuẩn Đạt' },
-      { letter: 'H', name: 'Ghi Chú Đánh Giá' },
-    ],
-    rows: [
-      ['1', 'CS-01', 'Định mức hiệu suất vận hành', '120 Giờ máy', 'Hệ số chuẩn hóa K=1.2', '144 Điểm đạt', '✓ Đạt tiêu chuẩn', 'Tự động trích xuất'],
-      ['2', 'CS-02', 'Tỷ lệ sai số xử lý nghiệp vụ', '0.2% Tổng lệnh', 'Ngưỡng kiểm soát < 0.5%', '0.18%', '✓ Vượt kỳ vọng', 'Dữ liệu thời gian thực'],
-      ['3', 'CS-03', 'Hệ số quay vòng tài sản', '45 Lượt / Tháng', 'Chu kỳ luân chuyển 6.5 ngày', '4.8 Lần', '✓ Đạt chỉ tiêu', 'Đã khóa ô bảo mật'],
-      ['4', 'CS-04', 'Mức độ hài lòng của người dùng', '4.9 / 5.0 Sao', 'Khảo sát 250 lượt phản hồi', '98.2%', '✓ Rất hài lòng', 'Đồng bộ Drive'],
-      ['5', 'CS-05', 'Tiết kiệm thời gian thao tác', '3.5 Giờ / Ngày', 'Tự động hóa công thức mảng', '82% Tiết kiệm', '✓ Xuất sắc', 'Không lỗi vòng lặp'],
-      ['6', 'CS-06', 'Chi phí vận hành định kỳ', '0 ₫ Server', 'Chạy trên Google Sheets', '100% Miễn phí máy chủ', '✓ Tiết kiệm tối đa', 'Bảo hành trọn đời'],
-    ],
-  };
+  return null;
 }
 
 export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
@@ -246,11 +57,18 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 12;
 
-  // Modal Chi tiết & Mua hàng
+  // Modal Chi tiết & Trải nghiệm độc bản 1-to-1
   const [selectedTemplate, setSelectedTemplate] = useState<ExactCatalogProduct | null>(null);
-  const [modalTab, setModalTab] = useState<'sheet_preview' | 'info_checkout'>('sheet_preview');
+  const [modalTab, setModalTab] = useState<'webapp_demo' | 'sheet_preview' | 'info_checkout'>('webapp_demo');
 
-  // Trạng thái đơn hàng trong modal
+  // Quản lý dữ liệu động của bảng trong modal
+  const [localRows, setLocalRows] = useState<{ [key: string]: string }[]>([]);
+  const [tableSearch, setTableSearch] = useState<string>('');
+  const [showAddForm, setShowAddForm] = useState<boolean>(false);
+  const [newRowData, setNewRowData] = useState<{ [key: string]: string }>({});
+  const [actionFeedback, setActionFeedback] = useState<string>('');
+
+  // Trạng thái đơn hàng trong modal checkout
   const [buyerName, setBuyerName] = useState<string>('Nguyễn Văn Tuấn');
   const [buyerPhone, setBuyerPhone] = useState<string>('0988123456');
   const [buyerEmail, setBuyerEmail] = useState<string>('tuan.nguyen@gmail.com');
@@ -271,14 +89,35 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
   const formatVND = (val: number) =>
     new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(val);
 
-  // Điều hướng chuyển trang khi mở Web App theo phân nhóm chính xác
-  const handleOpenWebApp = (item: ExactCatalogProduct) => {
-    const targetApp = getAppForProduct(item);
-    onSelectApp(targetApp);
-  };
+  // Sinh dữ liệu động 1-to-1 thông qua Metadata Engine
+  const dataset: ProductDataset | null = useMemo(() => {
+    if (!selectedTemplate) return null;
+    return getProductDataset(
+      selectedTemplate.id,
+      selectedTemplate.title,
+      selectedTemplate.category,
+      selectedTemplate.description,
+      selectedTemplate.version
+    );
+  }, [selectedTemplate]);
 
-  // Mở modal xem trước Google Sheets
-  const handleOpenSheetModal = (item: ExactCatalogProduct, tab: 'sheet_preview' | 'info_checkout' = 'sheet_preview') => {
+  // Cập nhật lại state bảng dữ liệu khi mở hoặc đổi template
+  useEffect(() => {
+    if (dataset) {
+      setLocalRows(dataset.rows);
+      const initialForm: { [key: string]: string } = {};
+      dataset.sampleFormFields.forEach((field) => {
+        initialForm[field.key] = field.defaultValue;
+      });
+      setNewRowData(initialForm);
+      setTableSearch('');
+      setShowAddForm(false);
+      setActionFeedback('');
+    }
+  }, [dataset]);
+
+  // Mở modal xem trước với tab tương ứng
+  const handleOpenModal = (item: ExactCatalogProduct, tab: 'webapp_demo' | 'sheet_preview' | 'info_checkout') => {
     setSelectedTemplate(item);
     setModalTab(tab);
     setOrderPlaced(false);
@@ -355,13 +194,51 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
     setCurrentPage(1);
   };
 
-  // URL VietQR động theo yêu cầu đề bài:
-  // https://img.vietqr.io/image/970422-123456789-compact2.png?amount={price}&addInfo=MUA_{id}
+  // URL VietQR động theo chuẩn: https://img.vietqr.io/image/970422-123456789-compact2.png?amount={price}&addInfo=MUA_{id}
   const dynamicQrUrl = selectedTemplate
     ? `https://img.vietqr.io/image/970422-123456789-compact2.png?amount=${selectedTemplate.price}&addInfo=MUA_${selectedTemplate.id}`
     : '';
 
-  const sheetData = selectedTemplate ? getSheetPreviewData(selectedTemplate) : null;
+  // Lọc dòng trong modal theo từ khóa tìm kiếm
+  const displayedRows = useMemo(() => {
+    if (!tableSearch.trim()) return localRows;
+    const q = tableSearch.toLowerCase().trim();
+    return localRows.filter((r) =>
+      Object.values(r).some((v) => String(v).toLowerCase().includes(q))
+    );
+  }, [localRows, tableSearch]);
+
+  // Xử lý thêm dòng mới
+  const handleAddNewRow = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!dataset) return;
+    setLocalRows([newRowData, ...localRows]);
+    setShowAddForm(false);
+    setActionFeedback('✓ Đã ghi nhận bản ghi mới vào hệ thống demo!');
+    setTimeout(() => setActionFeedback(''), 3000);
+  };
+
+  // Xử lý xóa dòng
+  const handleDeleteRow = (index: number) => {
+    setLocalRows((prev) => prev.filter((_, i) => i !== index));
+    setActionFeedback('✓ Đã cập nhật dữ liệu bảng');
+    setTimeout(() => setActionFeedback(''), 2000);
+  };
+
+  // Xử lý thao tác nhanh
+  const handleQuickAction = (actionText: string) => {
+    if (actionText.includes('Thêm') || actionText.includes('+') || actionText.includes('Bàn giao') || actionText.includes('Ghi nhận')) {
+      setShowAddForm(true);
+    } else if (actionText.includes('Xuất') || actionText.includes('Báo cáo') || actionText.includes('Đối soát')) {
+      setActionFeedback(`📊 Thao tác: ${actionText} thành công!`);
+      setTimeout(() => setActionFeedback(''), 3000);
+    } else {
+      setActionFeedback(`⚡ Đã kích hoạt nghiệp vụ: ${actionText}`);
+      setTimeout(() => setActionFeedback(''), 3000);
+    }
+  };
+
+  const coreAppMatch = selectedTemplate ? getCoreAppIfExactMatch(selectedTemplate) : null;
 
   return (
     <div style={{ padding: '24px 32px' }}>
@@ -384,8 +261,8 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
             <h1 style={{ margin: 0, fontSize: '28px', fontWeight: '800', letterSpacing: '-0.5px' }}>
               Sàn Bản Quyền Web App & Mẫu Google Sheets Doanh Nghiệp
             </h1>
-            <p style={{ margin: '10px 0 0 0', fontSize: '14px', opacity: 0.9, maxWidth: '750px', lineHeight: 1.6 }}>
-              Khám phá 76 Web App thực chiến độc bản (Kho đa kho, Thu chi Startup, Quản lý công việc Kanban, POS Nhà hàng VietQR, CRM Bán hàng, Cho thuê thiết bị / Mini-ERP) và 153 mẫu Google Sheets tự động hóa chuyên sâu. Trải nghiệm trực tiếp không qua trung gian!
+            <p style={{ margin: '10px 0 0 0', fontSize: '14px', opacity: 0.9, maxWidth: '780px', lineHeight: 1.6 }}>
+              Khám phá 76 Web App thực chiến độc bản và 153 mẫu Google Sheets tự động hóa chuyên sâu. Mỗi sản phẩm đều được kết nối với Metadata Engine mô phỏng chính xác 100% cột dữ liệu, chỉ số KPIs và công thức nghiệp vụ tương ứng!
             </p>
           </div>
           <div style={{ display: 'flex', gap: '14px', textAlign: 'center' }}>
@@ -541,7 +418,7 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                   {item.description}
                 </p>
 
-                {/* DANH SÁCH TÍNH NĂNG ĐỘC BẢN LẤY TRỰC TIẾP TỪ ITEM.FEATURES */}
+                {/* DANH SÁCH TÍNH NĂNG ĐỘC BẢN */}
                 <div style={{ marginBottom: '16px', minHeight: '68px' }}>
                   <div style={{ fontSize: '11.5px', fontWeight: '700', color: '#475569', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.4px' }}>
                     Tính năng độc bản ({item.version}):
@@ -560,7 +437,7 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                 </div>
               </div>
 
-              {/* FOOTER CARD: GIÁ BÁN & NÚT HÀNH ĐỘNG PHÂN BIỆT THEO TYPE */}
+              {/* FOOTER CARD: GIÁ BÁN & NÚT HÀNH ĐỘNG */}
               <div style={{ borderTop: '1px solid #f1f5f9', paddingTop: '14px', marginTop: '8px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                   <div>
@@ -576,13 +453,12 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                   </span>
                 </div>
 
-                {/* HÀNG NÚT BẤM CHUẨN HÓA LOGIC */}
+                {/* HÀNG NÚT BẤM MỞ TRỰC TIẾP STRICT PRODUCT VIEWER ĐỘC BẢN */}
                 <div style={{ display: 'flex', gap: '8px' }}>
                   {isWebapp ? (
-                    /* NÚT CHÍNH CHO WEBAPP: CHUYỂN ĐÚNG PHÂN HỆ APP THỰC TẾ */
                     <button
                       type="button"
-                      onClick={() => handleOpenWebApp(item)}
+                      onClick={() => handleOpenModal(item, 'webapp_demo')}
                       style={{
                         flex: 1,
                         background: 'linear-gradient(135deg, #1e40af 0%, #0284c7 100%)',
@@ -603,10 +479,9 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                       ⚡ Trải nghiệm Web App
                     </button>
                   ) : (
-                    /* NÚT CHÍNH CHO GOOGLE SHEET THEO ĐÚNG YÊU CẦU: "Xem Mẫu Bảng Tính & Đặt Mua" */
                     <button
                       type="button"
-                      onClick={() => handleOpenSheetModal(item, 'sheet_preview')}
+                      onClick={() => handleOpenModal(item, 'sheet_preview')}
                       style={{
                         flex: 1,
                         background: 'linear-gradient(135deg, #15803d 0%, #16a34a 100%)',
@@ -628,10 +503,9 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                     </button>
                   )}
 
-                  {/* NÚT CHI TIẾT */}
                   <button
                     type="button"
-                    onClick={() => handleOpenSheetModal(item, 'info_checkout')}
+                    onClick={() => handleOpenModal(item, isWebapp ? 'webapp_demo' : 'sheet_preview')}
                     style={{
                       padding: '10px 14px',
                       borderRadius: '8px',
@@ -653,7 +527,7 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
         })}
       </div>
 
-      {/* THANH ĐIỀU HƯỚNG PHÂN TRANG (PAGINATION) */}
+      {/* THANH ĐIỀU HƯỚNG PHÂN TRANG */}
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginTop: '16px' }}>
         <button
           type="button"
@@ -697,14 +571,14 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
       </div>
 
       {/* ==================================================================== */}
-      {/* MODAL 2 TAB: XEM TRƯỚC CẤU TRÚC SHEET & ĐẶT MUA QUA VIETQR */}
+      {/* STRICT PRODUCT VIEWER MODAL: 1-TO-1 METADATA-DRIVEN ENGINE */}
       {/* ==================================================================== */}
-      {selectedTemplate && (
+      {selectedTemplate && dataset && (
         <div
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(15, 23, 42, 0.78)',
+            backgroundColor: 'rgba(15, 23, 42, 0.82)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -717,18 +591,18 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
             style={{
               backgroundColor: '#ffffff',
               borderRadius: '16px',
-              maxWidth: '860px',
+              maxWidth: '1080px',
               width: '100%',
-              padding: '26px 30px',
-              boxShadow: '0 25px 50px -12px rgba(0,0,0,0.3)',
+              padding: '24px 28px',
+              boxShadow: '0 25px 50px -12px rgba(0,0,0,0.35)',
               maxHeight: '94vh',
               overflowY: 'auto',
             }}
           >
-            {/* TIÊU ĐỀ MODAL & NÚT ĐÓNG */}
+            {/* TIÊU ĐỀ MODAL VỚI BẢN XEM TRƯỚC VÀ BADGES ĐỘC BẢN */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid #f1f5f9', paddingBottom: '14px', marginBottom: '16px' }}>
               <div>
-                <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '6px' }}>
+                <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '6px', flexWrap: 'wrap' }}>
                   <span
                     style={{
                       fontSize: '11px',
@@ -747,22 +621,70 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                   <span style={{ fontSize: '12px', color: '#0284c7', fontWeight: '700' }}>
                     {selectedTemplate.category}
                   </span>
+                  <span style={{ fontSize: '11.5px', backgroundColor: '#f1f5f9', color: '#475569', padding: '2px 8px', borderRadius: '4px', fontWeight: '600' }}>
+                    {dataset.appIcon} {dataset.domainTitle}
+                  </span>
                 </div>
-                <h2 style={{ fontSize: '19px', fontWeight: '800', margin: 0, color: '#0f172a' }}>
-                  {selectedTemplate.title}
+
+                <h2 style={{ fontSize: '20px', fontWeight: '800', margin: 0, color: '#0f172a' }}>
+                  BẢN XEM TRƯỚC: {selectedTemplate.title}
                 </h2>
               </div>
-              <button
-                type="button"
-                onClick={() => setSelectedTemplate(null)}
-                style={{ background: 'none', border: 'none', fontSize: '24px', cursor: 'pointer', color: '#94a3b8' }}
-              >
-                ✕
-              </button>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                {coreAppMatch && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedTemplate(null);
+                      onSelectApp(coreAppMatch);
+                    }}
+                    style={{
+                      backgroundColor: '#eff6ff',
+                      color: '#1d4ed8',
+                      border: '1px solid #bfdbfe',
+                      padding: '6px 12px',
+                      borderRadius: '6px',
+                      fontSize: '12px',
+                      fontWeight: '700',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    🚀 Mở App Toàn Màn Hình
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setSelectedTemplate(null)}
+                  style={{ background: 'none', border: 'none', fontSize: '24px', cursor: 'pointer', color: '#94a3b8' }}
+                >
+                  ✕
+                </button>
+              </div>
             </div>
 
-            {/* TAB CHUYỂN ĐỔI CHÍNH XÁC THEO YÊU CẦU ĐỀ BÀI */}
+            {/* TAB CHUYỂN ĐỔI 3 CHẾ ĐỘ TRẢI NGHIỆM */}
             <div style={{ display: 'flex', gap: '8px', borderBottom: '1px solid #e2e8f0', marginBottom: '18px' }}>
+              <button
+                type="button"
+                onClick={() => setModalTab('webapp_demo')}
+                style={{
+                  padding: '10px 18px',
+                  border: 'none',
+                  borderBottom: modalTab === 'webapp_demo' ? '3px solid #0284c7' : '3px solid transparent',
+                  backgroundColor: 'transparent',
+                  color: modalTab === 'webapp_demo' ? '#0284c7' : '#64748b',
+                  fontWeight: '700',
+                  fontSize: '13.5px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                }}
+              >
+                ⚡ Trải nghiệm Web App Nghiệp Vụ
+              </button>
+
               <button
                 type="button"
                 onClick={() => setModalTab('sheet_preview')}
@@ -789,9 +711,9 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                 style={{
                   padding: '10px 18px',
                   border: 'none',
-                  borderBottom: modalTab === 'info_checkout' ? '3px solid #0284c7' : '3px solid transparent',
+                  borderBottom: modalTab === 'info_checkout' ? '3px solid #f59e0b' : '3px solid transparent',
                   backgroundColor: 'transparent',
-                  color: modalTab === 'info_checkout' ? '#0284c7' : '#64748b',
+                  color: modalTab === 'info_checkout' ? '#d97706' : '#64748b',
                   fontWeight: '700',
                   fontSize: '13.5px',
                   cursor: 'pointer',
@@ -804,10 +726,308 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
               </button>
             </div>
 
+            {/* THÔNG BÁO TÁC VỤ PHẢN HỒI */}
+            {actionFeedback && (
+              <div
+                style={{
+                  backgroundColor: '#f0fdf4',
+                  color: '#166534',
+                  border: '1px solid #bbf7d0',
+                  padding: '10px 16px',
+                  borderRadius: '8px',
+                  marginBottom: '14px',
+                  fontSize: '13px',
+                  fontWeight: '600',
+                }}
+              >
+                {actionFeedback}
+              </div>
+            )}
+
             {/* ================================================================ */}
-            {/* TAB 1: XEM TRƯỚC CẤU TRÚC SHEET (BẢNG GIẢ LẬP GOOGLE SHEETS) */}
+            {/* TAB 1: TRẢI NGHIỆM WEB APP NGHIỆP VỤ THỰC CHIẾN (1-TO-1) */}
             {/* ================================================================ */}
-            {modalTab === 'sheet_preview' && sheetData && (
+            {modalTab === 'webapp_demo' && (
+              <div>
+                {/* 4 THẺ CHỈ SỐ KPIS ĐỘC BẢN CỦA ĐÚNG SẢN PHẨM */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px', marginBottom: '18px' }}>
+                  {dataset.kpis.map((kpi, kIdx) => (
+                    <div
+                      key={kIdx}
+                      style={{
+                        backgroundColor: '#f8fafc',
+                        border: '1px solid #e2e8f0',
+                        borderRadius: '10px',
+                        padding: '14px 16px',
+                        borderLeft: `4px solid ${kpi.color || '#0284c7'}`,
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                        <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '600' }}>
+                          {kpi.label}
+                        </span>
+                        {kpi.icon && <span style={{ fontSize: '16px' }}>{kpi.icon}</span>}
+                      </div>
+                      <div style={{ fontSize: '19px', fontWeight: '800', color: '#0f172a', marginBottom: '2px' }}>
+                        {kpi.value}
+                      </div>
+                      <div style={{ fontSize: '11px', color: '#64748b' }}>
+                        {kpi.subtext}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* THANH THAO TÁC NHANH VÀ TÌM KIẾM DÒNG DỮ LIỆU */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '14px' }}>
+                  {/* CÁC NÚT QUICK ACTION ĐỘC BẢN */}
+                  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                    {dataset.quickActions.map((qa, qIdx) => (
+                      <button
+                        key={qIdx}
+                        type="button"
+                        onClick={() => handleQuickAction(qa)}
+                        style={{
+                          backgroundColor: qIdx === 0 ? '#0284c7' : '#ffffff',
+                          color: qIdx === 0 ? '#ffffff' : '#334155',
+                          border: qIdx === 0 ? 'none' : '1px solid #cbd5e1',
+                          padding: '7px 13px',
+                          borderRadius: '6px',
+                          fontSize: '12.5px',
+                          fontWeight: '700',
+                          cursor: 'pointer',
+                          boxShadow: qIdx === 0 ? '0 2px 4px rgba(2, 132, 199, 0.2)' : 'none',
+                        }}
+                      >
+                        {qa}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* TÌM KIẾM TRONG BẢNG DỮ LIỆU */}
+                  <div style={{ minWidth: '280px', flex: 1, maxWidth: '380px' }}>
+                    <input
+                      type="text"
+                      placeholder={dataset.searchPlaceholder}
+                      value={tableSearch}
+                      onChange={(e) => setTableSearch(e.target.value)}
+                      style={{
+                        width: '100%',
+                        padding: '8px 14px',
+                        borderRadius: '6px',
+                        border: '1px solid #cbd5e1',
+                        fontSize: '12.5px',
+                        outline: 'none',
+                        boxSizing: 'border-box',
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* FORM THÊM BẢN GHI NHANH (NẾU ĐANG BẬT) */}
+                {showAddForm && (
+                  <form
+                    onSubmit={handleAddNewRow}
+                    style={{
+                      backgroundColor: '#f1f5f9',
+                      border: '1px solid #cbd5e1',
+                      borderRadius: '10px',
+                      padding: '16px',
+                      marginBottom: '16px',
+                    }}
+                  >
+                    <div style={{ fontSize: '13px', fontWeight: '800', color: '#0f172a', marginBottom: '10px' }}>
+                      ✍️ Thêm bản ghi mới ({dataset.domainTitle}):
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: '10px', marginBottom: '12px' }}>
+                      {dataset.sampleFormFields.map((field) => (
+                        <div key={field.key}>
+                          <label style={{ display: 'block', fontSize: '11.5px', fontWeight: '700', color: '#475569', marginBottom: '3px' }}>
+                            {field.label}:
+                          </label>
+                          {field.type === 'select' && field.options ? (
+                            <select
+                              value={newRowData[field.key] || field.defaultValue}
+                              onChange={(e) => setNewRowData({ ...newRowData, [field.key]: e.target.value })}
+                              style={{ width: '100%', padding: '6px 10px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '12px' }}
+                            >
+                              {field.options.map((opt) => (
+                                <option key={opt} value={opt}>
+                                  {opt}
+                                </option>
+                              ))}
+                            </select>
+                          ) : (
+                            <input
+                              type={field.type}
+                              value={newRowData[field.key] ?? field.defaultValue}
+                              onChange={(e) => setNewRowData({ ...newRowData, [field.key]: e.target.value })}
+                              style={{ width: '100%', padding: '6px 10px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '12px', boxSizing: 'border-box' }}
+                            />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+                      <button
+                        type="button"
+                        onClick={() => setShowAddForm(false)}
+                        style={{ padding: '6px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', backgroundColor: '#ffffff', color: '#475569', fontSize: '12px', fontWeight: '600', cursor: 'pointer' }}
+                      >
+                        Hủy
+                      </button>
+                      <button
+                        type="submit"
+                        style={{ padding: '6px 16px', borderRadius: '6px', border: 'none', backgroundColor: '#16a34a', color: '#ffffff', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}
+                      >
+                        ✓ Lưu bản ghi
+                      </button>
+                    </div>
+                  </form>
+                )}
+
+                {/* BẢNG DỮ LIỆU TƯƠNG TÁC ĐẦY ĐỦ CỘT ĐỘC BẢN */}
+                <div style={{ border: '1px solid #e2e8f0', borderRadius: '10px', overflowX: 'auto', marginBottom: '16px' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12.5px', textAlign: 'left', backgroundColor: '#ffffff' }}>
+                    <thead>
+                      <tr style={{ backgroundColor: '#f8fafc', borderBottom: '2px solid #cbd5e1' }}>
+                        {dataset.columns.map((col, idx) => (
+                          <th
+                            key={idx}
+                            style={{
+                              padding: '10px 12px',
+                              color: '#334155',
+                              fontWeight: '700',
+                              width: col.width,
+                              textAlign: col.align || 'left',
+                              whiteSpace: 'nowrap',
+                              borderRight: '1px solid #e2e8f0',
+                            }}
+                          >
+                            {col.label}
+                          </th>
+                        ))}
+                        <th style={{ padding: '10px 12px', color: '#334155', fontWeight: '700', width: '80px', textAlign: 'center' }}>
+                          Thao tác
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {displayedRows.length > 0 ? (
+                        displayedRows.map((row, rIdx) => (
+                          <tr
+                            key={rIdx}
+                            style={{
+                              borderBottom: '1px solid #f1f5f9',
+                              backgroundColor: rIdx % 2 === 0 ? '#ffffff' : '#fcfcfd',
+                            }}
+                          >
+                            {dataset.columns.map((col, cIdx) => {
+                              const val = row[col.key] || '—';
+                              const isBadge = col.badgeStyle;
+                              const isPositive = String(val).includes('✓') || String(val).includes('Đã') || String(val).includes('Hoàn thành') || String(val).includes('Khớp');
+                              const isWarning = String(val).includes('⚠️') || String(val).includes('Chờ') || String(val).includes('Cao');
+                              const isDanger = String(val).includes('Trễ') || String(val).includes('Nợ') || String(val).includes('Khẩn cấp');
+
+                              return (
+                                <td
+                                  key={cIdx}
+                                  style={{
+                                    padding: '9px 12px',
+                                    textAlign: col.align || 'left',
+                                    color: '#1e293b',
+                                    fontWeight: cIdx === 0 ? '700' : 'normal',
+                                    borderRight: '1px solid #f1f5f9',
+                                    whiteSpace: col.width ? 'normal' : 'nowrap',
+                                  }}
+                                >
+                                  {isBadge ? (
+                                    <span
+                                      style={{
+                                        display: 'inline-block',
+                                        padding: '3px 8px',
+                                        borderRadius: '12px',
+                                        fontSize: '11px',
+                                        fontWeight: '700',
+                                        backgroundColor: isDanger ? '#fee2e2' : isWarning ? '#fef3c7' : isPositive ? '#dcfce7' : '#e0f2fe',
+                                        color: isDanger ? '#b91c1c' : isWarning ? '#b45309' : isPositive ? '#15803d' : '#0369a1',
+                                      }}
+                                    >
+                                      {val}
+                                    </span>
+                                  ) : (
+                                    val
+                                  )}
+                                </td>
+                              );
+                            })}
+                            <td style={{ padding: '9px 12px', textAlign: 'center' }}>
+                              <button
+                                type="button"
+                                title="Xóa bản ghi demo này"
+                                onClick={() => handleDeleteRow(rIdx)}
+                                style={{
+                                  backgroundColor: 'transparent',
+                                  border: 'none',
+                                  color: '#94a3b8',
+                                  cursor: 'pointer',
+                                  fontSize: '14px',
+                                }}
+                              >
+                                🗑️
+                              </button>
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td
+                            colSpan={dataset.columns.length + 1}
+                            style={{ padding: '24px', textAlign: 'center', color: '#64748b' }}
+                          >
+                            Không tìm thấy bản ghi nào phù hợp với từ khóa "{tableSearch}".
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* KHUNG CHUYỂN TIẾP ĐẶT MUA BẢN QUYỀN */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f0f9ff', padding: '14px 20px', borderRadius: '10px', border: '1px solid #bae6fd', flexWrap: 'wrap', gap: '12px' }}>
+                  <div>
+                    <div style={{ fontSize: '13.5px', fontWeight: '800', color: '#0369a1' }}>
+                      Bạn muốn sở hữu vĩnh viễn Web App & Mẫu Sheet này?
+                    </div>
+                    <div style={{ fontSize: '12px', color: '#64748b' }}>
+                      Giá ưu đãi trọn đời: <strong style={{ color: '#059669', fontSize: '14px' }}>{formatVND(selectedTemplate.price)}</strong> (Bao gồm file Google Drive, code Web App và hỗ trợ kỹ thuật).
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setModalTab('info_checkout')}
+                    style={{
+                      backgroundColor: '#0284c7',
+                      color: '#ffffff',
+                      border: 'none',
+                      padding: '10px 20px',
+                      borderRadius: '8px',
+                      fontWeight: '700',
+                      fontSize: '13px',
+                      cursor: 'pointer',
+                      boxShadow: '0 2px 6px rgba(2, 132, 199, 0.25)',
+                    }}
+                  >
+                    💳 Đặt mua ngay qua VietQR ▶
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* ================================================================ */}
+            {/* TAB 2: XEM TRƯỚC CẤU TRÚC SHEET GIẢ LẬP GOOGLE SHEETS */}
+            {/* ================================================================ */}
+            {modalTab === 'sheet_preview' && (
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
                   <div style={{ fontSize: '13px', color: '#475569' }}>
@@ -831,9 +1051,9 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                   </button>
                 </div>
 
-                {/* KHUNG GIẢ LẬP GIAO DIỆN GOOGLE SHEETS ĐÍCH THỰC */}
+                {/* KHUNG GIẢ LẬP GIAO DIỆN GOOGLE SHEETS */}
                 <div style={{ border: '1px solid #cbd5e1', borderRadius: '10px', overflow: 'hidden', marginBottom: '18px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
-                  {/* THANH TIÊU ĐỀ GOOGLE SHEETS */}
+                  {/* THANH TIÊU ĐỀ */}
                   <div style={{ backgroundColor: '#107c41', color: '#ffffff', padding: '9px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '12.5px', fontWeight: '700' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <span style={{ fontSize: '16px' }}>📊</span>
@@ -844,7 +1064,7 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                     </span>
                   </div>
 
-                  {/* THANH MENU GIẢ LẬP */}
+                  {/* THANH MENU */}
                   <div style={{ backgroundColor: '#f1f5f9', borderBottom: '1px solid #e2e8f0', padding: '4px 12px', display: 'flex', gap: '14px', fontSize: '11.5px', color: '#475569' }}>
                     <span>Tệp</span>
                     <span>Chỉnh sửa</span>
@@ -856,18 +1076,23 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                     <span>Tiện ích mở rộng</span>
                   </div>
 
-                  {/* THANH CÔNG THỨC FX */}
+                  {/* THANH CÔNG THỨC FX CHÍNH XÁC THEO NGHIỆP VỤ */}
                   <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #cbd5e1', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
                     <span style={{ backgroundColor: '#f8fafc', border: '1px solid #cbd5e1', padding: '2px 8px', borderRadius: '4px', fontFamily: 'monospace', fontWeight: '700', color: '#0f172a' }}>
-                      {sheetData.activeCell}
+                      {dataset.formulaInfo.cell}
                     </span>
                     <span style={{ color: '#0284c7', fontWeight: '800', fontStyle: 'italic' }}>fx</span>
                     <span style={{ fontFamily: 'monospace', color: '#334155', fontWeight: '600' }}>
-                      {sheetData.formula}
+                      {dataset.formulaInfo.formula}
                     </span>
                   </div>
 
-                  {/* BẢNG GRID DỮ LIỆU CÓ HEADER CHỮ CÁI A, B, C... VÀ SỐ DÒNG 1, 2, 3... */}
+                  {/* BANNER GIẢI THÍCH CÔNG THỨC */}
+                  <div style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0', padding: '5px 12px', fontSize: '11.5px', color: '#64748b' }}>
+                    💡 <em>{dataset.formulaInfo.explanation}</em>
+                  </div>
+
+                  {/* BẢNG GRID DỮ LIỆU CÓ HEADER CỘT A, B, C... VÀ HÀNG 1, 2, 3... */}
                   <div style={{ overflowX: 'auto', maxHeight: '340px' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', textAlign: 'left', backgroundColor: '#ffffff' }}>
                       <thead>
@@ -876,7 +1101,7 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                           <th style={{ width: '38px', padding: '6px', textAlign: 'center', borderRight: '1px solid #cbd5e1', backgroundColor: '#f1f5f9', color: '#64748b', fontSize: '11px' }}>
                             ◰
                           </th>
-                          {sheetData.columns.map((col, idx) => (
+                          {dataset.columns.map((col, idx) => (
                             <th
                               key={idx}
                               style={{
@@ -894,12 +1119,12 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                           ))}
                         </tr>
 
-                        {/* HÀNG DÒNG 1: TÊN CÁC CỘT TRƯỜNG DỮ LIỆU */}
+                        {/* HÀNG 1: TÊN CÁC CỘT */}
                         <tr style={{ backgroundColor: '#e8f5e9', borderBottom: '2px solid #81c784', color: '#1b5e20' }}>
                           <td style={{ padding: '7px', textAlign: 'center', borderRight: '1px solid #cbd5e1', backgroundColor: '#f1f5f9', color: '#64748b', fontWeight: '700' }}>
                             1
                           </td>
-                          {sheetData.columns.map((col, idx) => (
+                          {dataset.columns.map((col, idx) => (
                             <th
                               key={idx}
                               style={{
@@ -909,13 +1134,13 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                                 whiteSpace: 'nowrap',
                               }}
                             >
-                              {col.name}
+                              {col.label}
                             </th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {sheetData.rows.map((rowCells, rIdx) => {
+                        {localRows.map((row, rIdx) => {
                           const rowNum = rIdx + 2;
                           return (
                             <tr
@@ -925,7 +1150,7 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                                 backgroundColor: rIdx % 2 === 0 ? '#ffffff' : '#fcfdfc',
                               }}
                             >
-                              {/* CỘT SỐ DÒNG 1, 2, 3... */}
+                              {/* CỘT SỐ HÀNG 1, 2, 3... */}
                               <td
                                 style={{
                                   padding: '7px',
@@ -940,21 +1165,24 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                                 {rowNum}
                               </td>
 
-                              {/* CÁC Ô SỐ LIỆU KINH DOANH MẪU */}
-                              {rowCells.map((val, cIdx) => (
-                                <td
-                                  key={cIdx}
-                                  style={{
-                                    padding: '7px 10px',
-                                    borderRight: '1px solid #e2e8f0',
-                                    color: val.includes('⚠️') ? '#b45309' : val.includes('✓') ? '#15803d' : '#1e293b',
-                                    fontWeight: cIdx === 1 || val.includes('✓') ? '600' : 'normal',
-                                    whiteSpace: 'nowrap',
-                                  }}
-                                >
-                                  {val}
-                                </td>
-                              ))}
+                              {/* CÁC Ô DỮ LIỆU */}
+                              {dataset.columns.map((col, cIdx) => {
+                                const val = row[col.key] || '';
+                                return (
+                                  <td
+                                    key={cIdx}
+                                    style={{
+                                      padding: '7px 10px',
+                                      borderRight: '1px solid #e2e8f0',
+                                      color: val.includes('⚠️') ? '#b45309' : val.includes('✓') ? '#15803d' : '#1e293b',
+                                      fontWeight: cIdx === 0 || val.includes('✓') ? '600' : 'normal',
+                                      whiteSpace: 'nowrap',
+                                    }}
+                                  >
+                                    {val}
+                                  </td>
+                                );
+                              })}
                             </tr>
                           );
                         })}
@@ -963,7 +1191,7 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                   </div>
                 </div>
 
-                {/* THÔNG TIN TÍNH NĂNG TÍCH HỢP */}
+                {/* DANH SÁCH TÍNH NĂNG TÍCH HỢP */}
                 <div style={{ backgroundColor: '#f8fafc', padding: '14px 18px', borderRadius: '10px', border: '1px solid #e2e8f0', marginBottom: '16px' }}>
                   <div style={{ fontSize: '13px', fontWeight: '800', color: '#0f172a', marginBottom: '6px' }}>
                     ⚡ Điểm mạnh của bản quyền Google Sheets này:
@@ -1003,14 +1231,14 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
             )}
 
             {/* ================================================================ */}
-            {/* TAB 2: ĐẶT MUA & NHẬN FILE BẢN QUYỀN (VIETQR ĐỘNG) */}
+            {/* TAB 3: ĐẶT MUA QUA VIETQR ĐỘNG & NHẬN FILE BẢN QUYỀN */}
             {/* ================================================================ */}
             {modalTab === 'info_checkout' && (
               <div>
                 {!orderPlaced ? (
                   <div>
                     <div style={{ border: '1px solid #bae6fd', backgroundColor: '#f0f9ff', borderRadius: '14px', padding: '20px', marginBottom: '20px' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap', gap: '8px' }}>
                         <div>
                           <h4 style={{ margin: 0, fontSize: '16px', fontWeight: '800', color: '#0369a1' }}>
                             Thanh Toán VietQR Nhận Liên Kết Bản Quyền Tự Động
@@ -1024,23 +1252,23 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                         </span>
                       </div>
 
-                      <div style={{ display: 'grid', gridTemplateColumns: '200px 1fr', gap: '22px', alignItems: 'center' }}>
-                        {/* MÃ VIETQR ĐỘNG CHUẨN ĐỀ BÀI: https://img.vietqr.io/image/970422-123456789-compact2.png?amount={price}&addInfo=MUA_{id} */}
-                        <div style={{ textAlign: 'center', backgroundColor: '#ffffff', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '22px', alignItems: 'center' }}>
+                        {/* MÃ VIETQR ĐỘNG THEO ĐÚNG CHUẨN ĐỀ BÀI */}
+                        <div style={{ textAlign: 'center', backgroundColor: '#ffffff', padding: '16px', borderRadius: '12px', border: '1px solid #cbd5e1' }}>
                           <img
                             src={dynamicQrUrl}
                             alt="VietQR Chuyển Khoản"
-                            style={{ width: '176px', height: '176px', display: 'block', margin: '0 auto' }}
+                            style={{ width: '190px', height: '190px', display: 'block', margin: '0 auto' }}
                             onError={(e: any) => {
                               e.target.style.display = 'none';
-                              e.target.nextSibling.style.display = 'block';
+                              if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
                             }}
                           />
-                          <div style={{ display: 'none', width: '176px', height: '176px', lineHeight: '176px', fontSize: '12px', color: '#64748b' }}>
+                          <div style={{ display: 'none', width: '190px', height: '190px', lineHeight: '190px', fontSize: '12px', color: '#64748b' }}>
                             [QR MB Bank]
                           </div>
-                          <div style={{ fontSize: '11px', color: '#64748b', marginTop: '6px', fontWeight: '600' }}>
-                            Quét bằng app mọi ngân hàng
+                          <div style={{ fontSize: '11px', color: '#64748b', marginTop: '8px', fontWeight: '600' }}>
+                            Quét bằng app mọi ngân hàng để kích hoạt tự động
                           </div>
                         </div>
 
@@ -1117,33 +1345,28 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                       </div>
                     </div>
 
-                    {/* NÚT MỞ THẲNG WEB APP NẾU ĐÂY LÀ SẢN PHẨM WEBAPP */}
-                    {selectedTemplate.type === 'webapp' && (
-                      <div style={{ textAlign: 'center', marginTop: '14px' }}>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setSelectedTemplate(null);
-                            handleOpenWebApp(selectedTemplate);
-                          }}
-                          style={{
-                            background: 'linear-gradient(135deg, #1e40af 0%, #0284c7 100%)',
-                            color: '#ffffff',
-                            border: 'none',
-                            padding: '10px 24px',
-                            borderRadius: '8px',
-                            fontSize: '13.5px',
-                            fontWeight: '700',
-                            cursor: 'pointer',
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '6px',
-                          }}
-                        >
-                          ⚡ Trải nghiệm Web App ngay
-                        </button>
-                      </div>
-                    )}
+                    {/* NÚT TRẢI NGHIỆM WEB APP NGAY */}
+                    <div style={{ textAlign: 'center', marginTop: '14px' }}>
+                      <button
+                        type="button"
+                        onClick={() => setModalTab('webapp_demo')}
+                        style={{
+                          background: 'linear-gradient(135deg, #1e40af 0%, #0284c7 100%)',
+                          color: '#ffffff',
+                          border: 'none',
+                          padding: '10px 24px',
+                          borderRadius: '8px',
+                          fontSize: '13.5px',
+                          fontWeight: '700',
+                          cursor: 'pointer',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                        }}
+                      >
+                        ⚡ Xem Trải Nghiệm Nghiệp Vụ Demo
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   /* MÀN HÌNH XÁC NHẬN ĐƠN HÀNG THÀNH CÔNG VÀ NÚT MỞ ZALO NHẬN FILE NGAY */
@@ -1153,12 +1376,12 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                       Xác Nhận Đơn Hàng Thành Công!
                     </h3>
                     <p style={{ margin: '0 0 10px 0', fontSize: '14px', color: '#15803d', lineHeight: 1.6 }}>
-                      Hệ thống đã ghi nhận thanh toán cho đơn hàng <strong>MUA_{selectedTemplate.id}</strong>.<br />
+                      Hệ thống đã ghi nhận thanh toán cho đơn hàng <strong>MUA_{selectedTemplate.id}</strong> ({selectedTemplate.title}).<br />
                       Đường link bản quyền Google Drive đã được gửi đến hộp thư <strong>{buyerEmail}</strong>.
                     </p>
 
                     <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '20px' }}>
-                      {/* NÚT MỞ ZALO NHẬN FILE NGAY THEO YÊU CẦU ĐỀ BÀI */}
+                      {/* NÚT MỞ ZALO NHẬN FILE NGAY */}
                       <a
                         href={`https://zalo.me/${buyerPhone.replace(/\D/g, '') || '0987654321'}`}
                         target="_blank"
