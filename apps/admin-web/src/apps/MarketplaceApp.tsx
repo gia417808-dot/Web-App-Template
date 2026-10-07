@@ -5,16 +5,20 @@ import { getProductDataset, ProductDataset, ProductColumn } from '../utils/produ
 export interface ExactCatalogProduct {
   id: string;
   title: string;
+  cleanTitle?: string;
   rawName: string;
   type: 'webapp' | 'gsheet';
   version: string;
   category: string;
   description: string;
+  shortDesc?: string;
+  suitableFor?: string[];
   features: string[];
   price: number;
   originalPrice: number;
   appRoute: string;
   sheetUrl: string | null;
+  templatePreviewUrl?: string;
 }
 
 const catalog: ExactCatalogProduct[] = exactCatalogData as ExactCatalogProduct[];
@@ -495,6 +499,13 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                     )}
                   </ul>
                 </div>
+
+                {/* ĐỐI TƯỢNG PHÙ HỢP NẾU CÓ */}
+                {item.suitableFor && item.suitableFor.length > 0 && (
+                  <div style={{ marginBottom: '12px', fontSize: '11.5px', color: '#0369a1', backgroundColor: '#f0f9ff', padding: '6px 10px', borderRadius: '6px', border: '1px solid #bae6fd', lineHeight: 1.4 }}>
+                    🎯 <strong>Phù hợp:</strong> {item.suitableFor.slice(0, 3).join(', ')}
+                  </div>
+                )}
               </div>
 
               {/* FOOTER CARD: GIÁ BÁN & NÚT HÀNH ĐỘNG */}
