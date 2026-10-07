@@ -19,16 +19,19 @@ export interface ExactCatalogProduct {
 
 const catalog: ExactCatalogProduct[] = exactCatalogData as ExactCatalogProduct[];
 
-export type AppDestination = 'equipment_erp' | 'warehouse' | 'finance' | 'tasks' | 'pos' | 'crm';
+export type AppDestination = 'master_blueprint' | 'equipment_erp' | 'warehouse' | 'finance' | 'tasks' | 'pos' | 'crm';
 
 interface MarketplaceAppProps {
   onSelectApp: (app: AppDestination) => void;
 }
 
-// Kiểm tra xem sản phẩm có trùng khớp trực tiếp 100% với 6 phân hệ lớn trong hệ thống hay không
+// Kiểm tra xem sản phẩm có trùng khớp trực tiếp 100% với các phân hệ lớn trong hệ thống hay không
 export function getCoreAppIfExactMatch(item: ExactCatalogProduct): AppDestination | null {
   const t = item.title.toLowerCase();
 
+  if (t.includes('quản lý dự án & công việc') || (t.includes('công việc') && t.includes('v5.0')) || t.includes('dự án & công việc')) {
+    return 'master_blueprint';
+  }
   if (t.includes('cho thuê thiết bị') || t.includes('mini-erp') || t.includes('thiết bị')) {
     return 'equipment_erp';
   }
@@ -43,9 +46,6 @@ export function getCoreAppIfExactMatch(item: ExactCatalogProduct): AppDestinatio
   }
   if (t.includes('crm bán hàng & cskh') || (t.includes('crm') && t.includes('v7.1'))) {
     return 'crm';
-  }
-  if (t.includes('quản lý dự án & công việc') || (t.includes('công việc') && t.includes('v5.0'))) {
-    return 'tasks';
   }
 
   return null;
@@ -178,6 +178,10 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
         item.version.toLowerCase().includes(q) ||
         item.category.toLowerCase().includes(q);
 
+      // Tạm thời ẩn các sản phẩm chưa hoàn thiện mô tả hoặc thiếu tính năng
+      const hasCompleteDesc = item.description && item.description.trim().length >= 20 && item.features && item.features.length >= 1;
+      if (!hasCompleteDesc) return false;
+
       return matchCat && matchSearch;
     });
   }, [selectedCategory, searchQuery]);
@@ -276,6 +280,62 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* SẢN PHẨM MẪU CỜ ĐẦU (FLAGSHIP MASTER BLUEPRINT) */}
+      <div
+        style={{
+          background: 'linear-gradient(135deg, #091e3a 0%, #1e3a8a 60%, #0369a1 100%)',
+          borderRadius: '16px',
+          padding: '24px 28px',
+          color: '#ffffff',
+          marginBottom: '26px',
+          boxShadow: '0 6px 20px rgba(2, 132, 199, 0.25)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '20px',
+        }}
+      >
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <span style={{ backgroundColor: '#f59e0b', color: '#000000', padding: '3px 10px', borderRadius: '4px', fontSize: '11px', fontWeight: '800' }}>
+              ★ SẢN PHẨM MẪU CỜ ĐẦU (FLAGSHIP DEMO)
+            </span>
+            <span style={{ fontSize: '12px', color: '#93c5fd', fontWeight: '700' }}>
+              BẢN GỐC CHUẨN MỰC GSHEETS.VN (5 PHIÊN BẢN v1.0 → v5.0)
+            </span>
+          </div>
+          <h2 style={{ margin: '0 0 8px 0', fontSize: '21px', fontWeight: '800' }}>
+            Hệ Thống Quản Lý Dự Án & Công Việc (Master Blueprint)
+          </h2>
+          <p style={{ margin: 0, fontSize: '13.5px', color: '#cbd5e1', maxWidth: '680px', lineHeight: 1.5 }}>
+            Trải nghiệm trọn vẹn quy trình chuẩn: Đổi version động [v1.0 - v5.0], nhật ký tính năng thật, bảng dữ liệu 10 dòng mẫu chuẩn, mở Google Sheets mô phỏng và đặt mua VietQR!
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={() => onSelectApp('master_blueprint')}
+          style={{
+            backgroundColor: '#38bdf8',
+            color: '#091e3a',
+            border: 'none',
+            padding: '12px 24px',
+            borderRadius: '8px',
+            fontSize: '13.5px',
+            fontWeight: '800',
+            cursor: 'pointer',
+            boxShadow: '0 4px 14px rgba(56, 189, 248, 0.4)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            transition: 'all 0.15s ease',
+          }}
+        >
+          <span>💎</span>
+          <span>Khám Phá Master Blueprint Ngay</span>
+        </button>
       </div>
 
       {/* THANH TÌM KIẾM VÀ BỘ LỌC DANH MỤC */}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MasterAppBlueprint from './components/MasterAppBlueprint';
 import MarketplaceApp from './apps/MarketplaceApp';
 import EquipmentErpApp from './apps/EquipmentErpApp';
 import WarehouseApp from './apps/WarehouseApp';
@@ -7,7 +8,7 @@ import TasksApp from './apps/TasksApp';
 import PosApp from './apps/PosApp';
 import CrmApp from './apps/CrmApp';
 
-export type ActiveAppId = 'marketplace' | 'equipment_erp' | 'warehouse' | 'finance' | 'tasks' | 'pos' | 'crm';
+export type ActiveAppId = 'master_blueprint' | 'marketplace' | 'equipment_erp' | 'warehouse' | 'finance' | 'tasks' | 'pos' | 'crm';
 
 interface AppTab {
   id: ActiveAppId;
@@ -18,17 +19,18 @@ interface AppTab {
 }
 
 const APPS: AppTab[] = [
-  { id: 'marketplace', label: 'Sàn Template (229 SP)', shortLabel: 'Marketplace', icon: '🏪', badge: 'Hot' },
-  { id: 'equipment_erp', label: 'Mini-ERP & Cho Thuê Thiết Bị v1.0', shortLabel: 'Thiết bị & ERP', icon: '⚙️', badge: 'New' },
+  { id: 'master_blueprint', label: '🌟 Flagship Master Blueprint: Quản Lý Dự Án (v1.0 - v5.0)', shortLabel: 'Master Blueprint', icon: '💎', badge: 'Flagship' },
+  { id: 'marketplace', label: 'Sàn Template (Thu Gọn)', shortLabel: 'Marketplace', icon: '🏪' },
+  { id: 'tasks', label: 'Quản Lý Công Việc v5.0', shortLabel: 'Kanban', icon: '📋' },
   { id: 'warehouse', label: 'Kho Đa Kho v3.0', shortLabel: 'Kho hàng', icon: '📦' },
   { id: 'finance', label: 'Thu Chi & Runway v4.1', shortLabel: 'Thu chi', icon: '💰' },
-  { id: 'tasks', label: 'Quản Lý Công Việc v5.0', shortLabel: 'Kanban', icon: '📋' },
   { id: 'pos', label: 'F&B POS Nhà Hàng v3.0', shortLabel: 'POS VietQR', icon: '☕', badge: 'VietQR' },
   { id: 'crm', label: 'CRM Bán Hàng v7.1', shortLabel: 'CRM', icon: '🎯' },
+  { id: 'equipment_erp', label: 'Mini-ERP & Cho Thuê Thiết Bị v1.0', shortLabel: 'Thiết bị & ERP', icon: '⚙️', badge: 'New' },
 ];
 
 export default function App() {
-  const [activeApp, setActiveApp] = useState<ActiveAppId>('marketplace');
+  const [activeApp, setActiveApp] = useState<ActiveAppId>('master_blueprint');
 
   const currentAppDef = APPS.find((a) => a.id === activeApp) || APPS[0];
 
@@ -51,7 +53,7 @@ export default function App() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '62px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
               <div
-                onClick={() => setActiveApp('marketplace')}
+                onClick={() => setActiveApp('master_blueprint')}
                 style={{
                   cursor: 'pointer',
                   display: 'flex',
@@ -63,14 +65,14 @@ export default function App() {
                   border: '1px solid rgba(56, 189, 248, 0.3)',
                 }}
               >
-                <span style={{ fontSize: '20px' }}>⚡</span>
+                <span style={{ fontSize: '20px' }}>💎</span>
                 <span style={{ fontSize: '16px', fontWeight: '800', color: '#38bdf8', letterSpacing: '0.3px' }}>
-                  GSHEETS.VN ECOSYSTEM
+                  GSHEETS.VN MASTER SUITE
                 </span>
               </div>
               <span style={{ color: '#475569', fontSize: '18px' }}>|</span>
               <span style={{ fontSize: '13.5px', color: '#cbd5e1', fontWeight: '500' }}>
-                Hệ Sinh Thái 229 Sản Phẩm Quản Trị Vận Hành Doanh Nghiệp
+                Bộ Khung Chuẩn Mực (Master Blueprint) & Cơ Chế Nhân Bản Web App
               </span>
             </div>
 
@@ -127,8 +129,8 @@ export default function App() {
                       style={{
                         fontSize: '10px',
                         fontWeight: '800',
-                        backgroundColor: isActive ? '#ffffff' : tab.badge === 'New' ? '#10b981' : '#ef4444',
-                        color: isActive ? '#0284c7' : '#ffffff',
+                        backgroundColor: isActive ? '#ffffff' : tab.badge === 'Flagship' ? '#f59e0b' : tab.badge === 'New' ? '#10b981' : '#ef4444',
+                        color: isActive ? '#0284c7' : tab.badge === 'Flagship' ? '#000000' : '#ffffff',
                         padding: '1px 6px',
                         borderRadius: '10px',
                         marginLeft: '2px',
@@ -144,8 +146,8 @@ export default function App() {
         </div>
       </header>
 
-      {/* THANH ĐIỀU HƯỚNG CỐ ĐỊNH QUAY LẠI MARKETPLACE KHI ĐANG MỞ APP CON */}
-      {activeApp !== 'marketplace' && (
+      {/* THANH ĐIỀU HƯỚNG CỐ ĐỊNH KHI ĐANG MỞ APP KHÁC */}
+      {activeApp !== 'master_blueprint' && (
         <div
           style={{
             backgroundColor: '#ffffff',
@@ -160,60 +162,87 @@ export default function App() {
             boxShadow: '0 2px 4px rgba(0,0,0,0.04)',
           }}
         >
-          <button
-            type="button"
-            onClick={() => setActiveApp('marketplace')}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              backgroundColor: '#0284c7',
-              color: '#ffffff',
-              border: 'none',
-              padding: '8px 18px',
-              borderRadius: '8px',
-              fontSize: '13px',
-              fontWeight: '700',
-              cursor: 'pointer',
-              boxShadow: '0 2px 4px rgba(2, 132, 199, 0.25)',
-            }}
-          >
-            ← Quay lại Sàn Marketplace
-          </button>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <button
+              type="button"
+              onClick={() => setActiveApp('master_blueprint')}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                backgroundColor: '#0284c7',
+                color: '#ffffff',
+                border: 'none',
+                padding: '8px 18px',
+                borderRadius: '8px',
+                fontSize: '13px',
+                fontWeight: '700',
+                cursor: 'pointer',
+                boxShadow: '0 2px 4px rgba(2, 132, 199, 0.25)',
+              }}
+            >
+              💎 Về Master Blueprint Flagship
+            </button>
+            {activeApp !== 'marketplace' && (
+              <button
+                type="button"
+                onClick={() => setActiveApp('marketplace')}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  backgroundColor: '#f1f5f9',
+                  color: '#475569',
+                  border: '1px solid #cbd5e1',
+                  padding: '8px 14px',
+                  borderRadius: '8px',
+                  fontSize: '13px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                }}
+              >
+                🏪 Về Sàn Marketplace
+              </button>
+            )}
+          </div>
           <div style={{ fontSize: '13px', color: '#475569' }}>
-            Đang trải nghiệm trực tiếp: <strong style={{ color: '#0284c7' }}>{currentAppDef.label}</strong>
+            Đang trải nghiệm: <strong style={{ color: '#0284c7' }}>{currentAppDef.label}</strong>
           </div>
         </div>
       )}
 
       {/* VÙNG HIỂN THỊ NỘI DUNG ỨNG DỤNG ĐANG CHỌN */}
       <main style={{ maxWidth: '1600px', margin: '0 auto', minHeight: 'calc(100vh - 120px)' }}>
+        {activeApp === 'master_blueprint' && (
+          <MasterAppBlueprint />
+        )}
+
         {activeApp === 'marketplace' && (
-          <MarketplaceApp onSelectApp={(target) => setActiveApp(target)} />
+          <MarketplaceApp onSelectApp={(target) => setActiveApp(target as ActiveAppId)} />
         )}
 
         {activeApp === 'equipment_erp' && (
-          <EquipmentErpApp onBack={() => setActiveApp('marketplace')} />
+          <EquipmentErpApp onBack={() => setActiveApp('master_blueprint')} />
         )}
 
         {activeApp === 'warehouse' && (
-          <WarehouseApp onBack={() => setActiveApp('marketplace')} />
+          <WarehouseApp onBack={() => setActiveApp('master_blueprint')} />
         )}
 
         {activeApp === 'finance' && (
-          <FinanceApp onBack={() => setActiveApp('marketplace')} />
+          <FinanceApp onBack={() => setActiveApp('master_blueprint')} />
         )}
 
         {activeApp === 'tasks' && (
-          <TasksApp onBack={() => setActiveApp('marketplace')} />
+          <TasksApp onBack={() => setActiveApp('master_blueprint')} />
         )}
 
         {activeApp === 'pos' && (
-          <PosApp onBack={() => setActiveApp('marketplace')} />
+          <PosApp onBack={() => setActiveApp('master_blueprint')} />
         )}
 
         {activeApp === 'crm' && (
-          <CrmApp onBack={() => setActiveApp('marketplace')} />
+          <CrmApp onBack={() => setActiveApp('master_blueprint')} />
         )}
       </main>
 
@@ -231,7 +260,7 @@ export default function App() {
       >
         <div style={{ maxWidth: '1600px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
           <div>
-            © 2026 <strong>GSheets.vn Ecosystem Suite</strong>. Toàn bộ 229 giải pháp quản trị vận hành độc bản, tối ưu Netlify / Vercel.
+            © 2026 <strong>GSheets.vn Master Blueprint Ecosystem</strong>. Kiến trúc gốc chuẩn mực & cơ chế nhân bản chuyên sâu.
           </div>
           <div style={{ display: 'flex', gap: '16px' }}>
             <span>Phân hệ đang mở: <strong style={{ color: '#0284c7' }}>{currentAppDef.label}</strong></span>
