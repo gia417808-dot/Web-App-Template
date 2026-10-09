@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản Lý Thu Chi & Dòng Tiền Startup v4.1 | Web App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .navbar-brand { font-weight: 700; color: #0f172a; }
+    .kpi-card { border: none; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); transition: transform 0.2s; }
+    .kpi-card:hover { transform: translateY(-2px); }
+    .badge-thu { background-color: #dcfce7; color: #166534; font-weight: 600; }
+    .badge-chi { background-color: #fee2e2; color: #991b1b; font-weight: 600; }
+    .nav-pills .nav-link.active { background-color: #059669; }
+    .nav-pills .nav-link { color: #475569; font-weight: 600; }
+    .table-container { background: #ffffff; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); padding: 1.25rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top py-2 px-3">
+    <div class="container-fluid">
+      <span class="navbar-brand d-flex align-items-center gap-2">
+        <i class="bi bi-wallet2 text-success"></i>
+        <span>GS-003 • Thu Chi & Dòng Tiền Startup <span class="badge bg-success-subtle text-success ms-1">v4.1</span></span>
+      </span>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-outline-secondary btn-sm" onclick="loadData()">
+          <i class="bi bi-arrow-clockwise"></i> Làm mới
+        </button>
+        <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#newTxModal">
+          <i class="bi bi-plus-circle me-1"></i> Ghi Thu / Chi
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid py-4 px-4">
+    <!-- KPI Row -->
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-md-3">
+        <div class="card kpi-card p-3 border-start border-success border-4">
+          <div class="text-muted small fw-semibold">TỔNG NGÂN QUỸ HIỆN CÓ</div>
+          <div class="h4 fw-bold text-success mt-1" id="kpiBalance">--</div>
+          <div class="text-muted small"><i class="bi bi-cash-stack"></i> Tiền mặt & Ngân hàng</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card kpi-card p-3 border-start border-primary border-4">
+          <div class="text-muted small fw-semibold">TỔNG THU (INFLOW)</div>
+          <div class="h4 fw-bold text-primary mt-1" id="kpiThu">--</div>
+          <div class="text-muted small"><i class="bi bi-arrow-down-left-circle"></i> Doanh thu & Dịch vụ</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card kpi-card p-3 border-start border-danger border-4">
+          <div class="text-muted small fw-semibold">TỔNG CHI (OUTFLOW)</div>
+          <div class="h4 fw-bold text-danger mt-1" id="kpiChi">--</div>
+          <div class="text-muted small"><i class="bi bi-arrow-up-right-circle"></i> Vận hành, lương & cước</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card kpi-card p-3 border-start border-warning border-4">
+          <div class="text-muted small fw-semibold">DỰ PHÓNG RUNWAY</div>
+          <div class="h4 fw-bold text-warning mt-1" id="kpiRunway">--</div>
+          <div class="text-muted small" id="kpiBurnRate"><i class="bi bi-hourglass-split"></i> Tốc độ chi tiêu an toàn</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters & Navigation -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+      <ul class="nav nav-pills" id="financeTabs" role="tablist">
+        <li class="nav-item">
+          <button class="nav-link active" id="tab-sq-btn" data-bs-toggle="tab" data-bs-target="#tab-sq">
+            <i class="bi bi-journal-text me-1"></i> Sổ Quỹ Thu Chi
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" id="tab-tk-btn" data-bs-toggle="tab" data-bs-target="#tab-tk">
+            <i class="bi bi-bank me-1"></i> Tài Khoản Ngân Hàng
+          </button>
+        </li>
+      </ul>
+
+      <div class="d-flex gap-2">
+        <select class="form-select form-select-sm" id="typeFilter" style="width: 130px;" onchange="renderTables()">
+          <option value="ALL">Tất cả loại</option>
+          <option value="Thu">Chỉ tiền Thu</option>
+          <option value="Chi">Chỉ tiền Chi</option>
+        </select>
+        <div class="input-group input-group-sm" style="width: 250px;">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input type="text" class="form-control" id="searchInput" placeholder="Tìm hạng mục, dự án..." oninput="renderTables()">
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Contents -->
+    <div class="tab-content">
+      <!-- Tab 1: Sổ Quỹ -->
+      <div class="tab-pane fade show active" id="tab-sq">
+        <div class="table-container">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Mã GD</th>
+                  <th>Ngày</th>
+                  <th>Loại</th>
+                  <th>Hạng Mục</th>
+                  <th>Số Tiền</th>
+                  <th>Tài Khoản</th>
+                  <th>Dự Án / Bộ Phận</th>
+                  <th>Người Lập</th>
+                  <th>Chứng Từ / PT</th>
+                  <th>Ghi Chú</th>
+                </tr>
+              </thead>
+              <tbody id="sqTbody">
+                <tr><td colspan="10" class="text-center py-4 text-muted">Đang tải sổ quỹ...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Tài Khoản -->
+      <div class="tab-pane fade" id="tab-tk">
+        <div class="table-container">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Mã TK</th>
+                  <th>Ngân Hàng / Quỹ</th>
+                  <th>Số Tài Khoản</th>
+                  <th>Chủ Tài Khoản</th>
+                  <th>Số Dư Đầu Kỳ</th>
+                  <th class="fw-bold text-success">Số Dư Hiện Tại</th>
+                  <th>Phân Loại</th>
+                  <th>Ghi Chú</th>
+                </tr>
+              </thead>
+              <tbody id="tkTbody">
+                <tr><td colspan="8" class="text-center py-4 text-muted">Đang tải danh sách tài khoản...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Tạo Giao Dịch Mới -->
+  <div class="modal fade" id="newTxModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold"><i class="bi bi-receipt text-success me-2"></i>Ghi Nhận Thu / Chi Mới</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="txForm">
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Loại Nghiệp Vụ</label>
+                <select class="form-select" id="formType" onchange="onTxTypeChange()">
+                  <option value="Thu">Thu tiền (+ Inflow)</option>
+                  <option value="Chi">Chi tiền (- Outflow)</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Ngày Giao Dịch</label>
+                <input type="date" class="form-control" id="formDate" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Hạng Mục Thu / Chi</label>
+              <input type="text" class="form-control" id="formCategory" list="catOptions" placeholder="VD: Doanh thu Bán hàng, Tiền máy chủ..." required>
+              <datalist id="catOptions">
+                <option value="Doanh thu Bán hàng">
+                <option value="Thu tiền dịch vụ tư vấn">
+                <option value="Lương nhân sự">
+                <option value="Chi phí Máy chủ & Cloud">
+                <option value="Thuê văn phòng">
+                <option value="Tiếp khách & Marketing">
+              </datalist>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Số Tiền (VNĐ)</label>
+                <input type="number" class="form-control" id="formAmount" placeholder="VD: 5000000" min="1000" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Tài Khoản Ghi Nhận</label>
+                <select class="form-select" id="formAccount" required>
+                  <option value="">-- Chọn tài khoản --</option>
+                </select>
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Dự Án / Phòng Ban</label>
+                <input type="text" class="form-control" id="formProject" placeholder="VD: Khối Kỹ Thuật">
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Phương Thức Thanh Toán</label>
+                <select class="form-select" id="formMethod">
+                  <option value="Chuyển khoản VietQR">Chuyển khoản VietQR</option>
+                  <option value="Tiền mặt">Tiền mặt</option>
+                  <option value="Thẻ tín dụng / VISA">Thẻ tín dụng / VISA</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label class="form-label small fw-semibold">Ghi Chú & Số Hóa Đơn</label>
+              <textarea class="form-control" id="formNotes" rows="2" placeholder="Ghi chú chi tiết cho chứng từ..."></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-success btn-sm" id="btnSubmitTx" onclick="submitFinanceTx()">
+            <i class="bi bi-check-circle me-1"></i> Lưu Vào Sổ Quỹ
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let appData = {
+      accounts: [],
+      transactions: [],
+      kpi: { totalBalance: 0, totalThu: 0, totalChi: 0, netCashflow: 0, burnRate: 0, runwayMonths: '0' }
+    };
+
+    function formatVND(n) {
+      return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(n || 0);
+    }
+
+    function loadData() {
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function(res) {
+            if (res && res.success) {
+              appData = res;
+              updateUI();
+            }
+          })
+          .withFailureHandler(function(err) {
+            console.warn('Apps Script error, loading fallback:', err);
+            loadFallback();
+          })
+          .getFinanceData();
+      } else {
+        loadFallback();
+      }
+    }
+
+    function loadFallback() {
+      appData = {
+        accounts: [
+          { id: 'ACC-01', bankName: 'Vietcombank Doanh Nghiệp', accountNumber: '1018899889', holderName: 'CTY TNHH TEMPLATE VIET', initialBalance: 150000000, balanceVnd: 325000000, accountType: 'Ngân hàng', notes: 'Tài khoản chính' },
+          { id: 'ACC-02', bankName: 'Techcombank Thu Chi', accountNumber: '19034567890', holderName: 'LE HOANG NAM - CEO', initialBalance: 50000000, balanceVnd: 115000000, accountType: 'Ngân hàng', notes: 'Tài khoản đối ứng' },
+          { id: 'ACC-03', bankName: 'Quỹ Tiền Mặt Văn Phòng', accountNumber: 'CASH-BOX-01', holderName: 'Thủ quỹ Chi nhánh', initialBalance: 15000000, balanceVnd: 8500000, accountType: 'Tiền mặt', notes: 'Tiền mặt chi tiêu lặt vặt' }
+        ],
+        transactions: [
+          { code: 'TX-2026-001', date: '2026-08-01', type: 'Thu', category: 'Doanh thu Bán hàng', amountVnd: 45000000, accountName: 'Vietcombank Doanh Nghiệp', projectName: 'Dự án ERP Doanh Nghiệp', createdBy: 'Lê Hoàng Nam', refDoc: 'UNC-VCB-8912', method: 'Chuyển khoản VietQR', notes: 'Thanh toán đợt 1' },
+          { code: 'TX-2026-002', date: '2026-08-02', type: 'Chi', category: 'Chi phí Máy chủ & Cloud', amountVnd: 4200000, accountName: 'Techcombank Thu Chi', projectName: 'Hạ tầng Core', createdBy: 'Phạm Minh Đức', refDoc: 'INV-AWS-7890', method: 'Thẻ VISA Doanh nghiệp', notes: 'Gia hạn server AWS' },
+          { code: 'TX-2026-003', date: '2026-08-03', type: 'Chi', category: 'Lương nhân sự tháng 7', amountVnd: 35000000, accountName: 'Vietcombank Doanh Nghiệp', projectName: 'Khối Kỹ Thuật', createdBy: 'Trần Đình Trọng', refDoc: 'BL-L7-001', method: 'Chuyển khoản theo lô', notes: 'Lương đợt 1' },
+          { code: 'TX-2026-004', date: '2026-08-04', type: 'Thu', category: 'Thu tiền dịch vụ tư vấn', amountVnd: 12500000, accountName: 'Techcombank Thu Chi', projectName: 'Khách hàng MediaPro', createdBy: 'Lê Hoàng Nam', refDoc: 'UNC-TCB-4412', method: 'Chuyển khoản VietQR', notes: 'Gói tư vấn quản trị' },
+          { code: 'TX-2026-005', date: '2026-08-05', type: 'Chi', category: 'Tiếp khách & Hội thảo', amountVnd: 1850000, accountName: 'Quỹ Tiền Mặt Văn Phòng', projectName: 'Khối Kinh Doanh', createdBy: 'Thủ quỹ Chi nhánh', refDoc: 'PC-0805-01', method: 'Tiền mặt', notes: 'Ăn trưa trao đổi hợp đồng' }
+        ],
+        kpi: { totalBalance: 448500000, totalThu: 57500000, totalChi: 41050000, netCashflow: 16450000, burnRate: 41050000, runwayMonths: '10.9' }
+      };
+      updateUI();
+    }
+
+    function updateUI() {
+      document.getElementById('kpiBalance').innerText = formatVND(appData.kpi.totalBalance);
+      document.getElementById('kpiThu').innerText = formatVND(appData.kpi.totalThu);
+      document.getElementById('kpiChi').innerText = formatVND(appData.kpi.totalChi);
+      document.getElementById('kpiRunway').innerText = (appData.kpi.runwayMonths || '12') + ' tháng';
+      document.getElementById('kpiBurnRate').innerText = 'Burn: ' + formatVND(appData.kpi.burnRate) + '/tháng';
+
+      // Accounts in modal
+      const select = document.getElementById('formAccount');
+      select.innerHTML = '<option value="">-- Chọn tài khoản --</option>';
+      appData.accounts.forEach(acc => {
+        const opt = document.createElement('option');
+        opt.value = acc.bankName;
+        opt.innerText = acc.bankName + ' (Dư: ' + formatVND(acc.balanceVnd) + ')';
+        select.appendChild(opt);
+      });
+
+      // Default date
+      document.getElementById('formDate').value = new Date().toISOString().split('T')[0];
+
+      renderTables();
+    }
+
+    function renderTables() {
+      const search = (document.getElementById('searchInput').value || '').toLowerCase();
+      const typeFilter = document.getElementById('typeFilter').value;
+
+      // Table Sổ quỹ
+      const sqBody = document.getElementById('sqTbody');
+      const filteredTx = appData.transactions.filter(t => {
+        const matchSearch = (t.category || '').toLowerCase().includes(search) || (t.projectName || '').toLowerCase().includes(search) || (t.code || '').toLowerCase().includes(search);
+        const matchType = typeFilter === 'ALL' || t.type === typeFilter;
+        return matchSearch && matchType;
+      });
+
+      if (filteredTx.length === 0) {
+        sqBody.innerHTML = '<tr><td colspan="10" class="text-center py-4 text-muted">Không tìm thấy giao dịch phù hợp</td></tr>';
+      } else {
+        sqBody.innerHTML = filteredTx.map(t => {
+          const badge = t.type === 'Thu'
+            ? '<span class="badge badge-thu">+ Thu</span>'
+            : '<span class="badge badge-chi">- Chi</span>';
+          const amtColor = t.type === 'Thu' ? 'text-success fw-bold' : 'text-danger fw-bold';
+
+          return `
+            <tr>
+              <td class="fw-semibold text-secondary">${t.code}</td>
+              <td>${t.date}</td>
+              <td>${badge}</td>
+              <td><div class="fw-semibold text-dark">${t.category}</div></td>
+              <td class="${amtColor}">${t.type === 'Thu' ? '+' : '-'}${formatVND(t.amountVnd)}</td>
+              <td><span class="small">${t.accountName}</span></td>
+              <td><span class="small">${t.projectName}</span></td>
+              <td><span class="small text-muted">${t.createdBy}</span></td>
+              <td><div class="small">${t.method}</div><div class="small text-muted">${t.refDoc || ''}</div></td>
+              <td><span class="small text-muted">${t.notes}</span></td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      // Table Tài khoản
+      const tkBody = document.getElementById('tkTbody');
+      tkBody.innerHTML = appData.accounts.map(a => `
+        <tr>
+          <td class="fw-bold">${a.id}</td>
+          <td><div class="fw-semibold">${a.bankName}</div></td>
+          <td><code>${a.accountNumber}</code></td>
+          <td>${a.holderName}</td>
+          <td>${formatVND(a.initialBalance)}</td>
+          <td class="fw-bold text-success">${formatVND(a.balanceVnd)}</td>
+          <td><span class="badge bg-secondary-subtle text-secondary">${a.accountType}</span></td>
+          <td><span class="small text-muted">${a.notes}</span></td>
+        </tr>
+      `).join('');
+    }
+
+    function onTxTypeChange() {
+      // hook if needed
+    }
+
+    function submitFinanceTx() {
+      const type = document.getElementById('formType').value;
+      const date = document.getElementById('formDate').value;
+      const cat = document.getElementById('formCategory').value.trim();
+      if (!cat) { alert('Vui lòng nhập hạng mục thu chi'); return; }
+      const amt = Number(document.getElementById('formAmount').value) || 0;
+      if (amt <= 0) { alert('Vui lòng nhập số tiền hợp lệ'); return; }
+      const acc = document.getElementById('formAccount').value;
+      if (!acc) { alert('Vui lòng chọn tài khoản ghi nhận'); return; }
+      const project = document.getElementById('formProject').value.trim();
+      const method = document.getElementById('formMethod').value;
+      const notes = document.getElementById('formNotes').value.trim();
+
+      const payload = {
+        type: type,
+        date: date,
+        category: cat,
+        amount: amt,
+        accountName: acc,
+        projectName: project || 'Vận hành chung',
+        method: method,
+        notes: notes,
+        createdBy: 'Kế toán quản trị'
+      };
+
+      const btn = document.getElementById('btnSubmitTx');
+      btn.disabled = true;
+      btn.innerText = 'Đang lưu...';
+
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function(res) {
+            btn.disabled = false;
+            btn.innerText = 'Lưu Vào Sổ Quỹ';
+            bootstrap.Modal.getInstance(document.getElementById('newTxModal')).hide();
+            alert(res.message);
+            loadData();
+          })
+          .withFailureHandler(function(err) {
+            btn.disabled = false;
+            btn.innerText = 'Lưu Vào Sổ Quỹ';
+            alert('Lỗi: ' + err);
+          })
+          .submitFinanceTx(payload);
+      } else {
+        setTimeout(function() {
+          btn.disabled = false;
+          btn.innerText = 'Lưu Vào Sổ Quỹ';
+          bootstrap.Modal.getInstance(document.getElementById('newTxModal')).hide();
+          appData.transactions.unshift({
+            code: (type === 'Thu' ? 'THU' : 'CHI') + '-' + Date.now(),
+            date: date,
+            type: type,
+            category: cat,
+            amountVnd: amt,
+            accountName: acc,
+            projectName: project || 'Vận hành chung',
+            createdBy: 'Kế toán viên',
+            method: method,
+            refDoc: 'SIM-AUTO',
+            notes: notes
+          });
+          const targetAcc = appData.accounts.find(a => a.bankName === acc);
+          if (targetAcc) {
+            if (type === 'Thu') targetAcc.balanceVnd += amt;
+            else targetAcc.balanceVnd -= amt;
+          }
+          if (type === 'Thu') appData.kpi.totalThu += amt;
+          else appData.kpi.totalChi += amt;
+          appData.kpi.totalBalance = appData.accounts.reduce((s, a) => s + a.balanceVnd, 0);
+          updateUI();
+          alert('Ghi sổ quỹ thành công (Mô phỏng standalone)!');
+        }, 500);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản Lý Nhập Xuất Tồn Đa Kho v3.0 | Web App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .navbar-brand { font-weight: 700; color: #0f172a; }
+    .kpi-card { border: none; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); transition: transform 0.2s; }
+    .kpi-card:hover { transform: translateY(-2px); }
+    .badge-alert { background-color: #fee2e2; color: #991b1b; font-weight: 600; }
+    .badge-ok { background-color: #dcfce7; color: #166534; font-weight: 600; }
+    .nav-pills .nav-link.active { background-color: #0284c7; }
+    .nav-pills .nav-link { color: #475569; font-weight: 600; }
+    .table-container { background: #ffffff; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); padding: 1.25rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top py-2 px-3">
+    <div class="container-fluid">
+      <span class="navbar-brand d-flex align-items-center gap-2">
+        <i class="bi bi-box-seam-fill text-primary"></i>
+        <span>GS-002 • Quản Lý Nhập Xuất Tồn Đa Kho <span class="badge bg-primary-subtle text-primary ms-1">v3.0</span></span>
+      </span>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-outline-secondary btn-sm" onclick="loadData()">
+          <i class="bi bi-arrow-clockwise"></i> Làm mới
+        </button>
+        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#newMovementModal">
+          <i class="bi bi-plus-circle me-1"></i> Tạo Phiếu Kho
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid py-4 px-4">
+    <!-- KPI Row -->
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-md-3">
+        <div class="card kpi-card p-3 border-start border-primary border-4">
+          <div class="text-muted small fw-semibold">TỔNG GIÁ TRỊ HÀNG TỒN</div>
+          <div class="h4 fw-bold text-primary mt-1" id="kpiTotalVal">--</div>
+          <div class="text-muted small"><i class="bi bi-cash-coin"></i> Theo giá vốn bình quân</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card kpi-card p-3 border-start border-danger border-4">
+          <div class="text-muted small fw-semibold">CẢNH BÁO THIẾU HÀNG</div>
+          <div class="h4 fw-bold text-danger mt-1" id="kpiAlertCount">--</div>
+          <div class="text-muted small"><i class="bi bi-exclamation-triangle"></i> Dưới hạn mức tối thiểu</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card kpi-card p-3 border-start border-info border-4">
+          <div class="text-muted small fw-semibold">TỒN KHO HÀ NỘI</div>
+          <div class="h4 fw-bold text-dark mt-1" id="kpiStockHn">--</div>
+          <div class="text-muted small"><i class="bi bi-geo-alt"></i> Chi nhánh Miền Bắc</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card kpi-card p-3 border-start border-success border-4">
+          <div class="text-muted small fw-semibold">TỒN KHO SÀI GÒN</div>
+          <div class="h4 fw-bold text-dark mt-1" id="kpiStockSg">--</div>
+          <div class="text-muted small"><i class="bi bi-geo-alt"></i> Chi nhánh Miền Nam</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters & Tab Control -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+      <ul class="nav nav-pills" id="whTabs" role="tablist">
+        <li class="nav-item">
+          <button class="nav-link active" id="tab-inventory-btn" data-bs-toggle="tab" data-bs-target="#tab-inventory">
+            <i class="bi bi-boxes me-1"></i> Báo Cáo Tồn Kho
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" id="tab-movements-btn" data-bs-toggle="tab" data-bs-target="#tab-movements">
+            <i class="bi bi-clock-history me-1"></i> Nhật Ký Nhập - Xuất
+          </button>
+        </li>
+      </ul>
+
+      <div class="d-flex gap-2">
+        <select class="form-select form-select-sm" id="whFilter" style="width: 160px;" onchange="renderTables()">
+          <option value="ALL">Tất cả kho hàng</option>
+          <option value="HN">Kho Hà Nội</option>
+          <option value="SG">Kho Sài Gòn</option>
+          <option value="TONG">Kho Tổng</option>
+        </select>
+        <div class="input-group input-group-sm" style="width: 240px;">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input type="text" class="form-control" id="searchInput" placeholder="Tìm SKU, tên hàng..." oninput="renderTables()">
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Contents -->
+    <div class="tab-content">
+      <!-- Tab 1: Inventory Table -->
+      <div class="tab-pane fade show active" id="tab-inventory">
+        <div class="table-container">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Mã SKU</th>
+                  <th>Tên Hàng Hóa & Danh Mục</th>
+                  <th>ĐVT</th>
+                  <th>Giá Vốn</th>
+                  <th>Giá Bán</th>
+                  <th class="text-center">Kho HN</th>
+                  <th class="text-center">Kho SG</th>
+                  <th class="text-center">Kho Tổng</th>
+                  <th class="text-center fw-bold text-primary">Tổng Tồn</th>
+                  <th>Tồn Min</th>
+                  <th>Trạng Thái</th>
+                  <th class="text-end">Thao Tác</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryTbody">
+                <tr><td colspan="12" class="text-center py-4 text-muted">Đang tải danh mục kho...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Movement Logs Table -->
+      <div class="tab-pane fade" id="tab-movements">
+        <div class="table-container">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Mã Phiếu</th>
+                  <th>Thời Gian</th>
+                  <th>Loại Phiếu</th>
+                  <th>Hàng Hóa (SKU)</th>
+                  <th>Số Lượng</th>
+                  <th>Đơn Giá</th>
+                  <th>Thành Tiền</th>
+                  <th>Lộ Trình Kho</th>
+                  <th>Người Thực Hiện</th>
+                  <th>Ghi Chú</th>
+                </tr>
+              </thead>
+              <tbody id="logsTbody">
+                <tr><td colspan="10" class="text-center py-4 text-muted">Đang tải nhật ký...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Tạo Phiếu Kho -->
+  <div class="modal fade" id="newMovementModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold"><i class="bi bi-box-arrow-in-down-right text-primary me-2"></i>Lập Phiếu Nhập / Xuất / Điều Chuyển</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="movementForm">
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Loại Nghiệp Vụ</label>
+              <select class="form-select" id="formType" onchange="onTypeChange()">
+                <option value="Nhập kho">Nhập kho (Từ NCC vào kho)</option>
+                <option value="Xuất kho">Xuất kho (Giao khách hàng)</option>
+                <option value="Điều chuyển">Điều chuyển nội bộ giữa các kho</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Chọn Sản Phẩm (SKU)</label>
+              <select class="form-select" id="formSku" required onchange="onSelectSku()">
+                <option value="">-- Chọn mặt hàng --</option>
+              </select>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Số Lượng</label>
+                <input type="number" class="form-control" id="formQty" value="1" min="1" required oninput="calcMovementTotal()">
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Đơn Giá (VNĐ)</label>
+                <input type="number" class="form-control" id="formPrice" required oninput="calcMovementTotal()">
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label small fw-semibold" id="labelFromWh">Từ Kho / Nguồn</label>
+                <input type="text" class="form-control" id="formFromWh" value="Nhà phân phối chính hãng">
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold" id="labelToWh">Đến Kho Lưu</label>
+                <select class="form-select" id="formToWh">
+                  <option value="Kho Hà Nội">Kho Hà Nội</option>
+                  <option value="Kho Sài Gòn">Kho Sài Gòn</option>
+                  <option value="Kho Tổng">Kho Tổng</option>
+                </select>
+              </div>
+            </div>
+            <div class="p-2 rounded bg-light border mb-3 d-flex justify-content-between align-items-center">
+              <span class="small text-muted">Tổng giá trị phiếu:</span>
+              <span class="fw-bold text-primary h6 mb-0" id="formTotalVal">0 ₫</span>
+            </div>
+            <div class="mb-2">
+              <label class="form-label small fw-semibold">Ghi Chú Nghiệp Vụ</label>
+              <input type="text" class="form-control" id="formNotes" placeholder="VD: Nhập đợt bổ sung, theo đơn PO...">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary btn-sm" id="btnSubmitTx" onclick="submitMovement()">
+            <i class="bi bi-check-circle me-1"></i> Lưu Phiếu Kho
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let appData = {
+      items: [],
+      logs: [],
+      kpi: { totalSku: 0, totalCostVal: 0, lowStockCount: 0, totalHn: 0, totalSg: 0, totalTong: 0 }
+    };
+
+    function formatVND(n) {
+      return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(n || 0);
+    }
+
+    function loadData() {
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function(res) {
+            if (res && res.success) {
+              appData = res;
+              updateUI();
+            }
+          })
+          .withFailureHandler(function(err) {
+            console.warn('Apps Script error, loading fallback:', err);
+            loadFallback();
+          })
+          .getWarehouseData();
+      } else {
+        loadFallback();
+      }
+    }
+
+    function loadFallback() {
+      appData = {
+        items: [
+          { sku: 'SKU-CAM-FX3', name: 'Sony FX3 Cinema Line Full-Frame', category: 'Thiết bị ghi hình', unit: 'Chiếc', costPrice: 72000000, sellingPrice: 85000000, stock_hanoi: 4, stock_saigon: 3, stock_tong: 5, totalStock: 12, minLimit: 3, alertStatus: 'Bình thường' },
+          { sku: 'SKU-LEN-2470', name: 'Sony FE 24-70mm f/2.8 GM II', category: 'Ống kính', unit: 'Chiếc', costPrice: 38000000, sellingPrice: 46000000, stock_hanoi: 2, stock_saigon: 4, stock_tong: 6, totalStock: 12, minLimit: 4, alertStatus: 'Bình thường' },
+          { sku: 'SKU-DRO-M3C', name: 'DJI Mavic 3 Cine Combo', category: 'Flycam', unit: 'Bộ', costPrice: 85000000, sellingPrice: 99000000, stock_hanoi: 1, stock_saigon: 1, stock_tong: 0, totalStock: 2, minLimit: 3, alertStatus: 'Cảnh báo thiếu' },
+          { sku: 'SKU-LGT-600D', name: 'Aputure Light Storm LS 600d Pro', category: 'Ánh sáng', unit: 'Bộ', costPrice: 42000000, sellingPrice: 49000000, stock_hanoi: 5, stock_saigon: 4, stock_tong: 8, totalStock: 17, minLimit: 5, alertStatus: 'Bình thường' },
+          { sku: 'SKU-MIC-EWDP', name: 'Sennheiser EW-DP ME 2 Wireless Mic', category: 'Âm thanh', unit: 'Bộ', costPrice: 14500000, sellingPrice: 18000000, stock_hanoi: 6, stock_saigon: 8, stock_tong: 10, totalStock: 24, minLimit: 5, alertStatus: 'Bình thường' },
+          { sku: 'SKU-GIM-RS3P', name: 'DJI RS 3 Pro Gimbal Stabilizer', category: 'Chống rung', unit: 'Chiếc', costPrice: 18000000, sellingPrice: 22500000, stock_hanoi: 1, stock_saigon: 1, stock_tong: 1, totalStock: 3, minLimit: 4, alertStatus: 'Cảnh báo thiếu' }
+        ],
+        logs: [
+          { code: 'PNK-2026-0801', timestamp: '2026-08-01 09:15', type: 'Nhập kho', sku: 'SKU-CAM-FX3', name: 'Sony FX3 Cinema Line Full-Frame', quantity: 3, unitPrice: 72000000, totalVal: 216000000, fromWarehouse: 'Nhà phân phối Sony VN', toWarehouse: 'Kho Hà Nội', createdBy: 'Trần Đình Trọng', notes: 'Lô hàng chính hãng nhập đợt 1' },
+          { code: 'PXK-2026-0802', timestamp: '2026-08-02 14:30', type: 'Xuất kho', sku: 'SKU-DRO-M3C', name: 'DJI Mavic 3 Cine Combo', quantity: 1, unitPrice: 85000000, totalVal: 85000000, fromWarehouse: 'Kho Sài Gòn', toWarehouse: 'Khách hàng VIP Studio', createdBy: 'Lê Hoàng Nam', notes: 'Xuất theo đơn giao ngay' },
+          { code: 'PDC-2026-0803', timestamp: '2026-08-03 11:00', type: 'Điều chuyển', sku: 'SKU-LGT-600D', name: 'Aputure Light Storm LS 600d Pro', quantity: 2, unitPrice: 42000000, totalVal: 84000000, fromWarehouse: 'Kho Tổng', toWarehouse: 'Kho Hà Nội', createdBy: 'Phạm Minh Đức', notes: 'Cân đối tồn kho trước sự kiện' }
+        ],
+        kpi: { totalSku: 6, totalCostVal: 2689000000, lowStockCount: 2, totalHn: 19, totalSg: 21, totalTong: 30 }
+      };
+      updateUI();
+    }
+
+    function updateUI() {
+      document.getElementById('kpiTotalVal').innerText = formatVND(appData.kpi.totalCostVal);
+      document.getElementById('kpiAlertCount').innerText = appData.kpi.lowStockCount || 0;
+      document.getElementById('kpiStockHn').innerText = (appData.kpi.totalHn || 0) + ' sp';
+      document.getElementById('kpiStockSg').innerText = (appData.kpi.totalSg || 0) + ' sp';
+
+      // Select SKU in modal
+      const select = document.getElementById('formSku');
+      select.innerHTML = '<option value="">-- Chọn mặt hàng --</option>';
+      appData.items.forEach(it => {
+        const opt = document.createElement('option');
+        opt.value = it.sku;
+        opt.innerText = it.sku + ' - ' + it.name;
+        select.appendChild(opt);
+      });
+
+      renderTables();
+    }
+
+    function renderTables() {
+      const search = (document.getElementById('searchInput').value || '').toLowerCase();
+      const wh = document.getElementById('whFilter').value;
+
+      // Table Inventory
+      const tb = document.getElementById('inventoryTbody');
+      const filtered = appData.items.filter(it => {
+        return it.name.toLowerCase().includes(search) || it.sku.toLowerCase().includes(search);
+      });
+
+      if (filtered.length === 0) {
+        tb.innerHTML = '<tr><td colspan="12" class="text-center py-4 text-muted">Không tìm thấy hàng hóa</td></tr>';
+      } else {
+        tb.innerHTML = filtered.map(it => {
+          const badge = it.alertStatus === 'Cảnh báo thiếu'
+            ? '<span class="badge badge-alert"><i class="bi bi-exclamation-triangle"></i> Thiếu hàng</span>'
+            : '<span class="badge badge-ok"><i class="bi bi-check2"></i> Đủ tồn</span>';
+
+          return `
+            <tr>
+              <td class="fw-bold">${it.sku}</td>
+              <td>
+                <div class="fw-semibold text-dark">${it.name}</div>
+                <div class="small text-muted">${it.category}</div>
+              </td>
+              <td>${it.unit}</td>
+              <td>${formatVND(it.costPrice)}</td>
+              <td>${formatVND(it.sellingPrice)}</td>
+              <td class="text-center">${it.stock_hanoi}</td>
+              <td class="text-center">${it.stock_saigon}</td>
+              <td class="text-center">${it.stock_tong}</td>
+              <td class="text-center fw-bold text-primary">${it.totalStock}</td>
+              <td class="text-center text-muted">${it.minLimit}</td>
+              <td>${badge}</td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary" onclick="quickCreate('${it.sku}')">
+                  <i class="bi bi-arrow-left-right"></i> Nhập/Xuất
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      // Table Logs
+      const logsBody = document.getElementById('logsTbody');
+      if (appData.logs.length === 0) {
+        logsBody.innerHTML = '<tr><td colspan="10" class="text-center py-4 text-muted">Chưa có giao dịch nào</td></tr>';
+      } else {
+        logsBody.innerHTML = appData.logs.map(l => {
+          let typeBadge = '<span class="badge bg-success-subtle text-success">Nhập kho</span>';
+          if (l.type === 'Xuất kho') typeBadge = '<span class="badge bg-danger-subtle text-danger">Xuất kho</span>';
+          if (l.type === 'Điều chuyển') typeBadge = '<span class="badge bg-primary-subtle text-primary">Điều chuyển</span>';
+
+          return `
+            <tr>
+              <td class="fw-bold text-secondary">${l.code}</td>
+              <td>${l.timestamp}</td>
+              <td>${typeBadge}</td>
+              <td>
+                <div class="fw-semibold">${l.name}</div>
+                <div class="small text-muted">${l.sku}</div>
+              </td>
+              <td class="fw-bold">${l.quantity}</td>
+              <td>${formatVND(l.unitPrice)}</td>
+              <td class="fw-semibold text-primary">${formatVND(l.totalVal)}</td>
+              <td><span class="small">${l.fromWarehouse} → ${l.toWarehouse}</span></td>
+              <td><span class="small">${l.createdBy}</span></td>
+              <td><span class="small text-muted">${l.notes}</span></td>
+            </tr>
+          `;
+        }).join('');
+      }
+    }
+
+    function onTypeChange() {
+      const type = document.getElementById('formType').value;
+      if (type === 'Nhập kho') {
+        document.getElementById('labelFromWh').innerText = 'Từ Nguồn / NCC';
+        document.getElementById('formFromWh').value = 'Nhà phân phối chính hãng';
+        document.getElementById('labelToWh').innerText = 'Đến Kho Nhập';
+      } else if (type === 'Xuất kho') {
+        document.getElementById('labelFromWh').innerText = 'Xuất Từ Kho';
+        document.getElementById('formFromWh').value = 'Kho Hà Nội';
+        document.getElementById('labelToWh').innerText = 'Đến Khách Hàng / Đối tác';
+      } else {
+        document.getElementById('labelFromWh').innerText = 'Từ Kho Đi';
+        document.getElementById('formFromWh').value = 'Kho Tổng';
+        document.getElementById('labelToWh').innerText = 'Đến Kho Nhận';
+      }
+    }
+
+    function onSelectSku() {
+      const sku = document.getElementById('formSku').value;
+      const it = appData.items.find(i => i.sku === sku);
+      if (it) {
+        document.getElementById('formPrice').value = it.costPrice;
+      }
+      calcMovementTotal();
+    }
+
+    function calcMovementTotal() {
+      const qty = Number(document.getElementById('formQty').value) || 0;
+      const price = Number(document.getElementById('formPrice').value) || 0;
+      document.getElementById('formTotalVal').innerText = formatVND(qty * price);
+    }
+
+    function quickCreate(sku) {
+      const modal = new bootstrap.Modal(document.getElementById('newMovementModal'));
+      document.getElementById('formSku').value = sku;
+      onSelectSku();
+      modal.show();
+    }
+
+    function submitMovement() {
+      const sku = document.getElementById('formSku').value;
+      if (!sku) { alert('Vui lòng chọn mặt hàng'); return; }
+      const it = appData.items.find(i => i.sku === sku);
+      const type = document.getElementById('formType').value;
+      const qty = Number(document.getElementById('formQty').value) || 1;
+      const price = Number(document.getElementById('formPrice').value) || 0;
+      const fromWh = document.getElementById('formFromWh').value;
+      const toWh = document.getElementById('formToWh').value;
+      const notes = document.getElementById('formNotes').value;
+
+      const payload = {
+        type: type,
+        sku: sku,
+        name: it ? it.name : '',
+        quantity: qty,
+        unitPrice: price,
+        fromWarehouse: fromWh,
+        toWarehouse: toWh,
+        notes: notes,
+        createdBy: 'Thủ kho thao tác'
+      };
+
+      const btn = document.getElementById('btnSubmitTx');
+      btn.disabled = true;
+      btn.innerText = 'Đang lưu...';
+
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function(res) {
+            btn.disabled = false;
+            btn.innerText = 'Lưu Phiếu Kho';
+            bootstrap.Modal.getInstance(document.getElementById('newMovementModal')).hide();
+            alert(res.message);
+            loadData();
+          })
+          .withFailureHandler(function(err) {
+            btn.disabled = false;
+            btn.innerText = 'Lưu Phiếu Kho';
+            alert('Lỗi: ' + err);
+          })
+          .submitInventoryTx(payload);
+      } else {
+        setTimeout(function() {
+          btn.disabled = false;
+          btn.innerText = 'Lưu Phiếu Kho';
+          bootstrap.Modal.getInstance(document.getElementById('newMovementModal')).hide();
+          appData.logs.unshift({
+            code: 'MOCK-' + Date.now(),
+            timestamp: new Date().toLocaleString('vi-VN'),
+            type: type,
+            sku: sku,
+            name: it.name,
+            quantity: qty,
+            unitPrice: price,
+            totalVal: qty * price,
+            fromWarehouse: fromWh,
+            toWarehouse: toWh,
+            createdBy: 'Thủ kho',
+            notes: notes
+          });
+          updateUI();
+          alert('Tạo phiếu kho thành công (Mô phỏng standalone)!');
+        }, 500);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>
+

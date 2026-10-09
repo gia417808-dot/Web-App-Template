@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Centralized Asset Registry (G3_ASSET Verified)",
+  "version": "1.0.0",
+  "updated_at": "2026-10-09T13:30:00+07:00",
+  "assets": [
+    {
+      "product_id": "GS-001",
+      "name": "Webapp Quản lý và Cho thuê thiết bị",
+      "group_archetype": "Rental & Assets",
+      "version": "v1.0",
+      "spreadsheet_id": "1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+      "package_path": "delivery/packages/GS-001-equipment",
+      "gate": "G3_ASSET",
+      "publishable": true
+    },
+    {
+      "product_id": "GS-002",
+      "name": "Webapp Quản lý Nhập Xuất Tồn Đa Kho",
+      "group_archetype": "Inventory & Warehousing",
+      "version": "v3.0",
+      "spreadsheet_id": "1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+      "package_path": "delivery/packages/GS-002-warehouse",
+      "gate": "G3_ASSET",
+      "publishable": true
+    },
+    {
+      "product_id": "GS-003",
+      "name": "Webapp Quản lý Thu Chi & Dòng Tiền Startup",
+      "group_archetype": "Finance & Cashflow",
+      "version": "v4.1",
+      "spreadsheet_id": "1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+      "package_path": "delivery/packages/GS-003-finance",
+      "gate": "G3_ASSET",
+      "publishable": true
+    },
+    {
+      "product_id": "GS-004",
+      "name": "Webapp Quản lý Tiến Độ Dự Án & Tasks",
+      "group_archetype": "Project & Task Management",
+      "version": "v4.0",
+      "spreadsheet_id": "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+      "package_path": "delivery/packages/GS-004-project",
+      "gate": "G3_ASSET",
+      "publishable": true
+    },
+    {
+      "product_id": "GS-005",
+      "name": "Webapp F&B POS Quán Cafe / Nhà Hàng",
+      "group_archetype": "Point of Sale & F&B",
+      "version": "v3.0",
+      "spreadsheet_id": "1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+      "package_path": "delivery/packages/GS-005-pos",
+      "gate": "G3_ASSET",
+      "publishable": true
+    }
+  ]
+}
+

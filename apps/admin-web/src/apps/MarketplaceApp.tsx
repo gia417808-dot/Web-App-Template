@@ -19,6 +19,7 @@ export interface ExactCatalogProduct {
   appRoute: string;
   sheetUrl: string | null;
   templatePreviewUrl?: string;
+  isVerified?: boolean;
 }
 
 const catalog: ExactCatalogProduct[] = exactCatalogData as ExactCatalogProduct[];
@@ -444,6 +445,11 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                     <span style={{ fontSize: '11px', color: '#64748b', fontWeight: '700', backgroundColor: '#f1f5f9', padding: '3px 7px', borderRadius: '4px' }}>
                       {item.version}
                     </span>
+                    {item.isVerified && (
+                      <span style={{ fontSize: '11px', color: '#047857', fontWeight: '700', backgroundColor: '#d1fae5', border: '1px solid #6ee7b7', padding: '2px 6px', borderRadius: '4px' }}>
+                        ✓ Đã xác thực G3
+                      </span>
+                    )}
                   </div>
 
                   <span style={{ fontSize: '11.5px', color: '#64748b', fontWeight: '700' }}>
@@ -1130,9 +1136,33 @@ export default function MarketplaceApp({ onSelectApp }: MarketplaceAppProps) {
                       <span style={{ fontSize: '16px' }}>📊</span>
                       <span>Google Sheets — {selectedTemplate.title}.xlsx</span>
                     </div>
-                    <span style={{ backgroundColor: 'rgba(255,255,255,0.2)', padding: '2px 8px', borderRadius: '4px', fontSize: '11px', fontWeight: '600' }}>
-                      Chế độ: Chỉ xem mẫu
-                    </span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      {selectedTemplate.templatePreviewUrl && !selectedTemplate.templatePreviewUrl.includes('YOUR_SHEET_ID') && (
+                        <a
+                          href={selectedTemplate.templatePreviewUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            backgroundColor: '#ffffff',
+                            color: '#15803d',
+                            padding: '3px 10px',
+                            borderRadius: '5px',
+                            fontSize: '11px',
+                            fontWeight: '700',
+                            textDecoration: 'none',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px',
+                            boxShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                          }}
+                        >
+                          🔗 Mở Google Sheet Thật ↗
+                        </a>
+                      )}
+                      <span style={{ backgroundColor: 'rgba(255,255,255,0.2)', padding: '2px 8px', borderRadius: '4px', fontSize: '11px', fontWeight: '600' }}>
+                        Chế độ: Chỉ xem mẫu
+                      </span>
+                    </div>
                   </div>
 
                   {/* THANH MENU */}

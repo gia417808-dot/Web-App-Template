@@ -1,66 +1,6 @@
 [
   {
     "id": "GS-001",
-    "title": "Google Sheets | Báo cáo tài chính cá nhân",
-    "rawName": "Google Sheets | Báo cáo tài chính cá nhân",
-    "cleanTitle": "Báo cáo tài chính cá nhân",
-    "type": "gsheet",
-    "version": "v1.0",
-    "category": "Tài chính - Thu chi",
-    "price": 299000,
-    "originalPrice": 450000,
-    "description": "Mẫu theo dõi tài chính cá nhân bằng các bảng tổng quan giúp xem tình hình từ nhiều góc độ.",
-    "shortDesc": "Mẫu theo dõi tài chính cá nhân bằng các bảng tổng quan giúp xem tình hình từ nhiều góc độ.",
-    "suitableFor": [
-      "Doanh nghiệp vừa và nhỏ (SME)",
-      "Startup khởi nghiệp",
-      "Chủ shop bán hàng",
-      "Hộ kinh doanh cá thể"
-    ],
-    "features": [
-      "Sổ quỹ quản lý đa tài khoản ngân hàng và tiền mặt",
-      "Tự động phân loại dòng tiền theo hạng mục Thu - Chi",
-      "Báo cáo Lãi - Lỗ (P&L) và dòng tiền thuần tự động cập nhật",
-      "Đo lường chỉ số tài chính, tỷ lệ hòa vốn và cảnh báo âm quỹ",
-      "Theo dõi công nợ phải thu, phải trả và nhắc hạn thanh toán",
-      "Hỗ trợ phân tích chi phí theo từng dự án / phòng ban"
-    ],
-    "appRoute": "cashflow",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
-  },
-  {
-    "id": "GS-002",
-    "title": "Webapp | Quản lý công việc (v2.4)",
-    "rawName": "Webapp | Quản lý công việc (v2.4)",
-    "cleanTitle": "Quản lý công việc (v2.4)",
-    "type": "webapp",
-    "version": "v2.4",
-    "category": "Dự án & Công việc",
-    "price": 559000,
-    "originalPrice": 850000,
-    "description": "Theo dõi nhiệm vụ, checklist và KPI qua Kanban, Gantt, bảng và lịch; phân quyền giao việc, nhắc hạn, lưu lịch sử. Bản 2.4 bổ sung tài liệu gắn với task, quyền xem văn bản và xuất Excel.",
-    "shortDesc": "Theo dõi nhiệm vụ, checklist và KPI qua Kanban, Gantt, bảng và lịch; phân quyền giao việc, nhắc hạn, lưu lịch sử. Bản 2.4 bổ sung tài liệu gắn với task, quyền xem văn bản và xuất Excel.",
-    "suitableFor": [
-      "Agency truyền thông",
-      "Đội ngũ thiết kế, IT",
-      "Quản lý thi công xây dựng",
-      "Doanh nghiệp vận hành theo dự án"
-    ],
-    "features": [
-      "Giao việc và giám sát tiến độ công việc đa chiều (Kanban, Bảng, Lịch)",
-      "Thiết lập công việc lặp lại định kỳ và nhắc hạn quá hạn tự động",
-      "Đo lường tỷ lệ hoàn thành KPI của từng nhân sự",
-      "Đính kèm tài liệu và phân quyền xem theo cấp độ bảo mật",
-      "Lưu nhật ký lịch sử chỉnh sửa và cập nhật trạng thái thời gian thực",
-      "Xuất báo cáo tiến độ dự án định dạng Excel / PDF"
-    ],
-    "appRoute": "project",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
-  },
-  {
-    "id": "GS-003",
     "title": "Webapp | Quản lý và Cho thuê thiết bị (v1.0)",
     "rawName": "Webapp | Quản lý và Cho thuê thiết bị (v1.0)",
     "cleanTitle": "Quản lý và Cho thuê thiết bị (v1.0)",
@@ -86,44 +26,15 @@
       "Báo cáo hiệu suất khai thác tài sản và công nợ khách hàng"
     ],
     "appRoute": "equipment",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/preview",
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": true
   },
   {
-    "id": "GS-004",
-    "title": "Webapp | Quản lý thu chi Doanh nghiệp (v4.1 startup)",
-    "rawName": "Webapp | Quản lý thu chi Doanh nghiệp (v4.1 startup)",
-    "cleanTitle": "Quản lý thu chi Doanh nghiệp (v4.1 startup)",
-    "type": "webapp",
-    "version": "v4.1 startup",
-    "category": "Tài chính - Thu chi",
-    "price": 559000,
-    "originalPrice": 850000,
-    "description": "Theo dõi thu chi, công nợ, tài khoản, khoản vay và kết quả từng dự án; bổ sung chỉ số burn rate, runway cùng phân tích hòa vốn, chi phí cố định, chi phí biến đổi và dòng tiền đầu tư cho startup.",
-    "shortDesc": "Theo dõi thu chi, công nợ, tài khoản, khoản vay và kết quả từng dự án; bổ sung chỉ số burn rate, runway cùng phân tích hòa vốn, chi phí cố định, chi phí biến đổi và dòng tiền đầu tư cho startup.",
-    "suitableFor": [
-      "Doanh nghiệp vừa và nhỏ (SME)",
-      "Startup khởi nghiệp",
-      "Chủ shop bán hàng",
-      "Hộ kinh doanh cá thể"
-    ],
-    "features": [
-      "Sổ quỹ quản lý đa tài khoản ngân hàng và tiền mặt",
-      "Tự động phân loại dòng tiền theo hạng mục Thu - Chi",
-      "Báo cáo Lãi - Lỗ (P&L) và dòng tiền thuần tự động cập nhật",
-      "Đo lường chỉ số tài chính, tỷ lệ hòa vốn và cảnh báo âm quỹ",
-      "Theo dõi công nợ phải thu, phải trả và nhắc hạn thanh toán",
-      "Hỗ trợ phân tích chi phí theo từng dự án / phòng ban"
-    ],
-    "appRoute": "cashflow",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
-  },
-  {
-    "id": "GS-005",
-    "title": "Webapp | Quản Lý Nhập Xuất Tồn Kho (v3.0)",
-    "rawName": "Webapp | Quản Lý Nhập Xuất Tồn Kho (v3.0)",
-    "cleanTitle": "Quản Lý Nhập Xuất Tồn Kho (v3.0)",
+    "id": "GS-002",
+    "title": "Webapp | Quản lý Nhập Xuất Tồn Đa Kho (v3.0)",
+    "rawName": "Webapp | Quản lý Nhập Xuất Tồn Đa Kho (v3.0)",
+    "cleanTitle": "Quản lý Nhập Xuất Tồn Đa Kho (v3.0)",
     "type": "webapp",
     "version": "v3.0",
     "category": "Quản lý Kho",
@@ -146,8 +57,102 @@
       "Phân quyền thủ kho và nhân viên nhập liệu"
     ],
     "appRoute": "inventory",
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/preview",
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": true
+  },
+  {
+    "id": "GS-003",
+    "title": "Webapp | Quản lý Thu Chi & Dòng Tiền Startup (v4.1)",
+    "rawName": "Webapp | Quản lý Thu Chi & Dòng Tiền Startup (v4.1)",
+    "cleanTitle": "Quản lý Thu Chi & Dòng Tiền Startup (v4.1)",
+    "type": "webapp",
+    "version": "v4.1",
+    "category": "Tài chính - Thu chi",
+    "price": 559000,
+    "originalPrice": 850000,
+    "description": "Theo dõi thu chi, công nợ, tài khoản, khoản vay và kết quả từng dự án; bổ sung chỉ số burn rate, runway cùng phân tích hòa vốn, chi phí cố định, chi phí biến đổi và dòng tiền đầu tư cho startup.",
+    "shortDesc": "Theo dõi thu chi, công nợ, tài khoản, khoản vay và kết quả từng dự án; bổ sung chỉ số burn rate, runway cùng phân tích hòa vốn, chi phí cố định, chi phí biến đổi và dòng tiền đầu tư cho startup.",
+    "suitableFor": [
+      "Doanh nghiệp vừa và nhỏ (SME)",
+      "Startup khởi nghiệp",
+      "Chủ shop bán hàng",
+      "Hộ kinh doanh cá thể"
+    ],
+    "features": [
+      "Sổ quỹ quản lý đa tài khoản ngân hàng và tiền mặt",
+      "Tự động phân loại dòng tiền theo hạng mục Thu - Chi",
+      "Báo cáo Lãi - Lỗ (P&L) và dòng tiền thuần tự động cập nhật",
+      "Đo lường chỉ số tài chính, tỷ lệ hòa vốn và cảnh báo âm quỹ",
+      "Theo dõi công nợ phải thu, phải trả và nhắc hạn thanh toán",
+      "Hỗ trợ phân tích chi phí theo từng dự án / phòng ban"
+    ],
+    "appRoute": "cashflow",
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/preview",
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": true
+  },
+  {
+    "id": "GS-004",
+    "title": "Webapp | Quản lý Tiến Độ Dự Án & Tasks (v4.0)",
+    "rawName": "Webapp | Quản lý Tiến Độ Dự Án & Tasks (v4.0)",
+    "cleanTitle": "Quản lý Tiến Độ Dự Án & Tasks (v4.0)",
+    "type": "webapp",
+    "version": "v4.0",
+    "category": "Dự án & Công việc",
+    "price": 559000,
+    "originalPrice": 850000,
+    "description": "Theo dõi nhiệm vụ, checklist và KPI qua Kanban, Gantt, bảng và lịch; phân quyền giao việc, nhắc hạn, lưu lịch sử. Bản 4.0 bổ sung liên kết tiến độ sprint, phân tích bottleneck và tự động cập nhật phần trăm hoàn thành.",
+    "shortDesc": "Theo dõi nhiệm vụ, checklist và KPI qua Kanban, Gantt, bảng và lịch; phân quyền giao việc, nhắc hạn, lưu lịch sử. Bản 4.0 bổ sung liên kết tiến độ sprint, phân tích bottleneck và tự động cập nhật phần trăm hoàn thành.",
+    "suitableFor": [
+      "Agency truyền thông",
+      "Đội ngũ thiết kế, IT",
+      "Quản lý thi công xây dựng",
+      "Doanh nghiệp vận hành theo dự án"
+    ],
+    "features": [
+      "Giao việc và giám sát tiến độ công việc đa chiều (Kanban, Bảng, Lịch)",
+      "Thiết lập công việc lặp lại định kỳ và nhắc hạn quá hạn tự động",
+      "Đo lường tỷ lệ hoàn thành KPI của từng nhân sự",
+      "Đính kèm tài liệu và phân quyền xem theo cấp độ bảo mật",
+      "Lưu nhật ký lịch sử chỉnh sửa và cập nhật trạng thái thời gian thực",
+      "Xuất báo cáo tiến độ dự án định dạng Excel / PDF"
+    ],
+    "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": true
+  },
+  {
+    "id": "GS-005",
+    "title": "Webapp | F&B POS Quán Cafe / Nhà Hàng (v3.0)",
+    "rawName": "Webapp | F&B POS Quán Cafe / Nhà Hàng (v3.0)",
+    "cleanTitle": "F&B POS Quán Cafe / Nhà Hàng (v3.0)",
+    "type": "webapp",
+    "version": "v3.0",
+    "category": "F&B & Nhà hàng",
+    "price": 559000,
+    "originalPrice": 850000,
+    "description": "Hệ thống POS bán hàng trực quan dành riêng cho nhà hàng, quán cafe: sơ đồ bàn phòng, gọi món nhanh, tính tiền tự động tích hợp mã VietQR động, trừ kho nguyên vật liệu và báo cáo doanh thu theo ca.",
+    "shortDesc": "Hệ thống POS bán hàng trực quan dành riêng cho nhà hàng, quán cafe: sơ đồ bàn phòng, gọi món nhanh, tính tiền tự động tích hợp mã VietQR động, trừ kho nguyên vật liệu và báo cáo doanh thu theo ca.",
+    "suitableFor": [
+      "Quán cafe, trà sữa",
+      "Nhà hàng, quán ăn",
+      "Quán bida, dịch vụ giải trí",
+      "Chuỗi đồ uống mang đi"
+    ],
+    "features": [
+      "Quản lý sơ đồ bàn phòng trực quan theo thời gian thực",
+      "Order gọi món nhanh trên điện thoại hoặc máy tính bảng",
+      "Tự động tính tiền, áp dụng khuyến mãi và in hóa đơn tạm tính",
+      "Tích hợp mã VietQR động hỗ trợ chuyển khoản chính xác",
+      "Trừ tồn kho nguyên vật liệu theo định lượng món",
+      "Báo cáo doanh thu theo ca làm việc, món bán chạy và hình thức thanh toán"
+    ],
+    "appRoute": "fnb",
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/preview",
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": true
   },
   {
     "id": "GS-006",
@@ -177,7 +182,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-007",
@@ -207,7 +213,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-008",
@@ -237,7 +244,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-009",
@@ -267,7 +275,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-010",
@@ -297,7 +306,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-011",
@@ -327,7 +337,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-012",
@@ -357,7 +368,8 @@
     ],
     "appRoute": "equipment",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-013",
@@ -387,7 +399,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-014",
@@ -417,7 +430,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-015",
@@ -447,7 +461,8 @@
     ],
     "appRoute": "fnb",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-016",
@@ -477,7 +492,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-017",
@@ -507,7 +523,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-018",
@@ -537,7 +554,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-019",
@@ -567,7 +585,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-020",
@@ -597,7 +616,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-021",
@@ -627,7 +647,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-022",
@@ -657,7 +678,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-023",
@@ -687,7 +709,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-024",
@@ -717,7 +740,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-025",
@@ -747,7 +771,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-026",
@@ -777,7 +802,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-027",
@@ -807,7 +833,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-028",
@@ -837,7 +864,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-029",
@@ -867,7 +895,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-030",
@@ -897,7 +926,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-031",
@@ -927,7 +957,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-032",
@@ -957,7 +988,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-033",
@@ -987,7 +1019,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-034",
@@ -1017,7 +1050,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-035",
@@ -1047,7 +1081,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-036",
@@ -1077,7 +1112,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-037",
@@ -1107,7 +1143,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-038",
@@ -1137,7 +1174,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-039",
@@ -1167,7 +1205,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-040",
@@ -1197,7 +1236,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-041",
@@ -1227,7 +1267,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-042",
@@ -1257,7 +1298,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-043",
@@ -1287,7 +1329,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-044",
@@ -1317,7 +1360,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-045",
@@ -1347,7 +1391,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-046",
@@ -1377,7 +1422,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-047",
@@ -1407,7 +1453,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-048",
@@ -1437,7 +1484,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-049",
@@ -1467,7 +1515,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-050",
@@ -1497,7 +1546,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-051",
@@ -1527,7 +1577,8 @@
     ],
     "appRoute": "fnb",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-052",
@@ -1557,7 +1608,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-053",
@@ -1587,7 +1639,8 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-054",
@@ -1617,7 +1670,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-055",
@@ -1647,7 +1701,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-056",
@@ -1677,7 +1732,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-057",
@@ -1707,7 +1763,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-058",
@@ -1737,7 +1794,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-059",
@@ -1767,7 +1825,8 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-060",
@@ -1797,7 +1856,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-061",
@@ -1827,7 +1887,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-062",
@@ -1857,7 +1918,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-063",
@@ -1887,7 +1949,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-064",
@@ -1917,7 +1980,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-065",
@@ -1947,7 +2011,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-066",
@@ -1977,7 +2042,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-067",
@@ -2007,7 +2073,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-068",
@@ -2037,7 +2104,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-069",
@@ -2067,7 +2135,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-070",
@@ -2097,7 +2166,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-071",
@@ -2127,7 +2197,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-072",
@@ -2157,7 +2228,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-073",
@@ -2187,7 +2259,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-074",
@@ -2217,7 +2290,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-075",
@@ -2247,7 +2321,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-076",
@@ -2277,7 +2352,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-077",
@@ -2307,7 +2383,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-078",
@@ -2337,7 +2414,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-079",
@@ -2367,7 +2445,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-080",
@@ -2397,7 +2476,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-081",
@@ -2427,7 +2507,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-082",
@@ -2457,7 +2538,8 @@
     ],
     "appRoute": "fnb",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-083",
@@ -2487,7 +2569,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-084",
@@ -2517,7 +2600,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-085",
@@ -2547,7 +2631,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-086",
@@ -2577,7 +2662,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-087",
@@ -2607,7 +2693,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-088",
@@ -2637,7 +2724,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-089",
@@ -2667,7 +2755,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-090",
@@ -2697,7 +2786,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-091",
@@ -2727,7 +2817,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-092",
@@ -2757,7 +2848,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-093",
@@ -2787,7 +2879,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-094",
@@ -2817,7 +2910,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-095",
@@ -2847,7 +2941,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-096",
@@ -2877,7 +2972,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-097",
@@ -2907,7 +3003,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-098",
@@ -2937,7 +3034,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-099",
@@ -2967,7 +3065,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-100",
@@ -2997,7 +3096,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-101",
@@ -3027,7 +3127,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-102",
@@ -3057,7 +3158,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-103",
@@ -3087,7 +3189,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-104",
@@ -3117,7 +3220,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-105",
@@ -3147,7 +3251,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-106",
@@ -3177,7 +3282,8 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-107",
@@ -3207,7 +3313,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-108",
@@ -3237,7 +3344,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-109",
@@ -3267,7 +3375,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-110",
@@ -3297,7 +3406,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-111",
@@ -3327,7 +3437,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-112",
@@ -3357,7 +3468,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-113",
@@ -3387,7 +3499,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-114",
@@ -3417,7 +3530,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-115",
@@ -3447,7 +3561,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-116",
@@ -3477,7 +3592,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-117",
@@ -3507,7 +3623,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-118",
@@ -3537,7 +3654,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-119",
@@ -3567,7 +3685,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-120",
@@ -3597,7 +3716,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-121",
@@ -3627,7 +3747,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-122",
@@ -3657,7 +3778,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-123",
@@ -3687,7 +3809,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-124",
@@ -3717,7 +3840,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-125",
@@ -3747,7 +3871,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-126",
@@ -3777,7 +3902,8 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-127",
@@ -3807,7 +3933,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-128",
@@ -3837,7 +3964,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-129",
@@ -3867,7 +3995,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-130",
@@ -3897,7 +4026,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-131",
@@ -3927,7 +4057,8 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-132",
@@ -3957,7 +4088,8 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-133",
@@ -3987,7 +4119,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-134",
@@ -4017,7 +4150,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-135",
@@ -4047,7 +4181,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-136",
@@ -4077,7 +4212,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-137",
@@ -4107,7 +4243,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-138",
@@ -4137,7 +4274,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-139",
@@ -4167,7 +4305,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-140",
@@ -4197,7 +4336,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-141",
@@ -4227,7 +4367,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-142",
@@ -4257,7 +4398,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-143",
@@ -4287,7 +4429,8 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-144",
@@ -4317,7 +4460,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-145",
@@ -4347,7 +4491,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-146",
@@ -4377,7 +4522,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-147",
@@ -4407,7 +4553,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-148",
@@ -4437,7 +4584,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-149",
@@ -4467,7 +4615,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-150",
@@ -4497,7 +4646,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-151",
@@ -4527,7 +4677,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-152",
@@ -4557,7 +4708,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-153",
@@ -4587,7 +4739,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-154",
@@ -4617,7 +4770,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-155",
@@ -4647,7 +4801,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-156",
@@ -4677,7 +4832,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-157",
@@ -4707,7 +4863,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-158",
@@ -4737,7 +4894,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-159",
@@ -4767,7 +4925,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-160",
@@ -4797,7 +4956,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-161",
@@ -4827,7 +4987,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-162",
@@ -4857,7 +5018,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-163",
@@ -4887,7 +5049,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-164",
@@ -4917,7 +5080,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-165",
@@ -4947,7 +5111,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-166",
@@ -4977,7 +5142,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-167",
@@ -5007,7 +5173,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-168",
@@ -5037,7 +5204,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-169",
@@ -5067,7 +5235,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-170",
@@ -5097,7 +5266,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-171",
@@ -5127,7 +5297,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-172",
@@ -5157,7 +5328,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-173",
@@ -5187,7 +5359,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-174",
@@ -5217,7 +5390,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-175",
@@ -5247,7 +5421,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-176",
@@ -5277,7 +5452,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-177",
@@ -5307,7 +5483,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-178",
@@ -5337,7 +5514,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-179",
@@ -5367,7 +5545,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-180",
@@ -5397,7 +5576,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-181",
@@ -5427,7 +5607,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-182",
@@ -5457,7 +5638,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-183",
@@ -5487,7 +5669,8 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-184",
@@ -5517,7 +5700,8 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-185",
@@ -5547,7 +5731,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-186",
@@ -5577,7 +5762,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-187",
@@ -5607,7 +5793,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-188",
@@ -5637,7 +5824,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-189",
@@ -5667,7 +5855,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-190",
@@ -5697,7 +5886,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-191",
@@ -5727,7 +5917,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-192",
@@ -5757,7 +5948,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-193",
@@ -5787,7 +5979,8 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-194",
@@ -5817,7 +6010,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-195",
@@ -5847,7 +6041,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-196",
@@ -5877,7 +6072,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-197",
@@ -5907,7 +6103,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-198",
@@ -5937,7 +6134,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-199",
@@ -5967,7 +6165,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-200",
@@ -5997,7 +6196,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-201",
@@ -6027,7 +6227,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-202",
@@ -6057,7 +6258,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-203",
@@ -6087,7 +6289,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-204",
@@ -6117,7 +6320,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-205",
@@ -6147,7 +6351,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-206",
@@ -6177,7 +6382,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-207",
@@ -6207,7 +6413,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-208",
@@ -6237,7 +6444,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-209",
@@ -6267,7 +6475,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-210",
@@ -6297,7 +6506,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-211",
@@ -6327,7 +6537,8 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-212",
@@ -6357,7 +6568,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-213",
@@ -6387,7 +6599,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-214",
@@ -6417,7 +6630,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-215",
@@ -6447,7 +6661,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-216",
@@ -6477,7 +6692,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-217",
@@ -6507,7 +6723,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-218",
@@ -6537,7 +6754,8 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-219",
@@ -6567,7 +6785,8 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-220",
@@ -6597,7 +6816,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-221",
@@ -6627,7 +6847,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-222",
@@ -6657,7 +6878,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-223",
@@ -6687,7 +6909,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-224",
@@ -6717,7 +6940,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-225",
@@ -6747,7 +6971,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-226",
@@ -6777,7 +7002,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-227",
@@ -6807,7 +7033,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-228",
@@ -6837,7 +7064,8 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   },
   {
     "id": "GS-229",
@@ -6867,6 +7095,7 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview"
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
+    "isVerified": false
   }
 ]

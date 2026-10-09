@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản Lý Cho Thuê Thiết Bị v1.0 | Web App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .navbar-brand { font-weight: 700; color: #0f172a; }
+    .kpi-card { border: none; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); transition: transform 0.2s; }
+    .kpi-card:hover { transform: translateY(-2px); }
+    .badge-renting { background-color: #fee2e2; color: #991b1b; }
+    .badge-available { background-color: #dcfce7; color: #166534; }
+    .badge-maintenance { background-color: #fef3c7; color: #92400e; }
+    .badge-returned { background-color: #e2e8f0; color: #475569; }
+    .nav-pills .nav-link.active { background-color: #0d9488; }
+    .nav-pills .nav-link { color: #475569; font-weight: 600; }
+    .table-container { background: #ffffff; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); padding: 1.25rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top py-2 px-3">
+    <div class="container-fluid">
+      <span class="navbar-brand d-flex align-items-center gap-2">
+        <i class="bi bi-camera-reels-fill text-teal text-primary"></i>
+        <span>GS-001 • Cho Thuê Thiết Bị & Tài Sản <span class="badge bg-primary-subtle text-primary ms-1">v1.0</span></span>
+      </span>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-outline-secondary btn-sm" onclick="loadData()">
+          <i class="bi bi-arrow-clockwise"></i> Làm mới
+        </button>
+        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#newContractModal">
+          <i class="bi bi-plus-circle me-1"></i> Lập Hợp Đồng Thuê
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid py-4 px-4">
+    <!-- KPI Row -->
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-md-3">
+        <div class="card kpi-card p-3 border-start border-primary border-4">
+          <div class="text-muted small fw-semibold">TỔNG THIẾT BỊ</div>
+          <div class="h3 fw-bold text-dark mt-1" id="kpiTotal">--</div>
+          <div class="text-muted small"><i class="bi bi-boxes"></i> Đang quản lý</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card kpi-card p-3 border-start border-danger border-4">
+          <div class="text-muted small fw-semibold">ĐANG CHO THUÊ</div>
+          <div class="h3 fw-bold text-danger mt-1" id="kpiRenting">--</div>
+          <div class="text-muted small"><i class="bi bi-arrow-up-right-circle"></i> Đang giao khách</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card kpi-card p-3 border-start border-success border-4">
+          <div class="text-muted small fw-semibold">SẴN SÀNG TRONG KHO</div>
+          <div class="h3 fw-bold text-success mt-1" id="kpiAvailable">--</div>
+          <div class="text-muted small"><i class="bi bi-check-circle"></i> Sẵn sàng xuất</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card kpi-card p-3 border-start border-warning border-4">
+          <div class="text-muted small fw-semibold">TIỀN CỌC ĐANG GIỮ</div>
+          <div class="h3 fw-bold text-warning mt-1" id="kpiDeposit">--</div>
+          <div class="text-muted small"><i class="bi bi-shield-lock"></i> Đảm bảo hoàn trả</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs & Search -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+      <ul class="nav nav-pills" id="mainTab" role="tablist">
+        <li class="nav-item">
+          <button class="nav-link active" id="equip-tab" data-bs-toggle="tab" data-bs-target="#equipPane">
+            <i class="bi bi-cpu me-1"></i> Danh Mục Thiết Bị
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" id="contracts-tab" data-bs-toggle="tab" data-bs-target="#contractsPane">
+            <i class="bi bi-file-earmark-text me-1"></i> Sổ Hợp Đồng
+          </button>
+        </li>
+      </ul>
+
+      <div class="d-flex gap-2">
+        <div class="input-group input-group-sm" style="width: 260px;">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input type="text" class="form-control" id="searchInput" placeholder="Tìm mã, tên thiết bị..." oninput="renderTables()">
+        </div>
+        <select class="form-select form-select-sm" id="filterStatus" style="width: 150px;" onchange="renderTables()">
+          <option value="ALL">Tất cả trạng thái</option>
+          <option value="available">Sẵn sàng</option>
+          <option value="renting">Đang thuê</option>
+          <option value="maintenance">Bảo trì</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Tab Contents -->
+    <div class="tab-content" id="tabContent">
+      <!-- Tab 1: Equipment List -->
+      <div class="tab-pane fade show active" id="equipPane">
+        <div class="table-container">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Mã TB</th>
+                  <th>Tên Thiết Bị & Danh Mục</th>
+                  <th>Giá Thuê / Ngày</th>
+                  <th>Tiền Cọc</th>
+                  <th>Trạng Thái</th>
+                  <th>Người Thuê Hiện Tại</th>
+                  <th>Hạn Trả</th>
+                  <th class="text-end">Thao Tác</th>
+                </tr>
+              </thead>
+              <tbody id="equipmentTbody">
+                <tr><td colspan="8" class="text-center py-4 text-muted">Đang tải dữ liệu...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Contracts -->
+      <div class="tab-pane fade" id="contractsPane">
+        <div class="table-container">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Mã Hợp Đồng</th>
+                  <th>Khách Hàng / SĐT</th>
+                  <th>Thiết Bị</th>
+                  <th>Thời Gian Thuê</th>
+                  <th>Số Ngày</th>
+                  <th>Tổng Tiền Thuê</th>
+                  <th>Tiền Cọc</th>
+                  <th>Trạng Thái</th>
+                </tr>
+              </thead>
+              <tbody id="contractsTbody">
+                <tr><td colspan="8" class="text-center py-4 text-muted">Đang tải hợp đồng...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Tạo Hợp Đồng Mới -->
+  <div class="modal fade" id="newContractModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold"><i class="bi bi-file-earmark-plus text-primary me-2"></i>Lập Hợp Đồng Thuê Thiết Bị</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="contractForm">
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Chọn Thiết Bị Sẵn Sàng</label>
+              <select class="form-select" id="formEquipment" required onchange="onSelectEquipment()">
+                <option value="">-- Chọn thiết bị --</option>
+              </select>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Tên Khách Hàng / Studio</label>
+                <input type="text" class="form-control" id="formRenter" placeholder="Công ty / Họ tên" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Số Điện Thoại</label>
+                <input type="tel" class="form-control" id="formPhone" placeholder="09xxxxxxxx" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Ngày Nhận</label>
+                <input type="date" class="form-control" id="formStartDate" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Ngày Dự Kiến Trả</label>
+                <input type="date" class="form-control" id="formReturnDate" required onchange="calcTotal()">
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Giá Thuê / Ngày (VNĐ)</label>
+                <input type="number" class="form-control" id="formDailyRate" readonly>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Tiền Cọc (VNĐ)</label>
+                <input type="number" class="form-control" id="formDeposit" readonly>
+              </div>
+            </div>
+            <div class="p-2 rounded bg-light border mb-3">
+              <div class="d-flex justify-content-between small text-muted">
+                <span>Số ngày thuê tính toán:</span>
+                <span class="fw-bold text-dark" id="calcDays">1 ngày</span>
+              </div>
+              <div class="d-flex justify-content-between small text-muted mt-1">
+                <span>Tổng tiền thuê dự kiến:</span>
+                <span class="fw-bold text-primary h6 mb-0" id="calcTotalVal">0 ₫</span>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label class="form-label small fw-semibold">Ghi Chú Phụ Kiện Kèm Theo</label>
+              <textarea class="form-control" id="formNotes" rows="2" placeholder="VD: Pin, thẻ nhớ, ngàm chuyển..."></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary btn-sm" id="btnSubmitContract" onclick="submitContract()">
+            <i class="bi bi-check-circle me-1"></i> Xác Nhận Bàn Giao
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let appData = {
+      equipment: [],
+      contracts: [],
+      kpi: { total: 0, renting: 0, available: 0, maintenance: 0, totalDeposit: 0 }
+    };
+
+    function formatVND(n) {
+      return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(n || 0);
+    }
+
+    function loadData() {
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function(res) {
+            if (res && res.success) {
+              appData = res;
+              updateUI();
+            }
+          })
+          .withFailureHandler(function(err) {
+            console.warn('Apps Script error, loading fallback:', err);
+            loadFallback();
+          })
+          .getSystemData();
+      } else {
+        loadFallback();
+      }
+    }
+
+    function loadFallback() {
+      appData = {
+        equipment: [
+          { id: 'EQ-001', barcode: 'BC-CAM-802', name: 'Sony FX3 Full-Frame Cinema Camera + Rig Tilta', category: 'Máy quay Cinema', dailyRate: 850000, depositAmount: 15000000, status: 'renting', renterName: 'Công ty Truyền thông MediaPro', startDate: '2026-08-03', returnDate: '2026-08-06', contractCode: 'HĐ-TB-2026-081', notes: 'Kèm 2 thẻ nhớ CFexpress Type A 160GB, 3 pin' },
+          { id: 'EQ-002', barcode: 'BC-DRONE-01', name: 'DJI Mavic 3 Cine Combo 3 Pin + RC Pro', category: 'Flycam & Drone', dailyRate: 1200000, depositAmount: 20000000, status: 'returned', renterName: 'Studio Ánh Dương', startDate: '2026-07-31', returnDate: '2026-08-03', contractCode: 'HĐ-TB-2026-075', notes: 'Đã thu hồi, hoàn cọc 100%' },
+          { id: 'EQ-003', barcode: 'BC-LENS-2470', name: 'Sony FE 24-70mm f/2.8 GM II (G Master)', category: 'Ống kính', dailyRate: 450000, depositAmount: 10000000, status: 'available', renterName: '', startDate: '', returnDate: '', contractCode: '', notes: 'Kính trong veo, có cap trước sau và hood zin' },
+          { id: 'EQ-004', barcode: 'BC-LIGHT-600', name: 'Aputure LS 600d Pro Daylight LED Monolight', category: 'Ánh sáng sân khấu', dailyRate: 600000, depositAmount: 12000000, status: 'renting', renterName: 'Production House RedPixel', startDate: '2026-08-02', returnDate: '2026-08-05', contractCode: 'HĐ-TB-2026-080', notes: 'Gồm chóa Hyper Reflector, ngàm Bowens và vali' },
+          { id: 'EQ-005', barcode: 'BC-AUDIO-WIR', name: 'Sennheiser EW-DP ME 2 Set Digital Wireless', category: 'Thiết bị âm thanh', dailyRate: 350000, depositAmount: 5000000, status: 'maintenance', renterName: '', startDate: '', returnDate: '', contractCode: '', notes: 'Đang bảo dưỡng định kỳ jack cắm' },
+          { id: 'EQ-006', barcode: 'BC-GIM-RS3', name: 'DJI RS 3 Pro Gimbal Combo', category: 'Chống rung & Grip', dailyRate: 400000, depositAmount: 8000000, status: 'available', renterName: '', startDate: '', returnDate: '', contractCode: '', notes: 'Đầy đủ motor focus và thanh đỡ' }
+        ],
+        contracts: [
+          { contractCode: 'HĐ-TB-2026-081', renterName: 'Công ty Truyền thông MediaPro', renterPhone: '0983 112 233', equipmentId: 'EQ-001', equipmentName: 'Sony FX3 Full-Frame Cinema Camera + Rig Tilta', startDate: '2026-08-03', returnDate: '2026-08-06', rentDays: 3, totalRental: 2550000, depositAmount: 15000000, status: 'Đang thuê', notes: 'Giao lúc 08:30 sáng, đầy đủ phụ kiện' },
+          { contractCode: 'HĐ-TB-2026-080', renterName: 'Production House RedPixel', renterPhone: '0912 334 556', equipmentId: 'EQ-004', equipmentName: 'Aputure LS 600d Pro Daylight LED Monolight', startDate: '2026-08-02', returnDate: '2026-08-05', rentDays: 3, totalRental: 1800000, depositAmount: 12000000, status: 'Đang thuê', notes: 'Kiểm tra bóng sáng chuẩn CRI 96+' }
+        ],
+        kpi: { total: 6, renting: 2, available: 2, maintenance: 1, totalDeposit: 27000000 }
+      };
+      updateUI();
+    }
+
+    function updateUI() {
+      document.getElementById('kpiTotal').innerText = appData.kpi.total || 0;
+      document.getElementById('kpiRenting').innerText = appData.kpi.renting || 0;
+      document.getElementById('kpiAvailable').innerText = appData.kpi.available || 0;
+      document.getElementById('kpiDeposit').innerText = formatVND(appData.kpi.totalDeposit);
+
+      // Populate Equipment select in modal
+      const select = document.getElementById('formEquipment');
+      select.innerHTML = '<option value="">-- Chọn thiết bị sẵn sàng --</option>';
+      appData.equipment.filter(e => e.status === 'available').forEach(e => {
+        const opt = document.createElement('option');
+        opt.value = e.id;
+        opt.innerText = e.id + ' - ' + e.name;
+        select.appendChild(opt);
+      });
+
+      // Set default dates
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('formStartDate').value = today;
+      const nextDate = new Date();
+      nextDate.setDate(nextDate.getDate() + 3);
+      document.getElementById('formReturnDate').value = nextDate.toISOString().split('T')[0];
+
+      renderTables();
+    }
+
+    function renderTables() {
+      const search = (document.getElementById('searchInput').value || '').toLowerCase();
+      const statusFilter = document.getElementById('filterStatus').value;
+
+      // Equipment table
+      const tbBody = document.getElementById('equipmentTbody');
+      const filteredEquip = appData.equipment.filter(e => {
+        const matchSearch = e.name.toLowerCase().includes(search) || e.id.toLowerCase().includes(search);
+        const matchStatus = statusFilter === 'ALL' || e.status === statusFilter;
+        return matchSearch && matchStatus;
+      });
+
+      if (filteredEquip.length === 0) {
+        tbBody.innerHTML = '<tr><td colspan="8" class="text-center py-4 text-muted">Không tìm thấy thiết bị phù hợp</td></tr>';
+      } else {
+        tbBody.innerHTML = filteredEquip.map(e => {
+          let badge = '<span class="badge badge-available">Sẵn sàng</span>';
+          if (e.status === 'renting') badge = '<span class="badge badge-renting">Đang thuê</span>';
+          if (e.status === 'maintenance') badge = '<span class="badge badge-maintenance">Bảo trì</span>';
+          if (e.status === 'returned') badge = '<span class="badge badge-returned">Đã trả</span>';
+
+          return `
+            <tr>
+              <td class="fw-bold">${e.id}</td>
+              <td>
+                <div class="fw-semibold text-dark">${e.name}</div>
+                <div class="small text-muted">${e.category} • Mã: ${e.barcode}</div>
+              </td>
+              <td>${formatVND(e.dailyRate)}</td>
+              <td>${formatVND(e.depositAmount)}</td>
+              <td>${badge}</td>
+              <td>${e.renterName ? `<div class="fw-semibold">${e.renterName}</div><div class="small text-muted">${e.contractCode || ''}</div>` : '<span class="text-muted">---</span>'}</td>
+              <td>${e.returnDate || '<span class="text-muted">---</span>'}</td>
+              <td class="text-end">
+                ${e.status === 'available' ? `
+                  <button class="btn btn-sm btn-outline-primary" onclick="quickRent('${e.id}')">
+                    <i class="bi bi-box-arrow-up-right me-1"></i> Cho thuê
+                  </button>
+                ` : `<span class="badge bg-light text-muted">Đang khóa</span>`}
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      // Contracts table
+      const ctBody = document.getElementById('contractsTbody');
+      if (appData.contracts.length === 0) {
+        ctBody.innerHTML = '<tr><td colspan="8" class="text-center py-4 text-muted">Chưa có hợp đồng nào</td></tr>';
+      } else {
+        ctBody.innerHTML = appData.contracts.map(c => `
+          <tr>
+            <td class="fw-bold text-primary">${c.contractCode}</td>
+            <td>
+              <div class="fw-semibold">${c.renterName}</div>
+              <div class="small text-muted"><i class="bi bi-telephone"></i> ${c.renterPhone}</div>
+            </td>
+            <td>
+              <div class="fw-semibold">${c.equipmentName}</div>
+              <div class="small text-muted">Mã TB: ${c.equipmentId}</div>
+            </td>
+            <td>${c.startDate} → ${c.returnDate}</td>
+            <td>${c.rentDays} ngày</td>
+            <td class="fw-semibold text-success">${formatVND(c.totalRental)}</td>
+            <td>${formatVND(c.depositAmount)}</td>
+            <td><span class="badge bg-info-subtle text-info">${c.status}</span></td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    function onSelectEquipment() {
+      const eqId = document.getElementById('formEquipment').value;
+      const eq = appData.equipment.find(e => e.id === eqId);
+      if (eq) {
+        document.getElementById('formDailyRate').value = eq.dailyRate;
+        document.getElementById('formDeposit').value = eq.depositAmount;
+      } else {
+        document.getElementById('formDailyRate').value = '';
+        document.getElementById('formDeposit').value = '';
+      }
+      calcTotal();
+    }
+
+    function calcTotal() {
+      const start = new Date(document.getElementById('formStartDate').value);
+      const end = new Date(document.getElementById('formReturnDate').value);
+      const rate = Number(document.getElementById('formDailyRate').value) || 0;
+      let days = 1;
+      if (end >= start) {
+        days = Math.max(1, Math.round((end - start) / (1000 * 60 * 60 * 24)));
+      }
+      document.getElementById('calcDays').innerText = days + ' ngày';
+      document.getElementById('calcTotalVal').innerText = formatVND(days * rate);
+    }
+
+    function quickRent(id) {
+      const modal = new bootstrap.Modal(document.getElementById('newContractModal'));
+      document.getElementById('formEquipment').value = id;
+      onSelectEquipment();
+      modal.show();
+    }
+
+    function submitContract() {
+      const eqId = document.getElementById('formEquipment').value;
+      if (!eqId) { alert('Vui lòng chọn thiết bị'); return; }
+      const renter = document.getElementById('formRenter').value.trim();
+      if (!renter) { alert('Vui lòng nhập tên khách hàng'); return; }
+      const phone = document.getElementById('formPhone').value.trim();
+      const start = document.getElementById('formStartDate').value;
+      const end = document.getElementById('formReturnDate').value;
+      const notes = document.getElementById('formNotes').value;
+      const eq = appData.equipment.find(e => e.id === eqId);
+
+      const days = Math.max(1, Math.round((new Date(end) - new Date(start)) / (1000 * 60 * 60 * 24))) || 1;
+
+      const payload = {
+        equipmentId: eqId,
+        equipmentName: eq ? eq.name : '',
+        renterName: renter,
+        renterPhone: phone,
+        startDate: start,
+        returnDate: end,
+        rentDays: days,
+        dailyRate: eq ? eq.dailyRate : 0,
+        depositAmount: eq ? eq.depositAmount : 0,
+        notes: notes
+      };
+
+      const btn = document.getElementById('btnSubmitContract');
+      btn.disabled = true;
+      btn.innerText = 'Đang xử lý...';
+
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function(res) {
+            btn.disabled = false;
+            btn.innerText = 'Xác Nhận Bàn Giao';
+            bootstrap.Modal.getInstance(document.getElementById('newContractModal')).hide();
+            alert(res.message);
+            loadData();
+          })
+          .withFailureHandler(function(err) {
+            btn.disabled = false;
+            btn.innerText = 'Xác Nhận Bàn Giao';
+            alert('Lỗi: ' + err);
+          })
+          .submitRentalOrder(payload);
+      } else {
+        // Fallback local simulation
+        setTimeout(function() {
+          btn.disabled = false;
+          btn.innerText = 'Xác Nhận Bàn Giao';
+          bootstrap.Modal.getInstance(document.getElementById('newContractModal')).hide();
+          eq.status = 'renting';
+          eq.renterName = renter;
+          eq.startDate = start;
+          eq.returnDate = end;
+          eq.contractCode = 'HĐ-TB-2026-MOCK';
+          appData.contracts.unshift({
+            contractCode: 'HĐ-TB-2026-MOCK',
+            renterName: renter,
+            renterPhone: phone,
+            equipmentId: eqId,
+            equipmentName: eq.name,
+            startDate: start,
+            returnDate: end,
+            rentDays: days,
+            totalRental: days * eq.dailyRate,
+            depositAmount: eq.depositAmount,
+            status: 'Đang thuê',
+            notes: notes
+          });
+          appData.kpi.renting++;
+          appData.kpi.available--;
+          appData.kpi.totalDeposit += eq.depositAmount;
+          updateUI();
+          alert('Tạo hợp đồng thành công (Mô phỏng standalone)!');
+        }, 500);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>
+

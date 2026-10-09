@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F&B POS Quán Cafe / Nhà Hàng v3.0 | Web App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .navbar-brand { font-weight: 700; color: #0f172a; }
+    .table-box { border-radius: 10px; padding: 1rem; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
+    .table-box:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.08); }
+    .table-box.active { border-color: #f59e0b; background-color: #fffbeb !important; }
+    .table-avail { background-color: #ffffff; border: 1px solid #e2e8f0; }
+    .table-occ { background-color: #fee2e2; border: 1px solid #fca5a5; }
+    .table-res { background-color: #fef3c7; border: 1px solid #fde68a; }
+    .menu-card { background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.15s; }
+    .menu-card:hover { border-color: #f59e0b; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .order-panel { background: #ffffff; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); height: calc(100vh - 90px); display: flex; flex-direction: column; }
+    .order-items-scroll { flex: 1; overflow-y: auto; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top py-2 px-3">
+    <div class="container-fluid">
+      <span class="navbar-brand d-flex align-items-center gap-2">
+        <i class="bi bi-cup-hot-fill text-warning"></i>
+        <span>GS-005 • F&B POS Thu Ngân Cafe & Nhà Hàng <span class="badge bg-warning-subtle text-dark ms-1">v3.0</span></span>
+      </span>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-outline-secondary btn-sm" onclick="loadData()">
+          <i class="bi bi-arrow-clockwise"></i> Đồng bộ
+        </button>
+        <span class="badge bg-success-subtle text-success py-2 px-3 fw-bold">
+          <i class="bi bi-circle-fill small me-1"></i> Ca sáng: Thu ngân 1
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid py-3 px-3">
+    <div class="row g-3">
+      <!-- Left & Center: Tables & Menu -->
+      <div class="col-12 col-lg-8">
+        <!-- Tables Ribbon -->
+        <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="fw-bold text-dark"><i class="bi bi-grid me-1"></i> SƠ ĐỒ BÀN PHỤC VỤ</span>
+            <div class="d-flex gap-3 small">
+              <span class="d-flex align-items-center gap-1"><span class="badge bg-light text-dark border">● Trống</span></span>
+              <span class="d-flex align-items-center gap-1"><span class="badge bg-danger-subtle text-danger">● Có khách</span></span>
+              <span class="d-flex align-items-center gap-1"><span class="badge bg-warning-subtle text-dark">● Đặt trước</span></span>
+            </div>
+          </div>
+          <div class="row g-2" id="tablesContainer">
+            <!-- Dynamic Tables -->
+          </div>
+        </div>
+
+        <!-- Menu Tabs & Products -->
+        <div class="bg-white p-3 rounded-3 shadow-sm">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <ul class="nav nav-pills nav-fill gap-1" id="menuCatTabs">
+              <li class="nav-item"><button class="nav-link active py-1 px-3 btn-sm" onclick="filterCat('Tất cả')">Tất cả</button></li>
+              <li class="nav-item"><button class="nav-link py-1 px-3 btn-sm" onclick="filterCat('Cà phê')">Cà phê</button></li>
+              <li class="nav-item"><button class="nav-link py-1 px-3 btn-sm" onclick="filterCat('Trà & Trà sữa')">Trà & Trà sữa</button></li>
+              <li class="nav-item"><button class="nav-link py-1 px-3 btn-sm" onclick="filterCat('Bánh & Tráng miệng')">Bánh ngọt</button></li>
+              <li class="nav-item"><button class="nav-link py-1 px-3 btn-sm" onclick="filterCat('Ăn nhẹ')">Ăn nhẹ</button></li>
+            </ul>
+            <div class="input-group input-group-sm" style="width: 200px;">
+              <span class="input-group-text"><i class="bi bi-search"></i></span>
+              <input type="text" class="form-control" id="menuSearch" placeholder="Tìm tên món..." oninput="renderMenu()">
+            </div>
+          </div>
+
+          <div class="row g-2" id="menuContainer" style="max-height: 480px; overflow-y: auto;">
+            <!-- Dynamic Menu Items -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Order & Payment Panel -->
+      <div class="col-12 col-lg-4">
+        <div class="order-panel p-3">
+          <div class="d-flex justify-content-between align-items-center pb-2 border-bottom">
+            <div>
+              <h5 class="fw-bold mb-0 text-dark" id="orderTableName">Bàn 01</h5>
+              <span class="small text-muted" id="orderArea">Tầng 1 - Máy lạnh</span>
+            </div>
+            <button class="btn btn-outline-danger btn-sm" onclick="clearCurrentOrder()">
+              <i class="bi bi-trash"></i> Xóa
+            </button>
+          </div>
+
+          <!-- Order Items -->
+          <div class="order-items-scroll py-2" id="orderItemsList">
+            <div class="text-center py-5 text-muted small">Chưa có món nào được chọn</div>
+          </div>
+
+          <!-- Billing Totals -->
+          <div class="border-top pt-3">
+            <div class="d-flex justify-content-between small text-muted mb-1">
+              <span>Tạm tính:</span>
+              <span class="fw-semibold text-dark" id="calcSubtotal">0 ₫</span>
+            </div>
+            <div class="d-flex justify-content-between small text-muted mb-1">
+              <span>Thuế VAT (8%):</span>
+              <span class="fw-semibold text-dark" id="calcVat">0 ₫</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="fw-bold text-dark">TỔNG THANH TOÁN:</span>
+              <span class="h4 fw-bold text-danger mb-0" id="calcTotalPayment">0 ₫</span>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button class="btn btn-warning fw-bold py-2 shadow-sm text-dark" id="btnCheckoutQr" onclick="openVietQRModal()">
+                <i class="bi bi-qr-code me-1"></i> Thanh Toán VietQR Chuyển Khoản
+              </button>
+              <button class="btn btn-outline-success fw-bold py-1" onclick="submitCashOrder()">
+                <i class="bi bi-cash me-1"></i> Thanh Toán Tiền Mặt & In Bill
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal VietQR Payment -->
+  <div class="modal fade" id="vietQrModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center p-3">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold w-100">Quét Mã VietQR Thanh Toán</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="p-2 border rounded-3 bg-light mb-3 d-inline-block">
+            <img id="qrImg" src="" alt="VietQR Code" style="width: 250px; height: 250px; object-fit: contain;">
+          </div>
+          <div class="h5 fw-bold text-danger mb-1" id="qrTotalText">0 ₫</div>
+          <p class="small text-muted mb-0">Ngân hàng: Vietcombank (1018899889)</p>
+          <p class="small text-muted">Nội dung CK: <code id="qrMemoText">BAN01</code></p>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-success w-100 py-2 fw-bold" onclick="confirmPayment('Chuyển khoản VietQR')">
+            <i class="bi bi-check2-circle me-1"></i> Xác Nhận Đã Nhận Tiền
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let appData = {
+      tables: [],
+      menuItems: [],
+      invoices: [],
+      kpi: { totalRevenue: 0, invoiceCount: 0, occupiedTables: 0, availableTables: 0 }
+    };
+
+    let selectedTableId = 1;
+    let selectedCat = 'Tất cả';
+    let currentOrders = {}; // tableId -> [{ id, name, price, qty }]
+
+    function formatVND(n) {
+      return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(n || 0);
+    }
+
+    function loadData() {
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function(res) {
+            if (res && res.success) {
+              appData = res;
+              updateUI();
+            }
+          })
+          .withFailureHandler(function(err) {
+            console.warn('Apps Script error, loading fallback:', err);
+            loadFallback();
+          })
+          .getPOSData();
+      } else {
+        loadFallback();
+      }
+    }
+
+    function loadFallback() {
+      appData = {
+        tables: [
+          { id: 1, name: 'Bàn 01', area: 'Tầng 1 - Máy lạnh', status: 'occupied', guestCount: 3, currentTotal: 145000, notes: '' },
+          { id: 2, name: 'Bàn 02', area: 'Tầng 1 - Máy lạnh', status: 'available', guestCount: 0, currentTotal: 0, notes: '' },
+          { id: 3, name: 'Bàn 03', area: 'Tầng 1 - Máy lạnh', status: 'occupied', guestCount: 2, currentTotal: 95000, notes: '' },
+          { id: 4, name: 'Bàn 04', area: 'Tầng 2 - Ngoài trời', status: 'available', guestCount: 0, currentTotal: 0, notes: '' },
+          { id: 5, name: 'Bàn 05', area: 'Tầng 2 - Ngoài trời', status: 'occupied', guestCount: 4, currentTotal: 210000, notes: '' },
+          { id: 6, name: 'Bàn VIP 01', area: 'Khu VIP Phòng Họp', status: 'reserved', guestCount: 0, currentTotal: 0, notes: '' }
+        ],
+        menuItems: [
+          { id: 'MN-CF-01', name: 'Cà Phê Muối Huê Đặc Biệt', category: 'Cà phê', price: 35000, unit: 'Ly', status: 'Có sẵn' },
+          { id: 'MN-CF-02', name: 'Cà Phê Phin Sữa Đá Cổ Điển', category: 'Cà phê', price: 29000, unit: 'Ly', status: 'Có sẵn' },
+          { id: 'MN-CF-03', name: 'Cold Brew Cam Vàng Tươi', category: 'Cà phê', price: 45000, unit: 'Ly', status: 'Có sẵn' },
+          { id: 'MN-TR-01', name: 'Trà Đào Cam Sả Thảo Mộc', category: 'Trà & Trà sữa', price: 42000, unit: 'Ly', status: 'Có sẵn' },
+          { id: 'MN-TR-02', name: 'Trà Ô Long Sữa Nướng Trân Châu', category: 'Trà & Trà sữa', price: 45000, unit: 'Ly', status: 'Có sẵn' },
+          { id: 'MN-BN-01', name: 'Bánh Tiramisu Ý Cacao', category: 'Bánh & Tráng miệng', price: 45000, unit: 'Phần', status: 'Có sẵn' },
+          { id: 'MN-AN-01', name: 'Khoai Tây Chiên Phô Mai', category: 'Ăn nhẹ', price: 35000, unit: 'Đĩa', status: 'Có sẵn' }
+        ],
+        invoices: [],
+        kpi: { totalRevenue: 218160, invoiceCount: 2, occupiedTables: 3, availableTables: 2 }
+      };
+
+      // Populate default order for table 1
+      currentOrders[1] = [
+        { id: 'MN-CF-01', name: 'Cà Phê Muối Huê Đặc Biệt', price: 35000, qty: 2 },
+        { id: 'MN-BN-01', name: 'Bánh Tiramisu Ý Cacao', price: 45000, qty: 1 }
+      ];
+
+      updateUI();
+    }
+
+    function updateUI() {
+      renderTablesList();
+      renderMenu();
+      renderOrderPanel();
+    }
+
+    function renderTablesList() {
+      const container = document.getElementById('tablesContainer');
+      container.innerHTML = appData.tables.map(t => {
+        const isCurrent = t.id === selectedTableId;
+        const cls = t.status === 'occupied' ? 'table-occ' : t.status === 'reserved' ? 'table-res' : 'table-avail';
+        const stText = t.status === 'occupied' ? 'Có khách' : t.status === 'reserved' ? 'Đã đặt' : 'Bàn trống';
+
+        return `
+          <div class="col-4 col-md-2">
+            <div class="table-box ${cls} ${isCurrent ? 'active' : ''}" onclick="selectTable(${t.id})">
+              <div class="fw-bold text-dark">${t.name}</div>
+              <div class="small text-muted">${stText}</div>
+              <div class="fw-semibold text-danger small mt-1">${t.currentTotal > 0 ? formatVND(t.currentTotal) : '---'}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectTable(id) {
+      selectedTableId = id;
+      renderTablesList();
+      renderOrderPanel();
+    }
+
+    function filterCat(cat) {
+      selectedCat = cat;
+      const buttons = document.querySelectorAll('#menuCatTabs .nav-link');
+      buttons.forEach(b => {
+        if (b.innerText === cat || (cat === 'Bánh & Tráng miệng' && b.innerText.includes('Bánh'))) b.classList.add('active');
+        else b.classList.remove('active');
+      });
+      renderMenu();
+    }
+
+    function renderMenu() {
+      const search = (document.getElementById('menuSearch').value || '').toLowerCase();
+      const container = document.getElementById('menuContainer');
+
+      const filtered = appData.menuItems.filter(m => {
+        const matchCat = selectedCat === 'Tất cả' || m.category === selectedCat;
+        const matchSearch = m.name.toLowerCase().includes(search);
+        return matchCat && matchSearch;
+      });
+
+      container.innerHTML = filtered.map(m => `
+        <div class="col-6 col-md-4">
+          <div class="menu-card p-3 h-100" onclick="addItemToOrder('${m.id}')">
+            <div class="fw-semibold text-dark">${m.name}</div>
+            <div class="small text-muted">${m.category}</div>
+            <div class="fw-bold text-primary mt-2">${formatVND(m.price)}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addItemToOrder(menuId) {
+      const m = appData.menuItems.find(item => item.id === menuId);
+      if (!m) return;
+      if (!currentOrders[selectedTableId]) currentOrders[selectedTableId] = [];
+      const list = currentOrders[selectedTableId];
+      const existing = list.find(item => item.id === menuId);
+      if (existing) {
+        existing.qty++;
+      } else {
+        list.push({ id: m.id, name: m.name, price: m.price, qty: 1 });
+      }
+
+      // Mark table occupied
+      const tbl = appData.tables.find(t => t.id === selectedTableId);
+      if (tbl) tbl.status = 'occupied';
+
+      renderTablesList();
+      renderOrderPanel();
+    }
+
+    function changeQty(menuId, delta) {
+      const list = currentOrders[selectedTableId];
+      if (!list) return;
+      const item = list.find(it => it.id === menuId);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        currentOrders[selectedTableId] = list.filter(it => it.id !== menuId);
+      }
+      renderOrderPanel();
+    }
+
+    function clearCurrentOrder() {
+      currentOrders[selectedTableId] = [];
+      renderOrderPanel();
+    }
+
+    function renderOrderPanel() {
+      const tbl = appData.tables.find(t => t.id === selectedTableId) || { name: 'Bàn ' + selectedTableId, area: '' };
+      document.getElementById('orderTableName').innerText = tbl.name;
+      document.getElementById('orderArea').innerText = tbl.area || 'Khu vực chính';
+
+      const items = currentOrders[selectedTableId] || [];
+      const listEl = document.getElementById('orderItemsList');
+
+      if (items.length === 0) {
+        listEl.innerHTML = '<div class="text-center py-5 text-muted small">Chưa có món nào được chọn</div>';
+        document.getElementById('calcSubtotal').innerText = '0 ₫';
+        document.getElementById('calcVat').innerText = '0 ₫';
+        document.getElementById('calcTotalPayment').innerText = '0 ₫';
+        return;
+      }
+
+      let subtotal = 0;
+      listEl.innerHTML = items.map(it => {
+        const itemTot = it.price * it.qty;
+        subtotal += itemTot;
+        return `
+          <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+            <div class="me-2" style="max-width: 170px;">
+              <div class="fw-semibold text-dark small text-truncate">${it.name}</div>
+              <div class="text-muted small">${formatVND(it.price)}</div>
+            </div>
+            <div class="d-flex align-items-center gap-1">
+              <button class="btn btn-outline-secondary btn-sm py-0 px-2" onclick="changeQty('${it.id}', -1)">-</button>
+              <span class="fw-bold px-1">${it.qty}</span>
+              <button class="btn btn-outline-secondary btn-sm py-0 px-2" onclick="changeQty('${it.id}', 1)">+</button>
+            </div>
+            <div class="fw-bold text-dark small text-end" style="min-width: 70px;">
+              ${formatVND(itemTot)}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const vat = Math.round(subtotal * 0.08);
+      const total = subtotal + vat;
+
+      document.getElementById('calcSubtotal').innerText = formatVND(subtotal);
+      document.getElementById('calcVat').innerText = formatVND(vat);
+      document.getElementById('calcTotalPayment').innerText = formatVND(total);
+    }
+
+    function openVietQRModal() {
+      const items = currentOrders[selectedTableId] || [];
+      if (items.length === 0) { alert('Bàn chưa có order'); return; }
+
+      let subtotal = items.reduce((s, it) => s + it.price * it.qty, 0);
+      let vat = Math.round(subtotal * 0.08);
+      let total = subtotal + vat;
+
+      const tbl = appData.tables.find(t => t.id === selectedTableId);
+      const memo = 'BAN' + (tbl ? tbl.name.replace(/\D/g, '') : selectedTableId);
+      const qrUrl = `https://img.vietqr.io/image/ICB-1018899889-compact2.png?amount=${total}&addInfo=${memo}`;
+
+      document.getElementById('qrImg').src = qrUrl;
+      document.getElementById('qrTotalText').innerText = formatVND(total);
+      document.getElementById('qrMemoText').innerText = memo;
+
+      const modal = new bootstrap.Modal(document.getElementById('vietQrModal'));
+      modal.show();
+    }
+
+    function submitCashOrder() {
+      confirmPayment('Tiền mặt');
+    }
+
+    function confirmPayment(method) {
+      const items = currentOrders[selectedTableId] || [];
+      if (items.length === 0) { alert('Bàn chưa có order'); return; }
+
+      const subtotal = items.reduce((s, it) => s + it.price * it.qty, 0);
+      const vat = Math.round(subtotal * 0.08);
+      const total = subtotal + vat;
+      const tbl = appData.tables.find(t => t.id === selectedTableId);
+      const itemsSummary = items.map(it => `${it.qty} ${it.name}`).join(', ');
+
+      const payload = {
+        tableId: selectedTableId,
+        tableName: tbl ? tbl.name : ('Bàn ' + selectedTableId),
+        subtotal: subtotal,
+        vat: vat,
+        discount: 0,
+        totalPayment: total,
+        paymentMethod: method,
+        itemsSummary: itemsSummary,
+        cashier: 'Thu ngân ca 1'
+      };
+
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function(res) {
+            const qrModalEl = document.getElementById('vietQrModal');
+            const qrModal = bootstrap.Modal.getInstance(qrModalEl);
+            if (qrModal) qrModal.hide();
+            alert(res.message);
+            currentOrders[selectedTableId] = [];
+            loadData();
+          })
+          .withFailureHandler(function(err) {
+            alert('Lỗi: ' + err);
+          })
+          .submitPOSOrder(payload);
+      } else {
+        const qrModalEl = document.getElementById('vietQrModal');
+        const qrModal = bootstrap.Modal.getInstance(qrModalEl);
+        if (qrModal) qrModal.hide();
+
+        currentOrders[selectedTableId] = [];
+        if (tbl) {
+          tbl.status = 'available';
+          tbl.currentTotal = 0;
+        }
+        alert('Thanh toán thành công qua ' + method + ' (' + formatVND(total) + ')! [Mô phỏng standalone]');
+        updateUI();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>
+
