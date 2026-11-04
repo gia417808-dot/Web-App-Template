@@ -1,0 +1,397 @@
+{
+  "timestamp": "2026-11-04 14:15:49",
+  "overall_passed": true,
+  "node_bin": "C:\\Users\\MSI PC\\.gemini\\antigravity\\scratch\\ui_testing_dashboard\\node-portable\\node.exe",
+  "reports": {
+    "delivery/packages/GS-001-hr": {
+      "code": "GS-001",
+      "name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "version": "v4.0 Commercial Pro",
+      "folder": "GS-001-hr",
+      "base_dir": ".\\delivery\\packages",
+      "files": {
+        "appsscript.json": {
+          "exists": true,
+          "size": 503,
+          "status": "PASSED",
+          "runtimeVersion": "V8",
+          "timeZone": "Asia/Ho_Chi_Minh"
+        },
+        "installer.gs": {
+          "exists": true,
+          "size": 30259,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Code.gs": {
+          "exists": true,
+          "size": 48746,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Index.html": {
+          "exists": true,
+          "size": 180613,
+          "status": "PASSED",
+          "script_blocks_count": 2,
+          "scripts_syntax": "PASSED"
+        }
+      },
+      "graveyard_checks": {
+        "phan_quyen_sync": "PASSED"
+      },
+      "passed": true,
+      "errors": []
+    },
+    "delivery/packages/GS-002-warehouse": {
+      "code": "GS-002",
+      "name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "version": "v3.0 Commercial Pro",
+      "folder": "GS-002-warehouse",
+      "base_dir": ".\\delivery\\packages",
+      "files": {
+        "appsscript.json": {
+          "exists": true,
+          "size": 199,
+          "status": "PASSED",
+          "runtimeVersion": "V8",
+          "timeZone": "Asia/Ho_Chi_Minh"
+        },
+        "installer.gs": {
+          "exists": true,
+          "size": 18424,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Code.gs": {
+          "exists": true,
+          "size": 32096,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Index.html": {
+          "exists": true,
+          "size": 132676,
+          "status": "PASSED",
+          "script_blocks_count": 3,
+          "scripts_syntax": "PASSED"
+        }
+      },
+      "graveyard_checks": {},
+      "passed": true,
+      "errors": []
+    },
+    "delivery/packages/GS-003-finance": {
+      "code": "GS-003",
+      "name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "version": "v4.1 Commercial Pro",
+      "folder": "GS-003-finance",
+      "base_dir": ".\\delivery\\packages",
+      "files": {
+        "appsscript.json": {
+          "exists": true,
+          "size": 343,
+          "status": "PASSED",
+          "runtimeVersion": "V8",
+          "timeZone": "Asia/Ho_Chi_Minh"
+        },
+        "installer.gs": {
+          "exists": true,
+          "size": 17956,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Code.gs": {
+          "exists": true,
+          "size": 29815,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Index.html": {
+          "exists": true,
+          "size": 124577,
+          "status": "PASSED",
+          "script_blocks_count": 3,
+          "scripts_syntax": "PASSED"
+        }
+      },
+      "graveyard_checks": {},
+      "passed": true,
+      "errors": []
+    },
+    "delivery/packages/GS-004-project": {
+      "code": "GS-004",
+      "name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "version": "v4.4 Commercial Pro",
+      "folder": "GS-004-project",
+      "base_dir": ".\\delivery\\packages",
+      "files": {
+        "appsscript.json": {
+          "exists": true,
+          "size": 208,
+          "status": "PASSED",
+          "runtimeVersion": "V8",
+          "timeZone": "Asia/Ho_Chi_Minh"
+        },
+        "installer.gs": {
+          "exists": true,
+          "size": 35364,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Code.gs": {
+          "exists": true,
+          "size": 68602,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Index.html": {
+          "exists": true,
+          "size": 226804,
+          "status": "PASSED",
+          "script_blocks_count": 2,
+          "scripts_syntax": "PASSED"
+        }
+      },
+      "graveyard_checks": {
+        "100_percent_cho_duyet": "PASSED",
+        "leader_manager_roles": "PASSED"
+      },
+      "passed": true,
+      "errors": []
+    },
+    "delivery/packages/GS-005-pos": {
+      "code": "GS-005",
+      "name": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+      "version": "v3.3 Commercial Pro",
+      "folder": "GS-005-pos",
+      "base_dir": ".\\delivery\\packages",
+      "files": {
+        "appsscript.json": {
+          "exists": true,
+          "size": 209,
+          "status": "PASSED",
+          "runtimeVersion": "V8",
+          "timeZone": "Asia/Ho_Chi_Minh"
+        },
+        "installer.gs": {
+          "exists": true,
+          "size": 27154,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Code.gs": {
+          "exists": true,
+          "size": 58158,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Index.html": {
+          "exists": true,
+          "size": 204899,
+          "status": "PASSED",
+          "script_blocks_count": 3,
+          "scripts_syntax": "PASSED"
+        }
+      },
+      "graveyard_checks": {},
+      "passed": true,
+      "errors": []
+    },
+    "apps/GS-001-hr": {
+      "code": "GS-001",
+      "name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "version": "v4.0 Commercial Pro",
+      "folder": "GS-001-hr",
+      "base_dir": ".\\apps",
+      "files": {
+        "appsscript.json": {
+          "exists": true,
+          "size": 503,
+          "status": "PASSED",
+          "runtimeVersion": "V8",
+          "timeZone": "Asia/Ho_Chi_Minh"
+        },
+        "installer.gs": {
+          "exists": true,
+          "size": 30259,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Code.gs": {
+          "exists": true,
+          "size": 48746,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Index.html": {
+          "exists": true,
+          "size": 180613,
+          "status": "PASSED",
+          "script_blocks_count": 2,
+          "scripts_syntax": "PASSED"
+        }
+      },
+      "graveyard_checks": {
+        "phan_quyen_sync": "PASSED"
+      },
+      "passed": true,
+      "errors": []
+    },
+    "apps/GS-002-warehouse": {
+      "code": "GS-002",
+      "name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "version": "v3.0 Commercial Pro",
+      "folder": "GS-002-warehouse",
+      "base_dir": ".\\apps",
+      "files": {
+        "appsscript.json": {
+          "exists": true,
+          "size": 199,
+          "status": "PASSED",
+          "runtimeVersion": "V8",
+          "timeZone": "Asia/Ho_Chi_Minh"
+        },
+        "installer.gs": {
+          "exists": true,
+          "size": 18424,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Code.gs": {
+          "exists": true,
+          "size": 32096,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Index.html": {
+          "exists": true,
+          "size": 132676,
+          "status": "PASSED",
+          "script_blocks_count": 3,
+          "scripts_syntax": "PASSED"
+        }
+      },
+      "graveyard_checks": {},
+      "passed": true,
+      "errors": []
+    },
+    "apps/GS-003-finance": {
+      "code": "GS-003",
+      "name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "version": "v4.1 Commercial Pro",
+      "folder": "GS-003-finance",
+      "base_dir": ".\\apps",
+      "files": {
+        "appsscript.json": {
+          "exists": true,
+          "size": 343,
+          "status": "PASSED",
+          "runtimeVersion": "V8",
+          "timeZone": "Asia/Ho_Chi_Minh"
+        },
+        "installer.gs": {
+          "exists": true,
+          "size": 17956,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Code.gs": {
+          "exists": true,
+          "size": 29815,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Index.html": {
+          "exists": true,
+          "size": 124577,
+          "status": "PASSED",
+          "script_blocks_count": 3,
+          "scripts_syntax": "PASSED"
+        }
+      },
+      "graveyard_checks": {},
+      "passed": true,
+      "errors": []
+    },
+    "apps/GS-004-project": {
+      "code": "GS-004",
+      "name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "version": "v4.4 Commercial Pro",
+      "folder": "GS-004-project",
+      "base_dir": ".\\apps",
+      "files": {
+        "appsscript.json": {
+          "exists": true,
+          "size": 208,
+          "status": "PASSED",
+          "runtimeVersion": "V8",
+          "timeZone": "Asia/Ho_Chi_Minh"
+        },
+        "installer.gs": {
+          "exists": true,
+          "size": 35364,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Code.gs": {
+          "exists": true,
+          "size": 68602,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Index.html": {
+          "exists": true,
+          "size": 226804,
+          "status": "PASSED",
+          "script_blocks_count": 2,
+          "scripts_syntax": "PASSED"
+        }
+      },
+      "graveyard_checks": {
+        "100_percent_cho_duyet": "PASSED",
+        "leader_manager_roles": "PASSED"
+      },
+      "passed": true,
+      "errors": []
+    },
+    "apps/GS-005-pos": {
+      "code": "GS-005",
+      "name": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+      "version": "v3.3 Commercial Pro",
+      "folder": "GS-005-pos",
+      "base_dir": ".\\apps",
+      "files": {
+        "appsscript.json": {
+          "exists": true,
+          "size": 209,
+          "status": "PASSED",
+          "runtimeVersion": "V8",
+          "timeZone": "Asia/Ho_Chi_Minh"
+        },
+        "installer.gs": {
+          "exists": true,
+          "size": 27154,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Code.gs": {
+          "exists": true,
+          "size": 58158,
+          "status": "PASSED",
+          "syntax_check": "PASSED"
+        },
+        "Index.html": {
+          "exists": true,
+          "size": 204899,
+          "status": "PASSED",
+          "script_blocks_count": 3,
+          "scripts_syntax": "PASSED"
+        }
+      },
+      "graveyard_checks": {},
+      "passed": true,
+      "errors": []
+    }
+  }
+}
