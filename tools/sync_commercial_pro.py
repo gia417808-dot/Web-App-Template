@@ -219,3 +219,4 @@ if __name__ == "__main__":
     sync_to_repo(current_repo)
     if os.path.exists(os.path.join(parent_repo, "delivery")) and os.path.abspath(parent_repo) != os.path.abspath(current_repo):
         sync_to_repo(parent_repo)
+

@@ -304,3 +304,4 @@ if __name__ == "__main__":
     repo_dir = sys.argv[1] if len(sys.argv) > 1 else "."
     passed = run_full_suite(repo_dir)
     sys.exit(0 if passed else 1)
+
