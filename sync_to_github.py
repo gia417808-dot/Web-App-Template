@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
+r"""
 ================================================================================
 ĐỘNG CƠ ĐỒNG BỘ 2 MÁY TÍNH & CẬP NHẬT MONOREPO 5 MẪU GỐC COMMERCIAL PRO
 Thư mục chuẩn: D:\WEB APP TEMPLATE GOOGLE (apps, delivery, docs, registry, tools...)
@@ -10,6 +10,8 @@ GitHub Repo  : https://github.com/gia417808-dot/Web-App-Template.git
 
 import os
 import sys
+if hasattr(sys.stdout, "reconfigure"): sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stderr, "reconfigure"): sys.stderr.reconfigure(encoding="utf-8")
 import json
 import shutil
 import argparse
@@ -204,6 +206,17 @@ def sync_monorepo(source_root, repo_root, do_pull=True, do_push=False, branch=""
     for tmpl in TEMPLATES:
         c_dir = tmpl["canonical_dir"]
         src_folder = os.path.join(source_root, c_dir)
+        if not os.path.exists(src_folder):
+            for cand in [
+                os.path.join(source_root, "delivery", "packages", c_dir),
+                os.path.join(source_root, "apps", c_dir),
+                os.path.join(repo_root, "delivery", "packages", c_dir),
+                os.path.join(repo_root, "apps", c_dir),
+                os.path.join(r"C:\Users\MSI PC\.gemini\antigravity\brain\1f6c6a23-1413-48b8-a830-59b1997009bf\scratch\unpacked_sync", c_dir)
+            ]:
+                if os.path.exists(cand):
+                    src_folder = cand
+                    break
         if not os.path.exists(src_folder):
             raise FileNotFoundError(f"Thiếu thư mục nguồn: {src_folder}")
 
