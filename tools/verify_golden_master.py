@@ -297,6 +297,39 @@ def run_full_suite(repo_root):
 
     print(f"\n📄 Đã ghi báo cáo kiểm định: {report_md_path}")
     print(f"📊 Đã lưu bằng chứng JSON: {evidence_json_path}")
+
+    # Cập nhật kết quả nghiệm thu vào deployment-checks.json
+    dep_checks_path = os.path.join(repo_root, "deployment-checks.json")
+    if os.path.exists(dep_checks_path):
+        try:
+            with open(dep_checks_path, "r", encoding="utf-8") as df:
+                dep_data = json.load(df)
+            now_iso = datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00")
+            dep_data["last_synced_at"] = now_iso
+            dep_data["ecosystem_status"] = "GOLDEN_MASTER_COMMERCIAL_PRO"
+            dep_data["verification_gate"] = "PASSED_100_PERCENT" if overall_passed else "FAILED"
+            dep_data["reports"] = {
+                "markdown": "reports/GOLDEN_MASTER_VERIFICATION_REPORT.md",
+                "evidence_json": "reports/verification_evidence.json"
+            }
+            if "templates" not in dep_data:
+                dep_data["templates"] = {}
+            for tmpl in TEMPLATES:
+                dep_data["templates"][tmpl["code"]] = {
+                    "folder": tmpl["dir"],
+                    "version": tmpl["version"],
+                    "name": tmpl["name"],
+                    "sheets_count": tmpl["sheets"],
+                    "files_verified": REQUIRED_FILES,
+                    "syntax_check": "PASSED_ZERO_ERRORS" if overall_passed else "FAILED",
+                    "updated_at": now_iso
+                }
+            with open(dep_checks_path, "w", encoding="utf-8") as df:
+                json.dump(dep_data, df, indent=2, ensure_ascii=False)
+            print(f"✅ Đã xuất kết quả nghiệm thu vào: {dep_checks_path}")
+        except Exception as e:
+            print(f"⚠️ Lỗi cập nhật deployment-checks.json: {e}")
+
     return overall_passed
 
 

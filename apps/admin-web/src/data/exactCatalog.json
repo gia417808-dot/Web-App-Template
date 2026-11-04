@@ -1,11 +1,11 @@
 [
   {
     "id": "GS-001",
-    "title": "Webapp | Quản lý và Cho thuê thiết bị (v1.0)",
-    "rawName": "Webapp | Quản lý và Cho thuê thiết bị (v1.0)",
-    "cleanTitle": "Quản lý và Cho thuê thiết bị (v1.0)",
+    "title": "Webapp | Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động (v4.0 Commercial Pro)",
+    "rawName": "Webapp | Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động (v4.0 Commercial Pro)",
+    "cleanTitle": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
     "type": "webapp",
-    "version": "v1.0",
+    "version": "v4.0",
     "category": "Mini-ERP & Thiết bị",
     "price": 559000,
     "originalPrice": 850000,
@@ -18,23 +18,26 @@
       "Đơn vị tổ chức sự kiện"
     ],
     "features": [
-      "Quản lý toàn bộ danh mục thiết bị và tình trạng thực tế",
-      "Lập hợp đồng cho thuê, tự động tính tiền thuê và tiền cọc",
-      "Cảnh báo trùng lịch đặt giữ chỗ thiết bị",
-      "Quy trình kiểm tra thu hồi máy và hoàn cọc linh hoạt",
-      "Lịch bảo trì, bảo dưỡng và kiểm định thiết bị định kỳ",
-      "Báo cáo hiệu suất khai thác tài sản và công nợ khách hàng"
+      "Quản lý hồ sơ nhân sự, danh bạ, hợp đồng và tệp đính kèm Word/Excel/PDF",
+      "Chấm công vào/ra ca 1 chạm kèm GPS và phân loại ca làm việc linh hoạt",
+      "Phê duyệt trực tuyến đơn xin nghỉ phép, tăng ca OT và giải trình đi muộn",
+      "Giao và đánh giá KPI/OKR tự động (tiến độ 100% tự động chuyển Chờ duyệt)",
+      "Động cơ tính lương tự động BHXH 10.5%, thuế TNCN lũy tiến và xuất phiếu lương A4",
+      "Bắn thông báo phiếu lương cá nhân (Payslip) tự động qua Email và Bot Zalo"
     ],
     "appRoute": "equipment",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/preview",
     "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
-    "isVerified": true
+    "isVerified": true,
+    "packagePath": "delivery/packages/GS-001-hr",
+    "archetypeId": "GS-001",
+    "canonicalDir": "GS-001-hr"
   },
   {
     "id": "GS-002",
-    "title": "Webapp | Quản lý Nhập Xuất Tồn Đa Kho (v3.0)",
-    "rawName": "Webapp | Quản lý Nhập Xuất Tồn Đa Kho (v3.0)",
-    "cleanTitle": "Quản lý Nhập Xuất Tồn Đa Kho (v3.0)",
+    "title": "Webapp | Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức (v3.0 Commercial Pro)",
+    "rawName": "Webapp | Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức (v3.0 Commercial Pro)",
+    "cleanTitle": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
     "type": "webapp",
     "version": "v3.0",
     "category": "Quản lý Kho",
@@ -49,23 +52,26 @@
       "Đại lý phân phối"
     ],
     "features": [
-      "Quản lý danh mục hàng hóa và vị trí kho",
-      "Tự động tính tồn kho tức thời và giá vốn bình quân",
-      "Hệ thống cảnh báo hàng sắp hết (Min) và quá tải (Max)",
-      "Lập và in phiếu Nhập - Xuất - Điều chuyển kho",
-      "Báo cáo tổng hợp Nhập Xuất Tồn theo khoảng thời gian tùy chọn",
-      "Phân quyền thủ kho và nhân viên nhập liệu"
+      "Quản lý danh mục hàng hóa, phân loại ngành hàng và vị trí kho",
+      "Tự động tính tồn kho tức thời và đơn giá vốn bình quân gia quyền",
+      "Cổng đăng nhập bảo mật (Auth Gate) kiểm soát quyền thủ kho",
+      "Hệ thống cảnh báo định mức tồn tối thiểu (Min) và quá tải (Max)",
+      "Lập, in và xuất phiếu Nhập - Xuất - Điều chuyển kho chuẩn A4",
+      "Thẻ kho chi tiết và báo cáo tổng hợp Nhập Xuất Tồn theo kỳ"
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/preview",
     "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
-    "isVerified": true
+    "isVerified": true,
+    "packagePath": "delivery/packages/GS-002-warehouse",
+    "archetypeId": "GS-002",
+    "canonicalDir": "GS-002-warehouse"
   },
   {
     "id": "GS-003",
-    "title": "Webapp | Quản lý Thu Chi & Dòng Tiền Startup (v4.1)",
-    "rawName": "Webapp | Quản lý Thu Chi & Dòng Tiền Startup (v4.1)",
-    "cleanTitle": "Quản lý Thu Chi & Dòng Tiền Startup (v4.1)",
+    "title": "Webapp | Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup (v4.1 Commercial Pro)",
+    "rawName": "Webapp | Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup (v4.1 Commercial Pro)",
+    "cleanTitle": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
     "type": "webapp",
     "version": "v4.1",
     "category": "Tài chính - Thu chi",
@@ -80,25 +86,28 @@
       "Hộ kinh doanh cá thể"
     ],
     "features": [
-      "Sổ quỹ quản lý đa tài khoản ngân hàng và tiền mặt",
-      "Tự động phân loại dòng tiền theo hạng mục Thu - Chi",
-      "Báo cáo Lãi - Lỗ (P&L) và dòng tiền thuần tự động cập nhật",
-      "Đo lường chỉ số tài chính, tỷ lệ hòa vốn và cảnh báo âm quỹ",
-      "Theo dõi công nợ phải thu, phải trả và nhắc hạn thanh toán",
-      "Hỗ trợ phân tích chi phí theo từng dự án / phòng ban"
+      "Sổ quỹ quản lý đa tài khoản ngân hàng và tiền mặt thời gian thực",
+      "Tự động phân loại dòng tiền theo khoản mục Thu - Chi chuyên sâu",
+      "Báo cáo Lãi - Lỗ (P&L) và dòng tiền thuần (Cashflow) tự động",
+      "Cảnh báo âm quỹ, đo lường tốc độ tiêu tiền (Burn rate) & Runway",
+      "Theo dõi công nợ phải thu, phải trả và tự động nhắc hạn đến hạn",
+      "Phân tích cấu trúc chi phí theo từng dự án và trung tâm chi phí"
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/preview",
     "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
-    "isVerified": true
+    "isVerified": true,
+    "packagePath": "delivery/packages/GS-003-finance",
+    "archetypeId": "GS-003",
+    "canonicalDir": "GS-003-finance"
   },
   {
     "id": "GS-004",
-    "title": "Webapp | Quản lý Tiến Độ Dự Án & Tasks (v4.0)",
-    "rawName": "Webapp | Quản lý Tiến Độ Dự Án & Tasks (v4.0)",
-    "cleanTitle": "Quản lý Tiến Độ Dự Án & Tasks (v4.0)",
+    "title": "Webapp | Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI (v4.4 Commercial Pro)",
+    "rawName": "Webapp | Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI (v4.4 Commercial Pro)",
+    "cleanTitle": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
     "type": "webapp",
-    "version": "v4.0",
+    "version": "v4.4",
     "category": "Dự án & Công việc",
     "price": 559000,
     "originalPrice": 850000,
@@ -111,25 +120,28 @@
       "Doanh nghiệp vận hành theo dự án"
     ],
     "features": [
-      "Giao việc và giám sát tiến độ công việc đa chiều (Kanban, Bảng, Lịch)",
-      "Thiết lập công việc lặp lại định kỳ và nhắc hạn quá hạn tự động",
-      "Đo lường tỷ lệ hoàn thành KPI của từng nhân sự",
-      "Đính kèm tài liệu và phân quyền xem theo cấp độ bảo mật",
-      "Lưu nhật ký lịch sử chỉnh sửa và cập nhật trạng thái thời gian thực",
-      "Xuất báo cáo tiến độ dự án định dạng Excel / PDF"
+      "Quản lý danh mục dự án, hợp đồng và khách hàng CRM đa kênh",
+      "Giao việc và điều phối tiến độ đa chiều (Kanban, Gantt chart, RACI matrix)",
+      "Tiến độ 100% tự động chuyển Chờ duyệt, bảo toàn nhân sự và mã dự án",
+      "Upload đa file đính kèm trực tiếp (Word, Excel, PowerPoint, PDF, Ảnh)",
+      "Phân quyền điều hành 4 cấp (Admin, Manager, Leader, Staff)",
+      "Bot Zalo & Email tự động nhắc hạn deadline công việc hàng ngày"
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
     "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
-    "isVerified": true
+    "isVerified": true,
+    "packagePath": "delivery/packages/GS-004-project",
+    "archetypeId": "GS-004",
+    "canonicalDir": "GS-004-project"
   },
   {
     "id": "GS-005",
-    "title": "Webapp | F&B POS Quán Cafe / Nhà Hàng (v3.0)",
-    "rawName": "Webapp | F&B POS Quán Cafe / Nhà Hàng (v3.0)",
-    "cleanTitle": "F&B POS Quán Cafe / Nhà Hàng (v3.0)",
+    "title": "Webapp | Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS (v3.3 Commercial Pro)",
+    "rawName": "Webapp | Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS (v3.3 Commercial Pro)",
+    "cleanTitle": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
     "type": "webapp",
-    "version": "v3.0",
+    "version": "v3.3",
     "category": "F&B & Nhà hàng",
     "price": 559000,
     "originalPrice": 850000,
@@ -142,17 +154,20 @@
       "Chuỗi đồ uống mang đi"
     ],
     "features": [
-      "Quản lý sơ đồ bàn phòng trực quan theo thời gian thực",
-      "Order gọi món nhanh trên điện thoại hoặc máy tính bảng",
-      "Tự động tính tiền, áp dụng khuyến mãi và in hóa đơn tạm tính",
-      "Tích hợp mã VietQR động hỗ trợ chuyển khoản chính xác",
-      "Trừ tồn kho nguyên vật liệu theo định lượng món",
-      "Báo cáo doanh thu theo ca làm việc, món bán chạy và hình thức thanh toán"
+      "Quản lý sơ đồ bàn phòng, khu vực động theo thời gian thực",
+      "Order gọi món tức thời, đồng bộ phiếu chế biến sang màn hình bếp KDS",
+      "Tính giờ dịch vụ tự động cho phòng hát Karaoke, bàn Bida theo phút",
+      "Phân hạng hội viên VIP, tích điểm đổi quà và chiết khấu bậc thang",
+      "Tích hợp mã VietQR động tự sinh kèm số tiền và nội dung thanh toán",
+      "Chế độ toàn màn hình (Full Screen), xuất và in hóa đơn A4 / K80 chuyên nghiệp"
     ],
     "appRoute": "fnb",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/preview",
     "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
-    "isVerified": true
+    "isVerified": true,
+    "packagePath": "delivery/packages/GS-005-pos",
+    "archetypeId": "GS-005",
+    "canonicalDir": "GS-005-pos"
   },
   {
     "id": "GS-006",
@@ -182,8 +197,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-007",
@@ -213,8 +233,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-008",
@@ -244,8 +269,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-009",
@@ -275,8 +305,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-010",
@@ -306,8 +341,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-011",
@@ -337,8 +377,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-012",
@@ -368,8 +413,13 @@
     ],
     "appRoute": "equipment",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-013",
@@ -399,8 +449,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-014",
@@ -430,8 +485,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-015",
@@ -461,8 +521,13 @@
     ],
     "appRoute": "fnb",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-005",
+    "archetypeName": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+    "archetypeVersion": "v3.3 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-005-pos",
+    "packagePath": "delivery/packages/GS-005-pos"
   },
   {
     "id": "GS-016",
@@ -492,8 +557,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-017",
@@ -523,8 +593,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-018",
@@ -554,8 +629,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-019",
@@ -585,8 +665,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-020",
@@ -616,8 +701,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-021",
@@ -647,8 +737,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-022",
@@ -678,8 +773,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-023",
@@ -709,8 +809,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-024",
@@ -740,8 +845,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-025",
@@ -771,8 +881,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-026",
@@ -802,8 +917,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-005",
+    "archetypeName": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+    "archetypeVersion": "v3.3 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-005-pos",
+    "packagePath": "delivery/packages/GS-005-pos"
   },
   {
     "id": "GS-027",
@@ -833,8 +953,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-028",
@@ -864,8 +989,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-029",
@@ -895,8 +1025,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-030",
@@ -926,8 +1061,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-031",
@@ -957,8 +1097,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-032",
@@ -988,8 +1133,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-033",
@@ -1019,8 +1169,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-034",
@@ -1050,8 +1205,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-005",
+    "archetypeName": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+    "archetypeVersion": "v3.3 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-005-pos",
+    "packagePath": "delivery/packages/GS-005-pos"
   },
   {
     "id": "GS-035",
@@ -1081,8 +1241,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-036",
@@ -1112,8 +1277,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-037",
@@ -1143,8 +1313,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-038",
@@ -1174,8 +1349,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-039",
@@ -1205,8 +1385,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-040",
@@ -1236,8 +1421,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-041",
@@ -1267,8 +1457,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-042",
@@ -1298,8 +1493,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-043",
@@ -1329,8 +1529,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-044",
@@ -1360,8 +1565,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-045",
@@ -1391,8 +1601,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-046",
@@ -1422,8 +1637,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-047",
@@ -1453,8 +1673,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-048",
@@ -1484,8 +1709,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-005",
+    "archetypeName": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+    "archetypeVersion": "v3.3 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-005-pos",
+    "packagePath": "delivery/packages/GS-005-pos"
   },
   {
     "id": "GS-049",
@@ -1515,8 +1745,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-050",
@@ -1546,8 +1781,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-051",
@@ -1577,8 +1817,13 @@
     ],
     "appRoute": "fnb",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-005",
+    "archetypeName": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+    "archetypeVersion": "v3.3 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-005-pos",
+    "packagePath": "delivery/packages/GS-005-pos"
   },
   {
     "id": "GS-052",
@@ -1608,8 +1853,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-053",
@@ -1639,8 +1889,13 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-002",
+    "archetypeName": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+    "archetypeVersion": "v3.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-002-warehouse",
+    "packagePath": "delivery/packages/GS-002-warehouse"
   },
   {
     "id": "GS-054",
@@ -1670,8 +1925,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-055",
@@ -1701,8 +1961,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-056",
@@ -1732,8 +1997,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-057",
@@ -1763,8 +2033,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-058",
@@ -1794,8 +2069,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-059",
@@ -1825,8 +2105,13 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-002",
+    "archetypeName": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+    "archetypeVersion": "v3.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-002-warehouse",
+    "packagePath": "delivery/packages/GS-002-warehouse"
   },
   {
     "id": "GS-060",
@@ -1856,8 +2141,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-061",
@@ -1887,8 +2177,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-062",
@@ -1918,8 +2213,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-063",
@@ -1949,8 +2249,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-064",
@@ -1980,8 +2285,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-065",
@@ -2011,8 +2321,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-066",
@@ -2042,8 +2357,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-067",
@@ -2073,8 +2393,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-068",
@@ -2104,8 +2429,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-069",
@@ -2135,8 +2465,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-070",
@@ -2166,8 +2501,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-071",
@@ -2197,8 +2537,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-072",
@@ -2228,8 +2573,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-073",
@@ -2259,8 +2609,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-074",
@@ -2290,8 +2645,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-075",
@@ -2321,8 +2681,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-076",
@@ -2352,8 +2717,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-077",
@@ -2383,8 +2753,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-078",
@@ -2414,8 +2789,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-005",
+    "archetypeName": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+    "archetypeVersion": "v3.3 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-005-pos",
+    "packagePath": "delivery/packages/GS-005-pos"
   },
   {
     "id": "GS-079",
@@ -2445,8 +2825,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-080",
@@ -2476,8 +2861,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-081",
@@ -2507,8 +2897,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-082",
@@ -2538,8 +2933,13 @@
     ],
     "appRoute": "fnb",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-005",
+    "archetypeName": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+    "archetypeVersion": "v3.3 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-005-pos",
+    "packagePath": "delivery/packages/GS-005-pos"
   },
   {
     "id": "GS-083",
@@ -2569,8 +2969,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-084",
@@ -2600,8 +3005,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-085",
@@ -2631,8 +3041,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-086",
@@ -2662,8 +3077,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-087",
@@ -2693,8 +3113,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-088",
@@ -2724,8 +3149,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-089",
@@ -2755,8 +3185,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-090",
@@ -2786,8 +3221,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-091",
@@ -2817,8 +3257,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-092",
@@ -2848,8 +3293,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-093",
@@ -2879,8 +3329,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-094",
@@ -2910,8 +3365,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-095",
@@ -2941,8 +3401,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-096",
@@ -2972,8 +3437,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-097",
@@ -3003,8 +3473,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-098",
@@ -3034,8 +3509,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-099",
@@ -3065,8 +3545,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-100",
@@ -3096,8 +3581,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-101",
@@ -3127,8 +3617,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-102",
@@ -3158,8 +3653,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-103",
@@ -3189,8 +3689,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-104",
@@ -3220,8 +3725,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-105",
@@ -3251,8 +3761,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-106",
@@ -3282,8 +3797,13 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-002",
+    "archetypeName": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+    "archetypeVersion": "v3.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-002-warehouse",
+    "packagePath": "delivery/packages/GS-002-warehouse"
   },
   {
     "id": "GS-107",
@@ -3313,8 +3833,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-108",
@@ -3344,8 +3869,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-109",
@@ -3375,8 +3905,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-110",
@@ -3406,8 +3941,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-111",
@@ -3437,8 +3977,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-112",
@@ -3468,8 +4013,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-113",
@@ -3499,8 +4049,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-114",
@@ -3530,8 +4085,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-115",
@@ -3561,8 +4121,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-116",
@@ -3592,8 +4157,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-117",
@@ -3623,8 +4193,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-118",
@@ -3654,8 +4229,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-119",
@@ -3685,8 +4265,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-120",
@@ -3716,8 +4301,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-121",
@@ -3747,8 +4337,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-122",
@@ -3778,8 +4373,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-123",
@@ -3809,8 +4409,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-124",
@@ -3840,8 +4445,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-125",
@@ -3871,8 +4481,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-126",
@@ -3902,8 +4517,13 @@
     ],
     "appRoute": "cashflow",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-127",
@@ -3933,8 +4553,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-128",
@@ -3964,8 +4589,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-129",
@@ -3995,8 +4625,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-130",
@@ -4026,8 +4661,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-131",
@@ -4057,8 +4697,13 @@
     ],
     "appRoute": "crm",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-132",
@@ -4088,8 +4733,13 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-002",
+    "archetypeName": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+    "archetypeVersion": "v3.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-002-warehouse",
+    "packagePath": "delivery/packages/GS-002-warehouse"
   },
   {
     "id": "GS-133",
@@ -4119,8 +4769,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-134",
@@ -4150,8 +4805,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-135",
@@ -4181,8 +4841,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-136",
@@ -4212,8 +4877,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-137",
@@ -4243,8 +4913,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-138",
@@ -4274,8 +4949,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-139",
@@ -4305,8 +4985,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-140",
@@ -4336,8 +5021,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-141",
@@ -4367,8 +5057,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-142",
@@ -4398,8 +5093,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-143",
@@ -4429,8 +5129,13 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-002",
+    "archetypeName": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+    "archetypeVersion": "v3.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-002-warehouse",
+    "packagePath": "delivery/packages/GS-002-warehouse"
   },
   {
     "id": "GS-144",
@@ -4460,8 +5165,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-145",
@@ -4491,8 +5201,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-146",
@@ -4522,8 +5237,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-147",
@@ -4553,8 +5273,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-148",
@@ -4584,8 +5309,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-149",
@@ -4615,8 +5345,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-150",
@@ -4646,8 +5381,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-151",
@@ -4677,8 +5417,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-152",
@@ -4708,8 +5453,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-153",
@@ -4739,8 +5489,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-154",
@@ -4770,8 +5525,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-155",
@@ -4801,8 +5561,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-156",
@@ -4832,8 +5597,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-157",
@@ -4863,8 +5633,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-158",
@@ -4894,8 +5669,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-159",
@@ -4925,8 +5705,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-160",
@@ -4956,8 +5741,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-161",
@@ -4987,8 +5777,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-162",
@@ -5018,8 +5813,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-163",
@@ -5049,8 +5849,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-164",
@@ -5080,8 +5885,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-165",
@@ -5111,8 +5921,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-166",
@@ -5142,8 +5957,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-167",
@@ -5173,8 +5993,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-168",
@@ -5204,8 +6029,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-169",
@@ -5235,8 +6065,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-170",
@@ -5266,8 +6101,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-171",
@@ -5297,8 +6137,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-172",
@@ -5328,8 +6173,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-173",
@@ -5359,8 +6209,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-174",
@@ -5390,8 +6245,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-175",
@@ -5421,8 +6281,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-176",
@@ -5452,8 +6317,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-177",
@@ -5483,8 +6353,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-178",
@@ -5514,8 +6389,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-179",
@@ -5545,8 +6425,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-180",
@@ -5576,8 +6461,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-181",
@@ -5607,8 +6497,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-182",
@@ -5638,8 +6533,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-183",
@@ -5669,8 +6569,13 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-002",
+    "archetypeName": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+    "archetypeVersion": "v3.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-002-warehouse",
+    "packagePath": "delivery/packages/GS-002-warehouse"
   },
   {
     "id": "GS-184",
@@ -5700,8 +6605,13 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-002",
+    "archetypeName": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+    "archetypeVersion": "v3.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-002-warehouse",
+    "packagePath": "delivery/packages/GS-002-warehouse"
   },
   {
     "id": "GS-185",
@@ -5731,8 +6641,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-186",
@@ -5762,8 +6677,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-187",
@@ -5793,8 +6713,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-188",
@@ -5824,8 +6749,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-189",
@@ -5855,8 +6785,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-190",
@@ -5886,8 +6821,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-191",
@@ -5917,8 +6857,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-192",
@@ -5948,8 +6893,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-193",
@@ -5979,8 +6929,13 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-002",
+    "archetypeName": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+    "archetypeVersion": "v3.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-002-warehouse",
+    "packagePath": "delivery/packages/GS-002-warehouse"
   },
   {
     "id": "GS-194",
@@ -6010,8 +6965,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-195",
@@ -6041,8 +7001,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-196",
@@ -6072,8 +7037,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-197",
@@ -6103,8 +7073,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-198",
@@ -6134,8 +7109,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-199",
@@ -6165,8 +7145,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-200",
@@ -6196,8 +7181,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-201",
@@ -6227,8 +7217,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-202",
@@ -6258,8 +7253,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-203",
@@ -6289,8 +7289,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-204",
@@ -6320,8 +7325,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-205",
@@ -6351,8 +7361,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-206",
@@ -6382,8 +7397,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-207",
@@ -6413,8 +7433,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-208",
@@ -6444,8 +7469,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-209",
@@ -6475,8 +7505,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-210",
@@ -6506,8 +7541,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-211",
@@ -6537,8 +7577,13 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-002",
+    "archetypeName": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+    "archetypeVersion": "v3.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-002-warehouse",
+    "packagePath": "delivery/packages/GS-002-warehouse"
   },
   {
     "id": "GS-212",
@@ -6568,8 +7613,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-213",
@@ -6599,8 +7649,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-214",
@@ -6630,8 +7685,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-215",
@@ -6661,8 +7721,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-001",
+    "archetypeName": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+    "archetypeVersion": "v4.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-001-hr",
+    "packagePath": "delivery/packages/GS-001-hr"
   },
   {
     "id": "GS-216",
@@ -6692,8 +7757,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-217",
@@ -6723,8 +7793,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-218",
@@ -6754,8 +7829,13 @@
     ],
     "appRoute": "project",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-219",
@@ -6785,8 +7865,13 @@
     ],
     "appRoute": "inventory",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-002",
+    "archetypeName": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+    "archetypeVersion": "v3.0 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-002-warehouse",
+    "packagePath": "delivery/packages/GS-002-warehouse"
   },
   {
     "id": "GS-220",
@@ -6816,8 +7901,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-221",
@@ -6847,8 +7937,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-222",
@@ -6878,8 +7973,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-223",
@@ -6909,8 +8009,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-224",
@@ -6940,8 +8045,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-225",
@@ -6971,8 +8081,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-226",
@@ -7002,8 +8117,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-227",
@@ -7033,8 +8153,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-003",
+    "archetypeName": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+    "archetypeVersion": "v4.1 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-003-finance",
+    "packagePath": "delivery/packages/GS-003-finance"
   },
   {
     "id": "GS-228",
@@ -7064,8 +8189,13 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   },
   {
     "id": "GS-229",
@@ -7095,7 +8225,12 @@
     ],
     "appRoute": "general",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview",
-    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/template/preview",
-    "isVerified": false
+    "templatePreviewUrl": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+    "isVerified": false,
+    "archetypeId": "GS-004",
+    "archetypeName": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+    "archetypeVersion": "v4.4 Commercial Pro",
+    "inheritedPackagePath": "delivery/packages/GS-004-project",
+    "packagePath": "delivery/packages/GS-004-project"
   }
 ]

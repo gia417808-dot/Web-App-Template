@@ -1,0 +1,2165 @@
+{
+  "title": "Bản Đồ Kế Thừa 229 Sản Phẩm Từ 5 Mẫu Gốc Golden Master Commercial Pro",
+  "version": "1.0.0",
+  "total_products": 229,
+  "archetypes": {
+    "GS-001": {
+      "id": "GS-001",
+      "canonical_dir": "GS-001-hr",
+      "name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "group_archetype": "Human Resources & Payroll",
+      "version": "v4.0 Commercial Pro",
+      "sheets_count": 8,
+      "spreadsheet_id": "1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview",
+      "package_path": "delivery/packages/GS-001-hr",
+      "features": [
+        "Quản lý hồ sơ nhân sự, danh bạ, hợp đồng và tệp đính kèm Word/Excel/PDF",
+        "Chấm công vào/ra ca 1 chạm kèm GPS và phân loại ca làm việc linh hoạt",
+        "Phê duyệt trực tuyến đơn xin nghỉ phép, tăng ca OT và giải trình đi muộn",
+        "Giao và đánh giá KPI/OKR tự động (tiến độ 100% tự động chuyển Chờ duyệt)",
+        "Động cơ tính lương tự động BHXH 10.5%, thuế TNCN lũy tiến và xuất phiếu lương A4",
+        "Bắn thông báo phiếu lương cá nhân (Payslip) tự động qua Email và Bot Zalo"
+      ]
+    },
+    "GS-002": {
+      "id": "GS-002",
+      "canonical_dir": "GS-002-warehouse",
+      "name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "group_archetype": "Inventory & Warehousing",
+      "version": "v3.0 Commercial Pro",
+      "sheets_count": 7,
+      "spreadsheet_id": "1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+      "package_path": "delivery/packages/GS-002-warehouse",
+      "features": [
+        "Quản lý danh mục hàng hóa, phân loại ngành hàng và vị trí kho",
+        "Tự động tính tồn kho tức thời và đơn giá vốn bình quân gia quyền",
+        "Cổng đăng nhập bảo mật (Auth Gate) kiểm soát quyền thủ kho",
+        "Hệ thống cảnh báo định mức tồn tối thiểu (Min) và quá tải (Max)",
+        "Lập, in và xuất phiếu Nhập - Xuất - Điều chuyển kho chuẩn A4",
+        "Thẻ kho chi tiết và báo cáo tổng hợp Nhập Xuất Tồn theo kỳ"
+      ]
+    },
+    "GS-003": {
+      "id": "GS-003",
+      "canonical_dir": "GS-003-finance",
+      "name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "group_archetype": "Finance & Cashflow",
+      "version": "v4.1 Commercial Pro",
+      "sheets_count": 7,
+      "spreadsheet_id": "1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview",
+      "package_path": "delivery/packages/GS-003-finance",
+      "features": [
+        "Sổ quỹ quản lý đa tài khoản ngân hàng và tiền mặt thời gian thực",
+        "Tự động phân loại dòng tiền theo khoản mục Thu - Chi chuyên sâu",
+        "Báo cáo Lãi - Lỗ (P&L) và dòng tiền thuần (Cashflow) tự động",
+        "Cảnh báo âm quỹ, đo lường tốc độ tiêu tiền (Burn rate) & Runway",
+        "Theo dõi công nợ phải thu, phải trả và tự động nhắc hạn đến hạn",
+        "Phân tích cấu trúc chi phí theo từng dự án và trung tâm chi phí"
+      ]
+    },
+    "GS-004": {
+      "id": "GS-004",
+      "canonical_dir": "GS-004-project",
+      "name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "group_archetype": "Project & Task Management",
+      "version": "v4.4 Commercial Pro",
+      "sheets_count": 7,
+      "spreadsheet_id": "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview",
+      "package_path": "delivery/packages/GS-004-project",
+      "features": [
+        "Quản lý danh mục dự án, hợp đồng và khách hàng CRM đa kênh",
+        "Giao việc và điều phối tiến độ đa chiều (Kanban, Gantt chart, RACI matrix)",
+        "Tiến độ 100% tự động chuyển Chờ duyệt, bảo toàn nhân sự và mã dự án",
+        "Upload đa file đính kèm trực tiếp (Word, Excel, PowerPoint, PDF, Ảnh)",
+        "Phân quyền điều hành 4 cấp (Admin, Manager, Leader, Staff)",
+        "Bot Zalo & Email tự động nhắc hạn deadline công việc hàng ngày"
+      ]
+    },
+    "GS-005": {
+      "id": "GS-005",
+      "canonical_dir": "GS-005-pos",
+      "name": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+      "group_archetype": "Point of Sale & F&B",
+      "version": "v3.3 Commercial Pro",
+      "sheets_count": 8,
+      "spreadsheet_id": "1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview",
+      "package_path": "delivery/packages/GS-005-pos",
+      "features": [
+        "Quản lý sơ đồ bàn phòng, khu vực động theo thời gian thực",
+        "Order gọi món tức thời, đồng bộ phiếu chế biến sang màn hình bếp KDS",
+        "Tính giờ dịch vụ tự động cho phòng hát Karaoke, bàn Bida theo phút",
+        "Phân hạng hội viên VIP, tích điểm đổi quà và chiết khấu bậc thang",
+        "Tích hợp mã VietQR động tự sinh kèm số tiền và nội dung thanh toán",
+        "Chế độ toàn màn hình (Full Screen), xuất và in hóa đơn A4 / K80 chuyên nghiệp"
+      ]
+    }
+  },
+  "inheritance_matrix": {
+    "GS-001": {
+      "title": "Webapp | Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động (v4.0 Commercial Pro)",
+      "category": "Mini-ERP & Thiết bị",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-002": {
+      "title": "Webapp | Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức (v3.0 Commercial Pro)",
+      "category": "Quản lý Kho",
+      "archetype_id": "GS-002",
+      "archetype_name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "archetype_version": "v3.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-002-warehouse",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-003": {
+      "title": "Webapp | Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup (v4.1 Commercial Pro)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-004": {
+      "title": "Webapp | Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI (v4.4 Commercial Pro)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-005": {
+      "title": "Webapp | Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS (v3.3 Commercial Pro)",
+      "category": "F&B & Nhà hàng",
+      "archetype_id": "GS-005",
+      "archetype_name": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+      "archetype_version": "v3.3 Commercial Pro",
+      "package_path": "delivery/packages/GS-005-pos",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-006": {
+      "title": "Webapp | Quản lý công việc (v2.3)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-007": {
+      "title": "Webapp | Quản lý Báo giá (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-008": {
+      "title": "Google Sheets | Chuyển đổi vùng chọn thành Hình ảnh, PDF",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-009": {
+      "title": "Webapp | Hệ thống tạo Form và Phân quyền dữ liệu (v2.2)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-010": {
+      "title": "Google Sheets | Dashboard Bất Động Sản (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-011": {
+      "title": "Webapp | Quản Lý Thu Chi Tiệm Sửa Xe, Hộ Kinh Doanh (v2.0)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-012": {
+      "title": "Webapp | Quản Trị Mini-ERP (v1.0)",
+      "category": "Mini-ERP & Thiết bị",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-013": {
+      "title": "Webapp | Quản Lý Thu Chi Tiệm Sửa Xe, Hộ Kinh Doanh (v1.0)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-014": {
+      "title": "Webapp | Quản lý chăm sóc khách hàng (v7.1)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-015": {
+      "title": "Webapp | Quản lý quán Cafe, Nhà hàng, Quán ăn (v3.0)",
+      "category": "F&B & Nhà hàng",
+      "archetype_id": "GS-005",
+      "archetype_name": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+      "archetype_version": "v3.3 Commercial Pro",
+      "package_path": "delivery/packages/GS-005-pos",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-016": {
+      "title": "Webapp | Quản Lý Lớp Học (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-017": {
+      "title": "Webapp | Quản Lý App Tập Trung (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-018": {
+      "title": "Webapp | Quản Lý App Tập Trung (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-019": {
+      "title": "Webapp | Quản lý thu chi Doanh nghiệp (v4.1)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-020": {
+      "title": "Webapp | Quản lý công việc (v2.2)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-021": {
+      "title": "Webapp | Quản Lý Bán Hàng (v1.1)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-022": {
+      "title": "Webapp | Quản Lý Lớp Học (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-023": {
+      "title": "Webapp | Quản Lý Bán Hàng (v1.0)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-024": {
+      "title": "Webapp | Quản lý thu chi Doanh nghiệp (v4.0)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-025": {
+      "title": "Webapp | Quản lý thu chi Doanh nghiệp (v3.1)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-026": {
+      "title": "Webapp | Quản Lý Spa, Phòng khám (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-005",
+      "archetype_name": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+      "archetype_version": "v3.3 Commercial Pro",
+      "package_path": "delivery/packages/GS-005-pos",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-027": {
+      "title": "Webapp | Quay số trúng thưởng (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-028": {
+      "title": "Webapp | Quản Lý Dự án, Công việc (v5.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-029": {
+      "title": "Webapp | Quản lý công việc (v2.1)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-030": {
+      "title": "Webapp | Quản lý thu chi Doanh nghiệp (v3.0)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-031": {
+      "title": "Webapp | Quản lý công việc (v2.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-032": {
+      "title": "Webapp | Hệ thống tạo Form và Phân quyền dữ liệu (v2.1)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-033": {
+      "title": "Webapp | Quản lý chăm sóc khách hàng (v7.0)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-034": {
+      "title": "Webapp | Quản Lý Khách Sạn, Homestay (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-005",
+      "archetype_name": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+      "archetype_version": "v3.3 Commercial Pro",
+      "package_path": "delivery/packages/GS-005-pos",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-035": {
+      "title": "Webapp | Hệ thống tạo Form và Phân quyền dữ liệu (v1.2)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-036": {
+      "title": "Webapp | Quay số trúng thưởng (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-037": {
+      "title": "Webapp | Quản lý công việc (v1.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-038": {
+      "title": "Webapp | Quản lý chăm sóc khách hàng (v6.0)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-039": {
+      "title": "Webapp | Hệ thống tạo Form và Phân quyền dữ liệu (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-040": {
+      "title": "Webapp | Hệ thống tạo Form và Phân quyền dữ liệu (v1.1)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-041": {
+      "title": "Webapp | Quản Lý Dự án, Công việc (v4.1)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-042": {
+      "title": "Webapp | Quản lý công nợ khách hàng (v1.0)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-043": {
+      "title": "Webapp | Quản lý chăm sóc khách hàng (v5.0)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-044": {
+      "title": "Webapp | Quản Lý Ghi Chú (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-045": {
+      "title": "Webapp | Quản Lý Tuyển Dụng (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-046": {
+      "title": "Webapp | Quản Lý Tài Liệu, Văn Bản (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-047": {
+      "title": "Webapp | Quản lý chấm công (v3.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-048": {
+      "title": "Google Sheets | Form Đặt phòng Khách sạn, Homestay (v4.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-005",
+      "archetype_name": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+      "archetype_version": "v3.3 Commercial Pro",
+      "package_path": "delivery/packages/GS-005-pos",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-049": {
+      "title": "Webapp | Quản Lý Tài Chính Cá Nhân (v3.0)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-050": {
+      "title": "Webapp | Quản Lý Dự án, Công việc (v4.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-051": {
+      "title": "Webapp | Quản lý quán Cafe, Nhà hàng, Quán ăn (v2.0)",
+      "category": "F&B & Nhà hàng",
+      "archetype_id": "GS-005",
+      "archetype_name": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+      "archetype_version": "v3.3 Commercial Pro",
+      "package_path": "delivery/packages/GS-005-pos",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-052": {
+      "title": "Webapp | Hệ thống tạo Form và Phân quyền dữ liệu (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-053": {
+      "title": "Webapp | Quản Lý Nhập Xuất Tồn Kho (v2.0)",
+      "category": "Quản lý Kho",
+      "archetype_id": "GS-002",
+      "archetype_name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "archetype_version": "v3.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-002-warehouse",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-054": {
+      "title": "Webapp | Kế hoạch Ngân sách Doanh nghiệp (v2.0)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-055": {
+      "title": "Webapp | Quản Lý Tài Chính Cá Nhân (v1.0)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-056": {
+      "title": "Webapp | Kế hoạch Ngân sách Doanh nghiệp (v1.0)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-057": {
+      "title": "Webapp | Quản lý chăm sóc khách hàng (v4.0)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-058": {
+      "title": "Webapp | Tạo bản sao Drive, Folder & Google Sheets",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-059": {
+      "title": "Webapp | Quản Lý Nhập Xuất Tồn Kho (v1.0)",
+      "category": "Quản lý Kho",
+      "archetype_id": "GS-002",
+      "archetype_name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "archetype_version": "v3.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-002-warehouse",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-060": {
+      "title": "Webapp | Quản lý chấm công (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-061": {
+      "title": "Webapp | Quản lý chấm công (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-062": {
+      "title": "Webapp | Quản lý thu chi Doanh nghiệp (v2.0)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-063": {
+      "title": "Google Sheets | Quản Lý Lịch Hẹn",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-064": {
+      "title": "Google Sheets | Import Data nhiều FILE tốc độ siêu nhanh (v6.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-065": {
+      "title": "Webapp | Quản lý chăm sóc khách hàng (v3.0)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-066": {
+      "title": "Webapp | Quản lý chăm sóc khách hàng (v2.0)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-067": {
+      "title": "Webapp | Quản lý chăm sóc khách hàng (v1.0)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-068": {
+      "title": "Webapp | Quản Lý Dự án, Công việc (v3.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-069": {
+      "title": "Google Sheets | Theo dõi dự án, công việc (v2.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-070": {
+      "title": "Webapp | Tạo Phiếu Khảo Sát Tinh Gọn Thay Thế Google Form (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-071": {
+      "title": "Webapp | Quản Lý Dự án, Công việc (v2.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-072": {
+      "title": "Webapp | Quản Lý Tuyển Dụng (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-073": {
+      "title": "Webapp | Ứng Dụng Nén Ảnh",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-074": {
+      "title": "Webapp | Quản lý thu chi Doanh nghiệp (v1.0)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-075": {
+      "title": "Webapp | Ứng dụng học Tiếng Anh thông minh (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-076": {
+      "title": "Webapp | Quản lý hồ sơ nhân sự (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-077": {
+      "title": "Google Sheets | Theo dõi công việc (v8.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-078": {
+      "title": "Google Sheets | Form Đặt phòng Khách sạn, Homestay (v3.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-005",
+      "archetype_name": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+      "archetype_version": "v3.3 Commercial Pro",
+      "package_path": "delivery/packages/GS-005-pos",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-079": {
+      "title": "Webapp | Quản Lý Dự án, Công việc (v1.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-080": {
+      "title": "Webapp | Quản Lý Chi Tiêu 6 Hũ (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-081": {
+      "title": "Webapp | Quản Lý Tài Chính Cá Nhân (v2.0)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-082": {
+      "title": "Webapp | Quản lý quán Cafe, Nhà hàng, Quán ăn (v1.0)",
+      "category": "F&B & Nhà hàng",
+      "archetype_id": "GS-005",
+      "archetype_name": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
+      "archetype_version": "v3.3 Commercial Pro",
+      "package_path": "delivery/packages/GS-005-pos",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1fnbPOS_V30_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-083": {
+      "title": "Webapp | Quản Lý Nghỉ Phép Cho Doanh Nghiệp",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-084": {
+      "title": "Webapp | Quản lý Phê Duyệt Chi Tiền Cho Doanh Nghiệp",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-085": {
+      "title": "Webapp | Quản Lý Báo Cáo Cơ bản",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-086": {
+      "title": "Google Sheets | Phân quyền nhập, sửa, xoá nhiều form (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-087": {
+      "title": "Google Sheets | Phân quyền nhập, sửa, xoá nhiều form (v1.1)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-088": {
+      "title": "Google Sheets | Phân quyền nhập, sửa, xoá nhiều form (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-089": {
+      "title": "Google Sheets | Theo dõi dự án, công việc (v1.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-090": {
+      "title": "Google Sheets | Sales Dashboard",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-091": {
+      "title": "Google Sheets | Phân quyền nhập liệu nhiều Form từ nhiều file (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-092": {
+      "title": "Google Sheets | Phân quyền nhập liệu nhiều Form từ nhiều file (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-093": {
+      "title": "Google Sheets | Bảng theo dõi phép năm người lao động",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-094": {
+      "title": "Google Sheets | Điểm danh và quản lý lớp học (Basic)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-095": {
+      "title": "Google Sheets | Import Data nhiều FILE tốc độ siêu nhanh (v5.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-096": {
+      "title": "Google Sheets | Theo dõi công việc (song ngữ) (7.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-097": {
+      "title": "Google Sheets | Báo cáo biến động nhân sự (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-098": {
+      "title": "Google Sheets | Báo cáo biến động nhân sự (v2.1)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-099": {
+      "title": "Google Sheets | Dashboard bán hàng không dùng công thức",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-100": {
+      "title": "Google Sheets | Báo cáo CRM (v2.0)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-101": {
+      "title": "Google Sheets | Báo cáo kết quả kinh doanh (P&L) – Basic",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-102": {
+      "title": "Google Sheets | Báo cáo dòng tiền (Cash Flow) – Basic",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-103": {
+      "title": "Google Sheets | NF: Hàm tách mail, sđt, họ, tên, tên đệm, ngày",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-104": {
+      "title": "Google Sheets | Quản lý hồ sơ nhân sự",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-105": {
+      "title": "Google Sheets | NF: Hàm bỏ dấu Tiếng Việt",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-106": {
+      "title": "Google Sheets | NF: Hàm tìm kiếm nội dung chứa từ khoá",
+      "category": "Quản lý Kho",
+      "archetype_id": "GS-002",
+      "archetype_name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "archetype_version": "v3.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-002-warehouse",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-107": {
+      "title": "Google Sheets | Tạo ID không trùng lặp khi lựa chọn Dropdown",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-108": {
+      "title": "Google Sheets | NF: Tạo ngày và thứ trong tháng",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-109": {
+      "title": "Google Sheets | Báo cáo CRM (v3.0)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-110": {
+      "title": "Google Sheets | NF: Hàm tải 1 sheet với nhiều định dạng",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-111": {
+      "title": "Google Sheets | NF: Hàm chuyển văn bản thành hình ảnh",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-112": {
+      "title": "Google Sheets | NF: Hàm chuyển văn bản thành gióng nói",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-113": {
+      "title": "Google Sheets | NF: Hàm đánh số thứ tự bỏ qua bộ lọc và blank",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-114": {
+      "title": "Google Sheets | NF: Hàm đọc số thành chữ",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-115": {
+      "title": "Google Sheets | Ứng dụng nhỏ học từ vựng Tiếng Anh",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-116": {
+      "title": "Google Sheets | Theo dõi công việc (v6.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-117": {
+      "title": "Google Sheets | Theo dõi thói quen (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-118": {
+      "title": "Google Sheets | Dịch và chuyển đổi văn bản thành giọng nói nhiều ngôn ngữ",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-119": {
+      "title": "Google Sheets | Báo cáo bán hàng (v1.0)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-120": {
+      "title": "Google Sheets | Báo cáo bán hàng (v1.1)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-121": {
+      "title": "Google Sheets | Theo dõi thói quen (v3.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-122": {
+      "title": "Google Sheets | Theo dõi nhân sự cơ bản",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-123": {
+      "title": "Google Sheets | Phiếu khảo sát đánh giá cho các phòng ban",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-124": {
+      "title": "Google Sheets | Quản lý thu chi (v2.0)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-125": {
+      "title": "Google Sheets | Quản lý thu chi (v2.1)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-126": {
+      "title": "Google Sheets | Quản lý thu chi (v1.0)",
+      "category": "Tài chính - Thu chi",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-127": {
+      "title": "Google Sheets | Facebook Ads Dashboard (ver02)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-128": {
+      "title": "Google Sheets | Mẫu báo cáo chấm công cài sẵn công thức",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-129": {
+      "title": "Google Sheets | Biểu đồ bong bóng",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-130": {
+      "title": "Google Sheets | Báo cáo CRM (v1.0)",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-131": {
+      "title": "Google Sheets | Quy trình bán hàng",
+      "category": "CRM & Khách hàng",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-132": {
+      "title": "Google Sheets | Thời khoá biểu (v1.0)",
+      "category": "Quản lý Kho",
+      "archetype_id": "GS-002",
+      "archetype_name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "archetype_version": "v3.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-002-warehouse",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-133": {
+      "title": "Google Sheets | To do list",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-134": {
+      "title": "Google Sheets | Tổng hợp xe qua cửa khẩu",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-135": {
+      "title": "Google Sheets | Tìm ngày đầu tuần và cuối tuần trong tháng",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-136": {
+      "title": "Google Sheets | Tạo ID ngẫu nhiên không trùng lặp",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-137": {
+      "title": "Google Sheets | Tạo lịch 12 tháng chỉ với 1 công thức",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-138": {
+      "title": "Google Sheets | Tạo lịch 12 tháng theo chiều ngang",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-139": {
+      "title": "Google Sheets | Check sim số đẹp 4 số cuối",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-140": {
+      "title": "Google Sheets | Trộn thư bằng công thức Google Sheets",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-141": {
+      "title": "Google Sheets | Tách phường, quận, tỉnh/thành phố",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-142": {
+      "title": "Google Sheets | Dùng ký tự đặc biệt để vẽ biểu đồ",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-143": {
+      "title": "Google Sheets | Lọc từ khoá",
+      "category": "Quản lý Kho",
+      "archetype_id": "GS-002",
+      "archetype_name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "archetype_version": "v3.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-002-warehouse",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-144": {
+      "title": "Google Sheets | Đọc số thành chữ nhiều ngôn ngữ",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-145": {
+      "title": "Google Sheets | Tính tổng chỉ tiêu theo chiều ngang",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-146": {
+      "title": "Google Sheets | Phân bổ khấu hao tài sản đường thẳng",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-147": {
+      "title": "Google Sheets | Đảo ký tự với char(8238)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-148": {
+      "title": "Google Sheets | Tổng hợp dữ liệu từ nhiều file, nhiều sheet khác nhau",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-149": {
+      "title": "Google Sheets | Hiển thị hình ảnh lưu trong drive",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-150": {
+      "title": "Google Sheets | Gửi Mail Cá Nhân Hoá Bằng Công Thức (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-151": {
+      "title": "Google Sheets | Phân nhóm ngẫu nhiên và không ngẫu nhiên",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-152": {
+      "title": "Google Sheets | Tách họ và tên với Regex",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-153": {
+      "title": "Google Sheets | Pivot nhiều giá trị chuỗi",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-154": {
+      "title": "Google Sheets | Unpivot",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-155": {
+      "title": "Google Sheets | Cộng dồn nhiều điều kiện",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-156": {
+      "title": "Google Sheets | Tìm dòng cuối chứa dữ liệu",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-157": {
+      "title": "Google Sheets | Rút gọn họ và tên",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-158": {
+      "title": "Google Sheets | Làm sạch số điện thoại",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-159": {
+      "title": "Google Sheets | Tổng hợp các sắc thái đánh số thứ tự",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-160": {
+      "title": "Google Sheets | Loại bỏ dấu câu",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-161": {
+      "title": "Google Sheets | Lấp đầy dữ liệu",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-162": {
+      "title": "Google Sheets | Dịch song song tất cả các ngôn ngữ trên thế giới",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-163": {
+      "title": "Google Sheets | Tạo next page bằng hàm query kết hợp Hyperlink",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-164": {
+      "title": "Google Sheets | Importrange lấy theo Tên tiêu đề cột",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-165": {
+      "title": "Google Sheets | Tạo list phụ thuộc nhiều cấp độ không dùng code",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-166": {
+      "title": "Google Sheets | Đọc số thành chữ",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-167": {
+      "title": "Google Sheets | Tổng hợp dữ liệu từ nhiều Sheet về một Sheet",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-168": {
+      "title": "Google Sheets | Quản lý phân quyền file tập trung",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-169": {
+      "title": "Google Sheets | Điểm danh học sinh (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-170": {
+      "title": "Google Sheets | Backup data nhiều file",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-171": {
+      "title": "Google Sheets | Theo dõi công việc (v2.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-172": {
+      "title": "Google Sheets | Tìm kiếm nhà bán bất động sản",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-173": {
+      "title": "Google Sheets | Phân quyền nhập liệu nhiều Form từ nhiều file (v1.1)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-174": {
+      "title": "Google Sheets | Bảng chấm công (v3.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-175": {
+      "title": "Google Sheets | Theo dõi công việc (v4.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-176": {
+      "title": "Google Sheets | Theo dõi ăn trưa công sở",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-177": {
+      "title": "Google Sheets | Đồng bộ calandar với Google Sheets",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-178": {
+      "title": "Google Sheets | Import Data nhiều FILE tốc độ siêu nhanh (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-179": {
+      "title": "Google Sheets | Điểm danh học sinh (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-180": {
+      "title": "Google Sheets | Import Data nhiều FILE tốc độ siêu nhanh (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-181": {
+      "title": "Google Sheets | Import Data nhiều FILE tốc độ siêu nhanh (v3.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-182": {
+      "title": "Google Sheets | Lọc số sim",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-183": {
+      "title": "Google Sheets | Báo cáo Nhập Xuất Tồn (v3.0)",
+      "category": "Quản lý Kho",
+      "archetype_id": "GS-002",
+      "archetype_name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "archetype_version": "v3.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-002-warehouse",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-184": {
+      "title": "Google Sheets | Báo cáo Nhập Xuất Tồn (v1.0)",
+      "category": "Quản lý Kho",
+      "archetype_id": "GS-002",
+      "archetype_name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "archetype_version": "v3.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-002-warehouse",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-185": {
+      "title": "Google Sheets | Bảng chấm công (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-186": {
+      "title": "Google Sheets | Báo cáo doanh thu (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-187": {
+      "title": "Google Sheets | Bảng chấm công (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-188": {
+      "title": "Google Sheets | Quy trình tuyển dụng giản đơn",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-189": {
+      "title": "Google Sheets | Quản lý chi tiêu 6 hũ (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-190": {
+      "title": "Google Sheets | Quản lý chi tiêu 6 hũ (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-191": {
+      "title": "Google Sheets | Theo dõi thói quen (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-192": {
+      "title": "Google Sheets | Ghi chú thời gian biểu",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-193": {
+      "title": "Google Sheets | Thời khoá biểu (v2.0)",
+      "category": "Quản lý Kho",
+      "archetype_id": "GS-002",
+      "archetype_name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "archetype_version": "v3.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-002-warehouse",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-194": {
+      "title": "Google Sheets | Gửi Mail Cá Nhân Hoá Bằng Công Thức (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-195": {
+      "title": "Google Sheets | Tạo card visit",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-196": {
+      "title": "Google Sheets | Phiếu tính giá, check căn (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-197": {
+      "title": "Google Sheets | Theo dõi công việc (v1.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-198": {
+      "title": "Google Sheets | Phiếu tính giá, check căn (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-199": {
+      "title": "Google Sheets | Tìm kiếm mã số thuế",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-200": {
+      "title": "Google Sheets | Form nhập liệu",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-201": {
+      "title": "Google Sheets | Theo dõi công việc (v3.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-202": {
+      "title": "Google Sheets | Sơ đồ Gantt (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-203": {
+      "title": "Google Sheets | Báo cáo biến động nhân sự (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-204": {
+      "title": "Google Sheets | Quản Lý Tuyển Dụng",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-205": {
+      "title": "Google Sheets | Cách phối màu cho Google Sheets",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-206": {
+      "title": "Google Sheets | Hàm Query và Importrange – Hàm truy vấn dữ liệu top 1",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-207": {
+      "title": "Google Sheets | Tài nguyên hàm Regex – Hàm xử lý dữ liệu mạnh nhất",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-208": {
+      "title": "Google Sheets | Đổi lịch âm sang dương (code)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-209": {
+      "title": "Google Sheets | Đóng băng các hàm không cố định",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-210": {
+      "title": "Google Sheets | Tìm giá trị trả về tiêu đề tương ứng",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-211": {
+      "title": "Google Sheets | Khoá dữ liệu loại trừ (code)",
+      "category": "Quản lý Kho",
+      "archetype_id": "GS-002",
+      "archetype_name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "archetype_version": "v3.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-002-warehouse",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-212": {
+      "title": "Google Sheets | Cách tải 1 sheet từ Google Sheets",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-213": {
+      "title": "Google Sheets | Tạo bản sao nhiều thư mục Driver",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-214": {
+      "title": "Google Sheets | Báo cáo chi phí",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-215": {
+      "title": "Google Sheets | Báo cáo biến động nhân sự (v1.1)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-001",
+      "archetype_name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
+      "archetype_version": "v4.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-001-hr",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1lFURWpqf8fhlPyEbxnY0aQm3r40hhcVQ35JORZiUsJo/template/preview"
+    },
+    "GS-216": {
+      "title": "Google Sheets | Báo cáo doanh thu (v1.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-217": {
+      "title": "Google Sheets | Báo cáo doanh thu (v4.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-218": {
+      "title": "Google Sheets | Theo dõi công việc (v5.0)",
+      "category": "Dự án & Công việc",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-219": {
+      "title": "Google Sheets | Báo cáo Nhập Xuất Tồn (v2.0)",
+      "category": "Quản lý Kho",
+      "archetype_id": "GS-002",
+      "archetype_name": "Quản Lý Nhập Xuất Tồn Đa Kho & Cảnh Báo Định Mức",
+      "archetype_version": "v3.0 Commercial Pro",
+      "package_path": "delivery/packages/GS-002-warehouse",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1zx9Lo4p0_fRuCf_x6J_Jg-qcC1TBdS9vqYlmLUVSZe0/template/preview"
+    },
+    "GS-220": {
+      "title": "Google Sheets | Tính ngày kết thúc phí trung tâm tiếng anh",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-221": {
+      "title": "Google Sheets | Quản lý chi tiêu cơ bản",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-222": {
+      "title": "Google Sheets | Báo cáo chạy quảng cáo",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-223": {
+      "title": "Google Sheets | Dropdown phụ thuộc 4 level (code)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-224": {
+      "title": "Google Sheets | Dropdown phụ thuộc 3 level (code)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-225": {
+      "title": "Google Sheets | Dropdown phụ thuộc 2 level (code)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-226": {
+      "title": "Google Sheets | Import Data nhiều FILE tốc độ siêu nhanh (v4.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-227": {
+      "title": "Google Sheets | Báo cáo công nợ",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-003",
+      "archetype_name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
+      "archetype_version": "v4.1 Commercial Pro",
+      "package_path": "delivery/packages/GS-003-finance",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1n7d3qaFfmTy98cEzhRYtoyVry4AKbwmM6nWk309K4Ieg/template/preview"
+    },
+    "GS-228": {
+      "title": "Google Sheets | Sơ đồ Gantt (v2.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    },
+    "GS-229": {
+      "title": "Google Sheets | Báo cáo doanh thu (v3.0)",
+      "category": "Tiện ích Doanh nghiệp",
+      "archetype_id": "GS-004",
+      "archetype_name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
+      "archetype_version": "v4.4 Commercial Pro",
+      "package_path": "delivery/packages/GS-004-project",
+      "template_preview_url": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/template/preview"
+    }
+  }
+}

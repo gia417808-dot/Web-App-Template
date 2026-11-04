@@ -1,12 +1,12 @@
 {
-  "last_synced_at": "2026-11-04T14:20:21+07:00",
+  "last_synced_at": "2026-11-04T14:34:13+07:00",
   "ecosystem_status": "GOLDEN_MASTER_COMMERCIAL_PRO",
   "repository": "https://github.com/gia417808-dot/Web-App-Template",
   "templates": {
     "GS-001": {
       "folder": "GS-001-hr",
       "version": "v4.0 Commercial Pro",
-      "name": "Quản Lý Nhân Sự, Chấm Công, Đơn Từ, KPI & Tính Lương Tự Động",
+      "name": "Quản Lý Nhân Sự, Chấm Công Ca/GPS, KPI & Tính Lương Tự Động",
       "sheets_count": 8,
       "files_verified": [
         "appsscript.json",
@@ -15,7 +15,7 @@
         "Index.html"
       ],
       "syntax_check": "PASSED_ZERO_ERRORS",
-      "updated_at": "2026-11-04T14:20:21+07:00"
+      "updated_at": "2026-11-04T14:34:13+07:00"
     },
     "GS-002": {
       "folder": "GS-002-warehouse",
@@ -29,12 +29,12 @@
         "Index.html"
       ],
       "syntax_check": "PASSED_ZERO_ERRORS",
-      "updated_at": "2026-11-04T14:20:21+07:00"
+      "updated_at": "2026-11-04T14:34:13+07:00"
     },
     "GS-003": {
       "folder": "GS-003-finance",
       "version": "v4.1 Commercial Pro",
-      "name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản, Công Nợ & Dòng Tiền",
+      "name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
       "sheets_count": 7,
       "files_verified": [
         "appsscript.json",
@@ -43,12 +43,12 @@
         "Index.html"
       ],
       "syntax_check": "PASSED_ZERO_ERRORS",
-      "updated_at": "2026-11-04T14:20:21+07:00"
+      "updated_at": "2026-11-04T14:34:13+07:00"
     },
     "GS-004": {
       "folder": "GS-004-project",
       "version": "v4.4 Commercial Pro",
-      "name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt, RACI & Bot Nhắc Việc",
+      "name": "Quản Lý Dự Án, Khách Hàng CRM, Kanban/Gantt & RACI",
       "sheets_count": 7,
       "files_verified": [
         "appsscript.json",
@@ -57,12 +57,12 @@
         "Index.html"
       ],
       "syntax_check": "PASSED_ZERO_ERRORS",
-      "updated_at": "2026-11-04T14:20:21+07:00"
+      "updated_at": "2026-11-04T14:34:13+07:00"
     },
     "GS-005": {
       "folder": "GS-005-pos",
       "version": "v3.3 Commercial Pro",
-      "name": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, Hội Viên VIP & Bếp KDS",
+      "name": "Quản Lý Nhà Hàng, Cafe, POS Tính Giờ, VIP & Bếp KDS",
       "sheets_count": 8,
       "files_verified": [
         "appsscript.json",
@@ -71,7 +71,7 @@
         "Index.html"
       ],
       "syntax_check": "PASSED_ZERO_ERRORS",
-      "updated_at": "2026-11-04T14:20:21+07:00"
+      "updated_at": "2026-11-04T14:34:13+07:00"
     }
   },
   "groups": {
@@ -118,5 +118,10 @@
         }
       ]
     }
+  },
+  "verification_gate": "PASSED_100_PERCENT",
+  "reports": {
+    "markdown": "reports/GOLDEN_MASTER_VERIFICATION_REPORT.md",
+    "evidence_json": "reports/verification_evidence.json"
   }
 }
