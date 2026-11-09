@@ -1,5 +1,5 @@
 {
-  "last_synced_at": "2026-11-04T14:34:13+07:00",
+  "last_synced_at": "2026-11-09T14:32:06+07:00",
   "ecosystem_status": "GOLDEN_MASTER_COMMERCIAL_PRO",
   "repository": "https://github.com/gia417808-dot/Web-App-Template",
   "templates": {
@@ -34,16 +34,12 @@
     "GS-003": {
       "folder": "GS-003-finance",
       "version": "v4.1 Commercial Pro",
-      "name": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền Startup",
       "sheets_count": 7,
-      "files_verified": [
-        "appsscript.json",
-        "installer.gs",
-        "Code.gs",
-        "Index.html"
-      ],
-      "syntax_check": "PASSED_ZERO_ERRORS",
-      "updated_at": "2026-11-04T14:34:13+07:00"
+      "title": "Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Công Nợ (Micro/Store 1-30 Nhân Sự)",
+      "real_time_sheet_auth": true,
+      "beginner_guide_sheet": true,
+      "two_way_flush_sync": true,
+      "verified_at": "2026-11-09T14:32:06+07:00"
     },
     "GS-004": {
       "folder": "GS-004-project",
@@ -72,6 +68,36 @@
       ],
       "syntax_check": "PASSED_ZERO_ERRORS",
       "updated_at": "2026-11-04T14:34:13+07:00"
+    },
+    "GS-003-ST": {
+      "folder": "GS-003-ST-startup",
+      "version": "v4.1 Commercial Pro",
+      "sheets_count": 9,
+      "title": "Quản Trị Tài Chính Startup & Tăng Trưởng (Burn Rate, Cash Runway, MRR/ARR, Dự Phóng 12T & Cap Table)",
+      "real_time_sheet_auth": true,
+      "beginner_guide_sheet": true,
+      "two_way_flush_sync": true,
+      "verified_at": "2026-11-09T14:32:06+07:00"
+    },
+    "GS-003-SME": {
+      "folder": "GS-003-SME-corporate",
+      "version": "v4.1 Commercial Pro",
+      "sheets_count": 9,
+      "title": "Kế Toán Quản Trị Doanh Nghiệp Vừa & Nhỏ (30-150 Nhân Sự: P&L, Balance Sheet, Cash Flow, BVA & NWC)",
+      "real_time_sheet_auth": true,
+      "beginner_guide_sheet": true,
+      "two_way_flush_sync": true,
+      "verified_at": "2026-11-09T14:32:06+07:00"
+    },
+    "GS-003-ENT": {
+      "folder": "GS-003-ENT-enterprise",
+      "version": "v4.1 Commercial Pro",
+      "sheets_count": 9,
+      "title": "Trung Tâm Điều Hành FP&A Tập Đoàn (>500 Nhân Sự: Multi-BU, Base/Best/Worst Scenario, Cost Centers & CAPEX NPV/IRR)",
+      "real_time_sheet_auth": true,
+      "beginner_guide_sheet": true,
+      "two_way_flush_sync": true,
+      "verified_at": "2026-11-09T14:32:06+07:00"
     }
   },
   "groups": {
@@ -123,5 +149,6 @@
   "reports": {
     "markdown": "reports/GOLDEN_MASTER_VERIFICATION_REPORT.md",
     "evidence_json": "reports/verification_evidence.json"
-  }
+  },
+  "financial_suite_status": "4_TIERS_COMMERCIAL_PRO_COMPLETED_100_PERCENT"
 }

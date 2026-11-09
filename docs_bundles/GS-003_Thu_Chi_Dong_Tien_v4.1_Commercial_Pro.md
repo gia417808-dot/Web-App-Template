@@ -1,0 +1,3431 @@
+# BỘ 4-FILE GOLDEN MASTER (MẪU GỐC 2/5 - BẢN FIX TRIỆT ĐỂ LOGIN & DỮ LIỆU): GS-003 — QUẢN LÝ THU CHI, SỔ QUỸ ĐA TÀI KHOẢN & DÒNG TIỀN (V4.1 COMMERCIAL PRO)
+
+## TÓM TẮT 4 LỖI ĐÃ KHẮC PHỤC TRIỆT ĐỂ
+1. **Khắc phục lỗi treo `"Đang kết nối dữ liệu phân quyền..."` (Không chạy `loadData` khi mở Modal):**
+   - Trong môi trường iframe `HtmlService` của Google Apps Script, sự kiện `DOMContentLoaded` thường đã chạy xong trước khi các thư viện CDN (`Chart.js`, `Bootstrap`) tải xong khiến `document.addEventListener("DOMContentLoaded", loadData)` không kích hoạt.
+   - Đã thay bằng hàm khởi chạy tức thì `bootFinanceApp()` kiểm tra `document.readyState`, tự động nạp dữ liệu ngay lập tức kèm bộ đếm an toàn `2.2s` để không bao giờ bị treo spinner.
+2. **Khắc phục lỗi bấm Đăng Nhập không vào được hệ thống (`#authGateScreen`):**
+   - Loại bỏ thẻ `<form onsubmit="...">` (vốn dễ gây reload trắng trang trong iframe Google Apps Script) và thay bằng cơ chế xác thực trực tiếp qua `onclick="handleMandatoryLogin()"` + phím `Enter`.
+   - Bổ sung **4 nút Chọn nhanh tài khoản mẫu (1-Click Quick Login)** ngay dưới nút Đăng nhập và điền sẵn tài khoản mặc định `admin` / `123456` để đăng nhập chỉ với 1 cú click.
+   - Cơ chế đối chiếu tài khoản kép (kiểm tra đồng thời trên Sheet `PHAN_QUYEN` và danh sách mặc định).
+3. **Khắc phục lỗi không hiển thị dữ liệu Giao dịch & Báo cáo (`normalizeDateStr` & `parseCurrency`):**
+   - Khi Google Sheets ở locale `en_US`, ngày tháng trong tab `SO_QUY` (`2026-10-01 09:15`) bị đổi sang chuỗi hiển thị `10/1/2026 9:15:00` làm bộ lọc ngày `YYYY-MM-DD` trên giao diện lọc mất 100% dòng dữ liệu, đồng thời số tiền có dấu chấm phân cách hàng nghìn (`250.000.000 ₫`) bị `parseFloat` hiểu nhầm thành `250`.
+   - Đã nâng cấp `Code.gs` và `Index.html` đọc trực tiếp giá trị số gốc (`getValues()`) kết hợp chuẩn hóa ngày tự động sang `YYYY-MM-DD HH:mm` và định dạng cột 텍스트 (`@`) trong `installer.gs`.
+
+## 1. FILE `appsscript.json`
+```json
+{
+  "timeZone": "Asia/Ho_Chi_Minh",
+  "dependencies": {},
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "webapp": {
+    "executeAs": "USER_DEPLOYING",
+    "access": "ANYONE_ANONYMOUS"
+  },
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/script.container.ui"
+  ]
+}
+```
+
+## 2. FILE `installer.gs`
+```javascript
+/**
+ * ============================================================================
+ * GS-003: WEBAPP QUẢN LÝ THU CHI, SỔ QUỸ & DÒNG TIỀN (V4.1 COMMERCIAL PRO)
+ * BỘ CÀI ĐẶT 6 TAB DOANH NGHIỆP TỰ ĐỘNG (INSTALLER.GS)
+ * Archetype: Finance & Cashflow (Golden Master v3.0)
+ * Lưu ý: KHÔNG khai báo onOpen() tại file này để tránh xung đột với Code.gs
+ * ============================================================================
+ */
+
+function install_FINANCE_SHEET() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+
+  try {
+    ss.setSpreadsheetLocale('en_US');
+    ss.setSpreadsheetTimeZone('Asia/Ho_Chi_Minh');
+    SpreadsheetApp.flush();
+  } catch (e) {}
+
+  const tabs = [
+    'DASHBOARD',
+    'TAI_KHOAN',
+    'SO_QUY',
+    'PHAN_QUYEN',
+    'CAU_HINH',
+    'NHAT_KY'
+  ];
+  const sheets = {};
+
+  tabs.forEach(function(tabName) {
+    let sheet = ss.getSheetByName(tabName);
+    if (!sheet) {
+      sheet = ss.insertSheet(tabName);
+    }
+    sheets[tabName] = sheet;
+  });
+
+  const defaultSheet = ss.getSheetByName('Sheet1') || ss.getSheetByName('Trang tính 1');
+  if (defaultSheet && ss.getSheets().length > 1) {
+    try { ss.deleteSheet(defaultSheet); } catch (e) {}
+  }
+
+  // TAB 1: DASHBOARD
+  const dash = sheets['DASHBOARD'];
+  dash.clear();
+  dash.setTabColor('#059669');
+  dash.getRange('A1:H1').merge()
+    .setValue('HỆ THỐNG QUẢN TRỊ THU CHI, SỔ QUỸ ĐA TÀI KHOẢN & DÒNG TIỀN (V4.1 COMMERCIAL PRO)')
+    .setFontSize(15).setFontWeight('bold').setBackground('#0F172A').setFontColor('#FFFFFF')
+    .setHorizontalAlignment('center').setVerticalAlignment('middle');
+  dash.setRowHeight(1, 46);
+
+  const dashKpiRows = [
+    ['CHỈ SỐ TÀI CHÍNH & DÒNG TIỀN (REAL-TIME)', 'GIÁ TRỊ HIỆN TẠI', 'ĐƠN VỊ', 'GHI CHÚ NGHIỆP VỤ'],
+    ['Tổng Ngân Quỹ Khả Dụng Toàn Hệ Thống', '=SUM(TAI_KHOAN!I3:I)', 'VNĐ', 'Tổng số dư thực tế các TK Ngân hàng + Quỹ tiền mặt'],
+    ['Tổng Dòng Tiền Thu Vào Lũy Kế (Cash In)', '=SUMIF(SO_QUY!C3:C, "Phiếu Thu", SO_QUY!E3:E)', 'VNĐ', 'Tổng các khoản thu đã ghi sổ'],
+    ['Tổng Dòng Tiền Chi Ra Lũy Kế (Cash Out)', '=SUMIF(SO_QUY!C3:C, "Phiếu Chi", SO_QUY!E3:E)', 'VNĐ', 'Tổng các khoản chi phí vận hành & đầu tư'],
+    ['Dòng Tiền Thuần Trong Kỳ (Net Cashflow)', '=B5-B6', 'VNĐ', 'Chênh lệch Tổng Thu trừ Tổng Chi'],
+    ['Tổng Công Nợ Phải Thu Khách Hàng', '=SUMIF(SO_QUY!J3:J, "Công nợ Phải thu", SO_QUY!E3:E)', 'VNĐ', 'Các chứng từ thu đang chờ khách tất toán'],
+    ['Tổng Công Nợ Phải Trả Nhà Cung Cấp', '=SUMIF(SO_QUY!J3:J, "Công nợ Phải trả", SO_QUY!E3:E)', 'VNĐ', 'Các khoản chi phí chờ thanh toán cho đối tác'],
+    ['Dự Phóng Runway Duy Trì Hoạt Động', '=IF(B6>0, ROUND(B4/B6, 1), 36)', 'Tháng', 'Số tháng duy trì theo tốc độ chi hiện tại (Burn Rate)']
+  ];
+  dash.getRange(3, 1, dashKpiRows.length, 4).setValues(dashKpiRows);
+  dash.getRange('A3:D3').setFontWeight('bold').setBackground('#059669').setFontColor('#FFFFFF').setHorizontalAlignment('center');
+  dash.getRange('A4:A10').setFontWeight('bold');
+  dash.getRange('B4:B10').setHorizontalAlignment('right').setFontWeight('bold');
+  dash.getRange('C4:C10').setHorizontalAlignment('center');
+  dash.getRange('B4:B9').setNumberFormat('#,##0 "₫"');
+  dash.getRange('B10').setNumberFormat('0.0 "tháng"');
+
+  const fundSummaryRows = [
+    ['PHÂN TÍCH SỐ DƯ THEO TÀI KHOẢN / QUỸ', 'SỐ DƯ ĐẦU KỲ', 'SỐ DƯ HIỆN TẠI', 'PHỤ TRÁCH QUỸ'],
+    ['Vietcombank Doanh Nghiệp (ACC-01)', '=TAI_KHOAN!F3', '=TAI_KHOAN!I3', 'Nguyễn Minh Tuấn (admin)'],
+    ['Techcombank Vận Hành (ACC-02)', '=TAI_KHOAN!F4', '=TAI_KHOAN!I4', 'Hoàng Thu Trang (ketoan)'],
+    ['Quỹ Tiền Mặt Văn Phòng (ACC-03)', '=TAI_KHOAN!F5', '=TAI_KHOAN!I5', 'Phạm Thị Mai (thuquy_tm)'],
+    ['Quỹ Dự Phòng Đầu Tư (ACC-04)', '=TAI_KHOAN!F6', '=TAI_KHOAN!I6', 'Nguyễn Minh Tuấn (admin)']
+  ];
+  dash.getRange(12, 1, fundSummaryRows.length, 4).setValues(fundSummaryRows);
+  dash.getRange('A12:D12').setFontWeight('bold').setBackground('#0284C7').setFontColor('#FFFFFF').setHorizontalAlignment('center');
+  dash.getRange('A13:A16').setFontWeight('bold');
+  dash.getRange('B13:C16').setHorizontalAlignment('right').setNumberFormat('#,##0 "₫"');
+  dash.setColumnWidth(1, 320);
+  dash.setColumnWidth(2, 195);
+  dash.setColumnWidth(3, 195);
+  dash.setColumnWidth(4, 290);
+
+  // TAB 2: TAI_KHOAN
+  const tk = sheets['TAI_KHOAN'];
+  tk.clear();
+  tk.setTabColor('#0284C7');
+  tk.getRange('A1:J1').merge()
+    .setValue('DANH MỤC TÀI KHOẢN NGÂN HÀNG, VÍ ĐIỆN TỬ & QUỸ TIỀN MẶT DOANH NGHIỆP')
+    .setFontSize(14).setFontWeight('bold').setBackground('#0284C7').setFontColor('#FFFFFF')
+    .setHorizontalAlignment('center').setVerticalAlignment('middle');
+  tk.setRowHeight(1, 40);
+
+  const tkHeaders = [
+    'Mã Quỹ/TK', 'Tên Ngân Hàng / Quỹ', 'Số Tài Khoản / Mã Ví', 'Chủ Tài Khoản',
+    'Loại Tài Khoản', 'Số Dư Đầu Kỳ', 'Tổng Thu Lũy Kế', 'Tổng Chi Lũy Kế',
+    'Số Dư Hiện Tại', 'Ghi Chú Vận Hành'
+  ];
+  tk.getRange(2, 1, 1, tkHeaders.length).setValues([tkHeaders])
+    .setFontWeight('bold').setBackground('#E0F2FE').setFontColor('#0369A1').setHorizontalAlignment('center');
+  tk.setFrozenRows(2);
+
+  const tkSampleData = [
+    [
+      'ACC-01', 'Vietcombank Doanh Nghiệp', '1018899889', 'CTY TNHH NEXSIMPLE VIET NAM',
+      'Ngân hàng', 250000000,
+      '=SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B3, SO_QUY!C3:C, "Phiếu Thu") + SUMIFS(SO_QUY!E3:E, SO_QUY!G3:G, B3, SO_QUY!C3:C, "Chuyển quỹ")',
+      '=SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B3, SO_QUY!C3:C, "Phiếu Chi") + SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B3, SO_QUY!C3:C, "Chuyển quỹ")',
+      '=F3+G3-H3', 'Tài khoản thanh toán B2B & Nhận doanh thu hợp đồng chính'
+    ],
+    [
+      'ACC-02', 'Techcombank Vận Hành', '19034567890', 'CTY TNHH NEXSIMPLE VIET NAM',
+      'Ngân hàng', 120000000,
+      '=SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B4, SO_QUY!C3:C, "Phiếu Thu") + SUMIFS(SO_QUY!E3:E, SO_QUY!G3:G, B4, SO_QUY!C3:C, "Chuyển quỹ")',
+      '=SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B4, SO_QUY!C3:C, "Phiếu Chi") + SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B4, SO_QUY!C3:C, "Chuyển quỹ")',
+      '=F4+G4-H4', 'Tài khoản chi lương, marketing, cloud server & vận hành'
+    ],
+    [
+      'ACC-03', 'Quỹ Tiền Mặt Văn Phòng', 'CASH-VP-01', 'Phạm Thị Mai (Thủ Quỹ)',
+      'Tiền mặt', 35000000,
+      '=SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B5, SO_QUY!C3:C, "Phiếu Thu") + SUMIFS(SO_QUY!E3:E, SO_QUY!G3:G, B5, SO_QUY!C3:C, "Chuyển quỹ")',
+      '=SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B5, SO_QUY!C3:C, "Phiếu Chi") + SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B5, SO_QUY!C3:C, "Chuyển quỹ")',
+      '=F5+G5-H5', 'Quỹ tiền mặt chi tiêu hành chính, tiếp khách & vận chuyển'
+    ],
+    [
+      'ACC-04', 'Quỹ Dự Phòng Đầu Tư', 'ACB-889900', 'CTY TNHH NEXSIMPLE VIET NAM',
+      'Quỹ dự phòng', 180000000,
+      '=SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B6, SO_QUY!C3:C, "Phiếu Thu") + SUMIFS(SO_QUY!E3:E, SO_QUY!G3:G, B6, SO_QUY!C3:C, "Chuyển quỹ")',
+      '=SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B6, SO_QUY!C3:C, "Phiếu Chi") + SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B6, SO_QUY!C3:C, "Chuyển quỹ")',
+      '=F6+G6-H6', 'Quỹ tích lũy dự phòng chiến lược & mua sắm tài sản cố định'
+    ]
+  ];
+  tk.getRange(3, 1, tkSampleData.length, tkHeaders.length).setValues(tkSampleData);
+  tk.getRange('C3:C6').setNumberFormat('@');
+  tk.getRange('F3:I6').setNumberFormat('#,##0 "₫"');
+  tk.getRange('A3:A6').setHorizontalAlignment('center').setFontWeight('bold');
+  tk.getRange('E3:E6').setHorizontalAlignment('center');
+
+  const tkWidths = [110, 230, 150, 220, 125, 145, 145, 145, 155, 280];
+  tkWidths.forEach(function(w, idx) { tk.setColumnWidth(idx + 1, w); });
+
+  // TAB 3: SO_QUY
+  const sq = sheets['SO_QUY'];
+  sq.clear();
+  sq.setTabColor('#F59E0B');
+  sq.getRange('A1:M1').merge()
+    .setValue('SỔ CHỨNG TỪ PHIẾU THU (01-TT) - PHIẾU CHI (02-TT) - LUÂN CHUYỂN QUỸ & CÔNG NỢ')
+    .setFontSize(14).setFontWeight('bold').setBackground('#D97706').setFontColor('#FFFFFF')
+    .setHorizontalAlignment('center').setVerticalAlignment('middle');
+  sq.setRowHeight(1, 40);
+
+  const sqHeaders = [
+    'Mã Chứng Từ', 'Ngày Ghi Sổ', 'Loại Phiếu', 'Hạng Mục Thu Chi',
+    'Số Tiền (VNĐ)', 'Tài Khoản / Quỹ Giao Dịch', 'Tài Khoản Đích (Chuyển Quỹ)',
+    'Đối Tác (Khách Hàng / NCC / Nhân Sự)', 'Dự Án / Bộ Phận',
+    'Trạng Thái Thanh Toán', 'Phương Thức', 'Người Lập Phiếu', 'Diễn Giải Chứng Từ'
+  ];
+  sq.getRange(2, 1, 1, sqHeaders.length).setValues([sqHeaders])
+    .setFontWeight('bold').setBackground('#FEF3C7').setFontColor('#92400E').setHorizontalAlignment('center');
+  sq.setFrozenRows(2);
+
+  // Format column B as plain text (@) before setting values so dates always stay YYYY-MM-DD HH:mm
+  sq.getRange('B3:B100').setNumberFormat('@');
+
+  const sqSampleData = [
+    ['PT-2026-1001', '2026-10-01 09:15', 'Phiếu Thu', 'Doanh thu bán hàng & Hợp đồng', 85000000, 'Vietcombank Doanh Nghiệp', '---', 'Tập đoàn Truyền thông NovaMedia', 'Dự án ERP Q4', 'Đã tất toán', 'Chuyển khoản VietQR', 'Hoàng Thu Trang', 'Thu tiền thanh toán đợt 1 Hợp đồng phần mềm số 102/HĐKT'],
+    ['PC-2026-1002', '2026-10-03 10:30', 'Phiếu Chi', 'Chi phí Lương & Thưởng nhân sự', 42000000, 'Techcombank Vận Hành', '---', 'Bảng lương Nhân sự Khối Kỹ thuật', 'Khối Engineering', 'Đã tất toán', 'UNC Ngân hàng', 'Hoàng Thu Trang', 'Chi lương và phụ cấp dự án tháng 09/2026'],
+    ['PT-2026-1004', '2026-10-05 14:20', 'Phiếu Thu', 'Doanh thu dịch vụ Tư vấn & Triển khai', 36000000, 'Techcombank Vận Hành', '---', 'Công ty CP Logistics Đông Nam Á', 'Dự án Kho Đa Điểm', 'Đã tất toán', 'Chuyển khoản VietQR', 'Nguyễn Minh Tuấn', 'Thu phí gói triển khai hệ thống Quản lý kho v3.0'],
+    ['PC-2026-1006', '2026-10-07 11:00', 'Phiếu Chi', 'Chi phí Hạ tầng Cloud & Bản quyền', 8500000, 'Techcombank Vận Hành', '---', 'Amazon Web Services & Google Cloud', 'Hạ tầng Công nghệ', 'Đã tất toán', 'Thẻ Doanh nghiệp', 'Nguyễn Minh Tuấn', 'Thanh toán cước máy chủ Cloud và license định kỳ'],
+    ['PCQ-2026-1008', '2026-10-09 15:00', 'Chuyển quỹ', 'Rút tiền gửi nhập quỹ tiền mặt', 15000000, 'Vietcombank Doanh Nghiệp', 'Quỹ Tiền Mặt Văn Phòng', 'Luân chuyển quỹ nội bộ', 'Khối Hành chính', 'Đã tất toán', 'Ủy nhiệm chi / Rút TM', 'Phạm Thị Mai', 'Bổ sung định mức quỹ tiền mặt văn phòng tháng 10'],
+    ['PC-2026-1010', '2026-10-11 09:45', 'Phiếu Chi', 'Chi phí Hành chính, Tiếp khách & VPP', 3200000, 'Quỹ Tiền Mặt Văn Phòng', '---', 'Nhà hàng Sen Việt & VPP Thiên Long', 'Khối Kinh doanh', 'Đã tất toán', 'Tiền mặt', 'Phạm Thị Mai', 'Chi tiếp đoàn khách hàng ký hợp đồng và mua văn phòng phẩm'],
+    ['PT-2026-1012', '2026-10-14 16:10', 'Phiếu Thu', 'Doanh thu bán hàng & Hợp đồng', 48000000, 'Vietcombank Doanh Nghiệp', '---', 'Chuỗi Bán Lẻ Minh Khang Mart', 'Dự án POS Chuỗi', 'Công nợ Phải thu', 'Chuyển khoản VietQR', 'Hoàng Thu Trang', 'Nghiệm thu bàn giao giai đoạn 2 (Hạn thanh toán 30/10)'],
+    ['PC-2026-1015', '2026-10-16 11:20', 'Phiếu Chi', 'Chi phí Quảng cáo & Marketing', 14500000, 'Techcombank Vận Hành', '---', 'Đối tác Meta Ads & Google Ads VN', 'Khối Marketing', 'Công nợ Phải trả', 'Chuyển khoản', 'Hoàng Thu Trang', 'Chi phí chiến dịch quảng cáo Performance tháng 10/2026']
+  ];
+  sq.getRange(3, 1, sqSampleData.length, sqHeaders.length).setValues(sqSampleData);
+  sq.getRange('E3:E10').setNumberFormat('#,##0 "₫"');
+  sq.getRange('A3:C10').setHorizontalAlignment('center');
+  sq.getRange('J3:K10').setHorizontalAlignment('center');
+
+  const sqWidths = [135, 135, 110, 220, 135, 210, 195, 240, 155, 150, 145, 140, 280];
+  sqWidths.forEach(function(w, idx) { sq.setColumnWidth(idx + 1, w); });
+
+  // TAB 4: PHAN_QUYEN
+  const pq = sheets['PHAN_QUYEN'];
+  pq.clear();
+  pq.setTabColor('#7C3AED');
+  pq.getRange('A1:G1').merge()
+    .setValue('BẢNG PHÂN QUYỀN TÀI KHOẢN & GIỚI HẠN TRUY CẬP SỔ QUỸ / NGÂN HÀNG (RBAC)')
+    .setFontSize(14).setFontWeight('bold').setBackground('#6D28D9').setFontColor('#FFFFFF')
+    .setHorizontalAlignment('center').setVerticalAlignment('middle');
+  pq.setRowHeight(1, 40);
+
+  const pqHeaders = [
+    'Tài Khoản (Username)', 'Mật Khẩu', 'Họ Và Tên Nhân Sự',
+    'Vai Trò (Role)', 'Quỹ Phụ Trách', 'Quyền Thao Tác Chi Tiết', 'Trạng Thái'
+  ];
+  pq.getRange(2, 1, 1, pqHeaders.length).setValues([pqHeaders])
+    .setFontWeight('bold').setBackground('#EDE9FE').setFontColor('#4C1D95').setHorizontalAlignment('center');
+  pq.setFrozenRows(2);
+  pq.getRange('A3:B50').setNumberFormat('@');
+
+  const pqSampleData = [
+    ['admin', '123456', 'Nguyễn Minh Tuấn', 'ADMIN', 'ALL', 'Giám đốc tài chính (Toàn quyền hệ thống, Xem mọi quỹ, Tạo TK, Cấu hình)', 'Hoạt động'],
+    ['ketoan', '123456', 'Hoàng Thu Trang', 'ACCOUNTANT', 'ALL', 'Kế toán tổng hợp (Xem tất cả các quỹ, Lập phiếu Thu/Chi, Xuất báo cáo dòng tiền)', 'Hoạt động'],
+    ['thuquy_tm', '123456', 'Phạm Thị Mai', 'CASHIER', 'Quỹ Tiền Mặt Văn Phòng', 'Thủ quỹ văn phòng (Chỉ xem & lập phiếu trên Quỹ Tiền Mặt Văn Phòng)', 'Hoạt động'],
+    ['thuquy_vcb', '123456', 'Lê Hoàng Nam', 'CASHIER', 'Vietcombank Doanh Nghiệp', 'Kế toán thanh toán NH (Chỉ phụ trách TK Vietcombank Doanh Nghiệp)', 'Hoạt động']
+  ];
+  pq.getRange(3, 1, pqSampleData.length, pqHeaders.length).setValues(pqSampleData);
+  const pqWidths = [150, 110, 180, 125, 210, 420, 110];
+  pqWidths.forEach(function(w, idx) { pq.setColumnWidth(idx + 1, w); });
+
+  // TAB 5: CAU_HINH
+  const ch = sheets['CAU_HINH'];
+  ch.clear();
+  ch.setTabColor('#475569');
+  ch.getRange('A1:C1').merge()
+    .setValue('CẤU HÌNH THÔNG TIN DOANH NGHIỆP, ĐỊNH MỨC NGÂN SÁCH & BIỂU MẪU PHIẾU THU/CHI')
+    .setFontSize(14).setFontWeight('bold').setBackground('#334155').setFontColor('#FFFFFF')
+    .setHorizontalAlignment('center').setVerticalAlignment('middle');
+  ch.setRowHeight(1, 40);
+
+  const chRows = [
+    ['MÃ CẤU HÌNH (KEY)', 'GIÁ TRỊ CẤU HÌNH (VALUE)', 'MÔ TẢ ÁP DỤNG TRÊN WEB APP'],
+    ['COMPANY_NAME', 'CÔNG TY TNHH CÔNG NGHỆ & THIẾT BỊ NEXSIMPLE VIỆT NAM', 'Đơn vị in ở góc trái trên cùng của Phiếu Thu (01-TT) & Phiếu Chi (02-TT)'],
+    ['COMPANY_ADDRESS', 'Số 93/4 Liên Khu 5-6, P. Bình Hưng Hòa B, Q. Bình Tân, TP.HCM', 'Địa chỉ trụ sở in trên Phiếu Thu / Phiếu Chi & Báo cáo lưu chuyển tiền tệ'],
+    ['COMPANY_PHONE', '0974 755 104', 'Số điện thoại liên hệ trên biểu mẫu chứng từ tài chính'],
+    ['COMPANY_TAX', '0318899221', 'Mã số thuế doanh nghiệp'],
+    ['MONTHLY_BURN_LIMIT', '80000000', 'Định mức trần chi phí vận hành/tháng để tính Runway & Cảnh báo vượt ngân sách'],
+    ['ALLOW_OVERDRAFT', 'FALSE', 'FALSE = Chặn chi quá số dư khả dụng của Quỹ | TRUE = Cho phép chi thấu chi'],
+    ['PRINT_TEMPLATE_STANDARD', 'Mẫu số 01-TT / 02-TT (Ban hành theo Thông tư 200/2014/TT-BTC của Bộ Tài Chính)', 'Tiêu chuẩn pháp lý in ở góc phải trên cùng của Phiếu Thu / Phiếu Chi']
+  ];
+  ch.getRange('B3:B10').setNumberFormat('@');
+  ch.getRange(2, 1, chRows.length, 3).setValues(chRows);
+  ch.getRange('A2:C2').setFontWeight('bold').setBackground('#E2E8F0').setHorizontalAlignment('center');
+  ch.getRange('A3:A9').setFontWeight('bold');
+  ch.setColumnWidth(1, 220);
+  ch.setColumnWidth(2, 440);
+  ch.setColumnWidth(3, 380);
+
+  // TAB 6: NHAT_KY
+  const nk = sheets['NHAT_KY'];
+  nk.clear();
+  nk.setTabColor('#DC2626');
+  nk.getRange('A1:F1').merge()
+    .setValue('NHẬT KÝ THAO TÁC TÀI CHÍNH & KIỂM SOÁT NỘI BỘ (AUDIT TRAIL)')
+    .setFontSize(14).setFontWeight('bold').setBackground('#991B1B').setFontColor('#FFFFFF')
+    .setHorizontalAlignment('center').setVerticalAlignment('middle');
+  nk.setRowHeight(1, 40);
+
+  const nkHeaders = ['Thời Gian', 'Tài Khoản', 'Họ Tên & Vai Trò', 'Loại Thao Tác', 'Mã Tham Chiếu', 'Chi Tiết Thay Đổi'];
+  nk.getRange(2, 1, 1, nkHeaders.length).setValues([nkHeaders])
+    .setFontWeight('bold').setBackground('#FEE2E2').setFontColor('#7F1D1D').setHorizontalAlignment('center');
+  nk.setFrozenRows(2);
+  nk.getRange('A3:A100').setNumberFormat('@');
+
+  const nowInit = Utilities.formatDate(new Date(), 'Asia/Ho_Chi_Minh', 'yyyy-MM-dd HH:mm:ss');
+  const nkSample = [
+    [nowInit, 'admin', 'Nguyễn Minh Tuấn (ADMIN)', 'KHỞI TẠO HỆ THỐNG', 'SYS-FIN-V41', 'Khởi tạo chuẩn 6 Tab Tài Chính & Sổ Quỹ Commercial Pro v4.1 thành công'],
+    ['2026-10-16 11:20:00', 'ketoan', 'Hoàng Thu Trang (ACCOUNTANT)', 'LẬP PHIẾU CHI', 'PC-2026-1015', 'Ghi nhận chi phí Marketing 14,500,000 ₫ trên Techcombank Vận Hành']
+  ];
+  nk.getRange(3, 1, nkSample.length, nkHeaders.length).setValues(nkSample);
+  const nkWidths = [155, 120, 200, 150, 140, 440];
+  nkWidths.forEach(function(w, idx) { nk.setColumnWidth(idx + 1, w); });
+
+  SpreadsheetApp.getActiveSpreadsheet().toast(
+    'Đã khởi tạo hoàn tất 6 Tab Quản Lý Thu Chi, Sổ Quỹ & Dòng Tiền v4.1 (Commercial Pro)!',
+    '✅ Cài Đặt Thành Công',
+    6
+  );
+}
+```
+
+## 3. FILE `Code.gs`
+```javascript
+/**
+ * ============================================================================
+ * GS-003: WEBAPP QUẢN LÝ THU CHI, SỔ QUỸ & DÒNG TIỀN (V4.1 COMMERCIAL PRO)
+ * BACKEND CONTROLLER, RBAC AUTH, FUND CRUD, VOUCHERS & AUDIT API (CODE.GS)
+ * Archetype: Finance & Cashflow (Golden Master v3.0)
+ * ============================================================================
+ */
+
+function doGet(e) {
+  return HtmlService.createHtmlOutputFromFile('Index')
+    .setTitle('Quản Lý Thu Chi, Sổ Quỹ & Dòng Tiền v4.1 Pro')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1');
+}
+
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('💰 QUẢN LÝ THU CHI & SỔ QUỸ PRO (v4.1)')
+    .addItem('⚡ 1. Khởi tạo / Làm mới 6 Tab Chuẩn Thương Mại', 'install_FINANCE_SHEET')
+    .addSeparator()
+    .addItem('🌐 2. Mở Web App Quản Trị Tài Chính (Full Screen Modal)', 'openFinanceDialog')
+    .addToUi();
+}
+
+function openFinanceDialog() {
+  const html = HtmlService.createHtmlOutputFromFile('Index')
+    .setWidth(1380)
+    .setHeight(850)
+    .setTitle('Hệ Thống Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền v4.1 (Commercial Pro)');
+  SpreadsheetApp.getUi().showModalDialog(html, '💰 Web App Quản Lý Thu Chi & Sổ Quỹ v4.1 Pro');
+}
+
+function openFinanceWebApp() {
+  openFinanceDialog();
+}
+
+function normalizeDateStr(rawVal, dispVal) {
+  if (rawVal && Object.prototype.toString.call(rawVal) === '[object Date]' && !isNaN(rawVal.getTime())) {
+    return Utilities.formatDate(rawVal, 'Asia/Ho_Chi_Minh', 'yyyy-MM-dd HH:mm');
+  }
+  const str = String(dispVal || rawVal || '').trim();
+  if (!str) return Utilities.formatDate(new Date(), 'Asia/Ho_Chi_Minh', 'yyyy-MM-dd HH:mm');
+  if (/^\d{4}-\d{2}-\d{2}/.test(str)) return str;
+  const slashMatch = str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})(.*)$/);
+  if (slashMatch) {
+    const p1 = parseInt(slashMatch[1], 10);
+    const p2 = parseInt(slashMatch[2], 10);
+    const yr = slashMatch[3];
+    const timePart = (slashMatch[4] || ' 09:00').trim();
+    // In en_US locale p1 is month, p2 is day; if p1 > 12 then p1 is day
+    const mm = String(p1 <= 12 ? p1 : p2).padStart(2, '0');
+    const dd = String(p1 <= 12 ? p2 : p1).padStart(2, '0');
+    return yr + '-' + mm + '-' + dd + (timePart ? ' ' + timePart : '');
+  }
+  return str;
+}
+
+function parseCurrency(rawVal, dispVal) {
+  if (typeof rawVal === 'number' && !isNaN(rawVal)) return Math.round(rawVal);
+  const s = String(rawVal !== undefined && rawVal !== null && rawVal !== '' ? rawVal : (dispVal || '')).trim();
+  if (!s) return 0;
+  const isNeg = s.indexOf('-') !== -1;
+  const digitsOnly = s.replace(/[^\d]/g, '');
+  if (!digitsOnly) return 0;
+  const num = parseInt(digitsOnly, 10) || 0;
+  return isNeg ? -num : num;
+}
+
+function getDefaultUsersList() {
+  return [
+    { username: 'admin', password: '123456', fullName: 'Nguyễn Minh Tuấn', role: 'ADMIN', assignedFund: 'ALL', permissionsDesc: 'Giám đốc tài chính (Toàn quyền hệ thống)', status: 'Hoạt động' },
+    { username: 'ketoan', password: '123456', fullName: 'Hoàng Thu Trang', role: 'ACCOUNTANT', assignedFund: 'ALL', permissionsDesc: 'Kế toán tổng hợp (Toàn bộ các quỹ, Lập phiếu, Báo cáo)', status: 'Hoạt động' },
+    { username: 'thuquy_tm', password: '123456', fullName: 'Phạm Thị Mai', role: 'CASHIER', assignedFund: 'Quỹ Tiền Mặt Văn Phòng', permissionsDesc: 'Thủ quỹ văn phòng (Chỉ phụ trách Quỹ Tiền Mặt Văn Phòng)', status: 'Hoạt động' },
+    { username: 'thuquy_vcb', password: '123456', fullName: 'Lê Hoàng Nam', role: 'CASHIER', assignedFund: 'Vietcombank Doanh Nghiệp', permissionsDesc: 'Kế toán thanh toán NH (Chỉ phụ trách Vietcombank Doanh Nghiệp)', status: 'Hoạt động' }
+  ];
+}
+
+function getFinanceData() {
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const tkSheet = ss.getSheetByName('TAI_KHOAN');
+    const sqSheet = ss.getSheetByName('SO_QUY');
+    const pqSheet = ss.getSheetByName('PHAN_QUYEN');
+    const chSheet = ss.getSheetByName('CAU_HINH');
+    const nkSheet = ss.getSheetByName('NHAT_KY');
+
+    if (!tkSheet || !sqSheet) {
+      return getFallbackFinanceData();
+    }
+
+    const settings = {
+      COMPANY_NAME: 'CÔNG TY TNHH CÔNG NGHỆ & THIẾT BỊ NEXSIMPLE VIỆT NAM',
+      COMPANY_ADDRESS: 'Số 93/4 Liên Khu 5-6, P. Bình Hưng Hòa B, Q. Bình Tân, TP.HCM',
+      COMPANY_PHONE: '0974 755 104',
+      COMPANY_TAX: '0318899221',
+      MONTHLY_BURN_LIMIT: '80000000',
+      ALLOW_OVERDRAFT: 'FALSE',
+      PRINT_TEMPLATE_STANDARD: 'Mẫu số 01-TT / 02-TT (Ban hành theo Thông tư 200/2014/TT-BTC của Bộ Tài Chính)'
+    };
+    if (chSheet && chSheet.getLastRow() >= 3) {
+      const chVals = chSheet.getDataRange().getDisplayValues();
+      for (let i = 2; i < chVals.length; i++) {
+        const k = String(chVals[i][0] || '').trim();
+        const v = String(chVals[i][1] || '').trim();
+        if (k) settings[k] = v;
+      }
+    }
+
+    const users = [];
+    if (pqSheet && pqSheet.getLastRow() >= 3) {
+      const pqVals = pqSheet.getDataRange().getDisplayValues();
+      for (let i = 2; i < pqVals.length; i++) {
+        const r = pqVals[i];
+        const uname = String(r[0] || '').trim();
+        if (!uname) continue;
+        users.push({
+          username: uname,
+          password: String(r[1] || '').trim() || '123456',
+          fullName: String(r[2] || '').trim() || uname,
+          role: String(r[3] || '').trim() || 'CASHIER',
+          assignedFund: String(r[4] || '').trim() || 'ALL',
+          permissionsDesc: String(r[5] || '').trim(),
+          status: String(r[6] || '').trim() || 'Hoạt động'
+        });
+      }
+    }
+    if (users.length === 0) {
+      const defUsers = getDefaultUsersList();
+      for (let u = 0; u < defUsers.length; u++) users.push(defUsers[u]);
+    }
+
+    const sqRaw = sqSheet.getDataRange().getValues();
+    const sqDisp = sqSheet.getDataRange().getDisplayValues();
+    const transactions = [];
+    if (sqDisp.length > 2) {
+      for (let i = 2; i < sqDisp.length; i++) {
+        const dRow = sqDisp[i];
+        const rRow = sqRaw[i] || dRow;
+        const code = String(dRow[0] || '').trim();
+        if (!code) continue;
+
+        const is13Cols = dRow.length >= 13;
+        const rawType = String(dRow[2] || 'Phiếu Thu').trim();
+        const normType = (rawType === 'Thu' || rawType === 'Phiếu Thu')
+          ? 'Phiếu Thu'
+          : ((rawType === 'Chi' || rawType === 'Phiếu Chi') ? 'Phiếu Chi' : 'Chuyển quỹ');
+
+        transactions.push({
+          code: code,
+          date: normalizeDateStr(rRow[1], dRow[1]),
+          type: normType,
+          category: String(dRow[3] || 'Hạng mục chung').trim(),
+          amountVnd: parseCurrency(rRow[4], dRow[4]),
+          accountName: String(dRow[5] || 'Vietcombank Doanh Nghiệp').trim(),
+          toAccountName: is13Cols ? String(dRow[6] || '---').trim() : '---',
+          partner: is13Cols ? String(dRow[7] || 'Đối tác kinh doanh').trim() : String(dRow[6] || 'Đối tác').trim(),
+          projectName: is13Cols ? String(dRow[8] || 'Vận hành chung').trim() : String(dRow[6] || 'Vận hành chung').trim(),
+          paymentStatus: is13Cols ? String(dRow[9] || 'Đã tất toán').trim() : 'Đã tất toán',
+          method: is13Cols ? String(dRow[10] || 'Chuyển khoản VietQR').trim() : String(dRow[9] || 'Chuyển khoản').trim(),
+          createdBy: is13Cols ? String(dRow[11] || 'Kế toán').trim() : String(dRow[7] || 'Kế toán').trim(),
+          notes: is13Cols ? String(dRow[12] || '').trim() : String(dRow[10] || '').trim()
+        });
+      }
+    }
+
+    const tkRaw = tkSheet.getDataRange().getValues();
+    const tkDisp = tkSheet.getDataRange().getDisplayValues();
+    const accounts = [];
+    if (tkDisp.length > 2) {
+      for (let i = 2; i < tkDisp.length; i++) {
+        const dRow = tkDisp[i];
+        const rRow = tkRaw[i] || dRow;
+        const id = String(dRow[0] || '').trim();
+        if (!id) continue;
+
+        const is10Cols = dRow.length >= 10;
+        const bankName = String(dRow[1] || '').trim();
+        const openingBal = is10Cols ? parseCurrency(rRow[5], dRow[5]) : parseCurrency(rRow[4], dRow[4]);
+
+        let calcIn = 0;
+        let calcOut = 0;
+        for (let t = 0; t < transactions.length; t++) {
+          const tx = transactions[t];
+          if (tx.type === 'Phiếu Thu' && tx.accountName === bankName) {
+            calcIn += tx.amountVnd;
+          } else if (tx.type === 'Phiếu Chi' && tx.accountName === bankName) {
+            calcOut += tx.amountVnd;
+          } else if (tx.type === 'Chuyển quỹ') {
+            if (tx.accountName === bankName) calcOut += tx.amountVnd;
+            if (tx.toAccountName === bankName) calcIn += tx.amountVnd;
+          }
+        }
+
+        const currentBal = openingBal + calcIn - calcOut;
+
+        accounts.push({
+          id: id,
+          bankName: bankName,
+          accountNumber: String(dRow[2] || '').trim(),
+          holderName: String(dRow[3] || '').trim(),
+          accountType: is10Cols ? String(dRow[4] || 'Ngân hàng').trim() : String(dRow[6] || 'Ngân hàng').trim(),
+          initialBalance: openingBal,
+          totalIn: calcIn,
+          totalOut: calcOut,
+          balanceVnd: currentBal,
+          notes: is10Cols ? String(dRow[9] || '').trim() : String(dRow[7] || '').trim()
+        });
+      }
+    }
+
+    const auditLogs = [];
+    if (nkSheet && nkSheet.getLastRow() >= 3) {
+      const nkRaw = nkSheet.getDataRange().getValues();
+      const nkDisp = nkSheet.getDataRange().getDisplayValues();
+      for (let i = 2; i < nkDisp.length; i++) {
+        const r = nkDisp[i];
+        const rr = nkRaw[i] || r;
+        if (!r[0] && !r[1]) continue;
+        auditLogs.push({
+          timestamp: normalizeDateStr(rr[0], r[0]),
+          username: String(r[1] || ''),
+          actorName: String(r[2] || ''),
+          action: String(r[3] || ''),
+          refCode: String(r[4] || ''),
+          detail: String(r[5] || '')
+        });
+      }
+    }
+
+    return buildFinanceResponse(accounts, transactions, settings, users, auditLogs.reverse(), false);
+  } catch (err) {
+    return getFallbackFinanceData();
+  }
+}
+
+function buildFinanceResponse(accounts, transactions, settings, users, auditLogs, isFallback) {
+  let totalBalance = 0;
+  let totalThu = 0;
+  let totalChi = 0;
+  let receivableTotal = 0;
+  let payableTotal = 0;
+
+  for (let i = 0; i < accounts.length; i++) {
+    totalBalance += Number(accounts[i].balanceVnd) || 0;
+  }
+
+  for (let j = 0; j < transactions.length; j++) {
+    const tx = transactions[j];
+    const amt = Number(tx.amountVnd) || 0;
+    if (tx.type === 'Phiếu Thu') totalThu += amt;
+    if (tx.type === 'Phiếu Chi') totalChi += amt;
+    if (tx.paymentStatus === 'Công nợ Phải thu') receivableTotal += amt;
+    if (tx.paymentStatus === 'Công nợ Phải trả') payableTotal += amt;
+  }
+
+  const netCashflow = totalThu - totalChi;
+  const burnRate = totalChi > 0 ? totalChi : (parseCurrency(settings.MONTHLY_BURN_LIMIT, settings.MONTHLY_BURN_LIMIT) || 80000000);
+  const runwayMonths = burnRate > 0 ? (totalBalance / burnRate).toFixed(1) : '36.0';
+
+  return {
+    success: true,
+    isFallback: Boolean(isFallback),
+    settings: settings,
+    users: users,
+    accounts: accounts,
+    transactions: transactions,
+    auditLogs: auditLogs,
+    kpi: {
+      totalBalance: totalBalance,
+      totalThu: totalThu,
+      totalChi: totalChi,
+      netCashflow: netCashflow,
+      receivableTotal: receivableTotal,
+      payableTotal: payableTotal,
+      burnRate: burnRate,
+      runwayMonths: String(runwayMonths)
+    }
+  };
+}
+
+function saveFundAccount(payload) {
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let tkSheet = ss.getSheetByName('TAI_KHOAN');
+    if (!tkSheet) {
+      install_FINANCE_SHEET();
+      tkSheet = ss.getSheetByName('TAI_KHOAN');
+    }
+
+    const id = String(payload.id || '').trim().toUpperCase();
+    const bankName = String(payload.bankName || '').trim();
+    if (!id || !bankName) {
+      return { success: false, message: 'Vui lòng nhập đầy đủ Mã Quỹ/TK và Tên Ngân Hàng / Quỹ!' };
+    }
+
+    const accNo = String(payload.accountNumber || '').trim();
+    const holder = String(payload.holderName || '').trim();
+    const accType = String(payload.accountType || 'Ngân hàng').trim();
+    const initBal = Number(payload.initialBalance) || 0;
+    const notes = String(payload.notes || '').trim();
+
+    const vals = tkSheet.getDataRange().getValues();
+    const is10Cols = (vals.length >= 2 && vals[1].length >= 10);
+    let existingRow = -1;
+
+    for (let i = 2; i < vals.length; i++) {
+      if (String(vals[i][0]).trim().toUpperCase() === id) {
+        existingRow = i + 1;
+        break;
+      }
+    }
+
+    if (existingRow > 0) {
+      if (is10Cols) {
+        tkSheet.getRange(existingRow, 2, 1, 5).setValues([[bankName, accNo, holder, accType, initBal]]);
+        tkSheet.getRange(existingRow, 10).setValue(notes);
+      } else {
+        tkSheet.getRange(existingRow, 2, 1, 4).setValues([[bankName, accNo, holder, initBal]]);
+        tkSheet.getRange(existingRow, 7, 1, 2).setValues([[accType, notes]]);
+      }
+      writeAuditLog(ss, payload.username || 'admin', payload.actorName || 'Admin', 'CẬP NHẬT QUỸ/TK', id, 'Cập nhật quỹ ' + bankName + ' (Số dư đầu: ' + initBal + ')');
+      return { success: true, message: 'Đã cập nhật quỹ/tài khoản [' + bankName + '] thành công!' };
+    } else {
+      const nextRow = tkSheet.getLastRow() + 1;
+      if (is10Cols) {
+        const newRow10 = [
+          id, bankName, accNo, holder, accType, initBal,
+          '=SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B' + nextRow + ', SO_QUY!C3:C, "Phiếu Thu") + SUMIFS(SO_QUY!E3:E, SO_QUY!G3:G, B' + nextRow + ', SO_QUY!C3:C, "Chuyển quỹ")',
+          '=SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B' + nextRow + ', SO_QUY!C3:C, "Phiếu Chi") + SUMIFS(SO_QUY!E3:E, SO_QUY!F3:F, B' + nextRow + ', SO_QUY!C3:C, "Chuyển quỹ")',
+          '=F' + nextRow + '+G' + nextRow + '-H' + nextRow,
+          notes
+        ];
+        tkSheet.getRange(nextRow, 1, 1, 10).setValues([newRow10]);
+        tkSheet.getRange(nextRow, 6, 1, 4).setNumberFormat('#,##0 "₫"');
+      } else {
+        tkSheet.appendRow([id, bankName, accNo, holder, initBal, initBal, accType, notes]);
+      }
+      SpreadsheetApp.flush();
+      writeAuditLog(ss, payload.username || 'admin', payload.actorName || 'Admin', 'THÊM QUỸ/TK MỚI', id, 'Thêm mới quỹ ' + bankName + ' (' + accNo + ')');
+      return { success: true, message: 'Đã thêm mới quỹ/tài khoản [' + bankName + '] vào Google Sheets!' };
+    }
+  } catch (err) {
+    return { success: false, message: 'Lỗi lưu quỹ/tài khoản: ' + err.toString() };
+  }
+}
+
+function submitFinanceTx(data) {
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const tkSheet = ss.getSheetByName('TAI_KHOAN');
+    const sqSheet = ss.getSheetByName('SO_QUY');
+
+    if (!tkSheet || !sqSheet) {
+      return { success: false, message: 'Chưa khởi tạo 6 Tab Trang tính! Vui lòng bấm menu Khởi tạo cấu trúc trước.' };
+    }
+
+    const amount = Number(data.amount) || 0;
+    if (amount <= 0) {
+      return { success: false, message: 'Số tiền trên chứng từ phải lớn hơn 0!' };
+    }
+
+    const role = data.userRole || 'ADMIN';
+    const assignedFund = data.assignedFund || 'ALL';
+    if (role === 'CASHIER' && assignedFund !== 'ALL') {
+      if (data.accountName !== assignedFund && data.toAccountName !== assignedFund) {
+        return { success: false, message: 'Phân quyền Thủ quỹ: Bạn chỉ được phép lập chứng từ trên [' + assignedFund + ']!' };
+      }
+    }
+
+    const prefix = data.type === 'Phiếu Thu' ? 'PT' : (data.type === 'Phiếu Chi' ? 'PC' : 'PCQ');
+    const code = data.code || (prefix + '-' + Utilities.formatDate(new Date(), 'Asia/Ho_Chi_Minh', 'yyyyMMdd-HHmm'));
+    const txDate = data.date ? (data.date + ' ' + Utilities.formatDate(new Date(), 'Asia/Ho_Chi_Minh', 'HH:mm')) : Utilities.formatDate(new Date(), 'Asia/Ho_Chi_Minh', 'yyyy-MM-dd HH:mm');
+
+    const sqHeaders = sqSheet.getLastRow() >= 2 ? sqSheet.getRange(2, 1, 1, sqSheet.getLastColumn()).getValues()[0] : [];
+    const is13Cols = sqHeaders.length >= 13;
+
+    const nextRow = sqSheet.getLastRow() + 1;
+    sqSheet.getRange(nextRow, 2).setNumberFormat('@');
+
+    if (is13Cols) {
+      sqSheet.appendRow([
+        code,
+        txDate,
+        data.type,
+        data.category || 'Hạng mục vận hành',
+        amount,
+        data.accountName,
+        data.type === 'Chuyển quỹ' ? (data.toAccountName || '---') : '---',
+        data.partner || 'Đối tác kinh doanh',
+        data.projectName || 'Vận hành chung',
+        data.paymentStatus || 'Đã tất toán',
+        data.method || 'Chuyển khoản VietQR',
+        data.createdBy || 'Kế toán',
+        data.notes || ''
+      ]);
+    } else {
+      sqSheet.appendRow([
+        code,
+        txDate,
+        data.type === 'Phiếu Thu' ? 'Thu' : 'Chi',
+        data.category || 'Hạng mục vận hành',
+        amount,
+        data.accountName,
+        data.projectName || 'Vận hành chung',
+        data.createdBy || 'Kế toán',
+        code,
+        data.method || 'Chuyển khoản VietQR',
+        data.notes || ''
+      ]);
+    }
+
+    const lastRow = sqSheet.getLastRow();
+    sqSheet.getRange(lastRow, 5).setNumberFormat('#,##0 "₫"');
+    SpreadsheetApp.flush();
+
+    writeAuditLog(
+      ss,
+      data.username || 'admin',
+      data.createdBy || 'Kế toán',
+      'LẬP ' + data.type.toUpperCase(),
+      code,
+      data.type + ' ' + amount + ' ₫ tại [' + data.accountName + '] - Đối tác: ' + (data.partner || '')
+    );
+
+    return {
+      success: true,
+      message: 'Đã ghi sổ chứng từ ' + code + ' và cập nhật số dư quỹ thành công!',
+      code: code
+    };
+  } catch (err) {
+    return {
+      success: false,
+      message: 'Lỗi ghi sổ quỹ: ' + err.toString()
+    };
+  }
+}
+
+function saveUserAccount(payload) {
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let pqSheet = ss.getSheetByName('PHAN_QUYEN');
+    if (!pqSheet) {
+      install_FINANCE_SHEET();
+      pqSheet = ss.getSheetByName('PHAN_QUYEN');
+    }
+
+    const uname = String(payload.username || '').trim().toLowerCase();
+    const pass = String(payload.password || '123456').trim();
+    const fullName = String(payload.fullName || '').trim();
+    const role = String(payload.role || 'CASHIER').trim();
+    const assignedFund = (role === 'ADMIN' || role === 'ACCOUNTANT') ? 'ALL' : String(payload.assignedFund || 'Quỹ Tiền Mặt Văn Phòng').trim();
+    const status = String(payload.status || 'Hoạt động').trim();
+
+    if (!uname || !fullName) {
+      return { success: false, message: 'Vui lòng nhập đầy đủ Tên đăng nhập và Họ tên nhân sự!' };
+    }
+
+    let permDesc = 'Thủ quỹ chuyên trách (Chỉ xem & lập phiếu trên ' + assignedFund + ')';
+    if (role === 'ADMIN') permDesc = 'Giám đốc tài chính (Toàn quyền hệ thống, Xem mọi quỹ, Tạo TK, Cấu hình)';
+    else if (role === 'ACCOUNTANT') permDesc = 'Kế toán tổng hợp (Xem tất cả các quỹ, Lập phiếu Thu/Chi, Xuất báo cáo dòng tiền)';
+
+    const vals = pqSheet.getDataRange().getValues();
+    let existingRow = -1;
+    for (let i = 2; i < vals.length; i++) {
+      if (String(vals[i][0]).trim().toLowerCase() === uname) {
+        existingRow = i + 1;
+        break;
+      }
+    }
+
+    if (existingRow > 0) {
+      pqSheet.getRange(existingRow, 2).setNumberFormat('@');
+      pqSheet.getRange(existingRow, 2, 1, 6).setValues([[
+        pass, fullName, role, assignedFund, permDesc, status
+      ]]);
+      writeAuditLog(ss, payload.actorUsername || 'admin', payload.actorName || 'Admin', 'CẬP NHẬT TÀI KHOẢN', uname, 'Cập nhật tài khoản ' + uname + ' (' + role + ' - ' + assignedFund + ')');
+      return { success: true, message: 'Đã cập nhật tài khoản [' + uname + '] thành công!' };
+    } else {
+      const nextR = pqSheet.getLastRow() + 1;
+      pqSheet.getRange(nextR, 1, 1, 2).setNumberFormat('@');
+      pqSheet.appendRow([uname, pass, fullName, role, assignedFund, permDesc, status]);
+      writeAuditLog(ss, payload.actorUsername || 'admin', payload.actorName || 'Admin', 'TẠO TÀI KHOẢN MỚI', uname, 'Tạo mới tài khoản ' + uname + ' (' + fullName + ' - ' + role + ')');
+      return { success: true, message: 'Đã tạo tài khoản mới [' + uname + '] thành công!' };
+    }
+  } catch (err) {
+    return { success: false, message: 'Lỗi lưu tài khoản: ' + err.toString() };
+  }
+}
+
+function deleteUserAccount(targetUsername, actorName) {
+  try {
+    const uname = String(targetUsername || '').trim().toLowerCase();
+    if (uname === 'admin') {
+      return { success: false, message: 'Không thể xóa tài khoản Quản trị viên gốc (admin)!' };
+    }
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const pqSheet = ss.getSheetByName('PHAN_QUYEN');
+    if (!pqSheet) return { success: false, message: 'Chưa có tab PHAN_QUYEN!' };
+
+    const vals = pqSheet.getDataRange().getValues();
+    for (let i = 2; i < vals.length; i++) {
+      if (String(vals[i][0]).trim().toLowerCase() === uname) {
+        pqSheet.deleteRow(i + 1);
+        writeAuditLog(ss, 'admin', actorName || 'Admin', 'XÓA TÀI KHOẢN', uname, 'Đã xóa tài khoản ' + uname);
+        return { success: true, message: 'Đã xóa tài khoản [' + uname + ']!' };
+      }
+    }
+    return { success: false, message: 'Không tìm thấy tài khoản ' + uname };
+  } catch (err) {
+    return { success: false, message: 'Lỗi xóa tài khoản: ' + err.toString() };
+  }
+}
+
+function saveCompanyConfig(configPayload) {
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const chSheet = ss.getSheetByName('CAU_HINH');
+    if (!chSheet) return { success: false, message: 'Chưa có tab CAU_HINH!' };
+
+    const vals = chSheet.getDataRange().getValues();
+    for (let i = 2; i < vals.length; i++) {
+      const key = String(vals[i][0]).trim();
+      if (configPayload.hasOwnProperty(key)) {
+        chSheet.getRange(i + 1, 2).setValue(configPayload[key]);
+      }
+    }
+
+    writeAuditLog(ss, configPayload.username || 'admin', configPayload.actorName || 'Admin', 'CẬP NHẬT CẤU HÌNH', 'CAU_HINH', 'Thay đổi thông tin doanh nghiệp / hạn mức chi phí');
+    return { success: true, message: 'Đã lưu cấu hình doanh nghiệp và biểu mẫu in thành công!' };
+  } catch (err) {
+    return { success: false, message: 'Lỗi lưu cấu hình: ' + err.toString() };
+  }
+}
+
+function writeAuditLog(ss, username, actorName, action, refCode, detail) {
+  try {
+    const nkSheet = ss.getSheetByName('NHAT_KY');
+    if (!nkSheet) return;
+    const nowStr = Utilities.formatDate(new Date(), 'Asia/Ho_Chi_Minh', 'yyyy-MM-dd HH:mm:ss');
+    nkSheet.appendRow([nowStr, username, actorName, action, refCode, detail]);
+  } catch (e) {}
+}
+
+function getFallbackFinanceData() {
+  const settings = {
+    COMPANY_NAME: 'CÔNG TY TNHH CÔNG NGHỆ & THIẾT BỊ NEXSIMPLE VIỆT NAM',
+    COMPANY_ADDRESS: 'Số 93/4 Liên Khu 5-6, P. Bình Hưng Hòa B, Q. Bình Tân, TP.HCM',
+    COMPANY_PHONE: '0974 755 104',
+    COMPANY_TAX: '0318899221',
+    MONTHLY_BURN_LIMIT: '80000000',
+    ALLOW_OVERDRAFT: 'FALSE',
+    PRINT_TEMPLATE_STANDARD: 'Mẫu số 01-TT / 02-TT (Ban hành theo Thông tư 200/2014/TT-BTC của Bộ Tài Chính)'
+  };
+
+  const users = getDefaultUsersList();
+
+  const accounts = [
+    { id: 'ACC-01', bankName: 'Vietcombank Doanh Nghiệp', accountNumber: '1018899889', holderName: 'CTY TNHH NEXSIMPLE VIET NAM', accountType: 'Ngân hàng', initialBalance: 250000000, totalIn: 133000000, totalOut: 15000000, balanceVnd: 368000000, notes: 'Tài khoản nhận doanh thu hợp đồng B2B chính' },
+    { id: 'ACC-02', bankName: 'Techcombank Vận Hành', accountNumber: '19034567890', holderName: 'CTY TNHH NEXSIMPLE VIET NAM', accountType: 'Ngân hàng', initialBalance: 120000000, totalIn: 36000000, totalOut: 65000000, balanceVnd: 91000000, notes: 'Tài khoản chi lương, server & marketing' },
+    { id: 'ACC-03', bankName: 'Quỹ Tiền Mặt Văn Phòng', accountNumber: 'CASH-VP-01', holderName: 'Phạm Thị Mai (Thủ Quỹ)', accountType: 'Tiền mặt', initialBalance: 35000000, totalIn: 15000000, totalOut: 3200000, balanceVnd: 46800000, notes: 'Quỹ tiền mặt chi tiêu hành chính văn phòng' },
+    { id: 'ACC-04', bankName: 'Quỹ Dự Phòng Đầu Tư', accountNumber: 'ACB-889900', holderName: 'CTY TNHH NEXSIMPLE VIET NAM', accountType: 'Quỹ dự phòng', initialBalance: 180000000, totalIn: 0, totalOut: 0, balanceVnd: 180000000, notes: 'Quỹ tích lũy dự phòng chiến lược' }
+  ];
+
+  const transactions = [
+    { code: 'PT-2026-1001', date: '2026-10-01 09:15', type: 'Phiếu Thu', category: 'Doanh thu bán hàng & Hợp đồng', amountVnd: 85000000, accountName: 'Vietcombank Doanh Nghiệp', toAccountName: '---', partner: 'Tập đoàn Truyền thông NovaMedia', projectName: 'Dự án ERP Q4', paymentStatus: 'Đã tất toán', method: 'Chuyển khoản VietQR', createdBy: 'Hoàng Thu Trang', notes: 'Thu tiền thanh toán đợt 1 Hợp đồng phần mềm số 102/HĐKT' },
+    { code: 'PC-2026-1002', date: '2026-10-03 10:30', type: 'Phiếu Chi', category: 'Chi phí Lương & Thưởng nhân sự', amountVnd: 42000000, accountName: 'Techcombank Vận Hành', toAccountName: '---', partner: 'Bảng lương Nhân sự Khối Kỹ thuật', projectName: 'Khối Engineering', paymentStatus: 'Đã tất toán', method: 'UNC Ngân hàng', createdBy: 'Hoàng Thu Trang', notes: 'Chi lương và phụ cấp dự án tháng 09/2026' },
+    { code: 'PT-2026-1004', date: '2026-10-05 14:20', type: 'Phiếu Thu', category: 'Doanh thu dịch vụ Tư vấn & Triển khai', amountVnd: 36000000, accountName: 'Techcombank Vận Hành', toAccountName: '---', partner: 'Công ty CP Logistics Đông Nam Á', projectName: 'Dự án Kho Đa Điểm', paymentStatus: 'Đã tất toán', method: 'Chuyển khoản VietQR', createdBy: 'Nguyễn Minh Tuấn', notes: 'Thu phí gói triển khai hệ thống Quản lý kho v3.0' },
+    { code: 'PC-2026-1006', date: '2026-10-07 11:00', type: 'Phiếu Chi', category: 'Chi phí Hạ tầng Cloud & Bản quyền', amountVnd: 8500000, accountName: 'Techcombank Vận Hành', toAccountName: '---', partner: 'Amazon Web Services & Google Cloud', 'projectName': 'Hạ tầng Công nghệ', paymentStatus: 'Đã tất toán', method: 'Thẻ Doanh nghiệp', createdBy: 'Nguyễn Minh Tuấn', notes: 'Thanh toán cước máy chủ Cloud và license định kỳ' },
+    { code: 'PCQ-2026-1008', date: '2026-10-09 15:00', type: 'Chuyển quỹ', category: 'Rút tiền gửi nhập quỹ tiền mặt', amountVnd: 15000000, accountName: 'Vietcombank Doanh Nghiệp', toAccountName: 'Quỹ Tiền Mặt Văn Phòng', partner: 'Luân chuyển quỹ nội bộ', projectName: 'Khối Hành chính', paymentStatus: 'Đã tất toán', method: 'Ủy nhiệm chi / Rút TM', createdBy: 'Phạm Thị Mai', notes: 'Bổ sung định mức quỹ tiền mặt văn phòng tháng 10' },
+    { code: 'PC-2026-1010', date: '2026-10-11 09:45', type: 'Phiếu Chi', category: 'Chi phí Hành chính, Tiếp khách & VPP', amountVnd: 3200000, accountName: 'Quỹ Tiền Mặt Văn Phòng', toAccountName: '---', partner: 'Nhà hàng Sen Việt & VPP Thiên Long', projectName: 'Khối Kinh doanh', paymentStatus: 'Đã tất toán', method: 'Tiền mặt', createdBy: 'Phạm Thị Mai', notes: 'Chi tiếp đoàn khách hàng ký hợp đồng và mua văn phòng phẩm' },
+    { code: 'PT-2026-1012', date: '2026-10-14 16:10', type: 'Phiếu Thu', category: 'Doanh thu bán hàng & Hợp đồng', amountVnd: 48000000, accountName: 'Vietcombank Doanh Nghiệp', toAccountName: '---', partner: 'Chuỗi Bán Lẻ Minh Khang Mart', projectName: 'Dự án POS Chuỗi', paymentStatus: 'Công nợ Phải thu', method: 'Chuyển khoản VietQR', createdBy: 'Hoàng Thu Trang', notes: 'Nghiệm thu bàn giao giai đoạn 2 (Hạn thanh toán 30/10)' },
+    { code: 'PC-2026-1015', date: '2026-10-16 11:20', type: 'Phiếu Chi', category: 'Chi phí Quảng cáo & Marketing', amountVnd: 14500000, accountName: 'Techcombank Vận Hành', toAccountName: '---', partner: 'Đối tác Meta Ads & Google Ads VN', projectName: 'Khối Marketing', paymentStatus: 'Công nợ Phải trả', method: 'Chuyển khoản', createdBy: 'Hoàng Thu Trang', notes: 'Chi phí chiến dịch quảng cáo Performance tháng 10/2026' }
+  ];
+
+  const auditLogs = [
+    { timestamp: '2026-10-16 11:20:00', username: 'ketoan', actorName: 'Hoàng Thu Trang (ACCOUNTANT)', action: 'LẬP PHIẾU CHI', refCode: 'PC-2026-1015', detail: 'Ghi nhận chi phí Marketing 14,500,000 ₫ trên Techcombank Vận Hành' },
+    { timestamp: '2026-10-14 16:10:00', username: 'ketoan', actorName: 'Hoàng Thu Trang (ACCOUNTANT)', action: 'LẬP PHIẾU THU', refCode: 'PT-2026-1012', detail: 'Ghi nhận doanh thu 48,000,000 ₫ từ Chuỗi Minh Khang Mart' },
+    { timestamp: '2026-10-09 15:00:00', username: 'thuquy_tm', actorName: 'Phạm Thị Mai (CASHIER)', action: 'CHUYỂN QUỸ NỘI BỘ', refCode: 'PCQ-2026-1008', detail: 'Chuyển 15,000,000 ₫ từ Vietcombank -> Quỹ Tiền Mặt Văn Phòng' }
+  ];
+
+  return buildFinanceResponse(accounts, transactions, settings, users, auditLogs, true);
+}
+```
+
+## 4. FILE `Index.html`
+```html
+<!DOCTYPE html>
+<html lang="vi" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GS-003: Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền v4.1 (Commercial Pro)</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --sidebar-width: 265px;
+      --sidebar-collapsed-width: 74px;
+      --primary-accent: #059669;
+      --bg-soft: #f8fafc;
+      --card-border: #e2e8f0;
+    }
+    [data-bs-theme="dark"] {
+      --bg-soft: #0f172a;
+      --card-border: #1e293b;
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-soft);
+      overflow-x: hidden;
+      margin: 0;
+    }
+    #authGateScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: linear-gradient(135deg, #064e3b 0%, #0f172a 55%, #047857 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .auth-card {
+      width: 100%;
+      max-width: 460px;
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 18px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.45);
+      padding: 28px 28px 24px;
+    }
+    .quick-role-btn {
+      font-size: 11.5px;
+      padding: 5px 8px;
+      border-radius: 8px;
+      text-align: left;
+      transition: all 0.15s;
+    }
+    .quick-role-btn:hover {
+      transform: translateY(-1px);
+    }
+    .app-wrapper {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+    }
+    .app-sidebar {
+      width: var(--sidebar-width);
+      background: #0f172a;
+      color: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      transition: width 0.25s ease;
+      flex-shrink: 0;
+      z-index: 1030;
+    }
+    .app-sidebar.collapsed {
+      width: var(--sidebar-collapsed-width);
+    }
+    .app-sidebar.collapsed .hide-on-collapse {
+      display: none !important;
+    }
+    .sidebar-brand {
+      padding: 16px 18px;
+      border-bottom: 1px solid #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-menu {
+      padding: 14px 10px;
+      flex: 1;
+    }
+    .nav-menu-btn {
+      width: 100%;
+      border: none;
+      background: transparent;
+      color: #94a3b8;
+      padding: 11px 14px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 6px;
+      text-align: left;
+      transition: all 0.2s;
+    }
+    .nav-menu-btn:hover {
+      background: rgba(255,255,255,0.06);
+      color: #ffffff;
+    }
+    .nav-menu-btn.active {
+      background: linear-gradient(135deg, #059669, #047857);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
+    }
+    .app-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .app-topbar {
+      background: var(--bs-body-bg);
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 22px;
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+    }
+    .kpi-card {
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
+      background: var(--bs-body-bg);
+      padding: 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      height: 100%;
+    }
+    .kpi-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+    }
+    .panel-card {
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
+      background: var(--bs-body-bg);
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .table-sticky th {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background-color: #f1f5f9;
+      color: #334155;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    [data-bs-theme="dark"] .table-sticky th {
+      background-color: #1e293b;
+      color: #e2e8f0;
+    }
+    .sticky-col-left {
+      position: sticky;
+      left: 0;
+      z-index: 4;
+      background-color: var(--bs-body-bg) !important;
+    }
+    .badge-thu { background-color: #d1fae5; color: #065f46; font-weight: 700; }
+    .badge-chi { background-color: #fee2e2; color: #991b1b; font-weight: 700; }
+    .badge-transfer { background-color: #e0f2fe; color: #075985; font-weight: 700; }
+    .badge-paid { background-color: #dcfce7; color: #166534; }
+    .badge-receivable { background-color: #fef3c7; color: #92400e; }
+    .badge-payable { background-color: #ffe4e6; color: #9f1239; }
+    #dedicatedPrintSheet { display: none; }
+    @media print {
+      body > *:not(#dedicatedPrintSheet) { display: none !important; }
+      #dedicatedPrintSheet {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 10mm !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-family: "Times New Roman", Times, serif !important;
+        font-size: 13pt !important;
+      }
+      #dedicatedPrintSheet table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+      }
+      #dedicatedPrintSheet th,
+      #dedicatedPrintSheet td {
+        border: 1px solid #000000 !important;
+        padding: 6px 8px !important;
+        color: #000000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="dedicatedPrintSheet"></div>
+
+<!-- FULL-SCREEN MANDATORY LOGIN GATE -->
+<div id="authGateScreen">
+  <div class="auth-card">
+    <div class="text-center mb-3">
+      <div class="d-inline-flex align-items-center justify-content-center bg-success text-white rounded-4 shadow-sm mb-2" style="width:54px;height:54px;font-size:26px;">
+        💰
+      </div>
+      <h4 class="fw-bold mb-1" style="color:#0f172a;">ĐĂNG NHẬP HỆ THỐNG TÀI CHÍNH</h4>
+      <div class="small text-secondary" id="authGateCompanySub">Quản Lý Thu Chi, Sổ Quỹ Đa Tài Khoản & Dòng Tiền v4.1 Pro</div>
+      <div class="mt-2">
+        <span class="badge bg-success-subtle text-success border border-success-subtle" id="authSyncStatus">
+          <i class="bi bi-shield-check me-1"></i> Hệ thống sẵn sàng xác thực (4 tài khoản)
+        </span>
+      </div>
+    </div>
+
+    <div id="loginFormBox">
+      <div class="mb-3">
+        <label class="form-label small fw-bold text-uppercase text-secondary mb-1">Tên Đăng Nhập (Username)</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-person-fill text-success"></i></span>
+          <input type="text" class="form-control fw-bold" id="gateUsername" value="admin" placeholder="Nhập tên tài khoản (VD: admin)..." onkeydown="if(event.key==='Enter'){event.preventDefault();handleMandatoryLogin();}">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label small fw-bold text-uppercase text-secondary mb-1">Mật Khẩu (Password)</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-key-fill text-success"></i></span>
+          <input type="password" class="form-control" id="gatePassword" value="123456" placeholder="Nhập mật khẩu (Mặc định: 123456)..." onkeydown="if(event.key==='Enter'){event.preventDefault();handleMandatoryLogin();}">
+          <button class="btn btn-outline-secondary" type="button" onclick="toggleGatePassVisibility()" title="Hiện / Ẩn mật khẩu">
+            <i class="bi bi-eye" id="gatePassEye"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="gateErrorAlert" class="alert alert-danger py-2 small d-none mb-3"></div>
+
+      <div class="d-grid mt-3">
+        <button type="button" class="btn btn-success fw-bold py-2 fs-6 shadow-sm" id="btnGateLogin" onclick="handleMandatoryLogin()">
+          <i class="bi bi-shield-lock-fill me-1"></i> Đăng Nhập Vào Hệ Thống
+        </button>
+      </div>
+    </div>
+
+    <!-- QUICK LOGIN CHIPS FOR DEMO & TESTING RBAC -->
+    <div class="border-top mt-3 pt-3">
+      <div class="small fw-bold text-secondary mb-2 text-center">
+        <i class="bi bi-lightning-charge-fill text-warning me-1"></i>Chọn nhanh tài khoản mẫu (Mật khẩu: <code>123456</code>):
+      </div>
+      <div class="row g-2">
+        <div class="col-6">
+          <button type="button" class="btn btn-outline-success w-100 quick-role-btn" onclick="quickLoginAs('admin', '123456')">
+            <div class="fw-bold">👑 Giám Đốc (ADMIN)</div>
+            <div class="text-secondary" style="font-size:10.5px;">TK: <code>admin</code> • Toàn bộ quỹ</div>
+          </button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-outline-primary w-100 quick-role-btn" onclick="quickLoginAs('ketoan', '123456')">
+            <div class="fw-bold">📊 Kế Toán Tổng Hợp</div>
+            <div class="text-secondary" style="font-size:10.5px;">TK: <code>ketoan</code> • Toàn bộ quỹ</div>
+          </button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-outline-dark w-100 quick-role-btn" onclick="quickLoginAs('thuquy_tm', '123456')">
+            <div class="fw-bold">💵 Thủ Quỹ Tiền Mặt</div>
+            <div class="text-secondary" style="font-size:10.5px;">TK: <code>thuquy_tm</code> • Quỹ TM</div>
+          </button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-outline-info text-dark w-100 quick-role-btn" onclick="quickLoginAs('thuquy_vcb', '123456')">
+            <div class="fw-bold">🏦 Thủ Quỹ VCB</div>
+            <div class="text-secondary" style="font-size:10.5px;">TK: <code>thuquy_vcb</code> • TK VCB</div>
+          </button>
+        </div>
+      </div>
+      <div class="small text-secondary text-center mt-2" style="font-size:11px;">
+        <i class="bi bi-shield-check text-success me-1"></i> Bảo mật theo bảng <code>PHAN_QUYEN</code> trên Google Sheets
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-wrapper d-none" id="mainAppWrapper">
+  <aside class="app-sidebar" id="appSidebar">
+    <div class="sidebar-brand">
+      <div class="d-flex align-items-center gap-2">
+        <div class="bg-success text-white fw-bold rounded-3 d-flex align-items-center justify-content-center" style="width:34px;height:34px;font-size:17px;">
+          💰
+        </div>
+        <div class="hide-on-collapse">
+          <div class="fw-bold text-white" style="font-size:13.5px;">THU CHI & SỔ QUỸ PRO</div>
+          <div class="text-success-emphasis" style="font-size:11px;font-weight:700;color:#34d399 !important;">GS-003 • v4.1 Pro</div>
+        </div>
+      </div>
+      <button class="btn btn-sm btn-dark border-secondary text-light" type="button" onclick="toggleSidebar()" title="Thu gọn / Mở rộng thanh bên">
+        <i class="bi bi-layout-sidebar-inset"></i>
+      </button>
+    </div>
+
+    <div class="nav-menu">
+      <div class="text-uppercase text-secondary fw-bold px-2 mb-2 hide-on-collapse" style="font-size:10px;letter-spacing:0.6px;">
+        Phân hệ tài chính
+      </div>
+      <button class="nav-menu-btn active" type="button" id="nav-dashboard" onclick="switchView('dashboard')">
+        <i class="bi bi-graph-up-arrow fs-5"></i>
+        <span class="hide-on-collapse">Tổng Quan & Dòng Tiền</span>
+      </button>
+      <button class="nav-menu-btn" type="button" id="nav-funds" onclick="switchView('funds')">
+        <i class="bi bi-bank2 fs-5"></i>
+        <span class="hide-on-collapse">Danh Mục Quỹ & Ngân Hàng</span>
+      </button>
+      <button class="nav-menu-btn" type="button" id="nav-cashflow" onclick="switchView('cashflow')">
+        <i class="bi bi-table fs-5"></i>
+        <span class="hide-on-collapse">Báo Cáo Lưu Chuyển Tiền</span>
+      </button>
+      <button class="nav-menu-btn" type="button" id="nav-vouchers" onclick="switchView('vouchers')">
+        <i class="bi bi-receipt-cutoff fs-5"></i>
+        <span class="hide-on-collapse">Sổ Phiếu Thu-Chi & Công Nợ</span>
+      </button>
+
+      <div class="text-uppercase text-secondary fw-bold px-2 mt-3 mb-2 hide-on-collapse" style="font-size:10px;letter-spacing:0.6px;">
+        Tài khoản & Quản trị
+      </div>
+      <button class="nav-menu-btn" type="button" id="nav-rbac" onclick="switchView('rbac')">
+        <i class="bi bi-people-fill fs-5"></i>
+        <span class="hide-on-collapse">Tài Khoản & Phân Quyền</span>
+      </button>
+      <button class="nav-menu-btn" type="button" id="nav-settings" onclick="switchView('settings')">
+        <i class="bi bi-Sliders fs-5 bi-sliders"></i>
+        <span class="hide-on-collapse">Cấu Hình & Mẫu In TT200</span>
+      </button>
+    </div>
+
+    <div class="p-3 border-top border-secondary border-opacity-25 hide-on-collapse">
+      <div class="small text-secondary mb-1">Đang đăng nhập:</div>
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <span class="fw-bold text-white small" id="sidebarUsername">admin</span>
+        <span class="badge bg-success" id="sidebarRoleBadge">ADMIN</span>
+      </div>
+      <div class="small text-light fw-semibold mb-1" id="sidebarUserName">Nguyễn Minh Tuấn</div>
+      <div class="small text-warning mb-2" style="font-size:11.5px;" id="sidebarFundScope">
+        <i class="bi bi-wallet2"></i> Phạm vi: Tất cả các quỹ
+      </div>
+      <div class="d-grid gap-1">
+        <button class="btn btn-xs btn-outline-info btn-sm py-1" type="button" id="btnSidebarCreateUser" onclick="openUserModal()">
+          <i class="bi bi-person-plus-fill me-1"></i> Tạo Tài Khoản Mới
+        </button>
+        <button class="btn btn-xs btn-outline-danger btn-sm py-1" type="button" onclick="handleLogout()">
+          <i class="bi bi-power me-1"></i> Đăng Xuất / Đổi TK
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <div>
+          <h5 class="fw-bold mb-0 d-flex align-items-center gap-2">
+            <span id="topbarCompanyTitle">HỆ THỐNG QUẢN TRỊ THU CHI, SỔ QUỸ & DÒNG TIỀN</span>
+            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:11px;" id="connBadge">
+              <i class="bi bi-cloud-check-fill me-1"></i> Đang đồng bộ...
+            </span>
+          </h5>
+          <div class="text-secondary small">Chuẩn Kế Toán Thông Tư 200/2014/TT-BTC • Đa Tài Khoản Ngân Hàng & Quỹ Tiền Mặt</div>
+        </div>
+
+        <div class="d-flex flex-wrap align-items-center gap-2">
+          <div class="input-group input-group-sm" style="width: auto;">
+            <span class="input-group-text bg-body-tertiary fw-semibold"><i class="bi bi-calendar3 me-1"></i>Kỳ:</span>
+            <input type="date" class="form-control" id="filterStartDate" value="2026-01-01" onchange="refreshAllViews()">
+            <span class="input-group-text">→</span>
+            <input type="date" class="form-control" id="filterEndDate" value="2026-12-31" onchange="refreshAllViews()">
+            <button class="btn btn-outline-secondary" type="button" onclick="resetDateFilter()" title="Đặt lại toàn kỳ">Toàn kỳ</button>
+          </div>
+
+          <select class="form-select form-select-sm fw-semibold border-success" style="width: 225px;" id="globalFundFilter" onchange="refreshAllViews()">
+            <option value="ALL">Tất cả các Quỹ & Tài khoản (Toàn hệ thống)</option>
+          </select>
+
+          <select class="form-select form-select-sm fw-semibold" style="width: 165px;" id="globalStatusFilter" onchange="refreshAllViews()">
+            <option value="ALL">Mọi trạng thái TT</option>
+            <option value="Đã tất toán">✅ Đã tất toán</option>
+            <option value="CONG_NO">⏳ Đang treo Công nợ</option>
+          </select>
+
+          <button class="btn btn-outline-primary btn-sm" type="button" onclick="loadData()" title="Làm mới dữ liệu từ Google Sheets">
+            <i class="bi bi-arrow-clockwise"></i>
+          </button>
+          <button class="btn btn-outline-secondary btn-sm" type="button" onclick="toggleTheme()" title="Chế độ Sáng / Tối">
+            <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+          </button>
+
+          <div class="vr mx-1"></div>
+          <div class="d-flex align-items-center gap-1 bg-body-tertiary border rounded-pill px-2 py-1">
+            <span class="badge bg-success rounded-pill" id="topRoleBadge">ADMIN</span>
+            <span class="small fw-bold px-1" id="topUserBadge">Nguyễn Minh Tuấn</span>
+            <button class="btn btn-sm btn-link text-primary p-0 px-1" type="button" id="btnTopCreateUser" onclick="openUserModal()" title="Tạo tài khoản nhân sự mới">
+              <i class="bi bi-person-plus-fill"></i>
+            </button>
+            <button class="btn btn-sm btn-link text-danger p-0 px-1" type="button" onclick="handleLogout()" title="Đăng xuất">
+              <i class="bi bi-box-arrow-right"></i>
+            </button>
+          </div>
+
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-success fw-bold" type="button" onclick="openTxModal('Phiếu Thu')">
+              <i class="bi bi-plus-circle me-1"></i> Lập Phiếu Thu
+            </button>
+            <button class="btn btn-danger fw-bold" type="button" onclick="openTxModal('Phiếu Chi')">
+              <i class="bi bi-dash-circle me-1"></i> Lập Phiếu Chi
+            </button>
+            <button class="btn btn-primary fw-bold" type="button" onclick="openTxModal('Chuyển quỹ')">
+              <i class="bi bi-arrow-left-right me-1"></i> Chuyển Quỹ
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="p-3 p-md-4">
+      <!-- VIEW 1: DASHBOARD -->
+      <section id="view-dashboard" class="view-section">
+        <div class="row g-3 mb-4">
+          <div class="col-md-6 col-xl-3">
+            <div class="kpi-card">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <div class="text-secondary small fw-bold text-uppercase">Tổng Ngân Quỹ Khả Dụng</div>
+                  <h4 class="fw-bold mt-1 mb-1 text-primary" id="kpiTotalBalance">0 ₫</h4>
+                  <div class="small text-secondary" id="kpiAccountCountSub">Trên 4 quỹ/tài khoản</div>
+                </div>
+                <div class="kpi-icon bg-primary-subtle text-primary"><i class="bi bi-safe2-fill"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div class="kpi-card">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <div class="text-secondary small fw-bold text-uppercase">Tổng Thu / Tổng Chi Kỳ Lọc</div>
+                  <div class="fw-bold mt-1 mb-1 fs-6" id="kpiInOutText">
+                    <span class="text-success">+0 ₫</span> / <span class="text-danger">-0 ₫</span>
+                  </div>
+                  <div class="small text-secondary" id="kpiTxCountSub">0 chứng từ trong kỳ</div>
+                </div>
+                <div class="kpi-icon bg-success-subtle text-success"><i class="bi bi-cash-stack"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div class="kpi-card">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <div class="text-secondary small fw-bold text-uppercase">Dòng Tiền Thuần & Runway</div>
+                  <h4 class="fw-bold mt-1 mb-1" id="kpiNetCashflow">0 ₫</h4>
+                  <div class="small fw-semibold text-success" id="kpiRunwaySub">Runway duy trì: 36 tháng</div>
+                </div>
+                <div class="kpi-icon bg-info-subtle text-info"><i class="bi bi-activity"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div class="kpi-card">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <div class="text-secondary small fw-bold text-uppercase">Công Nợ Phải Thu / Phải Trả</div>
+                  <div class="fw-bold mt-1 mb-1 fs-6" id="kpiDebtText">
+                    <span class="text-warning-emphasis">Thu: 0 ₫</span> | <span class="text-danger">Trả: 0 ₫</span>
+                  </div>
+                  <div class="small text-secondary">Chứng từ chờ tất toán</div>
+                </div>
+                <div class="kpi-icon bg-warning-subtle text-warning"><i class="bi bi-hourglass-split"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3 mb-4" id="dashboardFundCards"></div>
+
+        <div class="row g-3">
+          <div class="col-lg-7">
+            <div class="panel-card h-100 mb-0">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <h6 class="fw-bold mb-0"><i class="bi bi-bar-chart-fill text-success me-2"></i>Cơ Cấu Thu & Chi Theo Hạng Mục (Triệu VNĐ)</h6>
+                  <small class="text-secondary">Phân tích dòng tiền thực tế theo danh mục thu chi</small>
+                </div>
+              </div>
+              <div style="height: 290px;"><canvas id="categoryCashChart"></canvas></div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="panel-card h-100 mb-0">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <h6 class="fw-bold mb-0"><i class="bi bi-pie-chart-fill text-primary me-2"></i>Tỷ Trọng Số Dư Theo Quỹ / Ngân Hàng</h6>
+                  <small class="text-secondary">Phân bổ thanh khoản hiện hữu giữa các tài khoản</small>
+                </div>
+              </div>
+              <div style="height: 290px;"><canvas id="fundPieChart"></canvas></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 2: DANH MỤC QUỸ & TÀI KHOẢN NGÂN HÀNG -->
+      <section id="view-funds" class="view-section d-none">
+        <div class="panel-card">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <div>
+              <h6 class="fw-bold mb-0"><i class="bi bi-bank2 text-primary me-2"></i>Danh Mục Tài Khoản Ngân Hàng, Ví Điện Tử & Quỹ Tiền Mặt</h6>
+              <small class="text-secondary">Tự động kết chuyển Số dư đầu kỳ + Tổng Thu - Tổng Chi (Bao gồm luân chuyển quỹ nội bộ)</small>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+              <div class="input-group input-group-sm" style="width: 250px;">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control" id="fundSearchInput" placeholder="Tìm tên quỹ, số TK, ngân hàng..." oninput="renderFundsTable()">
+              </div>
+              <button class="btn btn-sm btn-primary fw-bold" type="button" onclick="openFundModal()">
+                <i class="bi bi-plus-lg me-1"></i> + Thêm Quỹ / Tài Khoản Mới
+              </button>
+              <button class="btn btn-sm btn-outline-success fw-semibold" type="button" onclick="exportFundsCsv()">
+                <i class="bi bi-file-earmark-spreadsheet me-1"></i> Xuất Excel (CSV)
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive" style="max-height: 540px;">
+            <table class="table table-hover table-bordered align-middle table-sticky mb-0">
+              <thead>
+                <tr>
+                  <th class="sticky-col-left">Mã Quỹ</th>
+                  <th>Tên Ngân Hàng / Quỹ Tiền Mặt</th>
+                  <th>Số Tài Khoản / Mã Ví</th>
+                  <th>Chủ Tài Khoản / Phụ Trách</th>
+                  <th class="text-center">Loại Quỹ</th>
+                  <th class="text-end">Số Dư Đầu Kỳ</th>
+                  <th class="text-end text-success">Tổng Thu (+)</th>
+                  <th class="text-end text-danger">Tổng Chi (-)</th>
+                  <th class="text-end bg-primary-subtle text-primary">Số Dư Hiện Tại</th>
+                  <th class="text-center">Thao Tác</th>
+                </tr>
+              </thead>
+              <tbody id="fundsTbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 3: BÁO CÁO LƯU CHUYỂN TIỀN TỆ -->
+      <section id="view-cashflow" class="view-section d-none">
+        <div class="panel-card">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <div>
+              <h6 class="fw-bold mb-0"><i class="bi bi-table text-success me-2"></i>Báo Cáo Tổng Hợp Lưu Chuyển Tiền Tệ & Tồn Quỹ Theo Kỳ</h6>
+              <small class="text-secondary" id="cashflowPeriodSubtitle">Kỳ báo cáo: Toàn kỳ</small>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-dark fw-semibold" type="button" onclick="printCashflowReport()">
+                <i class="bi bi-printer-fill me-1"></i> In Báo Cáo Lưu Chuyển Tiền Tệ (A4)
+              </button>
+              <button class="btn btn-sm btn-outline-success fw-semibold" type="button" onclick="exportCashflowCsv()">
+                <i class="bi bi-download me-1"></i> Xuất CSV
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive" id="cashflowTableWrapper">
+            <table class="table table-bordered table-hover align-middle table-sticky mb-0">
+              <thead>
+                <tr class="text-center">
+                  <th>Mã Quỹ</th>
+                  <th class="text-start">Tên Quỹ / Tài Khoản Ngân Hàng</th>
+                  <th>Số Tài Khoản</th>
+                  <th>Loại Quỹ</th>
+                  <th class="text-end">Số Dư Đầu Kỳ (1)</th>
+                  <th class="text-end text-success">Thu Trong Kỳ (2)</th>
+                  <th class="text-end text-danger">Chi Trong Kỳ (3)</th>
+                  <th class="text-end">Lưu Chuyển Thuần (2-3)</th>
+                  <th class="text-end bg-success-subtle text-success">Số Dư Cuối Kỳ (1+2-3)</th>
+                </tr>
+              </thead>
+              <tbody id="cashflowReportTbody"></tbody>
+              <tfoot id="cashflowReportTfoot" class="table-light fw-bold"></tfoot>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 4: SỔ CHỨNG TỪ PHIẾU THU / PHIẾU CHI & CÔNG NỢ -->
+      <section id="view-vouchers" class="view-section d-none">
+        <div class="panel-card">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <ul class="nav nav-pills nav-fill bg-body-tertiary p-1 rounded-3" style="font-size:13.5px;">
+              <li class="nav-item">
+                <button class="nav-link active fw-bold py-1 px-3" type="button" id="subtab-voucher-list" onclick="switchVoucherSubTab('list')">
+                  <i class="bi bi-journal-text me-1"></i> 1. Sổ Chứng Từ Thu - Chi - Chuyển Quỹ
+                </button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link fw-bold py-1 px-3" type="button" id="subtab-partner-history" onclick="switchVoucherSubTab('partner')">
+                  <i class="bi bi-building-check me-1"></i> 2. Tổng Hợp Theo Đối Tác & Công Nợ
+                </button>
+              </li>
+            </ul>
+
+            <div class="d-flex flex-wrap gap-2">
+              <select class="form-select form-select-sm" style="width: 155px;" id="voucherTypeFilter" onchange="renderVouchersView()">
+                <option value="ALL">Tất cả loại phiếu</option>
+                <option value="Phiếu Thu">📥 Phiếu Thu (01-TT)</option>
+                <option value="Phiếu Chi">📤 Phiếu Chi (02-TT)</option>
+                <option value="Chuyển quỹ">🔄 Chuyển quỹ nội bộ</option>
+              </select>
+              <div class="input-group input-group-sm" style="width: 240px;">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control" id="voucherSearchInput" placeholder="Số phiếu, đối tác, hạng mục..." oninput="renderVouchersView()">
+              </div>
+              <button class="btn btn-sm btn-outline-success fw-semibold" type="button" onclick="exportVouchersCsv()">
+                <i class="bi bi-download me-1"></i> Xuất CSV
+              </button>
+            </div>
+          </div>
+
+          <div id="voucherListPane">
+            <div class="table-responsive" style="max-height: 520px;">
+              <table class="table table-hover table-bordered align-middle table-sticky mb-0">
+                <thead>
+                  <tr>
+                    <th>Số Chứng Từ</th>
+                    <th>Ngày Ghi Sổ</th>
+                    <th>Loại Phiếu</th>
+                    <th>Hạng Mục Thu Chi</th>
+                    <th class="text-end">Số Tiền (VNĐ)</th>
+                    <th>Tài Khoản / Quỹ</th>
+                    <th>Đối Tác & Dự Án</th>
+                    <th class="text-center">Trạng Thái</th>
+                    <th>Người Lập</th>
+                    <th class="text-center">In Phiếu TT200</th>
+                  </tr>
+                </thead>
+                <tbody id="vouchersTbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="partnerHistoryPane" class="d-none">
+            <div class="table-responsive" style="max-height: 520px;">
+              <table class="table table-bordered table-hover align-middle table-sticky mb-0">
+                <thead>
+                  <tr>
+                    <th>Tên Đối Tác (Khách Hàng / Nhà Cung Cấp / Nhân Sự)</th>
+                    <th class="text-center">Dự Án / Khối</th>
+                    <th class="text-center">Số Chứng Từ</th>
+                    <th class="text-end text-success">Tổng Tiền Đã Thu</th>
+                    <th class="text-end text-danger">Tổng Tiền Đã Chi</th>
+                    <th class="text-end text-warning-emphasis">Đang Treo Công Nợ</th>
+                  </tr>
+                </thead>
+                <tbody id="partnerSummaryTbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 5: QUẢN LÝ TÀI KHOẢN & PHÂN QUYỀN -->
+      <section id="view-rbac" class="view-section d-none">
+        <div class="row g-3">
+          <div class="col-lg-7">
+            <div class="panel-card h-100 mb-0">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <h6 class="fw-bold mb-0"><i class="bi bi-shield-lock-fill text-primary me-2"></i>Danh Sách Tài Khoản & Phân Quyền Theo Quỹ (Tab PHAN_QUYEN)</h6>
+                  <small class="text-secondary">Quản trị viên (ADMIN) có thể tạo tài khoản mới, đổi mật khẩu và gán quỹ phụ trách</small>
+                </div>
+                <button class="btn btn-sm btn-primary fw-bold" type="button" onclick="openUserModal()">
+                  <i class="bi bi-person-plus-fill me-1"></i> + Tạo Tài Khoản Mới
+                </button>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle table-sticky mb-0">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>Mật Khẩu</th>
+                      <th>Họ Tên Nhân Sự</th>
+                      <th>Vai Trò</th>
+                      <th>Quỹ Phụ Trách</th>
+                      <th>Trạng Thái</th>
+                      <th class="text-center">Thao Tác</th>
+                    </tr>
+                  </thead>
+                  <tbody id="rbacUsersTbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="panel-card h-100 mb-0">
+              <h6 class="fw-bold mb-3"><i class="bi bi-clock-history text-danger me-2"></i>Nhật Ký Kiểm Soát Nội Bộ (Tab NHAT_KY)</h6>
+              <div class="table-responsive" style="max-height: 430px;">
+                <table class="table table-sm table-bordered table-hover align-middle mb-0">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Thời Gian</th>
+                      <th>Nhân Sự</th>
+                      <th>Thao Tác</th>
+                      <th>Chi Tiết</th>
+                    </tr>
+                  </thead>
+                  <tbody id="auditLogsTbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 6: CẤU HÌNH DOANH NGHIỆP & MẪU IN -->
+      <section id="view-settings" class="view-section d-none">
+        <div class="panel-card" style="max-width: 820px;">
+          <h6 class="fw-bold mb-1"><i class="bi bi-gear-fill text-secondary me-2"></i>Cấu Hình Doanh Nghiệp, Định Mức Chi Phí & Mẫu In Chứng Từ (Tab CAU_HINH)</h6>
+          <p class="text-secondary small mb-3">Thông tin dưới đây được tự động in lên góc trái Phiếu Thu (Mẫu 01-TT), Phiếu Chi (Mẫu 02-TT) và Báo cáo lưu chuyển tiền tệ.</p>
+          <div>
+            <div class="row g-3">
+              <div class="col-md-8">
+                <label class="form-label small fw-bold">Tên Pháp Nhân Doanh Nghiệp / Cửa Hàng</label>
+                <input type="text" class="form-control" id="cfgCompanyName">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label small fw-bold">Mã Số Thuế</label>
+                <input type="text" class="form-control" id="cfgCompanyTax">
+              </div>
+              <div class="col-md-8">
+                <label class="form-label small fw-bold">Địa Chỉ Trụ Sở (In trên Phiếu Thu / Phiếu Chi)</label>
+                <input type="text" class="form-control" id="cfgCompanyAddress">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label small fw-bold">Số Điện Thoại Hotline</label>
+                <input type="text" class="form-control" id="cfgCompanyPhone">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-bold">Định Mức Trần Chi Phí Tháng (VNĐ - Tính Runway)</label>
+                <input type="number" class="form-control" id="cfgBurnLimit">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-bold">Tiêu Chuẩn Pháp Lý In Trên Phiếu</label>
+                <input type="text" class="form-control" id="cfgPrintStandard">
+              </div>
+            </div>
+            <div class="mt-4 d-flex gap-2">
+              <button type="button" class="btn btn-success fw-bold px-4" onclick="handleSaveSettings()">
+                <i class="bi bi-check2-circle me-1"></i> Lưu Cấu Hình Vào Google Sheets
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- MODAL 1: LẬP PHIẾU THU / PHIẾU CHI / CHUYỂN QUỸ NỘI BỘ -->
+<div class="modal fade" id="txModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h6 class="modal-title fw-bold" id="txModalTitle"><i class="bi bi-file-earmark-plus-fill me-2"></i>Lập Chứng Từ Tài Chính Mới</h6>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <label class="form-label small fw-bold">Loại Chứng Từ</label>
+            <select class="form-select fw-bold" id="txType" onchange="onTxTypeChange()">
+              <option value="Phiếu Thu">📥 Phiếu Thu (01-TT)</option>
+              <option value="Phiếu Chi">📤 Phiếu Chi (02-TT)</option>
+              <option value="Chuyển quỹ">🔄 Chuyển Quỹ Nội Bộ</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label small fw-bold">Ngày Hạch Toán</label>
+            <input type="date" class="form-control" id="txDate">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label small fw-bold">Số Tiền (VNĐ) *</label>
+            <input type="number" class="form-control fw-bold text-success fs-6" id="txAmount" value="15000000" min="1000" step="100000" oninput="updateAmountWordsPreview()">
+          </div>
+
+          <div class="col-12">
+            <div class="small fst-italic text-secondary bg-body-tertiary rounded px-3 py-1 border" id="txAmountWordsPreview">
+              Bằng chữ: Mười lăm triệu đồng chẵn.
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label small fw-bold" id="lblSourceAccount">Tài Khoản / Quỹ Giao Dịch *</label>
+            <select class="form-select fw-semibold" id="txAccount" onchange="onTxAccountSelect()"></select>
+          </div>
+          <div class="col-md-6 d-none" id="colDestAccountSelect">
+            <label class="form-label small fw-bold text-primary">Tài Khoản / Quỹ Đích Nhận Tiền *</label>
+            <select class="form-select fw-semibold border-primary" id="txToAccount"></select>
+          </div>
+          <div class="col-md-6" id="colToAccountWrapper">
+            <label class="form-label small fw-bold">Số Dư Khả Dụng Quỹ Nguồn</label>
+            <input type="text" class="form-control bg-body-tertiary fw-bold text-primary" id="txBalancePreview" readonly>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Hạng Mục Thu / Chi *</label>
+            <select class="form-select" id="txCategory"></select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Trạng Thái Thanh Toán</label>
+            <select class="form-select" id="txPaymentStatus">
+              <option value="Đã tất toán">✅ Đã tất toán (Tiền thực thu/chi)</option>
+              <option value="Công nợ Phải thu">⏳ Công nợ Phải thu (Khách nợ)</option>
+              <option value="Công nợ Phải trả">⏳ Công nợ Phải trả (Nợ NCC)</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Đối Tác (Người nộp / Người nhận tiền)</label>
+            <input type="text" class="form-control" id="txPartner" value="Công ty TNHH Đối Tác chiến lược">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Dự Án / Phòng Ban Chi Phí</label>
+            <input type="text" class="form-control" id="txProject" value="Dự án ERP Q4">
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label small fw-bold">Phương Thức Thanh Toán</label>
+            <select class="form-select" id="txMethod">
+              <option value="Chuyển khoản VietQR">Chuyển khoản VietQR</option>
+              <option value="UNC Ngân hàng">UNC Ngân hàng</option>
+              <option value="Tiền mặt">Tiền mặt tại quỹ</option>
+              <option value="Thẻ Doanh nghiệp">Thẻ Doanh nghiệp</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label small fw-bold">Người Lập Phiếu</label>
+            <input type="text" class="form-control bg-body-tertiary" id="txCreator" readonly>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label small fw-bold">Diễn Giải Nội Dung Chứng Từ</label>
+            <input type="text" class="form-control" id="txNotes" placeholder="Kèm theo hợp đồng / hóa đơn...">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-success fw-bold px-4" id="btnSubmitTx" onclick="submitTransaction()">
+          <i class="bi bi-check2-circle me-1"></i> Ghi Sổ Quỹ & Cập Nhật Số Dư
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 2: THÊM / SỬA QUỸ TIỀN MẶT HOẶC TÀI KHOẢN NGÂN HÀNG -->
+<div class="modal fade" id="fundModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h6 class="modal-title fw-bold" id="fundModalTitle"><i class="bi bi-bank2 me-2"></i>Thêm Quỹ / Tài Khoản Ngân Hàng Mới</h6>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <div class="col-md-5">
+            <label class="form-label small fw-bold">Mã Quỹ / TK *</label>
+            <input type="text" class="form-control fw-bold text-uppercase" id="fmFundId" placeholder="VD: ACC-05">
+          </div>
+          <div class="col-md-7">
+            <label class="form-label small fw-bold">Loại Tài Khoản *</label>
+            <select class="form-select" id="fmFundType">
+              <option value="Ngân hàng">🏦 Tài khoản Ngân hàng</option>
+              <option value="Tiền mặt">💵 Quỹ Tiền mặt</option>
+              <option value="Ví điện tử">📱 Ví điện tử / Cổng TT</option>
+              <option value="Quỹ dự phòng">🛡️ Quỹ Dự phòng / Đầu tư</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <label class="form-label small fw-bold">Tên Ngân Hàng / Tên Quỹ Tiền Mặt *</label>
+            <input type="text" class="form-control fw-semibold" id="fmBankName" placeholder="VD: MB Bank Chi Nhánh Sài Gòn">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Số Tài Khoản / Mã Quỹ *</label>
+            <input type="text" class="form-control" id="fmAccountNo" placeholder="VD: 8899668899">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Số Dư Đầu Kỳ (VNĐ)</label>
+            <input type="number" class="form-control fw-bold text-primary" id="fmInitBalance" value="50000000" min="0" step="1000000">
+          </div>
+          <div class="col-12">
+            <label class="form-label small fw-bold">Chủ Tài Khoản / Thủ Quỹ Phụ Trách</label>
+            <input type="text" class="form-control" id="fmHolderName" value="CTY TNHH NEXSIMPLE VIET NAM">
+          </div>
+          <div class="col-12">
+            <label class="form-label small fw-bold">Ghi Chú Mục Đích Sử Dụng Quỹ</label>
+            <input type="text" class="form-control" id="fmFundNotes" placeholder="VD: Tài khoản chuyên thu đại lý miền Bắc">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-primary fw-bold px-4" id="btnSaveFundSubmit" onclick="submitFundAccount()">
+          <i class="bi bi-check-lg me-1"></i> Lưu Quỹ / Tài Khoản Vào Sheet
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 3: SỔ CHI TIẾT QUỸ / SAO KÊ TÀI KHOẢN (MẪU S07-DN) -->
+<div class="modal fade" id="fundLedgerModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h6 class="modal-title fw-bold" id="fundLedgerModalTitle"><i class="bi bi-journal-bookmark-fill me-2"></i>Sổ Chi Tiết Quỹ Tiền Mặt / Ngân Hàng (Mẫu S07-DN)</h6>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex flex-wrap justify-content-between align-items-center bg-body-tertiary p-3 rounded-3 border mb-3">
+          <div>
+            <div class="fw-bold fs-6 text-primary" id="flAccountTitle">Vietcombank Doanh Nghiệp</div>
+            <div class="small text-secondary" id="flAccountMeta">Số TK: 1018899889 • Chủ TK: CTY TNHH NEXSIMPLE VIET NAM</div>
+          </div>
+          <div class="d-flex gap-3 text-end">
+            <div>
+              <div class="small text-secondary">Số Dư Cuối Kỳ</div>
+              <div class="fw-bold fs-5 text-success" id="flCurrentBalance">0 ₫</div>
+            </div>
+            <div>
+              <button class="btn btn-sm btn-dark fw-semibold mt-1" type="button" onclick="printCurrentFundLedger()">
+                <i class="bi bi-printer-fill me-1"></i> In Sổ Quỹ (S07-DN)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover align-middle mb-0">
+            <thead class="table-light text-center">
+              <tr>
+                <th>Số Hiệu CT</th>
+                <th>Ngày Giờ</th>
+                <th class="text-start">Diễn Giải & Đối Tác</th>
+                <th>Hạng Mục</th>
+                <th class="text-end text-success">Thu Vào (+)</th>
+                <th class="text-end text-danger">Chi Ra (-)</th>
+                <th class="text-end bg-primary-subtle text-primary">Số Dư Lũy Kế</th>
+                <th>Người Lập</th>
+              </tr>
+            </thead>
+            <tbody id="fundLedgerTbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 4: TẠO / CẬP NHẬT TÀI KHOẢN NHÂN SỰ (RBAC) -->
+<div class="modal fade" id="userModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h6 class="modal-title fw-bold" id="userModalTitle"><i class="bi bi-person-plus-fill me-2"></i>Tạo Tài Khoản Nhân Sự Mới</h6>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Tên Đăng Nhập (Username) *</label>
+            <input type="text" class="form-control fw-bold" id="ufUsername" placeholder="VD: thuquy_hanoi">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Mật Khẩu Đăng Nhập *</label>
+            <input type="text" class="form-control fw-bold text-primary" id="ufPassword" value="123456">
+          </div>
+          <div class="col-12">
+            <label class="form-label small fw-bold">Họ Và Tên Nhân Sự *</label>
+            <input type="text" class="form-control" id="ufFullName" placeholder="VD: Trần Thị Ngọc Ánh">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Vai Trò Phân Quyền (Role)</label>
+            <select class="form-select fw-semibold" id="ufRole" onchange="onUserFormRoleChange()">
+              <option value="CASHIER">Thủ Quỹ Chuyên Trách (CASHIER)</option>
+              <option value="ACCOUNTANT">Kế Toán Tổng Hợp (ACCOUNTANT)</option>
+              <option value="ADMIN">Giám Đốc Tài Chính (ADMIN)</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Quỹ / Tài Khoản Được Phép Truy Cập</label>
+            <select class="form-select fw-semibold" id="ufAssignedFund"></select>
+          </div>
+          <div class="col-12">
+            <label class="form-label small fw-bold">Trạng Thái Tài Khoản</label>
+            <select class="form-select" id="ufStatus">
+              <option value="Hoạt động">🟢 Hoạt động (Cho phép đăng nhập)</option>
+              <option value="Tạm khóa">🔴 Tạm khóa (Chặn đăng nhập)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary fw-bold px-4" id="btnSaveUserSubmit" onclick="submitUserAccount()">
+          <i class="bi bi-check2-circle me-1"></i> Lưu Tài Khoản Vào Sheet
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 5: XEM TRƯỚC BẢN IN CHỨNG TỪ / BÁO CÁO (TT200/2014/TT-BTC) -->
+<div class="modal fade" id="printVoucherModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h6 class="modal-title fw-bold" id="printModalHeaderTitle"><i class="bi bi-printer-fill me-2"></i>Xem Trước Bản In Chứng Từ Kế Toán (Thông Tư 200/2014/TT-BTC)</h6>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-4 bg-white text-dark" id="printAreaContainer"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-success fw-bold px-4" onclick="executePrintNow()">
+          <i class="bi bi-printer-fill me-1"></i> Bấm In Ngay / Lưu File PDF (A4)
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const INCOME_CATEGORIES = [
+    'Doanh thu bán hàng & Hợp đồng',
+    'Doanh thu dịch vụ Tư vấn & Triển khai',
+    'Thu hồi công nợ Khách hàng',
+    'Thu lãi tiền gửi & Đầu tư tài chính',
+    'Thu hoàn ứng & Thu khác'
+  ];
+  const EXPENSE_CATEGORIES = [
+    'Chi phí Lương & Thưởng nhân sự',
+    'Chi phí Quảng cáo & Marketing',
+    'Chi phí Hạ tầng Cloud & Bản quyền',
+    'Chi phí Thuê văn phòng & Điện nước',
+    'Chi phí Hành chính, Tiếp khách & VPP',
+    'Chi mua sắm Thiết bị & Tài sản',
+    'Thanh toán công nợ Nhà cung cấp'
+  ];
+
+  const FALLBACK_DATA = {
+    isFallback: true,
+    settings: {
+      COMPANY_NAME: 'CÔNG TY TNHH CÔNG NGHỆ & THIẾT BỊ NEXSIMPLE VIỆT NAM',
+      COMPANY_ADDRESS: 'Số 93/4 Liên Khu 5-6, P. Bình Hưng Hòa B, Q. Bình Tân, TP.HCM',
+      COMPANY_PHONE: '0974 755 104',
+      COMPANY_TAX: '0318899221',
+      MONTHLY_BURN_LIMIT: '80000000',
+      ALLOW_OVERDRAFT: 'FALSE',
+      PRINT_TEMPLATE_STANDARD: 'Mẫu số 01-TT / 02-TT (Ban hành theo Thông tư 200/2014/TT-BTC của Bộ Tài Chính)'
+    },
+    users: [
+      { username: 'admin', password: '123456', fullName: 'Nguyễn Minh Tuấn', role: 'ADMIN', assignedFund: 'ALL', permissionsDesc: 'Giám đốc tài chính (Toàn quyền hệ thống)', status: 'Hoạt động' },
+      { username: 'ketoan', password: '123456', fullName: 'Hoàng Thu Trang', role: 'ACCOUNTANT', assignedFund: 'ALL', permissionsDesc: 'Kế toán tổng hợp (Toàn bộ các quỹ, Lập phiếu, Báo cáo)', status: 'Hoạt động' },
+      { username: 'thuquy_tm', password: '123456', fullName: 'Phạm Thị Mai', role: 'CASHIER', assignedFund: 'Quỹ Tiền Mặt Văn Phòng', permissionsDesc: 'Thủ quỹ văn phòng (Chỉ phụ trách Quỹ Tiền Mặt Văn Phòng)', status: 'Hoạt động' },
+      { username: 'thuquy_vcb', password: '123456', fullName: 'Lê Hoàng Nam', role: 'CASHIER', assignedFund: 'Vietcombank Doanh Nghiệp', permissionsDesc: 'Kế toán thanh toán NH (Chỉ phụ trách Vietcombank Doanh Nghiệp)', status: 'Hoạt động' }
+    ],
+    accounts: [
+      { id: 'ACC-01', bankName: 'Vietcombank Doanh Nghiệp', accountNumber: '1018899889', holderName: 'CTY TNHH NEXSIMPLE VIET NAM', accountType: 'Ngân hàng', initialBalance: 250000000, totalIn: 133000000, totalOut: 15000000, balanceVnd: 368000000, notes: 'Tài khoản nhận doanh thu hợp đồng B2B chính' },
+      { id: 'ACC-02', bankName: 'Techcombank Vận Hành', accountNumber: '19034567890', holderName: 'CTY TNHH NEXSIMPLE VIET NAM', accountType: 'Ngân hàng', initialBalance: 120000000, totalIn: 36000000, totalOut: 65000000, balanceVnd: 91000000, notes: 'Tài khoản chi lương, server & marketing' },
+      { id: 'ACC-03', bankName: 'Quỹ Tiền Mặt Văn Phòng', accountNumber: 'CASH-VP-01', holderName: 'Phạm Thị Mai (Thủ Quỹ)', accountType: 'Tiền mặt', initialBalance: 35000000, totalIn: 15000000, totalOut: 3200000, balanceVnd: 46800000, notes: 'Quỹ tiền mặt chi tiêu hành chính văn phòng' },
+      { id: 'ACC-04', bankName: 'Quỹ Dự Phòng Đầu Tư', accountNumber: 'ACB-889900', holderName: 'CTY TNHH NEXSIMPLE VIET NAM', accountType: 'Quỹ dự phòng', initialBalance: 180000000, totalIn: 0, totalOut: 0, balanceVnd: 180000000, notes: 'Quỹ tích lũy dự phòng chiến lược' }
+    ],
+    transactions: [
+      { code: 'PT-2026-1001', date: '2026-10-01 09:15', type: 'Phiếu Thu', category: 'Doanh thu bán hàng & Hợp đồng', amountVnd: 85000000, accountName: 'Vietcombank Doanh Nghiệp', toAccountName: '---', partner: 'Tập đoàn Truyền thông NovaMedia', projectName: 'Dự án ERP Q4', paymentStatus: 'Đã tất toán', method: 'Chuyển khoản VietQR', createdBy: 'Hoàng Thu Trang', notes: 'Thu tiền thanh toán đợt 1 Hợp đồng phần mềm số 102/HĐKT' },
+      { code: 'PC-2026-1002', date: '2026-10-03 10:30', type: 'Phiếu Chi', category: 'Chi phí Lương & Thưởng nhân sự', amountVnd: 42000000, accountName: 'Techcombank Vận Hành', toAccountName: '---', partner: 'Bảng lương Nhân sự Khối Kỹ thuật', projectName: 'Khối Engineering', paymentStatus: 'Đã tất toán', method: 'UNC Ngân hàng', createdBy: 'Hoàng Thu Trang', notes: 'Chi lương và phụ cấp dự án tháng 09/2026' },
+      { code: 'PT-2026-1004', date: '2026-10-05 14:20', type: 'Phiếu Thu', category: 'Doanh thu dịch vụ Tư vấn & Triển khai', amountVnd: 36000000, accountName: 'Techcombank Vận Hành', toAccountName: '---', partner: 'Công ty CP Logistics Đông Nam Á', projectName: 'Dự án Kho Đa Điểm', paymentStatus: 'Đã tất toán', method: 'Chuyển khoản VietQR', createdBy: 'Nguyễn Minh Tuấn', notes: 'Thu phí gói triển khai hệ thống Quản lý kho v3.0' },
+      { code: 'PC-2026-1006', date: '2026-10-07 11:00', type: 'Phiếu Chi', category: 'Chi phí Hạ tầng Cloud & Bản quyền', amountVnd: 8500000, accountName: 'Techcombank Vận Hành', toAccountName: '---', partner: 'Amazon Web Services & Google Cloud', projectName: 'Hạ tầng Công nghệ', paymentStatus: 'Đã tất toán', method: 'Thẻ Doanh nghiệp', createdBy: 'Nguyễn Minh Tuấn', notes: 'Thanh toán cước máy chủ Cloud và license định kỳ' },
+      { code: 'PCQ-2026-1008', date: '2026-10-09 15:00', type: 'Chuyển quỹ', category: 'Rút tiền gửi nhập quỹ tiền mặt', amountVnd: 15000000, accountName: 'Vietcombank Doanh Nghiệp', toAccountName: 'Quỹ Tiền Mặt Văn Phòng', partner: 'Luân chuyển quỹ nội bộ', projectName: 'Khối Hành chính', paymentStatus: 'Đã tất toán', method: 'Ủy nhiệm chi / Rút TM', createdBy: 'Phạm Thị Mai', notes: 'Bổ sung định mức quỹ tiền mặt văn phòng tháng 10' },
+      { code: 'PC-2026-1010', date: '2026-10-11 09:45', type: 'Phiếu Chi', category: 'Chi phí Hành chính, Tiếp khách & VPP', amountVnd: 3200000, accountName: 'Quỹ Tiền Mặt Văn Phòng', toAccountName: '---', partner: 'Nhà hàng Sen Việt & VPP Thiên Long', projectName: 'Khối Kinh doanh', paymentStatus: 'Đã tất toán', method: 'Tiền mặt', createdBy: 'Phạm Thị Mai', notes: 'Chi tiếp đoàn khách hàng ký hợp đồng và mua văn phòng phẩm' },
+      { code: 'PT-2026-1012', date: '2026-10-14 16:10', type: 'Phiếu Thu', category: 'Doanh thu bán hàng & Hợp đồng', amountVnd: 48000000, accountName: 'Vietcombank Doanh Nghiệp', toAccountName: '---', partner: 'Chuỗi Bán Lẻ Minh Khang Mart', projectName: 'Dự án POS Chuỗi', paymentStatus: 'Công nợ Phải thu', method: 'Chuyển khoản VietQR', createdBy: 'Hoàng Thu Trang', notes: 'Nghiệm thu bàn giao giai đoạn 2 (Hạn thanh toán 30/10)' },
+      { code: 'PC-2026-1015', date: '2026-10-16 11:20', type: 'Phiếu Chi', category: 'Chi phí Quảng cáo & Marketing', amountVnd: 14500000, accountName: 'Techcombank Vận Hành', toAccountName: '---', partner: 'Đối tác Meta Ads & Google Ads VN', projectName: 'Khối Marketing', paymentStatus: 'Công nợ Phải trả', method: 'Chuyển khoản', createdBy: 'Hoàng Thu Trang', notes: 'Chi phí chiến dịch quảng cáo Performance tháng 10/2026' }
+    ],
+    auditLogs: [
+      { timestamp: '2026-10-16 11:20:00', username: 'ketoan', actorName: 'Hoàng Thu Trang (ACCOUNTANT)', action: 'LẬP PHIẾU CHI', refCode: 'PC-2026-1015', detail: 'Ghi nhận chi phí Marketing 14,500,000 ₫ trên Techcombank Vận Hành' },
+      { timestamp: '2026-10-14 16:10:00', username: 'ketoan', actorName: 'Hoàng Thu Trang (ACCOUNTANT)', action: 'LẬP PHIẾU THU', refCode: 'PT-2026-1012', detail: 'Ghi nhận doanh thu 48,000,000 ₫ từ Chuỗi Minh Khang Mart' },
+      { timestamp: '2026-10-09 15:00:00', username: 'thuquy_tm', actorName: 'Phạm Thị Mai (CASHIER)', action: 'CHUYỂN QUỸ NỘI BỘ', refCode: 'PCQ-2026-1008', detail: 'Chuyển 15,000,000 ₫ từ Vietcombank -> Quỹ Tiền Mặt Văn Phòng' }
+    ]
+  };
+
+  let appData = JSON.parse(JSON.stringify(FALLBACK_DATA));
+  let currentUser = null;
+  let isAuthenticated = false;
+  let currentLedgerFundName = '';
+  let categoryChartInstance = null;
+  let fundPieChartInstance = null;
+  let hasBooted = false;
+
+  function showBsModal(id) {
+    try {
+      const el = document.getElementById(id);
+      if (el && typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+        bootstrap.Modal.getOrCreateInstance(el).show();
+      }
+    } catch (e) {}
+  }
+
+  function hideBsModal(id) {
+    try {
+      const el = document.getElementById(id);
+      if (el && typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+        const inst = bootstrap.Modal.getInstance(el) || bootstrap.Modal.getOrCreateInstance(el);
+        if (inst) inst.hide();
+      }
+    } catch (e) {}
+  }
+
+  function toggleGatePassVisibility() {
+    const inp = document.getElementById('gatePassword');
+    const eye = document.getElementById('gatePassEye');
+    if (inp.type === 'password') {
+      inp.type = 'text';
+      eye.className = 'bi bi-eye-slash';
+    } else {
+      inp.type = 'password';
+      eye.className = 'bi bi-eye';
+    }
+  }
+
+  function quickLoginAs(uname, pass) {
+    document.getElementById('gateUsername').value = uname;
+    document.getElementById('gatePassword').value = pass;
+    handleMandatoryLogin();
+  }
+
+  function handleMandatoryLogin(e) {
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
+    const u = String(document.getElementById('gateUsername').value || '').trim().toLowerCase();
+    const p = String(document.getElementById('gatePassword').value || '').trim();
+    const errEl = document.getElementById('gateErrorAlert');
+
+    if (!u || !p) {
+      errEl.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-1"></i> Vui lòng nhập Tên đăng nhập và Mật khẩu!';
+      errEl.classList.remove('d-none');
+      return;
+    }
+
+    const combinedUsers = (appData.users && appData.users.length > 0) ? appData.users : FALLBACK_DATA.users;
+    let matched = combinedUsers.find(acc =>
+      String(acc.username || '').trim().toLowerCase() === u &&
+      String(acc.password || '').trim() === p
+    );
+
+    if (!matched) {
+      matched = FALLBACK_DATA.users.find(acc =>
+        String(acc.username || '').trim().toLowerCase() === u &&
+        String(acc.password || '').trim() === p
+      );
+    }
+
+    if (!matched) {
+      errEl.innerHTML = '<i class="bi bi-exclamation-octagon-fill me-1"></i> Sai tên đăng nhập hoặc mật khẩu! Hãy chọn nhanh 1 tài khoản mẫu bên dưới (Mật khẩu: <code>123456</code>).';
+      errEl.classList.remove('d-none');
+      return;
+    }
+
+    if (String(matched.status || '').trim() === 'Tạm khóa') {
+      errEl.innerHTML = '<i class="bi bi-lock-fill me-1"></i> Tài khoản <strong>' + matched.username + '</strong> đang bị tạm khóa! Vui lòng liên hệ Quản trị viên.';
+      errEl.classList.remove('d-none');
+      return;
+    }
+
+    errEl.classList.add('d-none');
+    isAuthenticated = true;
+    document.getElementById('authGateScreen').classList.add('d-none');
+    document.getElementById('mainAppWrapper').classList.remove('d-none');
+    applyCurrentUserSession(matched);
+  }
+
+  function handleLogout() {
+    isAuthenticated = false;
+    currentUser = null;
+    document.getElementById('mainAppWrapper').classList.add('d-none');
+    document.getElementById('authGateScreen').classList.remove('d-none');
+    document.getElementById('gateErrorAlert').classList.add('d-none');
+    document.getElementById('gateUsername').focus();
+  }
+
+  function syncFundFilterOptions() {
+    const sel = document.getElementById('globalFundFilter');
+    if (!sel) return;
+    const prevVal = sel.value || 'ALL';
+    sel.innerHTML = '<option value="ALL">Tất cả các Quỹ & Tài khoản (Toàn hệ thống)</option>' +
+      (appData.accounts || []).map(a => `<option value="${a.bankName}">${a.bankName} (${a.id})</option>`).join('');
+    if ([...sel.options].some(o => o.value === prevVal)) {
+      sel.value = prevVal;
+    }
+
+    const ufSel = document.getElementById('ufAssignedFund');
+    if (ufSel) {
+      ufSel.innerHTML = (appData.accounts || []).map(a => `<option value="${a.bankName}">${a.bankName}</option>`).join('') +
+        '<option value="ALL">ALL (Tất cả các quỹ)</option>';
+    }
+  }
+
+  function applyCurrentUserSession(userObj) {
+    currentUser = userObj || (appData.users && appData.users[0]) || FALLBACK_DATA.users[0];
+    const isAdmin = currentUser.role === 'ADMIN';
+
+    document.getElementById('sidebarUsername').innerText = currentUser.username;
+    document.getElementById('topUserBadge').innerText = currentUser.fullName + ' (' + currentUser.username + ')';
+    document.getElementById('topRoleBadge').innerText = currentUser.role;
+    document.getElementById('sidebarRoleBadge').innerText = currentUser.role;
+    document.getElementById('sidebarUserName').innerText = currentUser.fullName;
+
+    const navRbac = document.getElementById('nav-rbac');
+    const navSettings = document.getElementById('nav-settings');
+    const btnTopCreate = document.getElementById('btnTopCreateUser');
+    const btnSideCreate = document.getElementById('btnSidebarCreateUser');
+
+    if (navRbac) navRbac.classList.toggle('d-none', !isAdmin);
+    if (navSettings) navSettings.classList.toggle('d-none', !isAdmin);
+    if (btnTopCreate) btnTopCreate.classList.toggle('d-none', !isAdmin);
+    if (btnSideCreate) btnSideCreate.classList.toggle('d-none', !isAdmin);
+
+    if (!isAdmin) {
+      const rbacSec = document.getElementById('view-rbac');
+      const cfgSec = document.getElementById('view-settings');
+      if ((rbacSec && !rbacSec.classList.contains('d-none')) || (cfgSec && !cfgSec.classList.contains('d-none'))) {
+        switchView('dashboard');
+      }
+    }
+
+    syncFundFilterOptions();
+    const fundSelect = document.getElementById('globalFundFilter');
+    if (currentUser.role === 'CASHIER' && currentUser.assignedFund && currentUser.assignedFund !== 'ALL') {
+      fundSelect.value = currentUser.assignedFund;
+      fundSelect.disabled = true;
+      document.getElementById('sidebarFundScope').innerHTML = '<i class="bi bi-lock-fill"></i> Khóa quỹ: ' + currentUser.assignedFund;
+    } else {
+      fundSelect.disabled = false;
+      fundSelect.value = 'ALL';
+      document.getElementById('sidebarFundScope').innerHTML = '<i class="bi bi-wallet2"></i> Phạm vi: Tất cả các quỹ';
+    }
+
+    refreshAllViews();
+  }
+
+  function formatVND(val) {
+    return new Intl.NumberFormat('vi-VN').format(Math.round(Number(val) || 0)) + ' ₫';
+  }
+
+  function readVietnameseNumberWords(amount) {
+    const n = Math.round(Math.abs(Number(amount) || 0));
+    if (n === 0) return 'Không đồng';
+    if (n >= 1000000000) {
+      const ty = Math.floor(n / 1000000000);
+      const trieu = Math.round((n % 1000000000) / 1000000);
+      return `${ty} tỷ ${trieu > 0 ? trieu + ' triệu ' : ''}đồng chẵn`;
+    }
+    if (n >= 1000000) {
+      const trieu = Math.floor(n / 1000000);
+      const nghin = Math.round((n % 1000000) / 1000);
+      return `${trieu} triệu ${nghin > 0 ? nghin + ' nghìn ' : ''}đồng chẵn`;
+    }
+    if (n >= 1000) {
+      return `${Math.round(n / 1000)} nghìn đồng chẵn`;
+    }
+    return `${n} đồng`;
+  }
+
+  function toggleSidebar() {
+    document.getElementById('appSidebar').classList.toggle('collapsed');
+  }
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-bs-theme') === 'dark';
+    html.setAttribute('data-bs-theme', isDark ? 'light' : 'dark');
+    document.getElementById('themeIcon').className = isDark ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill text-warning';
+  }
+
+  function switchView(viewId) {
+    document.querySelectorAll('.view-section').forEach(el => el.classList.add('d-none'));
+    const target = document.getElementById('view-' + viewId);
+    if (target) target.classList.remove('d-none');
+
+    document.querySelectorAll('.nav-menu-btn').forEach(btn => btn.classList.remove('active'));
+    const navBtn = document.getElementById('nav-' + viewId);
+    if (navBtn) navBtn.classList.add('active');
+
+    refreshAllViews();
+  }
+
+  function switchVoucherSubTab(mode) {
+    const isList = mode === 'list';
+    document.getElementById('subtab-voucher-list').classList.toggle('active', isList);
+    document.getElementById('subtab-partner-history').classList.toggle('active', !isList);
+    document.getElementById('voucherListPane').classList.toggle('d-none', !isList);
+    document.getElementById('partnerHistoryPane').classList.toggle('d-none', isList);
+  }
+
+  function resetDateFilter() {
+    document.getElementById('filterStartDate').value = '2026-01-01';
+    document.getElementById('filterEndDate').value = '2026-12-31';
+    refreshAllViews();
+  }
+
+  function normalizeIsoDateOnly(rawDateStr) {
+    const s = String(rawDateStr || '').trim();
+    if (!s) return '';
+    if (/^\d{4}-\d{2}-\d{2}/.test(s)) return s.substring(0, 10);
+    const slash = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+    if (slash) {
+      const p1 = parseInt(slash[1], 10);
+      const p2 = parseInt(slash[2], 10);
+      const yr = slash[3];
+      const mm = String(p1 <= 12 ? p1 : p2).padStart(2, '0');
+      const dd = String(p1 <= 12 ? p2 : p1).padStart(2, '0');
+      return `${yr}-${mm}-${dd}`;
+    }
+    return '';
+  }
+
+  function recomputeAccountBalances() {
+    (appData.accounts || []).forEach(acc => {
+      let sumIn = 0;
+      let sumOut = 0;
+      (appData.transactions || []).forEach(tx => {
+        const amt = Number(tx.amountVnd) || 0;
+        if (tx.type === 'Phiếu Thu' && tx.accountName === acc.bankName) {
+          sumIn += amt;
+        } else if (tx.type === 'Phiếu Chi' && tx.accountName === acc.bankName) {
+          sumOut += amt;
+        } else if (tx.type === 'Chuyển quỹ') {
+          if (tx.accountName === acc.bankName) sumOut += amt;
+          if (tx.toAccountName === acc.bankName) sumIn += amt;
+        }
+      });
+      acc.totalIn = sumIn;
+      acc.totalOut = sumOut;
+      acc.balanceVnd = (Number(acc.initialBalance) || 0) + sumIn - sumOut;
+    });
+  }
+
+  function getFilteredTransactions() {
+    const startStr = document.getElementById('filterStartDate').value || '2000-01-01';
+    const endStr = document.getElementById('filterEndDate').value || '2099-12-31';
+    const fundFilter = document.getElementById('globalFundFilter').value || 'ALL';
+    const statusFilter = document.getElementById('globalStatusFilter').value || 'ALL';
+
+    return (appData.transactions || []).filter(tx => {
+      const isoDate = normalizeIsoDateOnly(tx.date);
+      const matchDate = (!isoDate) || (isoDate >= startStr && isoDate <= endStr);
+      const matchFund = fundFilter === 'ALL' || tx.accountName === fundFilter || tx.toAccountName === fundFilter;
+      let matchStatus = true;
+      if (statusFilter === 'Đã tất toán') matchStatus = tx.paymentStatus === 'Đã tất toán';
+      else if (statusFilter === 'CONG_NO') matchStatus = tx.paymentStatus !== 'Đã tất toán';
+      return matchDate && matchFund && matchStatus;
+    });
+  }
+
+  function loadData() {
+    const badge = document.getElementById('connBadge');
+    const authStatus = document.getElementById('authSyncStatus');
+    if (badge) badge.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Đang đồng bộ...';
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      let settled = false;
+      const syncTimer = setTimeout(function() {
+        if (!settled && authStatus) {
+          authStatus.className = 'badge bg-success-subtle text-success border border-success-subtle';
+          authStatus.innerHTML = '<i class="bi bi-shield-check me-1"></i> Sẵn sàng đăng nhập (' + (appData.users ? appData.users.length : 4) + ' tài khoản)';
+        }
+      }, 2200);
+
+      google.script.run
+        .withSuccessHandler(function(res) {
+          settled = true;
+          clearTimeout(syncTimer);
+          if (res && res.success) {
+            appData = res;
+            if (!appData.users || appData.users.length === 0) {
+              appData.users = JSON.parse(JSON.stringify(FALLBACK_DATA.users));
+            }
+            if (!appData.accounts || appData.accounts.length === 0) {
+              appData.accounts = JSON.parse(JSON.stringify(FALLBACK_DATA.accounts));
+            }
+            if (!appData.transactions || appData.transactions.length === 0) {
+              appData.transactions = JSON.parse(JSON.stringify(FALLBACK_DATA.transactions));
+            }
+            recomputeAccountBalances();
+            if (badge) {
+              badge.innerHTML = res.isFallback
+                ? '<i class="bi bi-lightning-charge-fill me-1"></i> Chế độ Demo Độc Lập'
+                : '<i class="bi bi-cloud-check-fill me-1"></i> Đồng bộ Google Sheets';
+            }
+            if (authStatus) {
+              authStatus.className = 'badge bg-success-subtle text-success border border-success-subtle';
+              authStatus.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> Đã kết nối Sheet (' + appData.users.length + ' tài khoản phân quyền)';
+            }
+          }
+          populateSettingsForm();
+          syncFundFilterOptions();
+          if (appData.settings && appData.settings.COMPANY_NAME) {
+            document.getElementById('authGateCompanySub').innerText = appData.settings.COMPANY_NAME;
+          }
+          if (isAuthenticated && currentUser) {
+            const refreshedUser = (appData.users || []).find(u => String(u.username || '').toLowerCase() === String(currentUser.username || '').toLowerCase()) || currentUser;
+            applyCurrentUserSession(refreshedUser);
+          } else {
+            refreshAllViews();
+          }
+        })
+        .withFailureHandler(function() {
+          settled = true;
+          clearTimeout(syncTimer);
+          recomputeAccountBalances();
+          if (badge) badge.innerHTML = '<i class="bi bi-lightning-charge-fill me-1"></i> Dữ liệu Dự phòng';
+          if (authStatus) {
+            authStatus.className = 'badge bg-success-subtle text-success border border-success-subtle';
+            authStatus.innerHTML = '<i class="bi bi-shield-check me-1"></i> Sẵn sàng đăng nhập (4 tài khoản)';
+          }
+          populateSettingsForm();
+          syncFundFilterOptions();
+          refreshAllViews();
+        })
+        .getFinanceData();
+    } else {
+      recomputeAccountBalances();
+      if (badge) badge.innerHTML = '<i class="bi bi-laptop me-1"></i> Chế độ Standalone Pro';
+      if (authStatus) {
+        authStatus.className = 'badge bg-success-subtle text-success border border-success-subtle';
+        authStatus.innerHTML = '<i class="bi bi-shield-check me-1"></i> Hệ thống sẵn sàng xác thực (4 tài khoản)';
+      }
+      populateSettingsForm();
+      syncFundFilterOptions();
+      refreshAllViews();
+    }
+  }
+
+  function populateSettingsForm() {
+    const s = appData.settings || FALLBACK_DATA.settings;
+    document.getElementById('topbarCompanyTitle').innerText = s.COMPANY_NAME || 'HỆ THỐNG QUẢN LÝ THU CHI & SỔ QUỸ';
+    document.getElementById('cfgCompanyName').value = s.COMPANY_NAME || '';
+    document.getElementById('cfgCompanyTax').value = s.COMPANY_TAX || '';
+    document.getElementById('cfgCompanyAddress').value = s.COMPANY_ADDRESS || '';
+    document.getElementById('cfgCompanyPhone').value = s.COMPANY_PHONE || '';
+    document.getElementById('cfgBurnLimit').value = s.MONTHLY_BURN_LIMIT || '80000000';
+    document.getElementById('cfgPrintStandard').value = s.PRINT_TEMPLATE_STANDARD || '';
+  }
+
+  function refreshAllViews() {
+    try { recomputeAccountBalances(); } catch (e) {}
+    try { renderDashboard(); } catch (e) {}
+    try { renderFundsTable(); } catch (e) {}
+    try { renderCashflowReport(); } catch (e) {}
+    try { renderVouchersView(); } catch (e) {}
+    try { renderRbacAndAudit(); } catch (e) {}
+  }
+
+  function renderDashboard() {
+    const fundFilter = document.getElementById('globalFundFilter').value || 'ALL';
+    const periodTxs = getFilteredTransactions();
+
+    const scopedAccounts = (appData.accounts || []).filter(a => fundFilter === 'ALL' || a.bankName === fundFilter);
+    const totalBal = scopedAccounts.reduce((s, a) => s + (Number(a.balanceVnd) || 0), 0);
+
+    let sumThu = 0, sumChi = 0, sumRec = 0, sumPay = 0;
+    periodTxs.forEach(t => {
+      const amt = Number(t.amountVnd) || 0;
+      if (t.type === 'Phiếu Thu') sumThu += amt;
+      else if (t.type === 'Phiếu Chi') sumChi += amt;
+      if (t.paymentStatus === 'Công nợ Phải thu') sumRec += amt;
+      if (t.paymentStatus === 'Công nợ Phải trả') sumPay += amt;
+    });
+
+    const netCf = sumThu - sumChi;
+    const burnBase = sumChi > 0 ? sumChi : (Number((appData.settings && appData.settings.MONTHLY_BURN_LIMIT) || 80000000) || 80000000);
+    const runway = burnBase > 0 ? (totalBal / burnBase).toFixed(1) : '36.0';
+
+    document.getElementById('kpiTotalBalance').innerText = formatVND(totalBal);
+    document.getElementById('kpiAccountCountSub').innerText = `Trên ${scopedAccounts.length} quỹ/tài khoản đang lọc`;
+    document.getElementById('kpiInOutText').innerHTML = `<span class="text-success">+${formatVND(sumThu)}</span> / <span class="text-danger">-${formatVND(sumChi)}</span>`;
+    document.getElementById('kpiTxCountSub').innerText = `${periodTxs.length} chứng từ phát sinh trong kỳ`;
+    document.getElementById('kpiNetCashflow').innerHTML = `<span class="${netCf >= 0 ? 'text-success' : 'text-danger'}">${netCf >= 0 ? '+' : ''}${formatVND(netCf)}</span>`;
+    document.getElementById('kpiRunwaySub').innerText = `Runway duy trì: ~${runway} tháng`;
+    document.getElementById('kpiDebtText').innerHTML = `<span class="text-warning-emphasis">Thu: ${formatVND(sumRec)}</span> | <span class="text-danger">Trả: ${formatVND(sumPay)}</span>`;
+
+    const cardsContainer = document.getElementById('dashboardFundCards');
+    cardsContainer.innerHTML = scopedAccounts.map(acc => `
+      <div class="col-md-6 col-xl-3">
+        <div class="panel-card mb-0 border-top border-primary border-3 h-100">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="badge bg-primary-subtle text-primary">${acc.id} • ${acc.accountType}</span>
+            <button class="btn btn-xs btn-link p-0 text-decoration-none small" type="button" onclick="openFundLedger('${acc.bankName}')">Sổ quỹ ➔</button>
+          </div>
+          <div class="fw-bold text-truncate">${acc.bankName}</div>
+          <div class="fs-5 fw-bold text-success my-1">${formatVND(acc.balanceVnd)}</div>
+          <div class="small text-secondary text-truncate">STK: <code>${acc.accountNumber}</code></div>
+        </div>
+      </div>
+    `).join('');
+
+    try {
+      if (typeof Chart !== 'undefined') {
+        const catMap = {};
+        periodTxs.forEach(t => {
+          if (t.type === 'Chuyển quỹ') return;
+          const c = t.category || 'Khác';
+          if (!catMap[c]) catMap[c] = { thu: 0, chi: 0 };
+          if (t.type === 'Phiếu Thu') catMap[c].thu += Math.round((Number(t.amountVnd) || 0) / 1000000);
+          if (t.type === 'Phiếu Chi') catMap[c].chi += Math.round((Number(t.amountVnd) || 0) / 1000000);
+        });
+        const catLabels = Object.keys(catMap);
+        const thuSeries = catLabels.map(k => catMap[k].thu);
+        const chiSeries = catLabels.map(k => catMap[k].chi);
+
+        const ctxBar = document.getElementById('categoryCashChart');
+        if (categoryChartInstance) categoryChartInstance.destroy();
+        if (ctxBar) {
+          categoryChartInstance = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+              labels: catLabels.map(l => l.length > 22 ? l.substring(0, 22) + '...' : l),
+              datasets: [
+                { label: 'Thu vào (Triệu ₫)', data: thuSeries, backgroundColor: '#10b981', borderRadius: 5 },
+                { label: 'Chi ra (Triệu ₫)', data: chiSeries, backgroundColor: '#ef4444', borderRadius: 5 }
+              ]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+          });
+        }
+
+        const ctxPie = document.getElementById('fundPieChart');
+        if (fundPieChartInstance) fundPieChartInstance.destroy();
+        if (ctxPie) {
+          fundPieChartInstance = new Chart(ctxPie, {
+            type: 'doughnut',
+            data: {
+              labels: scopedAccounts.map(a => a.bankName),
+              datasets: [{
+                data: scopedAccounts.map(a => Math.max(0, Math.round((Number(a.balanceVnd) || 0) / 1000000))),
+                backgroundColor: ['#0284c7', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899']
+              }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+          });
+        }
+      }
+    } catch (chartErr) {}
+  }
+
+  function renderFundsTable() {
+    const q = (document.getElementById('fundSearchInput').value || '').toLowerCase().trim();
+    const fundFilter = document.getElementById('globalFundFilter').value || 'ALL';
+    const tbody = document.getElementById('fundsTbody');
+
+    const filtered = (appData.accounts || []).filter(a => {
+      const matchScope = fundFilter === 'ALL' || a.bankName === fundFilter;
+      const matchSearch = !q ||
+        String(a.id || '').toLowerCase().includes(q) ||
+        String(a.bankName || '').toLowerCase().includes(q) ||
+        String(a.accountNumber || '').toLowerCase().includes(q) ||
+        String(a.holderName || '').toLowerCase().includes(q);
+      return matchScope && matchSearch;
+    });
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="10" class="text-center py-4 text-secondary">Không tìm thấy Quỹ / Tài khoản ngân hàng phù hợp</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = filtered.map(a => `
+      <tr>
+        <td class="fw-bold text-primary text-center sticky-col-left">${a.id}</td>
+        <td>
+          <div class="fw-bold">${a.bankName}</div>
+          <div class="small text-secondary">${a.notes || ''}</div>
+        </td>
+        <td class="text-center"><code>${a.accountNumber}</code></td>
+        <td class="small fw-semibold">${a.holderName}</td>
+        <td class="text-center"><span class="badge bg-info-subtle text-dark">${a.accountType}</span></td>
+        <td class="text-end">${formatVND(a.initialBalance)}</td>
+        <td class="text-end fw-bold text-success table-success">+${formatVND(a.totalIn)}</td>
+        <td class="text-end fw-bold text-danger table-danger">-${formatVND(a.totalOut)}</td>
+        <td class="text-end fw-bold text-primary fs-6 table-primary">${formatVND(a.balanceVnd)}</td>
+        <td class="text-center">
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-outline-primary fw-semibold" type="button" onclick="openFundLedger('${a.bankName}')">📒 Sổ quỹ</button>
+            <button class="btn btn-outline-secondary" type="button" onclick="openFundModal('${a.id}')">✏️ Sửa</button>
+            <button class="btn btn-outline-success" type="button" onclick="openTxModal('Phiếu Thu', '${a.bankName}')">+Thu</button>
+            <button class="btn btn-outline-danger" type="button" onclick="openTxModal('Phiếu Chi', '${a.bankName}')">-Chi</button>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  function renderCashflowReport() {
+    const startStr = document.getElementById('filterStartDate').value;
+    const endStr = document.getElementById('filterEndDate').value;
+    const fundFilter = document.getElementById('globalFundFilter').value || 'ALL';
+    const periodTxs = getFilteredTransactions();
+
+    document.getElementById('cashflowPeriodSubtitle').innerText =
+      `Kỳ báo cáo: Từ ${startStr} đến ${endStr} • Phạm vi: ${fundFilter === 'ALL' ? 'Tất cả các Quỹ & Tài khoản' : fundFilter}`;
+
+    let sumOpen = 0, sumIn = 0, sumOut = 0, sumClose = 0;
+    const scopedAccounts = (appData.accounts || []).filter(a => fundFilter === 'ALL' || a.bankName === fundFilter);
+
+    const rowsHtml = scopedAccounts.map(acc => {
+      let inPeriod = 0, outPeriod = 0;
+      periodTxs.forEach(tx => {
+        const amt = Number(tx.amountVnd) || 0;
+        if (tx.type === 'Phiếu Thu' && tx.accountName === acc.bankName) inPeriod += amt;
+        else if (tx.type === 'Phiếu Chi' && tx.accountName === acc.bankName) outPeriod += amt;
+        else if (tx.type === 'Chuyển quỹ') {
+          if (tx.accountName === acc.bankName) outPeriod += amt;
+          if (tx.toAccountName === acc.bankName) inPeriod += amt;
+        }
+      });
+
+      const openBal = Number(acc.initialBalance) || 0;
+      const netFlow = inPeriod - outPeriod;
+      const closeBal = openBal + netFlow;
+
+      sumOpen += openBal;
+      sumIn += inPeriod;
+      sumOut += outPeriod;
+      sumClose += closeBal;
+
+      return `
+        <tr>
+          <td class="fw-bold text-center text-primary">${acc.id}</td>
+          <td class="fw-semibold">${acc.bankName}</td>
+          <td class="text-center"><code>${acc.accountNumber}</code></td>
+          <td class="text-center">${acc.accountType}</td>
+          <td class="text-end fw-semibold">${formatVND(openBal)}</td>
+          <td class="text-end fw-bold text-success">+${formatVND(inPeriod)}</td>
+          <td class="text-end fw-bold text-danger">-${formatVND(outPeriod)}</td>
+          <td class="text-end fw-bold ${netFlow >= 0 ? 'text-success' : 'text-danger'}">${netFlow >= 0 ? '+' : ''}${formatVND(netFlow)}</td>
+          <td class="text-end fw-bold text-primary fs-6">${formatVND(closeBal)}</td>
+        </tr>
+      `;
+    }).join('');
+
+    const totalNet = sumIn - sumOut;
+    document.getElementById('cashflowReportTbody').innerHTML = rowsHtml;
+    document.getElementById('cashflowReportTfoot').innerHTML = `
+      <tr>
+        <td colspan="4" class="text-end text-uppercase">Tổng Cộng Toàn Hệ Thống Quỹ:</td>
+        <td class="text-end">${formatVND(sumOpen)}</td>
+        <td class="text-end text-success">+${formatVND(sumIn)}</td>
+        <td class="text-end text-danger">-${formatVND(sumOut)}</td>
+        <td class="text-end ${totalNet >= 0 ? 'text-success' : 'text-danger'}">${totalNet >= 0 ? '+' : ''}${formatVND(totalNet)}</td>
+        <td class="text-end text-primary fs-6">${formatVND(sumClose)}</td>
+      </tr>
+    `;
+  }
+
+  function renderVouchersView() {
+    const q = (document.getElementById('voucherSearchInput').value || '').toLowerCase().trim();
+    const tFilter = document.getElementById('voucherTypeFilter').value || 'ALL';
+    const periodTxs = getFilteredTransactions();
+
+    const filtered = periodTxs.filter(tx => {
+      const matchType = tFilter === 'ALL' || tx.type === tFilter;
+      const matchSearch = !q ||
+        String(tx.code || '').toLowerCase().includes(q) ||
+        String(tx.category || '').toLowerCase().includes(q) ||
+        String(tx.partner || '').toLowerCase().includes(q) ||
+        String(tx.projectName || '').toLowerCase().includes(q) ||
+        String(tx.notes || '').toLowerCase().includes(q);
+      return matchType && matchSearch;
+    });
+
+    const tbody = document.getElementById('vouchersTbody');
+    if (filtered.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="10" class="text-center py-4 text-secondary">Không có chứng từ thu chi phù hợp bộ lọc</td></tr>';
+    } else {
+      tbody.innerHTML = filtered.map(tx => {
+        let typeBadge = '<span class="badge badge-thu">📥 Phiếu Thu</span>';
+        if (tx.type === 'Phiếu Chi') typeBadge = '<span class="badge badge-chi">📤 Phiếu Chi</span>';
+        if (tx.type === 'Chuyển quỹ') typeBadge = '<span class="badge badge-transfer">🔄 Chuyển quỹ</span>';
+
+        let stBadge = '<span class="badge badge-paid">Đã tất toán</span>';
+        if (tx.paymentStatus === 'Công nợ Phải thu') stBadge = '<span class="badge badge-receivable">Công nợ Phải thu</span>';
+        if (tx.paymentStatus === 'Công nợ Phải trả') stBadge = '<span class="badge badge-payable">Công nợ Phải trả</span>';
+
+        const accDisplay = tx.type === 'Chuyển quỹ'
+          ? `${tx.accountName} ➔ <strong>${tx.toAccountName}</strong>`
+          : `<strong>${tx.accountName}</strong><div class="small text-secondary">${tx.method || ''}</div>`;
+
+        return `
+          <tr>
+            <td class="fw-bold text-primary text-center">${tx.code}</td>
+            <td class="text-center small">${tx.date}</td>
+            <td class="text-center">${typeBadge}</td>
+            <td>
+              <div class="fw-bold">${tx.category}</div>
+              <div class="small text-secondary">${tx.notes || ''}</div>
+            </td>
+            <td class="text-end fw-bold ${tx.type === 'Phiếu Thu' ? 'text-success' : (tx.type === 'Phiếu Chi' ? 'text-danger' : 'text-primary')}">
+              ${tx.type === 'Phiếu Thu' ? '+' : (tx.type === 'Phiếu Chi' ? '-' : '')}${formatVND(tx.amountVnd)}
+            </td>
+            <td class="small text-center">${accDisplay}</td>
+            <td>
+              <div class="fw-semibold">${tx.partner || '---'}</div>
+              <div class="small text-secondary">${tx.projectName || ''}</div>
+            </td>
+            <td class="text-center">${stBadge}</td>
+            <td class="small text-center">${tx.createdBy}</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-outline-dark fw-semibold" type="button" onclick="openPrintVoucher('${tx.code}')">
+                <i class="bi bi-printer me-1"></i> In phiếu
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    const pMap = {};
+    filtered.forEach(tx => {
+      const pName = tx.partner || 'Đối tác kinh doanh';
+      if (!pMap[pName]) {
+        pMap[pName] = { name: pName, project: tx.projectName || 'Chung', count: 0, thu: 0, chi: 0, debt: 0 };
+      }
+      pMap[pName].count++;
+      const amt = Number(tx.amountVnd) || 0;
+      if (tx.type === 'Phiếu Thu') pMap[pName].thu += amt;
+      if (tx.type === 'Phiếu Chi') pMap[pName].chi += amt;
+      if (tx.paymentStatus !== 'Đã tất toán') pMap[pName].debt += amt;
+    });
+
+    const pRows = Object.values(pMap);
+    const pTbody = document.getElementById('partnerSummaryTbody');
+    if (pRows.length === 0) {
+      pTbody.innerHTML = '<tr><td colspan="6" class="text-center py-3 text-secondary">Chưa có dữ liệu đối tác</td></tr>';
+    } else {
+      pTbody.innerHTML = pRows.map(p => `
+        <tr>
+          <td class="fw-bold">${p.name}</td>
+          <td class="text-center">${p.project}</td>
+          <td class="text-center fw-bold">${p.count} phiếu</td>
+          <td class="text-end fw-bold text-success">+${formatVND(p.thu)}</td>
+          <td class="text-end fw-bold text-danger">-${formatVND(p.chi)}</td>
+          <td class="text-end fw-bold ${p.debt > 0 ? 'text-warning-emphasis' : 'text-secondary'}">${formatVND(p.debt)}</td>
+        </tr>
+      `).join('');
+    }
+  }
+
+  function renderRbacAndAudit() {
+    const uTbody = document.getElementById('rbacUsersTbody');
+    uTbody.innerHTML = (appData.users || []).map(u => `
+      <tr class="${(currentUser && u.username === currentUser.username) ? 'table-info' : ''}">
+        <td class="fw-bold text-center"><code>${u.username}</code></td>
+        <td class="text-center"><code>${u.password || '123456'}</code></td>
+        <td class="fw-semibold">${u.fullName}</td>
+        <td class="text-center"><span class="badge bg-success">${u.role}</span></td>
+        <td class="text-center fw-bold">${u.assignedFund === 'ALL' ? 'Tất cả các quỹ' : u.assignedFund}</td>
+        <td class="text-center"><span class="badge ${u.status === 'Tạm khóa' ? 'bg-danger' : 'bg-success'}">${u.status || 'Hoạt động'}</span></td>
+        <td class="text-center">
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-outline-primary" type="button" onclick="openUserModal('${u.username}')"><i class="bi bi-pencil-square"></i> Sửa</button>
+            ${u.username !== 'admin' ? `<button class="btn btn-outline-danger" type="button" onclick="removeUserAccount('${u.username}')"><i class="bi bi-trash"></i></button>` : ''}
+          </div>
+        </td>
+      </tr>
+    `).join('');
+
+    const aTbody = document.getElementById('auditLogsTbody');
+    aTbody.innerHTML = (appData.auditLogs || []).map(a => `
+      <tr>
+        <td class="small text-center text-nowrap">${a.timestamp}</td>
+        <td class="small fw-semibold">${a.actorName}</td>
+        <td class="text-center"><span class="badge bg-warning-subtle text-dark">${a.action}</span></td>
+        <td class="small">${a.detail}</td>
+      </tr>
+    `).join('');
+  }
+
+  function openFundLedger(bankName) {
+    currentLedgerFundName = bankName;
+    const acc = (appData.accounts || []).find(a => a.bankName === bankName);
+    if (!acc) return;
+
+    document.getElementById('flAccountTitle').innerText = `${acc.id} — ${acc.bankName}`;
+    document.getElementById('flAccountMeta').innerText =
+      `Số TK: ${acc.accountNumber} • Chủ TK: ${acc.holderName} • Loại: ${acc.accountType} • Số dư đầu kỳ: ${formatVND(acc.initialBalance)}`;
+    document.getElementById('flCurrentBalance').innerText = formatVND(acc.balanceVnd);
+
+    const fundTxs = (appData.transactions || []).filter(t => t.accountName === bankName || t.toAccountName === bankName);
+    let runningBal = Number(acc.initialBalance) || 0;
+
+    let html = `
+      <tr class="table-secondary fw-bold">
+        <td class="text-center">DAU-KY</td>
+        <td class="text-center">01/10/2026</td>
+        <td>Số dư đầu kỳ kết chuyển sang</td>
+        <td class="text-center">Số dư đầu kỳ</td>
+        <td class="text-end">--</td>
+        <td class="text-end">--</td>
+        <td class="text-end text-primary">${formatVND(runningBal)}</td>
+        <td class="text-center">Hệ thống</td>
+      </tr>
+    `;
+
+    fundTxs.forEach(t => {
+      let inVal = 0, outVal = 0;
+      const amt = Number(t.amountVnd) || 0;
+      if (t.type === 'Phiếu Thu' && t.accountName === bankName) {
+        inVal = amt;
+        runningBal += inVal;
+      } else if (t.type === 'Phiếu Chi' && t.accountName === bankName) {
+        outVal = amt;
+        runningBal -= outVal;
+      } else if (t.type === 'Chuyển quỹ') {
+        if (t.accountName === bankName) {
+          outVal = amt;
+          runningBal -= outVal;
+        }
+        if (t.toAccountName === bankName) {
+          inVal = amt;
+          runningBal += inVal;
+        }
+      }
+
+      html += `
+        <tr>
+          <td class="fw-bold text-center text-primary">${t.code}</td>
+          <td class="text-center small">${t.date}</td>
+          <td>
+            <div class="fw-semibold">${t.partner || ''}</div>
+            <div class="small text-secondary">${t.notes || ''}</div>
+          </td>
+          <td class="small">${t.category}</td>
+          <td class="text-end fw-bold text-success">${inVal > 0 ? '+' + formatVND(inVal) : '--'}</td>
+          <td class="text-end fw-bold text-danger">${outVal > 0 ? '-' + formatVND(outVal) : '--'}</td>
+          <td class="text-end fw-bold text-primary">${formatVND(runningBal)}</td>
+          <td class="text-center small">${t.createdBy}</td>
+        </tr>
+      `;
+    });
+
+    document.getElementById('fundLedgerTbody').innerHTML = html;
+    showBsModal('fundLedgerModal');
+  }
+
+  function showPrintPreviewWithHtml(titleText, htmlContent) {
+    document.getElementById('printModalHeaderTitle').innerHTML = '<i class="bi bi-printer-fill me-2"></i>' + titleText;
+    document.getElementById('printAreaContainer').innerHTML = htmlContent;
+    document.getElementById('dedicatedPrintSheet').innerHTML = htmlContent;
+    showBsModal('printVoucherModal');
+  }
+
+  function executePrintNow() {
+    const contentHtml = document.getElementById('printAreaContainer').innerHTML;
+    document.getElementById('dedicatedPrintSheet').innerHTML = contentHtml;
+
+    try {
+      const printWin = window.open('', '_blank', 'width=1050,height=800');
+      if (printWin && printWin.document) {
+        printWin.document.open();
+        printWin.document.write(
+          '<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8">' +
+          '<title>In Chứng Từ Tài Chính - GS-003</title>' +
+          '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">' +
+          '<style>' +
+          'body { background: #fff; color: #000; font-family: "Times New Roman", Times, serif; font-size: 13.5px; padding: 24px; }' +
+          'table { width: 100%; border-collapse: collapse; margin-top: 12px; margin-bottom: 12px; }' +
+          'th, td { border: 1px solid #000 !important; padding: 6px 8px !important; color: #000 !important; vertical-align: middle; }' +
+          'thead th { background-color: #f1f5f9 !important; -webkit-print-color-adjust: exact; }' +
+          '@media print { @page { size: A4; margin: 12mm; } }' +
+          '</style></head><body>' +
+          contentHtml +
+          '<scr' + 'ipt>window.onload = function() { setTimeout(function() { window.focus(); window.print(); }, 350); };</scr' + 'ipt>' +
+          '</body></html>'
+        );
+        printWin.document.close();
+        return;
+      }
+    } catch (e) {}
+
+    window.print();
+  }
+
+  function openPrintVoucher(code) {
+    const tx = (appData.transactions || []).find(t => t.code === code);
+    if (!tx) return;
+
+    const s = appData.settings || FALLBACK_DATA.settings;
+    const isThu = tx.type === 'Phiếu Thu';
+    const voucherTitle = isThu ? 'PHIẾU THU TIỀN' : (tx.type === 'Phiếu Chi' ? 'PHIẾU CHI TIỀN' : 'LỆNH LUÂN CHUYỂN QUỸ NỘI BỘ');
+    const formNo = isThu ? 'Mẫu số 01 - TT' : 'Mẫu số 02 - TT';
+    const personLabel = isThu ? 'Họ và tên người nộp tiền' : 'Họ và tên người nhận tiền';
+    const reasonLabel = isThu ? 'Lý do nộp' : 'Lý do chi';
+
+    const html = `
+      <div class="d-flex justify-content-between align-items-start mb-3">
+        <div>
+          <div class="fw-bold text-uppercase">${s.COMPANY_NAME}</div>
+          <div class="small">Địa chỉ: ${s.COMPANY_ADDRESS}</div>
+          <div class="small">MST: ${s.COMPANY_TAX} • ĐT: ${s.COMPANY_PHONE}</div>
+        </div>
+        <div class="text-end small">
+          <div class="fw-bold">${formNo}</div>
+          <div>(Ban hành theo Thông tư 200/2014/TT-BTC</div>
+          <div>ngày 22/12/2014 của Bộ Tài Chính)</div>
+        </div>
+      </div>
+
+      <div class="text-center my-3">
+        <h3 class="fw-bold mb-1">${voucherTitle}</h3>
+        <div class="fst-italic">Ngày giờ lập: ${tx.date} — Số chứng từ: <strong>${tx.code}</strong></div>
+      </div>
+
+      <div class="my-4" style="line-height: 2.0; font-size: 14.5px;">
+        <div>- ${personLabel}: <strong>${tx.partner || 'Đối tác kinh doanh'}</strong></div>
+        <div>- Đơn vị / Dự án / Bộ phận: <strong>${tx.projectName || 'Vận hành chung'}</strong></div>
+        <div>- ${reasonLabel}: <strong>${tx.category}</strong> (${tx.notes || 'Theo chứng từ kèm theo'})</div>
+        <div>- Tài khoản / Quỹ hạch toán: <strong>${tx.accountName}</strong> ${tx.type === 'Chuyển quỹ' ? '➔ Chuyển sang: <strong>' + tx.toAccountName + '</strong>' : ''} (${tx.method || ''})</div>
+        <div>- Số tiền: <strong class="fs-5">${formatVND(tx.amountVnd)}</strong></div>
+        <div>- Viết bằng chữ: <em class="fw-bold">${readVietnameseNumberWords(tx.amountVnd)}.</em></div>
+        <div>- Trạng thái thanh toán: <strong>${tx.paymentStatus || 'Đã tất toán'}</strong></div>
+      </div>
+
+      <div class="row text-center mt-4 pt-3">
+        <div class="col-3">
+          <div class="fw-bold">Giám đốc</div>
+          <div class="small fst-italic">(Ký, họ tên, đóng dấu)</div>
+          <div style="margin-top: 60px;" class="fw-semibold">Nguyễn Minh Tuấn</div>
+        </div>
+        <div class="col-3">
+          <div class="fw-bold">Kế toán trưởng</div>
+          <div class="small fst-italic">(Ký, họ tên)</div>
+          <div style="margin-top: 60px;" class="fw-semibold">Hoàng Thu Trang</div>
+        </div>
+        <div class="col-3">
+          <div class="fw-bold">Người nộp / nhận tiền</div>
+          <div class="small fst-italic">(Ký, họ tên)</div>
+          <div style="margin-top: 60px;" class="fw-semibold">${tx.partner || ''}</div>
+        </div>
+        <div class="col-3">
+          <div class="fw-bold">Thủ quỹ / Người lập</div>
+          <div class="small fst-italic">(Ký, họ tên)</div>
+          <div style="margin-top: 60px;" class="fw-semibold">${tx.createdBy}</div>
+        </div>
+      </div>
+    `;
+
+    showPrintPreviewWithHtml('Xem Trước Bản In: ' + voucherTitle + ' (' + tx.code + ')', html);
+  }
+
+  function printCashflowReport() {
+    const s = appData.settings || FALLBACK_DATA.settings;
+    const periodText = document.getElementById('cashflowPeriodSubtitle').innerText;
+    const tableHtml = document.getElementById('cashflowTableWrapper').innerHTML;
+
+    const html = `
+      <div class="d-flex justify-content-between align-items-start mb-3">
+        <div>
+          <div class="fw-bold text-uppercase">${s.COMPANY_NAME}</div>
+          <div class="small">Địa chỉ: ${s.COMPANY_ADDRESS}</div>
+          <div class="small">MST: ${s.COMPANY_TAX} • ĐT: ${s.COMPANY_PHONE}</div>
+        </div>
+        <div class="text-end small">
+          <div class="fw-bold">Mẫu số B03-DN</div>
+          <div>(Thông tư 200/2014/TT-BTC)</div>
+        </div>
+      </div>
+
+      <div class="text-center my-3">
+        <h4 class="fw-bold mb-1">BÁO CÁO TỔNG HỢP LƯU CHUYỂN TIỀN TỆ & SỐ DƯ CÁC QUỸ</h4>
+        <div class="fst-italic">${periodText}</div>
+      </div>
+
+      ${tableHtml}
+
+      <div class="row text-center mt-4 pt-3">
+        <div class="col-4">
+          <div class="fw-bold">Người lập biểu</div>
+          <div class="small fst-italic">(Ký, họ tên)</div>
+          <div style="margin-top: 55px;" class="fw-semibold">${currentUser ? currentUser.fullName : 'Kế toán viên'}</div>
+        </div>
+        <div class="col-4">
+          <div class="fw-bold">Kế toán trưởng</div>
+          <div class="small fst-italic">(Ký, họ tên)</div>
+          <div style="margin-top: 55px;" class="fw-semibold">Hoàng Thu Trang</div>
+        </div>
+        <div class="col-4">
+          <div class="fw-bold">Giám đốc phê duyệt</div>
+          <div class="small fst-italic">(Ký, họ tên, đóng dấu)</div>
+          <div style="margin-top: 55px;" class="fw-semibold">Nguyễn Minh Tuấn</div>
+        </div>
+      </div>
+    `;
+
+    showPrintPreviewWithHtml('Xem Trước Bản In: Báo Cáo Lưu Chuyển Tiền Tệ', html);
+  }
+
+  function printCurrentFundLedger() {
+    const s = appData.settings || FALLBACK_DATA.settings;
+    const accTitle = document.getElementById('flAccountTitle').innerText;
+    const accMeta = document.getElementById('flAccountMeta').innerText;
+    const tbodyHtml = document.getElementById('fundLedgerTbody').innerHTML;
+
+    hideBsModal('fundLedgerModal');
+
+    const html = `
+      <div class="d-flex justify-content-between align-items-start mb-3">
+        <div>
+          <div class="fw-bold text-uppercase">${s.COMPANY_NAME}</div>
+          <div class="small">Địa chỉ: ${s.COMPANY_ADDRESS}</div>
+        </div>
+        <div class="text-end small">
+          <div class="fw-bold">Mẫu số S07-DN / S08-DN</div>
+          <div>(Thông tư 200/2014/TT-BTC)</div>
+        </div>
+      </div>
+
+      <div class="text-center my-3">
+        <h4 class="fw-bold mb-1">SỔ QUỸ CHI TIẾT TIỀN MẶT / TIỀN GỬI NGÂN HÀNG</h4>
+        <div class="fw-bold">${accTitle}</div>
+        <div class="small fst-italic">${accMeta}</div>
+      </div>
+
+      <table class="table table-bordered border-dark text-dark my-3">
+        <thead class="text-center fw-bold">
+          <tr>
+            <th>Số Hiệu CT</th>
+            <th>Ngày Ghi Sổ</th>
+            <th>Diễn Giải & Đối Tác</th>
+            <th>Hạng Mục</th>
+            <th>Số Tiền Thu (+)</th>
+            <th>Số Tiền Chi (-)</th>
+            <th>Số Dư Lũy Kế (₫)</th>
+            <th>Người Lập</th>
+          </tr>
+        </thead>
+        <tbody>${tbodyHtml}</tbody>
+      </table>
+    `;
+
+    showPrintPreviewWithHtml('Xem Trước Bản In: Sổ Chi Tiết Quỹ (' + currentLedgerFundName + ')', html);
+  }
+
+  function openTxModal(defaultType, defaultAccountName) {
+    document.getElementById('txType').value = defaultType || 'Phiếu Thu';
+    document.getElementById('txDate').value = new Date().toISOString().split('T')[0];
+    document.getElementById('txCreator').value = currentUser ? `${currentUser.fullName} (${currentUser.role})` : 'Kế toán';
+
+    const accSel = document.getElementById('txAccount');
+    const toAccSel = document.getElementById('txToAccount');
+    const optsHtml = (appData.accounts || []).map(a =>
+      `<option value="${a.bankName}">${a.bankName} (Dư: ${formatVND(a.balanceVnd)})</option>`
+    ).join('');
+    accSel.innerHTML = optsHtml;
+    toAccSel.innerHTML = optsHtml;
+
+    if (defaultAccountName) accSel.value = defaultAccountName;
+    if (currentUser && currentUser.role === 'CASHIER' && currentUser.assignedFund !== 'ALL') {
+      accSel.value = currentUser.assignedFund;
+    }
+
+    onTxTypeChange();
+    onTxAccountSelect();
+    updateAmountWordsPreview();
+    showBsModal('txModal');
+  }
+
+  function onTxTypeChange() {
+    const t = document.getElementById('txType').value;
+    const catSel = document.getElementById('txCategory');
+    const destWrap = document.getElementById('colDestAccountSelect');
+    const balWrap = document.getElementById('colToAccountWrapper');
+
+    if (t === 'Phiếu Thu') {
+      catSel.innerHTML = INCOME_CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join('');
+      destWrap.classList.add('d-none');
+      balWrap.className = 'col-md-6';
+      document.getElementById('txPartner').value = 'Khách hàng Doanh nghiệp B2B';
+    } else if (t === 'Phiếu Chi') {
+      catSel.innerHTML = EXPENSE_CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join('');
+      destWrap.classList.add('d-none');
+      balWrap.className = 'col-md-6';
+      document.getElementById('txPartner').value = 'Nhà cung cấp dịch vụ / Nhân sự';
+    } else {
+      catSel.innerHTML = '<option value="Rút tiền gửi nhập quỹ tiền mặt">Rút tiền gửi nhập quỹ tiền mặt</option><option value="Nộp tiền mặt vào tài khoản ngân hàng">Nộp tiền mặt vào tài khoản ngân hàng</option><option value="Điều chuyển vốn nội bộ giữa các ngân hàng">Điều chuyển vốn nội bộ giữa các ngân hàng</option>';
+      destWrap.classList.remove('d-none');
+      balWrap.className = 'col-md-12';
+      document.getElementById('txPartner').value = 'Luân chuyển quỹ nội bộ';
+    }
+  }
+
+  function onTxAccountSelect() {
+    const bankName = document.getElementById('txAccount').value;
+    const acc = (appData.accounts || []).find(a => a.bankName === bankName);
+    if (!acc) return;
+    document.getElementById('txBalancePreview').value = `${acc.id} • Khả dụng: ${formatVND(acc.balanceVnd)}`;
+  }
+
+  function updateAmountWordsPreview() {
+    const amt = Number(document.getElementById('txAmount').value) || 0;
+    document.getElementById('txAmountWordsPreview').innerText = 'Bằng chữ: ' + readVietnameseNumberWords(amt) + '.';
+  }
+
+  function submitTransaction() {
+    const t = document.getElementById('txType').value;
+    const accName = document.getElementById('txAccount').value;
+    const toAccName = document.getElementById('txToAccount').value;
+    const amt = Number(document.getElementById('txAmount').value) || 0;
+    const category = document.getElementById('txCategory').value;
+    const partner = document.getElementById('txPartner').value.trim();
+    const project = document.getElementById('txProject').value.trim();
+    const payStatus = document.getElementById('txPaymentStatus').value;
+    const method = document.getElementById('txMethod').value;
+    const notes = document.getElementById('txNotes').value.trim();
+    const dateVal = document.getElementById('txDate').value;
+
+    if (amt <= 0) {
+      alert('Số tiền giao dịch phải lớn hơn 0!');
+      return;
+    }
+
+    if (t === 'Chuyển quỹ' && accName === toAccName) {
+      alert('Quỹ nguồn và Quỹ đích nhận không được trùng nhau!');
+      return;
+    }
+
+    if (currentUser && currentUser.role === 'CASHIER' && currentUser.assignedFund !== 'ALL') {
+      if (accName !== currentUser.assignedFund && toAccName !== currentUser.assignedFund) {
+        alert('Phân quyền Thủ quỹ: Bạn chỉ được phép lập chứng từ trên [' + currentUser.assignedFund + ']!');
+        return;
+      }
+    }
+
+    const sourceAcc = (appData.accounts || []).find(a => a.bankName === accName);
+    if ((t === 'Phiếu Chi' || t === 'Chuyển quỹ') && sourceAcc && amt > sourceAcc.balanceVnd) {
+      alert(`Cảnh báo vượt số dư: Quỹ [${accName}] chỉ còn khả dụng ${formatVND(sourceAcc.balanceVnd)}, không đủ chi ${formatVND(amt)}!`);
+      return;
+    }
+
+    const prefix = t === 'Phiếu Thu' ? 'PT' : (t === 'Phiếu Chi' ? 'PC' : 'PCQ');
+    const newCode = prefix + '-2026-' + Math.floor(1000 + Math.random() * 9000);
+
+    const payload = {
+      code: newCode,
+      type: t,
+      date: dateVal,
+      category: category,
+      amount: amt,
+      accountName: accName,
+      toAccountName: t === 'Chuyển quỹ' ? toAccName : '---',
+      partner: partner,
+      projectName: project,
+      paymentStatus: payStatus,
+      method: method,
+      notes: notes,
+      username: currentUser ? currentUser.username : 'admin',
+      createdBy: currentUser ? currentUser.fullName : 'Kế toán',
+      userRole: currentUser ? currentUser.role : 'ADMIN',
+      assignedFund: currentUser ? currentUser.assignedFund : 'ALL'
+    };
+
+    const btn = document.getElementById('btnSubmitTx');
+    btn.disabled = true;
+    btn.innerText = 'Đang ghi sổ...';
+
+    appData.transactions.unshift({
+      code: newCode,
+      date: dateVal + ' 10:00',
+      type: t,
+      category: category,
+      amountVnd: amt,
+      accountName: accName,
+      toAccountName: t === 'Chuyển quỹ' ? toAccName : '---',
+      partner: partner,
+      projectName: project,
+      paymentStatus: payStatus,
+      method: method,
+      createdBy: payload.createdBy,
+      notes: notes
+    });
+    refreshAllViews();
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run
+        .withSuccessHandler(function(res) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="bi bi-check2-circle me-1"></i> Ghi Sổ Quỹ & Cập Nhật Số Dư';
+          hideBsModal('txModal');
+          if (res && !res.success) alert(res.message);
+          loadData();
+        })
+        .withFailureHandler(function() {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="bi bi-check2-circle me-1"></i> Ghi Sổ Quỹ & Cập Nhật Số Dư';
+          hideBsModal('txModal');
+        })
+        .submitFinanceTx(payload);
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="bi bi-check2-circle me-1"></i> Ghi Sổ Quỹ & Cập Nhật Số Dư';
+      hideBsModal('txModal');
+    }
+  }
+
+  function openFundModal(editId) {
+    const idInp = document.getElementById('fmFundId');
+    if (editId) {
+      const existing = (appData.accounts || []).find(a => a.id === editId);
+      if (existing) {
+        document.getElementById('fundModalTitle').innerText = 'Cập Nhật Quỹ / TK: ' + existing.id;
+        idInp.value = existing.id;
+        idInp.readOnly = true;
+        document.getElementById('fmFundType').value = existing.accountType || 'Ngân hàng';
+        document.getElementById('fmBankName').value = existing.bankName || '';
+        document.getElementById('fmAccountNo').value = existing.accountNumber || '';
+        document.getElementById('fmHolderName').value = existing.holderName || '';
+        document.getElementById('fmInitBalance').value = existing.initialBalance || 0;
+        document.getElementById('fmFundNotes').value = existing.notes || '';
+      }
+    } else {
+      const nextNum = String((appData.accounts ? appData.accounts.length : 0) + 1).padStart(2, '0');
+      document.getElementById('fundModalTitle').innerText = 'Thêm Quỹ Tiền Mặt / Tài Khoản Ngân Hàng Mới';
+      idInp.value = 'ACC-' + nextNum;
+      idInp.readOnly = false;
+      document.getElementById('fmFundType').value = 'Ngân hàng';
+      document.getElementById('fmBankName').value = '';
+      document.getElementById('fmAccountNo').value = '';
+      document.getElementById('fmHolderName').value = 'CTY TNHH NEXSIMPLE VIET NAM';
+      document.getElementById('fmInitBalance').value = '50000000';
+      document.getElementById('fmFundNotes').value = '';
+    }
+    showBsModal('fundModal');
+  }
+
+  function submitFundAccount() {
+    const id = document.getElementById('fmFundId').value.trim().toUpperCase();
+    const bankName = document.getElementById('fmBankName').value.trim();
+    if (!id || !bankName) {
+      alert('Vui lòng nhập đầy đủ Mã Quỹ/TK và Tên Ngân Hàng / Quỹ!');
+      return;
+    }
+
+    const payload = {
+      id: id,
+      bankName: bankName,
+      accountNumber: document.getElementById('fmAccountNo').value.trim() || id,
+      holderName: document.getElementById('fmHolderName').value.trim(),
+      accountType: document.getElementById('fmFundType').value,
+      initialBalance: Number(document.getElementById('fmInitBalance').value) || 0,
+      notes: document.getElementById('fmFundNotes').value.trim(),
+      username: currentUser ? currentUser.username : 'admin',
+      actorName: currentUser ? currentUser.fullName : 'Admin'
+    };
+
+    const btn = document.getElementById('btnSaveFundSubmit');
+    btn.disabled = true;
+    btn.innerText = 'Đang lưu...';
+
+    const idx = (appData.accounts || []).findIndex(a => a.id.toUpperCase() === id);
+    const accObj = {
+      ...payload,
+      totalIn: idx >= 0 ? appData.accounts[idx].totalIn : 0,
+      totalOut: idx >= 0 ? appData.accounts[idx].totalOut : 0,
+      balanceVnd: payload.initialBalance
+    };
+    if (idx >= 0) appData.accounts[idx] = accObj;
+    else appData.accounts.push(accObj);
+
+    syncFundFilterOptions();
+    refreshAllViews();
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run
+        .withSuccessHandler(function(res) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="bi bi-check-lg me-1"></i> Lưu Quỹ / Tài Khoản Vào Sheet';
+          hideBsModal('fundModal');
+          alert(res && res.message ? res.message : 'Đã lưu quỹ/tài khoản thành công!');
+          loadData();
+        })
+        .withFailureHandler(function() {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="bi bi-check-lg me-1"></i> Lưu Quỹ / Tài Khoản Vào Sheet';
+          hideBsModal('fundModal');
+        })
+        .saveFundAccount(payload);
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="bi bi-check-lg me-1"></i> Lưu Quỹ / Tài Khoản Vào Sheet';
+      hideBsModal('fundModal');
+      alert('Đã lưu quỹ/tài khoản [' + bankName + '] thành công!');
+    }
+  }
+
+  function openUserModal(editUsername) {
+    syncFundFilterOptions();
+    const uInput = document.getElementById('ufUsername');
+    if (editUsername) {
+      const existing = (appData.users || []).find(u => u.username === editUsername);
+      if (existing) {
+        document.getElementById('userModalTitle').innerHTML = '<i class="bi bi-pencil-square me-2"></i>Cập Nhật Tài Khoản: ' + existing.username;
+        uInput.value = existing.username;
+        uInput.readOnly = true;
+        document.getElementById('ufPassword').value = existing.password || '123456';
+        document.getElementById('ufFullName').value = existing.fullName || '';
+        document.getElementById('ufRole').value = existing.role || 'CASHIER';
+        document.getElementById('ufAssignedFund').value = existing.assignedFund || 'ALL';
+        document.getElementById('ufStatus').value = existing.status || 'Hoạt động';
+      }
+    } else {
+      document.getElementById('userModalTitle').innerHTML = '<i class="bi bi-person-plus-fill me-2"></i>Tạo Tài Khoản Nhân Sự Mới';
+      uInput.value = '';
+      uInput.readOnly = false;
+      document.getElementById('ufPassword').value = '123456';
+      document.getElementById('ufFullName').value = '';
+      document.getElementById('ufRole').value = 'CASHIER';
+      document.getElementById('ufStatus').value = 'Hoạt động';
+    }
+    onUserFormRoleChange();
+    showBsModal('userModal');
+  }
+
+  function onUserFormRoleChange() {
+    const r = document.getElementById('ufRole').value;
+    const fSel = document.getElementById('ufAssignedFund');
+    if (r === 'ADMIN' || r === 'ACCOUNTANT') {
+      fSel.value = 'ALL';
+      fSel.disabled = true;
+    } else {
+      fSel.disabled = false;
+      if (fSel.value === 'ALL' && appData.accounts && appData.accounts.length > 0) {
+        fSel.value = appData.accounts[0].bankName;
+      }
+    }
+  }
+
+  function submitUserAccount() {
+    const uname = document.getElementById('ufUsername').value.trim().toLowerCase();
+    const pass = document.getElementById('ufPassword').value.trim() || '123456';
+    const fullName = document.getElementById('ufFullName').value.trim();
+    const role = document.getElementById('ufRole').value;
+    const assignedFund = (role === 'ADMIN' || role === 'ACCOUNTANT') ? 'ALL' : document.getElementById('ufAssignedFund').value;
+    const status = document.getElementById('ufStatus').value;
+
+    if (!uname || !fullName) {
+      alert('Vui lòng nhập đầy đủ Tên đăng nhập (Username) và Họ tên nhân sự!');
+      return;
+    }
+
+    const payload = {
+      username: uname,
+      password: pass,
+      fullName: fullName,
+      role: role,
+      assignedFund: assignedFund,
+      status: status,
+      actorUsername: currentUser ? currentUser.username : 'admin',
+      actorName: currentUser ? currentUser.fullName : 'Admin'
+    };
+
+    const btn = document.getElementById('btnSaveUserSubmit');
+    btn.disabled = true;
+    btn.innerText = 'Đang lưu...';
+
+    const idx = (appData.users || []).findIndex(u => String(u.username || '').toLowerCase() === uname);
+    const userRecord = {
+      username: uname,
+      password: pass,
+      fullName: fullName,
+      role: role,
+      assignedFund: assignedFund,
+      permissionsDesc: role === 'ADMIN' ? 'Toàn quyền hệ thống' : (role === 'ACCOUNTANT' ? 'Kế toán toàn bộ quỹ' : 'Thủ quỹ ' + assignedFund),
+      status: status
+    };
+    if (idx >= 0) appData.users[idx] = userRecord;
+    else appData.users.push(userRecord);
+
+    renderRbacAndAudit();
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run
+        .withSuccessHandler(function(res) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="bi bi-check2-circle me-1"></i> Lưu Tài Khoản Vào Sheet';
+          hideBsModal('userModal');
+          alert(res && res.message ? res.message : 'Đã lưu tài khoản vào tab PHAN_QUYEN!');
+          loadData();
+        })
+        .withFailureHandler(function() {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="bi bi-check2-circle me-1"></i> Lưu Tài Khoản Vào Sheet';
+          hideBsModal('userModal');
+        })
+        .saveUserAccount(payload);
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="bi bi-check2-circle me-1"></i> Lưu Tài Khoản Vào Sheet';
+      hideBsModal('userModal');
+      alert('Đã lưu tài khoản [' + uname + '] thành công!');
+    }
+  }
+
+  function removeUserAccount(uname) {
+    if (uname === 'admin') {
+      alert('Không thể xóa tài khoản Quản trị viên gốc (admin)!');
+      return;
+    }
+    if (!confirm('Bạn có chắc chắn muốn xóa tài khoản [' + uname + '] không?')) return;
+
+    appData.users = (appData.users || []).filter(u => u.username !== uname);
+    renderRbacAndAudit();
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run
+        .withSuccessHandler(function(res) {
+          if (res && res.message) alert(res.message);
+        })
+        .deleteUserAccount(uname, currentUser ? currentUser.fullName : 'Admin');
+    }
+  }
+
+  function handleSaveSettings(e) {
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
+    const cfg = {
+      COMPANY_NAME: document.getElementById('cfgCompanyName').value.trim(),
+      COMPANY_TAX: document.getElementById('cfgCompanyTax').value.trim(),
+      COMPANY_ADDRESS: document.getElementById('cfgCompanyAddress').value.trim(),
+      COMPANY_PHONE: document.getElementById('cfgCompanyPhone').value.trim(),
+      MONTHLY_BURN_LIMIT: document.getElementById('cfgBurnLimit').value.trim(),
+      PRINT_TEMPLATE_STANDARD: document.getElementById('cfgPrintStandard').value.trim(),
+      username: currentUser ? currentUser.username : 'admin',
+      actorName: currentUser ? currentUser.fullName : 'Admin'
+    };
+    appData.settings = { ...appData.settings, ...cfg };
+    populateSettingsForm();
+    refreshAllViews();
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run.withSuccessHandler(function(res) {
+        alert(res && res.message ? res.message : 'Đã lưu cấu hình!');
+      }).saveCompanyConfig(cfg);
+    } else {
+      alert('Đã lưu cấu hình doanh nghiệp và cập nhật mẫu in thành công!');
+    }
+  }
+
+  function downloadCsvUtf8(filename, rows) {
+    const csvContent = '\uFEFF' + rows.map(r =>
+      r.map(cell => '"' + String(cell === null || cell === undefined ? '' : cell).replace(/"/g, '""') + '"').join(',')
+    ).join('\r\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  function exportFundsCsv() {
+    const rows = [
+      ['Mã Quỹ/TK', 'Tên Ngân Hàng / Quỹ', 'Số Tài Khoản', 'Chủ Tài Khoản', 'Loại Quỹ', 'Số Dư Đầu Kỳ', 'Tổng Thu', 'Tổng Chi', 'Số Dư Hiện Tại', 'Ghi Chú']
+    ];
+    (appData.accounts || []).forEach(a => {
+      rows.push([a.id, a.bankName, a.accountNumber, a.holderName, a.accountType, a.initialBalance, a.totalIn, a.totalOut, a.balanceVnd, a.notes || '']);
+    });
+    downloadCsvUtf8('Danh_Muc_Quy_Tai_Khoan_GS003.csv', rows);
+  }
+
+  function exportCashflowCsv() {
+    const rows = [
+      ['Mã Quỹ', 'Tên Quỹ / Ngân Hàng', 'Số Tài Khoản', 'Loại Quỹ', 'Số Dư Đầu Kỳ', 'Tổng Thu Trong Kỳ', 'Tổng Chi Trong Kỳ', 'Số Dư Cuối Kỳ']
+    ];
+    (appData.accounts || []).forEach(a => {
+      rows.push([a.id, a.bankName, a.accountNumber, a.accountType, a.initialBalance, a.totalIn, a.totalOut, a.balanceVnd]);
+    });
+    downloadCsvUtf8('Bao_Cao_Luu_Chuyen_Tien_Te_GS003.csv', rows);
+  }
+
+  function exportVouchersCsv() {
+    const rows = [
+      ['Số Chứng Từ', 'Ngày Giờ', 'Loại Phiếu', 'Hạng Mục', 'Số Tiền', 'Tài Khoản Quỹ', 'Quỹ Đích', 'Đối Tác', 'Dự Án', 'Trạng Thái', 'Phương Thức', 'Người Lập', 'Diễn Giải']
+    ];
+    getFilteredTransactions().forEach(t => {
+      rows.push([
+        t.code, t.date, t.type, t.category, t.amountVnd, t.accountName, t.toAccountName || '---',
+        t.partner || '', t.projectName || '', t.paymentStatus || '', t.method || '', t.createdBy, t.notes || ''
+      ]);
+    });
+    downloadCsvUtf8('So_Chung_Tu_Thu_Chi_GS003.csv', rows);
+  }
+
+  function bootFinanceApp() {
+    if (hasBooted) return;
+    hasBooted = true;
+    try {
+      populateSettingsForm();
+      syncFundFilterOptions();
+      refreshAllViews();
+    } catch (e) {}
+    loadData();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootFinanceApp);
+  } else {
+    bootFinanceApp();
+  }
+  window.addEventListener('load', bootFinanceApp);
+</script>
+</body>
+</html>
+```
